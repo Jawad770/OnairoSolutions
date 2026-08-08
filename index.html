@@ -1,0 +1,727 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Onairo Solutions | Website Development & Software Company in Pakistan</title>
+  <meta name="description" content="Premium website development, custom software, industry websites, and Shopify store design in Pakistan. Build, launch, scale, and sell with Onairo Solutions."/>
+  <link rel="canonical" href="https://onairosolutions.com/"/>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Onairo Solutions | Website Development & Software Company in Pakistan"/>
+  <meta property="og:description" content="Four specialised divisions for client services, industry websites, software products, and Shopify store design."/>
+  <meta property="og:url" content="https://onairosolutions.com/"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Outfit:wght@500;600;700;800&display=swap"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/shared/css/tokens.css"/>
+  <link rel="stylesheet" href="src/shared/css/base.css"/>
+  <link rel="stylesheet" href="src/shared/css/components.css"/>
+  <link rel="stylesheet" href="src/shared/css/seo.css"/>
+  <link rel="stylesheet" href="src/shared/css/home.css"/>
+  <link rel="stylesheet" href="src/shared/css/pillar-worlds.css"/>
+</head>
+<body data-root="" data-page="home">
+
+<div id="site-nav"></div>
+
+<!-- HERO -->
+<section class="home-hero" id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <div class="hero-eyebrow">Technology Company · Worldwide</div>
+      <h1>Build.<br>Launch.<br><em>Scale.</em></h1>
+      <p class="hero-sub">
+        Onairo Solutions is evolving into a full technology company — delivering client services,
+        industry-ready websites, commercial products like EduTrack, and high-converting Shopify stores under one strong brand.
+      </p>
+      <div class="hero-actions">
+        <a href="src/pages/request-quote.html" class="btn btn-primary">Request Quote</a>
+        <a href="src/products/edutrack.html" class="btn btn-secondary">Explore EduTrack</a>
+        <a href="src/portfolio/index.html" class="btn btn-ghost">Demo Websites</a>
+      </div>
+    </div>
+
+    <div class="hero-pillars">
+      <a class="hero-pillar" href="#services-preview">
+        <span class="hero-pillar-icon">✦</span>
+        <strong>1 · Client Services</strong>
+        <span>What we build for clients</span>
+      </a>
+      <a class="hero-pillar" href="#portfolio-preview">
+        <span class="hero-pillar-icon">◫</span>
+        <strong>2 · Industry Websites</strong>
+        <span>Industry demo websites</span>
+      </a>
+      <a class="hero-pillar" href="#products-preview">
+        <span class="hero-pillar-icon">⬡</span>
+        <strong>3 · Software Products</strong>
+        <span>Commercial software</span>
+      </a>
+      <a class="hero-pillar" href="#shopify-showcase">
+        <span class="hero-pillar-icon">🛒</span>
+        <strong>4 · Shopify</strong>
+        <span>Stores designed to sell</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE ARE -->
+<section class="section section-alt" id="who">
+  <div class="container who-grid">
+    <div>
+      <div class="section-tag">Who We Are</div>
+      <h2 class="section-title reveal">More than a web design studio</h2>
+      <p class="section-sub reveal" style="margin-bottom:1.5rem">
+        We started by crafting high-converting websites for businesses worldwide.
+        Today we engineer software, automate operations, and ship products that scale with our clients.
+      </p>
+      <p class="reveal" style="color:var(--slate);max-width:520px;line-height:1.75;margin-bottom:1.75rem">
+        Whether you need a polished online presence, a custom business system, or a ready-to-adopt product like EduTrack —
+        Onairo Solutions is built to partner with you from idea to launch.
+      </p>
+      <a href="src/pages/about.html" class="btn btn-ghost reveal">About Onairo →</a>
+    </div>
+    <div class="who-stats reveal">
+      <div class="who-stat"><strong>4</strong><span>Core business pillars</span></div>
+      <div class="who-stat"><strong>15+</strong><span>Industry demo websites</span></div>
+      <div class="who-stat"><strong>11</strong><span>Service capabilities</span></div>
+      <div class="who-stat"><strong>1</strong><span>Flagship product — EduTrack</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SHUFFLE DEMO SHOWCASE -->
+<section class="section demo-showcase" id="demo-showcase">
+  <div class="container">
+    <div class="demo-showcase-head">
+      <div>
+        <div class="section-tag">Website Demo Showcase</div>
+        <h2 class="section-title reveal">A website for your industry,<br>already brought to life.</h2>
+        <p class="section-sub reveal">Explore six live examples from our growing portfolio. Shuffle the collection to discover more industries.</p>
+      </div>
+      <button class="btn btn-secondary demo-shuffle-btn reveal" id="shuffleDemos" type="button" aria-controls="homeDemoGrid">
+        <span aria-hidden="true">↻</span> Shuffle Demos
+      </button>
+    </div>
+    <div class="card-grid card-grid-3 demo-showcase-grid mobile-grid-2" id="homeDemoGrid" aria-live="polite"></div>
+    <p class="demo-shuffle-status" id="demoShuffleStatus" aria-live="polite"></p>
+    <div class="section-actions demo-showcase-actions">
+      <a href="src/portfolio/index.html" class="btn btn-primary">See All Website Demos</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOUR PILLARS INTRO -->
+<section class="section" id="pillars">
+  <div class="container">
+    <div class="section-head center">
+      <div class="section-tag">Our Model</div>
+      <h2 class="section-title reveal">Four specialised divisions. One brand.</h2>
+      <p class="section-sub reveal">Choose the Onairo division built around your next business outcome.</p>
+    </div>
+    <div class="pillar-intro-grid">
+      <article class="pillar-card pillar-services reveal">
+        <div class="pillar-orb" aria-hidden="true"></div>
+        <div class="pillar-icon" aria-hidden="true">✦</div>
+        <div class="pillar-num">PILLAR 01 · BUILD</div>
+        <h3>Client Services</h3>
+        <span class="pillar-subtitle">Technology engineered around your business.</span>
+        <p>Professional website development, custom software, automation, AI, cloud, APIs, and consulting — engineered for client outcomes.</p>
+        <div class="pillar-actions">
+          <a class="btn btn-primary btn-sm" href="src/pages/request-quote.html">Build My Project</a>
+          <a class="btn btn-ghost btn-sm" href="src/portfolio/index.html">See Our Work</a>
+        </div>
+      </article>
+      <article class="pillar-card pillar-websites reveal">
+        <div class="pillar-orb" aria-hidden="true"></div>
+        <div class="pillar-icon" aria-hidden="true">◫</div>
+        <div class="pillar-num">PILLAR 02 · LAUNCH</div>
+        <h3>Industry Websites</h3>
+        <span class="pillar-subtitle">Proven digital experiences, tailored fast.</span>
+        <p>A growing library of industry-specific demo websites — gyms, clinics, law firms, travel, schools, and more — ready to customize.</p>
+        <div class="pillar-actions">
+          <a class="btn btn-primary btn-sm" href="src/portfolio/index.html">Browse Demos</a>
+          <a class="btn btn-ghost btn-sm" href="src/pages/request-quote.html">Launch My Website</a>
+        </div>
+      </article>
+      <article class="pillar-card pillar-products reveal">
+        <div class="pillar-orb" aria-hidden="true"></div>
+        <div class="pillar-icon" aria-hidden="true">⬡</div>
+        <div class="pillar-num">PILLAR 03 · SCALE</div>
+        <h3>Software Products</h3>
+        <span class="pillar-subtitle">Commercial platforms ready to perform.</span>
+        <p>Commercial software products starting with EduTrack, with StoreTrack, MediTrack, FitTrack, HRTrack, and HotelTrack on the roadmap.</p>
+        <div class="pillar-actions">
+          <a class="btn btn-primary btn-sm" href="src/products/index.html">Explore Products</a>
+          <a class="btn btn-ghost btn-sm" href="src/products/edutrack.html#trial">Download Trial</a>
+        </div>
+      </article>
+      <article class="pillar-card pillar-shopify reveal">
+        <div class="pillar-orb" aria-hidden="true"></div>
+        <div class="pillar-icon" aria-hidden="true">🛒</div>
+        <div class="pillar-num">PILLAR 04 · SELL</div>
+        <h3>Shopify Store Design &amp; Launch</h3>
+        <span class="pillar-subtitle">Launch a professional online store that sells.</span>
+        <p>From design to launch, we build beautiful Shopify stores that help businesses sell products online with confidence.</p>
+        <div class="pillar-actions">
+          <a class="btn btn-primary btn-sm" href="src/pages/request-quote.html?service=shopify">Launch My Store</a>
+          <a class="btn btn-ghost btn-sm" href="#shopify-showcase">View Shopify Demo</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PILLAR 01 · BUILD -->
+<section class="section pillar-world build-world" id="services-preview">
+  <div class="world-glow build-glow-a"></div>
+  <div class="world-glow build-glow-b"></div>
+  <div class="container">
+    <div class="world-heading reveal">
+      <div>
+        <div class="world-kicker"><span>01</span> BUILD · SOFTWARE ENGINEERING</div>
+        <h2>Complex systems.<br><em>Made brilliantly simple.</em></h2>
+        <p>We design and engineer production-grade software, AI workflows, APIs, cloud infrastructure, and digital platforms that move businesses forward.</p>
+      </div>
+      <div class="world-actions">
+        <a class="btn btn-primary" href="src/pages/request-quote.html">Build My Project</a>
+        <a class="btn btn-ghost" href="src/portfolio/index.html">See Our Work</a>
+      </div>
+    </div>
+
+    <div class="build-stage reveal" aria-label="Enterprise software engineering dashboard">
+      <div class="build-dashboard">
+        <div class="build-side">
+          <div class="build-logo">O<span>/</span></div>
+          <i class="active"></i><i></i><i></i><i></i><i></i>
+          <b>OS</b>
+        </div>
+        <div class="build-main">
+          <div class="build-topbar"><span>Production workspace</span><div><i></i> All systems operational</div></div>
+          <div class="build-grid snap-rail" aria-label="Platform dashboard panels">
+            <div class="build-overview">
+              <small>PLATFORM OVERVIEW</small>
+              <h3>Good evening, Sarah.</h3>
+              <p>Your infrastructure is healthy and processing requests globally.</p>
+              <div class="build-metrics">
+                <div><span>API requests</span><strong data-count="2840000" data-suffix="M">2.84M</strong><small>↑ 18.2%</small></div>
+                <div><span>Uptime</span><strong data-count="9999" data-decimals="2" data-divisor="100">99.99%</strong><small>30 days</small></div>
+                <div><span>Response</span><strong data-count="84" data-suffix="ms">84ms</strong><small>↓ 12ms</small></div>
+              </div>
+            </div>
+            <div class="build-traffic">
+              <div class="widget-title"><span>Request volume</span><b>Live</b></div>
+              <div class="traffic-chart"><svg viewBox="0 0 500 140" preserveAspectRatio="none"><defs><linearGradient id="buildArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b82f6" stop-opacity=".32"/><stop offset="1" stop-color="#3b82f6" stop-opacity="0"/></linearGradient></defs><path class="chart-area" d="M0 118 C45 108,55 75,90 88 S150 105,180 64 S230 78,265 48 S325 73,355 39 S420 65,500 18 L500 140 L0 140Z" fill="url(#buildArea)"/><path class="chart-line" d="M0 118 C45 108,55 75,90 88 S150 105,180 64 S230 78,265 48 S325 73,355 39 S420 65,500 18" fill="none" stroke="#60a5fa" stroke-width="3"/></svg></div>
+            </div>
+            <div class="build-deploys">
+              <div class="widget-title"><span>Recent deployments</span><a href="#">View all</a></div>
+              <div class="deploy-row"><i class="success">✓</i><span><b>api-gateway</b><small>Production · 2m ago</small></span><em>v2.8.1</em></div>
+              <div class="deploy-row"><i class="success">✓</i><span><b>client-dashboard</b><small>Production · 18m ago</small></span><em>v4.2.0</em></div>
+              <div class="deploy-row"><i>↻</i><span><b>automation-worker</b><small>Building now</small></span><em>68%</em></div>
+            </div>
+            <div class="build-regions">
+              <div class="widget-title"><span>Global edge</span><b>6 regions</b></div>
+              <div class="region-map">
+                <span style="--x:20%;--y:43%"></span><span style="--x:39%;--y:31%"></span>
+                <span style="--x:51%;--y:50%"></span><span style="--x:68%;--y:37%"></span>
+                <span style="--x:78%;--y:62%"></span><span style="--x:90%;--y:73%"></span>
+                <svg viewBox="0 0 300 110" preserveAspectRatio="none"><path d="M60 47 L117 34 L153 55 L204 41 L235 68 L270 80" fill="none" stroke="#3b82f6" stroke-dasharray="5 5"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-window build-float">
+        <div class="float-head"><span><i></i><i></i><i></i></span><b>api/automations.ts</b></div>
+        <pre><code><span>export async function</span> deploy(workflow) {
+  <em>const</em> result = <strong>await</strong> ai.run({
+    model: <q>"onairo-core"</q>,
+    tasks: workflow.nodes
+  });
+  <strong>return</strong> cloud.publish(result);
+}</code></pre>
+      </div>
+
+      <div class="api-card build-float">
+        <div class="float-head"><span>API RESPONSE</span><b>200 OK</b></div>
+        <code>{ "status": "deployed",<br>　"latency": "84ms" }</code>
+      </div>
+
+      <div class="ai-assistant-card build-float">
+        <div class="ai-mini-icon">✦</div>
+        <div><small>AI ASSISTANT</small><strong>Workflow optimised</strong><span>Saved 14.6 hrs this week</span></div>
+      </div>
+
+      <div class="workflow-card build-float">
+        <div class="flow-node">Form</div><i></i><div class="flow-node">AI</div><i></i><div class="flow-node complete">✓ CRM</div>
+        <small>WORKFLOW COMPLETE · 1.2s</small>
+      </div>
+    </div>
+
+    <div class="world-chips build-chips reveal">
+      <span>✓ Custom Software</span><span>✓ Websites</span><span>✓ AI Integration</span><span>✓ Automation</span>
+      <span>✓ APIs</span><span>✓ Cloud</span><span>✓ Dashboards</span><span>✓ Consultancy</span>
+    </div>
+  </div>
+</section>
+
+<!-- PILLAR 02 · LAUNCH -->
+<section class="section pillar-world launch-world" id="portfolio-preview">
+  <div class="launch-rings" aria-hidden="true"></div>
+  <div class="container">
+    <div class="launch-layout">
+      <div class="launch-copy reveal">
+        <div class="world-kicker"><span>02</span> LAUNCH · INDUSTRY WEBSITES</div>
+        <h2>Your industry website<br><em>is already waiting.</em></h2>
+        <p>Explore polished, conversion-focused website experiences designed around how customers choose businesses in your industry.</p>
+        <div class="launch-proof">
+          <div><strong data-count="15" data-suffix="+">15+</strong><span>Industries ready</span></div>
+          <div><strong data-count="100" data-suffix="%">100%</strong><span>Mobile-first</span></div>
+          <div><strong>Fast</strong><span>Custom launch</span></div>
+        </div>
+        <div class="world-actions">
+          <a class="btn btn-primary" href="src/portfolio/index.html">Browse Demos</a>
+          <a class="btn btn-ghost" href="src/pages/request-quote.html">Launch My Website</a>
+        </div>
+      </div>
+
+      <div class="launch-stage reveal" id="industry-demo-panel" data-industry="gym"
+        role="tabpanel" aria-labelledby="industry-tab-gym" tabindex="0">
+        <div class="preview-stack" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="launch-laptop">
+          <div class="laptop-camera"></div>
+          <div class="launch-screen">
+            <div class="demo-nav"><strong id="demoBrand">FORGE.</strong><span>Home　Programs　Coaches　Contact</span><b id="demoNavCta">Join now</b></div>
+            <div class="demo-hero">
+              <div class="demo-copy"><small id="demoKicker">TRAIN WITH PURPOSE</small><strong id="demoTitle">Stronger every day.</strong><p id="demoText">Coaching, community, and programs built around your goals.</p><button id="demoCta" type="button">Start training</button></div>
+              <div class="demo-art"><span></span><i></i><b></b></div>
+            </div>
+            <div class="demo-cards"><span><i>01</i><b id="demoCard1">Strength</b></span><span><i>02</i><b id="demoCard2">Coaching</b></span><span><i>03</i><b id="demoCard3">Community</b></span></div>
+          </div>
+          <div class="laptop-base"></div>
+        </div>
+
+        <div class="launch-tablet">
+          <div class="tablet-screen">
+            <div class="tablet-top"><b id="tabletBrand">FORGE.</b><span>☰</span></div>
+            <div class="tablet-art"></div>
+            <strong id="tabletTitle">Train with purpose.</strong>
+            <button type="button">Explore</button>
+          </div>
+        </div>
+
+        <div class="launch-phone">
+          <div class="phone-notch"></div>
+          <div class="phone-demo-art"></div>
+          <small id="phoneKicker">MEMBERSHIP</small>
+          <strong id="phoneTitle">Built for progress.</strong>
+          <button type="button">Get started</button>
+        </div>
+
+        <div class="industry-float industry-float-a"><span>★ 4.9</span><small>Customer rating</small></div>
+        <div class="industry-float industry-float-b"><b>+42%</b><small>More enquiries</small></div>
+      </div>
+    </div>
+
+    <div class="industry-switcher chip-rail reveal" role="tablist" aria-label="Preview an industry website">
+      <button class="active" id="industry-tab-gym" type="button" role="tab" aria-selected="true" aria-controls="industry-demo-panel" tabindex="0" data-demo="gym">Gym</button>
+      <button id="industry-tab-clinic" type="button" role="tab" aria-selected="false" aria-controls="industry-demo-panel" tabindex="-1" data-demo="clinic">Clinic</button>
+      <button id="industry-tab-law" type="button" role="tab" aria-selected="false" aria-controls="industry-demo-panel" tabindex="-1" data-demo="law">Law Firm</button>
+      <button id="industry-tab-restaurant" type="button" role="tab" aria-selected="false" aria-controls="industry-demo-panel" tabindex="-1" data-demo="restaurant">Restaurant</button>
+      <button id="industry-tab-travel" type="button" role="tab" aria-selected="false" aria-controls="industry-demo-panel" tabindex="-1" data-demo="travel">Travel</button>
+      <button id="industry-tab-salon" type="button" role="tab" aria-selected="false" aria-controls="industry-demo-panel" tabindex="-1" data-demo="salon">Salon</button>
+      <button id="industry-tab-school" type="button" role="tab" aria-selected="false" aria-controls="industry-demo-panel" tabindex="-1" data-demo="school">School</button>
+      <button id="industry-tab-realestate" type="button" role="tab" aria-selected="false" aria-controls="industry-demo-panel" tabindex="-1" data-demo="realestate">Real Estate</button>
+    </div>
+  </div>
+</section>
+
+<!-- PILLAR 03 · SCALE -->
+<section class="section pillar-world scale-world" id="products-preview">
+  <div class="scale-grid-bg"></div>
+  <div class="container">
+    <div class="world-heading reveal">
+      <div>
+        <div class="world-kicker"><span>03</span> SCALE · SOFTWARE PRODUCTS</div>
+        <h2>Production-ready software.<br><em>Built for real operations.</em></h2>
+        <p>EduTrack leads a growing suite of focused business platforms — licensed, supported, and designed for teams that need clarity at scale.</p>
+      </div>
+      <div class="world-actions">
+        <a class="btn btn-primary" href="src/products/index.html">Explore Products</a>
+        <a class="btn btn-ghost" href="src/products/edutrack.html#trial">Download Trial</a>
+      </div>
+    </div>
+
+    <div class="scale-stage reveal" aria-label="EduTrack enterprise software dashboard">
+      <div class="scale-dashboard">
+        <div class="scale-sidebar">
+          <div class="scale-brand"><span>EduTrack</span></div>
+          <div class="scale-user"><i>NA</i><span><b>Northstar Academy</b><small>Administrator</small></span></div>
+          <nav><b>Overview</b><span>Students</span><span>Attendance</span><span>Fees &amp; Billing</span><span>Examinations</span><span>Reports</span></nav>
+          <small>ONAIRO PRODUCT CLOUD</small>
+        </div>
+        <div class="scale-main">
+          <div class="scale-top"><span><b>School overview</b><small>Wednesday, 29 July</small></span><div>⌕　🔔　<i>NA</i></div></div>
+          <div class="scale-stat-grid">
+            <div><i>◎</i><span>Total students<strong data-count="1200" data-suffix="+">1,200+</strong><small>↑ 8.4% this year</small></span></div>
+            <div><i>✓</i><span>Today's attendance<strong data-count="94" data-suffix="%">94%</strong><small>1,128 present</small></span></div>
+            <div><i>₨</i><span>Monthly revenue<strong>₨ 4.8M</strong><small>↑ 12.1% collected</small></span></div>
+            <div><i>↻</i><span>Cloud backup<strong>Current</strong><small>2 minutes ago</small></span></div>
+          </div>
+          <div class="scale-content-grid">
+            <div class="attendance-panel">
+              <div class="widget-title"><span>Attendance analytics</span><b>This week⌄</b></div>
+              <div class="attendance-chart">
+                <div><i style="--h:64%"></i><span>Mon</span></div><div><i style="--h:82%"></i><span>Tue</span></div>
+                <div><i style="--h:75%"></i><span>Wed</span></div><div><i style="--h:91%"></i><span>Thu</span></div>
+                <div><i style="--h:86%"></i><span>Fri</span></div><div><i style="--h:45%"></i><span>Sat</span></div>
+              </div>
+            </div>
+            <div class="activity-panel">
+              <div class="widget-title"><span>Live activity</span><b>View all</b></div>
+              <div><i>✓</i><span><b>QR attendance synced</b><small>Class 8-A · just now</small></span></div>
+              <div><i>₨</i><span><b>Fee payment received</b><small>INV-2841 · 3m ago</small></span></div>
+              <div><i>↗</i><span><b>Report generated</b><small>Monthly summary · 8m ago</small></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-orbit" aria-label="Onairo product roadmap">
+        <a class="product-node active" href="src/products/edutrack.html"><i>E</i><span><b>EduTrack</b><small>Available now</small></span></a>
+        <div class="product-node node-store"><i>S</i><span><b>StoreTrack</b><small>Roadmap</small></span></div>
+        <div class="product-node node-gym"><i>F</i><span><b>FitTrack</b><small>Roadmap</small></span></div>
+        <div class="product-node node-medi"><i>M</i><span><b>MediTrack</b><small>Roadmap</small></span></div>
+        <div class="product-node node-hr"><i>H</i><span><b>HRTrack</b><small>Roadmap</small></span></div>
+        <div class="product-node node-hotel"><i>H</i><span><b>HotelTrack</b><small>Roadmap</small></span></div>
+        <svg class="roadmap-lines" viewBox="0 0 1000 570" preserveAspectRatio="none"><path d="M500 285 C620 200 700 140 820 103 M500 285 C620 275 720 262 840 262 M500 285 C620 380 700 440 820 467 M500 285 C380 380 300 440 180 467 M500 285 C380 200 300 140 180 103"/></svg>
+      </div>
+
+      <div class="scale-license-card"><span>LICENSE STATUS</span><strong>Enterprise active</strong><small>42 users · updates included</small><b>Verified ✓</b></div>
+      <div class="scale-report-card"><span>REPORTS</span><strong>186</strong><small>Generated this month</small><div><i></i><i></i><i></i><i></i><i></i></div></div>
+    </div>
+
+    <div class="world-chips scale-chips reveal">
+      <span>Desktop Software</span><span>Licensing</span><span>Reports</span><span>QR Attendance</span>
+      <span>Cloud Backup</span><span>Multi-user</span><span>Analytics</span><span>Role Management</span>
+    </div>
+  </div>
+</section>
+
+<!-- SHOPIFY SHOWCASE -->
+<section class="section section-alt shopify-showcase" id="shopify-showcase">
+  <div class="shopify-light shopify-light-one"></div>
+  <div class="shopify-light shopify-light-two"></div>
+  <div class="container">
+    <div class="shopify-heading">
+      <div>
+        <div class="section-tag">Shopify Store Design &amp; Launch</div>
+        <h2 class="section-title reveal">A complete store experience, built to convert.</h2>
+        <p class="section-sub reveal">From the first product view to a confident checkout, every touchpoint is designed for speed, trust, and sales.</p>
+      </div>
+      <div class="shopify-heading-actions reveal">
+        <a class="btn btn-primary" href="src/pages/request-quote.html?service=shopify">Launch My Store</a>
+        <a class="btn btn-secondary" href="src/portfolio/clothing-store-website-design.html">View Shopify Demo</a>
+      </div>
+    </div>
+
+    <div class="shopify-stage reveal" aria-label="Shopify ecommerce experience preview">
+      <div class="store-browser">
+        <div class="browser-bar">
+          <i></i><i></i><i></i>
+          <span>yourstore.com</span>
+          <b>Secure</b>
+        </div>
+        <div class="store-nav">
+          <strong>NOIR.</strong>
+          <span>New</span><span>Collections</span><span>Best Sellers</span>
+          <div class="store-icons">⌕　♡　<span>Bag 2</span></div>
+        </div>
+        <div class="store-content">
+          <div class="collection-visual">
+            <span class="visual-badge">NEW COLLECTION</span>
+            <div class="product-silhouette">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="visual-copy">
+              <small>DESIGNED FOR EVERY DAY</small>
+              <strong>Modern essentials.<br>Effortless style.</strong>
+              <button type="button">Shop collection →</button>
+            </div>
+          </div>
+          <div class="product-panel">
+            <span class="mini-label">BEST SELLER</span>
+            <h3>Essential Overshirt</h3>
+            <div class="stars">★★★★★ <small>128 reviews</small></div>
+            <div class="product-price">$89 <del>$110</del></div>
+            <div class="swatches"><i></i><i></i><i></i><i></i></div>
+            <div class="sizes"><span>S</span><span>M</span><span>L</span><span>XL</span></div>
+            <button class="mock-cart" type="button">Add to cart</button>
+            <div class="trust-row"><span>✓ Secure checkout</span><span>↻ Easy returns</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="store-mobile">
+        <div class="mobile-notch"></div>
+        <div class="mobile-top"><strong>NOIR.</strong><span>Bag 2</span></div>
+        <div class="mobile-product-art"><span>NEW</span><div></div></div>
+        <div class="mobile-copy">
+          <small>ESSENTIAL COLLECTION</small>
+          <strong>Everyday Overshirt</strong>
+          <div>★★★★★ <em>4.9</em></div>
+          <b>$89.00</b>
+          <button type="button">Add to bag</button>
+        </div>
+      </div>
+
+      <div class="sales-card">
+        <div class="sales-card-head"><span>Sales overview</span><b>Live</b></div>
+        <strong>$24,860</strong>
+        <small>+18.4% this month</small>
+        <div class="sales-chart"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="sales-stats"><span><b>3.8%</b>Conversion</span><span><b>$74</b>Avg. order</span></div>
+      </div>
+
+      <div class="checkout-card">
+        <div class="checkout-head"><span>✓</span><strong>Express checkout</strong></div>
+        <div class="checkout-methods"><i>Pay</i><i>G Pay</i><i>Card</i></div>
+        <div class="checkout-line"></div>
+        <div class="checkout-total"><span>Total</span><strong>$178.00</strong></div>
+        <button type="button">Pay securely</button>
+      </div>
+    </div>
+
+    <div class="shopify-capabilities chip-rail reveal" aria-label="Shopify capabilities">
+      <span>Custom Store Design</span><span>Premium Themes</span><span>Custom Sections</span>
+      <span>Product &amp; Collections Setup</span><span>Payment Gateways</span><span>Shipping Configuration</span>
+      <span>Mobile Optimisation</span><span>Speed &amp; SEO</span><span>App Integration</span>
+      <span>Store Migration</span><span>Conversion Optimisation</span><span>Launch, Training &amp; Maintenance</span>
+    </div>
+
+    <div class="shopify-proof reveal">
+      <div><strong>Secure</strong><span>Trusted payment setup</span></div>
+      <div><strong>Responsive</strong><span>Mobile-first shopping</span></div>
+      <div><strong>Fast</strong><span>Performance optimised</span></div>
+      <div><strong>Supported</strong><span>Launch and training</span></div>
+      <blockquote>“A polished shopping experience that feels credible from product discovery through checkout.”<cite>— Built for modern commerce</cite></blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="section" id="why">
+  <div class="container">
+    <div class="section-head center">
+      <div class="section-tag">Why Choose Onairo</div>
+      <h2 class="section-title reveal">Premium delivery. Practical outcomes.</h2>
+      <p class="section-sub reveal">A partner that understands design quality, engineering discipline, and business reality.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item reveal"><div class="ico">🎯</div><h3>Outcome-led</h3><p>Every engagement is scoped around measurable business goals — leads, efficiency, or product adoption.</p></div>
+      <div class="why-item reveal"><div class="ico">🛡️</div><h3>Reliable craft</h3><p>Clean architecture, responsive design, and maintainable code so your digital assets age well.</p></div>
+      <div class="why-item reveal"><div class="ico">⚡</div><h3>Fast communication</h3><p>WhatsApp-first collaboration keeps decisions moving without endless email chains.</p></div>
+      <div class="why-item reveal"><div class="ico">🌍</div><h3>Global-ready</h3><p>Built for businesses worldwide — mobile-first, multilingual-friendly, and performance conscious.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENT REVIEWS -->
+<section class="section section-alt reviews-section" id="testimonials">
+  <div class="container">
+    <div class="section-head center">
+      <div class="section-tag">Client Reviews</div>
+      <h2 class="section-title reveal">Share your experience</h2>
+      <p class="section-sub reveal">Worked with Onairo? Tell us how it went. Reviews are checked before they are published.</p>
+    </div>
+    <div class="review-form-card reveal">
+      <div class="review-form-copy">
+        <span class="review-kicker">Your feedback matters</span>
+        <h3>Leave a review</h3>
+        <p>Your review is sent privately to our team first. Once approved, it will appear in the client testimonials below.</p>
+      </div>
+      <form class="review-form" id="reviewForm">
+        <div class="review-field">
+          <label for="reviewName">Your name</label>
+          <input id="reviewName" name="name" type="text" maxlength="80" autocomplete="name" required placeholder="e.g. Ayesha Khan">
+        </div>
+        <div class="review-field">
+          <label for="reviewText">Your review</label>
+          <textarea id="reviewText" name="review" minlength="10" maxlength="1500" rows="5" required placeholder="Tell us about your experience with Onairo"></textarea>
+          <small><span id="reviewCount">0</span>/1500</small>
+        </div>
+        <div class="review-honeypot" aria-hidden="true">
+          <label for="reviewWebsite">Website</label>
+          <input id="reviewWebsite" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <button class="btn btn-primary" id="reviewSubmit" type="submit">Submit Review</button>
+        <p class="review-form-status" id="reviewStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+    <div class="approved-reviews" id="approvedReviews" hidden>
+      <div class="section-head center approved-reviews-head">
+        <div class="section-tag">Approved Testimonials</div>
+        <h3 class="section-title">What clients are saying</h3>
+      </div>
+      <div class="testimonials-grid" id="testimonialsGrid"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section class="section" id="tech">
+  <div class="container">
+    <div class="section-head center">
+      <div class="section-tag">Technology Stack</div>
+      <h2 class="section-title reveal">Modern tools. Dependable foundations.</h2>
+      <p class="section-sub reveal">We choose technology that is maintainable, secure, and fit for purpose.</p>
+    </div>
+    <div class="tech-cloud reveal" style="justify-content:center">
+      <span>HTML5 / CSS3</span>
+      <span>JavaScript</span>
+      <span>Responsive UI</span>
+      <span>REST APIs</span>
+      <span>SQL &amp; NoSQL</span>
+      <span>Cloud Hosting</span>
+      <span>AI Integrations</span>
+      <span>Automation</span>
+      <span>SEO Foundations</span>
+      <span>WhatsApp &amp; Maps</span>
+      <span>CI-friendly delivery</span>
+      <span>Security hygiene</span>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section-alt" id="faq">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-tag">FAQ</div>
+      <h2 class="section-title reveal">Frequently asked questions</h2>
+      <p class="section-sub reveal">Quick answers about how we work across services, portfolio, and products.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q" type="button">What makes Onairo different from a typical web agency? <span class="icon">+</span></button>
+        <div class="faq-a">We operate through four specialised divisions — client services, industry websites, commercial software products, and Shopify store design — so you can engage the team built around your goal.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" type="button">Can I buy a demo website from the portfolio? <span class="icon">+</span></button>
+        <div class="faq-a">Yes. Use “Get This Website” on any demo card and we’ll customize branding, content, and integrations for your business.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" type="button">Is EduTrack available now? <span class="icon">+</span></button>
+        <div class="faq-a">EduTrack has a full product marketing experience and trial/demo pathways. Contact sales to schedule a walkthrough or start a trial conversation.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" type="button">Do you build custom software beyond websites? <span class="icon">+</span></button>
+        <div class="faq-a">Absolutely — desktop apps, APIs, databases, automation, AI features, cloud solutions, and ongoing maintenance.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q" type="button">How do projects usually start? <span class="icon">+</span></button>
+        <div class="faq-a">Send a Request Quote or WhatsApp message. We clarify your goals, recommend the right division — services, an industry website, software product, or Shopify — and share a clear next step.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / CTA -->
+<section class="cta-band" id="contact">
+  <div class="container">
+    <h2 class="reveal">Ready to build with Onairo?</h2>
+    <p class="reveal">Tell us whether you need services, an industry website, software like EduTrack, or a Shopify store — we’ll guide the next step.</p>
+    <div class="hero-actions reveal">
+      <a href="src/pages/contact.html" class="btn btn-primary">Contact Us</a>
+      <a href="src/pages/request-quote.html" class="btn btn-secondary">Request Quote</a>
+      <a href="#" class="btn btn-ghost" id="homeWaBtn">WhatsApp</a>
+    </div>
+    <div class="seo-internal-links reveal" style="justify-content:center;margin-top:1.25rem">
+      <a href="src/services/index.html">Website Development</a>
+      <a href="src/portfolio/index.html">Portfolio</a>
+      <a href="src/products/edutrack.html">EduTrack</a>
+      <a href="#shopify-showcase">Shopify Stores</a>
+      <a href="src/pages/blog.html">Blog</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<div id="site-chrome-end"></div>
+
+<script src="src/shared/js/config.js"></script>
+<script src="src/shared/js/seo-data.js"></script>
+<script src="src/shared/js/seo.js"></script>
+<script src="src/shared/js/services-data.js"></script>
+<script src="src/shared/js/portfolio-data.js"></script>
+<script src="src/shared/js/products-data.js"></script>
+<script src="src/shared/js/catalog-client.js"></script>
+<script src="src/components/chrome.js"></script>
+<script src="src/shared/js/main.js"></script>
+<script src="src/shared/js/reviews-client.js"></script>
+<script>
+  (async function () {
+    document.getElementById('homeWaBtn').href = ONAIRO.waUrl();
+    const demoGrid = document.getElementById('homeDemoGrid');
+    const shuffleBtn = document.getElementById('shuffleDemos');
+    const shuffleStatus = document.getElementById('demoShuffleStatus');
+    const demoPool = (ONAIRO.portfolio || []).filter((demo) => !demo.comingSoon && demo.demo);
+    let visibleDemoIds = [];
+
+    function chooseSix() {
+      const shuffled = demoPool.slice();
+      for (let i = shuffled.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      let selected = shuffled.slice(0, 6);
+      if (
+        demoPool.length > 6 &&
+        selected.map((item) => item.id).every((id) => visibleDemoIds.includes(id))
+      ) {
+        selected = shuffled.slice(1, 7);
+      }
+      visibleDemoIds = selected.map((item) => item.id);
+      return selected;
+    }
+
+    function renderDemoSelection(announce) {
+      ONAIRO.renderPortfolioCards(demoGrid, chooseSix());
+      ONAIRO.observeReveals(demoGrid);
+      if (announce && shuffleStatus) {
+        shuffleStatus.textContent = 'Six new website demos are now displayed.';
+      }
+    }
+
+    renderDemoSelection(false);
+    if (shuffleBtn) {
+      shuffleBtn.addEventListener('click', () => {
+        shuffleBtn.disabled = true;
+        shuffleBtn.classList.add('is-shuffling');
+        demoGrid.classList.add('is-shuffling');
+        window.setTimeout(() => {
+          renderDemoSelection(true);
+          demoGrid.classList.remove('is-shuffling');
+          shuffleBtn.classList.remove('is-shuffling');
+          shuffleBtn.disabled = false;
+        }, 180);
+      });
+    }
+
+    if (ONAIRO.catalog && ONAIRO.catalog.loadProductsInto) {
+      await ONAIRO.catalog.loadProductsInto('products').catch(() => {});
+    }
+    ONAIRO.observeReveals(document);
+    if (typeof ONAIRO.initPillarWorlds === 'function') ONAIRO.initPillarWorlds();
+  })();
+</script>
+</body>
+</html>
+

@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NEXORA Technologies — Lahore's premium software engineering partner. Custom web apps, cloud, AI integration, ERP/CRM, and enterprise digital solutions." />
+  <meta name="keywords" content="software company Lahore, web development, mobile apps, cloud, AI integration, NEXORA Technologies" />
+  <meta name="theme-color" content="#0B1120" />
+  <title>NEXORA Technologies — Engineering Digital Solutions | Lahore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --midnight: #0B1120;
+      --slate: #111827;
+      --white: #FFFFFF;
+      --blue: #3B82F6;
+      --cyan: #06B6D4;
+      --purple: #7C3AED;
+      --muted: #94A3B8;
+      --text: #E2E8F0;
+      --glass: rgba(17, 24, 39, 0.65);
+      --glass-border: rgba(59, 130, 246, 0.18);
+      --wa: #25D366;
+      --radius: 22px;
+      --radius-lg: 28px;
+      --shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--midnight);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+      min-width: 320px;
+    }
+    h1, h2, h3, h4, .display {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      color: var(--white);
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; }
+    button, input, select, textarea { font-family: inherit; }
+    body.nav-open { overflow: hidden; }
+
+    .btn, .nav-cta, .nav-toggle, .faq-q, .wa-float, .back-top, .consult-sticky,
+    .testimonial-dots button, .newsletter-form button, .case-tab {
+      min-height: 44px; min-width: 44px;
+    }
+    .form-group input, .form-group select, .form-group textarea,
+    .newsletter-form input { min-height: 44px; font-size: 16px; }
+
+    #loader {
+      position: fixed; inset: 0; z-index: 9999; background: var(--midnight);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.25rem;
+      transition: opacity 0.55s, visibility 0.55s;
+    }
+    #loader.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+    .loader-grid {
+      width: 52px; height: 52px;
+      background: linear-gradient(var(--blue) 0 0) 0 0/50% 50%,
+        linear-gradient(var(--cyan) 0 0) 100% 0/50% 50%,
+        linear-gradient(var(--purple) 0 0) 0 100%/50% 50%,
+        linear-gradient(var(--blue) 0 0) 100% 100%/50% 50%;
+      background-repeat: no-repeat;
+      animation: loaderPulse 1.2s infinite alternate;
+      border-radius: 12px;
+    }
+    @keyframes loaderPulse { to { transform: scale(0.85) rotate(90deg); opacity: 0.7; } }
+    .loader-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.82rem; letter-spacing: 0.22em; text-transform: uppercase;
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0; z-index: 500;
+      background: linear-gradient(90deg, var(--blue), var(--cyan), var(--purple));
+      box-shadow: 0 0 14px rgba(59, 130, 246, 0.6);
+    }
+
+    .demo-banner {
+      background: linear-gradient(90deg, #1e3a8a, var(--blue), var(--purple));
+      color: #fff; text-align: center; padding: 0.55rem 1rem;
+      font-size: clamp(0.72rem, 2.5vw, 0.78rem); position: relative; z-index: 300;
+    }
+    .demo-banner a { color: #A5F3FC; font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.85rem 4%;
+      background: transparent; border-bottom: 1px solid transparent;
+      transition: background 0.35s, backdrop-filter 0.35s, border-color 0.35s, box-shadow 0.35s;
+    }
+    nav.scrolled {
+      background: rgba(11, 17, 32, 0.82);
+      backdrop-filter: blur(20px);
+      border-bottom-color: var(--glass-border);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+    }
+    .logo { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; z-index: 210; }
+    .logo-mark {
+      width: 42px; height: 42px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      display: grid; place-items: center;
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.1rem; color: #fff;
+      box-shadow: 0 0 28px rgba(59, 130, 246, 0.45);
+    }
+    .logo-text { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.2rem; color: var(--white); }
+    .logo-text span {
+      display: block; font-family: 'Inter', sans-serif; font-size: 0.58rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex; align-items: center; gap: 0.85rem; list-style: none; flex-wrap: wrap; justify-content: flex-end;
+    }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 0.78rem; font-weight: 600;
+      transition: color 0.2s; white-space: nowrap;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--blue), var(--cyan)) !important;
+      color: #fff !important; padding: 0.55rem 1.1rem !important;
+      border-radius: 999px; font-weight: 700 !important;
+      box-shadow: 0 8px 28px rgba(59, 130, 246, 0.4);
+    }
+
+    .nav-toggle {
+      min-width: 44px; min-height: 44px; box-sizing: border-box;
+      display: none; flex-direction: column; gap: 5px; background: var(--glass);
+      border: 1px solid var(--glass-border); border-radius: 12px; padding: 10px; cursor: pointer; z-index: 210;
+      align-items: center; justify-content: center;
+    }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--white); transition: 0.3s; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 1100px) {
+      .nav-toggle {
+      min-width: 44px; min-height: 44px; box-sizing: border-box; display: flex; }
+      .nav-links {
+        position: fixed; inset: 0; top: 0; background: rgba(11, 17, 32, 0.97);
+        backdrop-filter: blur(24px); flex-direction: column; justify-content: center; gap: 1.25rem;
+        transform: translateX(100%); transition: transform 0.35s ease; padding: 5rem 8%;
+      }
+      .nav-links.open { transform: none; }
+      .nav-links a { font-size: 1.05rem; }
+    }
+
+    .btn {
+      position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      padding: 0.95rem 1.65rem; border-radius: 999px; font-weight: 700; font-size: 0.92rem;
+      text-decoration: none; border: none; cursor: pointer; overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      color: #fff; box-shadow: 0 10px 32px rgba(59, 130, 246, 0.45);
+    }
+    .btn-primary:hover { transform: translateY(-3px); }
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.06); color: var(--white);
+      border: 1px solid var(--glass-border); backdrop-filter: blur(12px);
+    }
+    .btn-ghost:hover { border-color: var(--blue); color: var(--cyan); }
+    .btn .ripple {
+      position: absolute; border-radius: 50%; background: rgba(255, 255, 255, 0.35);
+      transform: scale(0); animation: ripple 0.6s linear; pointer-events: none;
+    }
+    @keyframes ripple { to { transform: scale(4); opacity: 0; } }
+
+    section { padding: clamp(3.5rem, 8vw, 5.5rem) 5%; position: relative; }
+    .section-tag {
+      display: inline-block; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--cyan); margin-bottom: 0.65rem;
+    }
+    .section-title { font-size: clamp(1.85rem, 4.2vw, 3rem); margin-bottom: 0.75rem; }
+    .section-title span {
+      background: linear-gradient(90deg, var(--blue), var(--cyan), var(--purple));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .section-desc { color: var(--muted); max-width: 560px; margin-bottom: 2.4rem; font-size: clamp(0.95rem, 2vw, 1.05rem); }
+
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .d1 { transition-delay: 0.08s; }
+    .d2 { transition-delay: 0.16s; }
+    .d3 { transition-delay: 0.24s; }
+
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(59, 130, 246, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    .glass-card {
+      background: var(--glass); border: 1px solid var(--glass-border);
+      border-radius: var(--radius); backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+    }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh; padding: 0; display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(59, 130, 246, 0.22), transparent),
+        radial-gradient(ellipse 50% 40% at 90% 20%, rgba(124, 58, 237, 0.18), transparent),
+        var(--midnight);
+    }
+    #hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(6, 182, 212, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black, transparent);
+      pointer-events: none;
+    }
+    .hero-mesh {
+      position: absolute; inset: -20%; pointer-events: none; opacity: 0.55;
+      background: conic-gradient(from 180deg at 50% 50%, rgba(59, 130, 246, 0.15), rgba(6, 182, 212, 0.1), rgba(124, 58, 237, 0.12), rgba(59, 130, 246, 0.15));
+      animation: meshSpin 28s linear infinite;
+    }
+    @keyframes meshSpin { to { transform: rotate(360deg); } }
+    .hero-glow {
+      position: absolute; width: 480px; height: 480px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.25), transparent 70%);
+      filter: blur(40px); pointer-events: none; transition: transform 0.15s ease-out;
+      top: 20%; left: 30%; opacity: 0.6;
+    }
+    @media (max-width: 900px), (hover: none) { .hero-glow { display: none; } }
+
+    .network-nodes {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+    }
+    .network-nodes span {
+      position: absolute; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--cyan); box-shadow: 0 0 12px var(--cyan);
+      animation: nodeFloat 6s ease-in-out infinite;
+    }
+    .network-nodes span:nth-child(1) { top: 18%; left: 12%; animation-delay: 0s; }
+    .network-nodes span:nth-child(2) { top: 35%; left: 78%; animation-delay: -1.2s; }
+    .network-nodes span:nth-child(3) { top: 62%; left: 22%; animation-delay: -2.4s; }
+    .network-nodes span:nth-child(4) { top: 72%; left: 65%; animation-delay: -3s; }
+    .network-nodes span:nth-child(5) { top: 45%; left: 48%; animation-delay: -4s; background: var(--purple); box-shadow: 0 0 12px var(--purple); }
+    @keyframes nodeFloat { 50% { transform: translate(12px, -18px); opacity: 0.6; } }
+
+    .hero-inner {
+      position: relative; z-index: 2; width: 100%;
+      padding: clamp(5rem, 10vw, 6.5rem) 5% clamp(3rem, 6vw, 4rem);
+      display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(2rem, 4vw, 3rem); align-items: center;
+    }
+    @media (max-width: 960px) { .hero-inner { grid-template-columns: 1fr; } }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.4rem 1rem; border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border);
+      font-size: 0.75rem; font-weight: 600; color: var(--cyan); margin-bottom: 1.25rem;
+    }
+    #hero h1 {
+      font-size: clamp(2.2rem, 5.5vw, 3.75rem); margin-bottom: 1.1rem;
+      background: linear-gradient(180deg, #fff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero-lead { color: var(--muted); font-size: clamp(1rem, 2.2vw, 1.15rem); max-width: 540px; margin-bottom: 1.75rem; }
+    .hero-ctas { display: flex; flex-wrap: wrap; gap: 0.85rem; margin-bottom: 2rem; }
+    .hero-stats {
+      display: flex; flex-wrap: wrap; gap: 0.65rem;
+    }
+    .stat-chip {
+      padding: 0.45rem 0.85rem; border-radius: 999px; font-size: 0.72rem; font-weight: 700;
+      background: rgba(17, 24, 39, 0.8); border: 1px solid var(--glass-border); color: var(--text);
+    }
+    .stat-chip strong { color: var(--cyan); margin-right: 0.25rem; }
+
+    .hero-visual { position: relative; min-height: 320px; }
+    .dash-mock {
+      position: relative; border-radius: var(--radius-lg); overflow: hidden;
+      background: linear-gradient(145deg, rgba(17, 24, 39, 0.95), rgba(11, 17, 32, 0.98));
+      border: 1px solid var(--glass-border); box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+      animation: dashFloat 7s ease-in-out infinite;
+    }
+    @keyframes dashFloat { 50% { transform: translateY(-10px); } }
+    .dash-top {
+      display: flex; align-items: center; gap: 0.4rem; padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06); background: rgba(0, 0, 0, 0.25);
+    }
+    .dash-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dash-body { padding: 1rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+    .dash-panel {
+      border-radius: 14px; padding: 0.85rem; background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .dash-panel.wide { grid-column: 1 / -1; }
+    .dash-bar { height: 6px; border-radius: 999px; background: rgba(255, 255, 255, 0.08); margin-top: 0.5rem; overflow: hidden; }
+    .dash-bar i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--blue), var(--cyan)); width: var(--w, 60%); }
+
+    .terminal {
+      margin-top: 0.85rem; border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--glass-border); font-family: ui-monospace, monospace; font-size: 0.72rem;
+    }
+    .terminal-head {
+      padding: 0.45rem 0.75rem; background: rgba(0, 0, 0, 0.4); color: var(--muted);
+      display: flex; gap: 0.35rem;
+    }
+    .terminal-body {
+      padding: 0.85rem; background: rgba(0, 0, 0, 0.55); color: #86efac; min-height: 88px;
+    }
+    .terminal-line { opacity: 0; animation: termLine 0.4s forwards; }
+    .terminal-line:nth-child(1) { animation-delay: 0.6s; }
+    .terminal-line:nth-child(2) { animation-delay: 1.4s; }
+    .terminal-line:nth-child(3) { animation-delay: 2.2s; }
+    .terminal-line:nth-child(4) { animation-delay: 3s; }
+    @keyframes termLine { to { opacity: 1; } }
+    .cursor-blink::after { content: '|'; animation: blink 1s step-end infinite; color: var(--cyan); }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .code-snippet {
+      position: absolute; padding: 0.5rem 0.75rem; border-radius: 12px;
+      background: rgba(17, 24, 39, 0.9); border: 1px solid var(--glass-border);
+      font-family: ui-monospace, monospace; font-size: 0.65rem; color: var(--cyan);
+      animation: snippetDrift 9s ease-in-out infinite;
+    }
+    .code-snippet.s1 { top: -8%; right: 5%; animation-delay: -2s; }
+    .code-snippet.s2 { bottom: 5%; left: -5%; animation-delay: -5s; color: #c4b5fd; }
+    @keyframes snippetDrift { 50% { transform: translate(8px, -12px); } }
+
+    /* Clients */
+    #clients { padding: 2.5rem 5%; border-block: 1px solid var(--glass-border); background: var(--slate); }
+    .client-logos {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: clamp(1.5rem, 4vw, 3rem);
+      opacity: 0.75;
+    }
+    .client-logos span {
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: clamp(0.85rem, 2vw, 1rem);
+      color: var(--muted); letter-spacing: 0.06em;
+    }
+
+    /* Grids */
+    .cards-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem;
+    }
+    .cards-grid-3 { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+    .service-card, .feature-card, .industry-card, .tech-card, .blog-card, .role-card {
+      padding: 1.35rem; transition: transform 0.3s, border-color 0.3s;
+    }
+    .service-card:hover, .industry-card:hover, .blog-card:hover {
+      transform: translateY(-6px); border-color: rgba(6, 182, 212, 0.35);
+    }
+    .service-icon {
+      width: 44px; height: 44px; border-radius: 14px;
+      display: grid; place-items: center; font-size: 1.25rem; margin-bottom: 0.85rem;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(124, 58, 237, 0.2));
+    }
+    .service-card h3, .feature-card h3 { font-size: 1.05rem; margin-bottom: 0.45rem; }
+    .service-card p, .feature-card p, .industry-card p { font-size: 0.88rem; color: var(--muted); }
+
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+
+    /* Projects */
+    .project-card { overflow: hidden; padding: 0; }
+    .project-head {
+      padding: 1.35rem; background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(124, 58, 237, 0.08));
+    }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.65rem 0; }
+    .tag {
+      font-size: 0.68rem; font-weight: 700; padding: 0.25rem 0.55rem; border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06); border: 1px solid var(--glass-border); color: var(--cyan);
+    }
+    .project-body { padding: 1.25rem 1.35rem 1.35rem; }
+    .project-body ul { margin: 0.5rem 0 1rem; padding-left: 1.1rem; color: var(--muted); font-size: 0.88rem; }
+    .project-link { color: var(--blue); font-weight: 700; font-size: 0.88rem; text-decoration: none; }
+    .project-link:hover { color: var(--cyan); }
+
+    /* Process timeline */
+    .process-track {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem;
+      position: relative;
+    }
+    .process-step {
+      text-align: center; padding: 1.15rem 0.75rem; position: relative;
+    }
+    .process-num {
+      width: 40px; height: 40px; margin: 0 auto 0.65rem; border-radius: 50%;
+      display: grid; place-items: center; font-weight: 700; font-size: 0.9rem;
+      background: linear-gradient(135deg, var(--blue), var(--purple)); color: #fff;
+    }
+    .process-step h4 { font-size: 0.92rem; margin-bottom: 0.35rem; }
+    .process-step p { font-size: 0.78rem; color: var(--muted); }
+
+    /* Metrics */
+    #metrics { background: linear-gradient(180deg, var(--slate), var(--midnight)); }
+    .metrics-row {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.25rem;
+    }
+    .metric-box {
+      text-align: center; padding: 1.75rem 1rem;
+    }
+    .metric-box .num {
+      font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 700; color: var(--white);
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .metric-box p { color: var(--muted); font-size: 0.88rem; margin-top: 0.35rem; }
+
+    /* Case studies */
+    .case-card { padding: 0; overflow: hidden; }
+    .case-tabs { display: flex; flex-wrap: wrap; gap: 0.35rem; padding: 1rem 1rem 0; }
+    .case-tab {
+      padding: 0.45rem 0.85rem; border-radius: 999px; border: 1px solid var(--glass-border);
+      background: transparent; color: var(--muted); font-size: 0.75rem; font-weight: 700; cursor: pointer;
+    }
+    .case-tab.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .case-panel { display: none; padding: 1rem 1.25rem 1.35rem; font-size: 0.9rem; color: var(--muted); }
+    .case-panel.active { display: block; }
+    .case-panel strong { color: var(--white); display: block; margin-bottom: 0.35rem; }
+
+    /* Testimonials */
+    #testimonials { overflow: hidden; }
+    .testimonial-wrap { overflow: hidden; margin-top: 1.5rem; }
+    .testimonial-track {
+      display: flex; gap: 1.1rem; transition: transform 0.45s ease;
+    }
+    .testimonial-card {
+      flex: 0 0 min(100%, 420px); padding: 1.5rem;
+    }
+    .testimonial-card p { font-size: 0.95rem; margin-bottom: 1rem; color: var(--text); }
+    .testimonial-author { font-weight: 700; color: var(--white); }
+    .testimonial-role { font-size: 0.82rem; color: var(--muted); }
+    .testimonial-dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1.25rem; }
+    .testimonial-dots button {
+      width: 10px; height: 10px; min-width: 10px; min-height: 10px; padding: 0; border-radius: 50%;
+      border: none; background: rgba(255, 255, 255, 0.2); cursor: pointer;
+    }
+    .testimonial-dots button.active { background: var(--cyan); transform: scale(1.2); }
+
+    /* Team */
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
+    .team-card { padding: 0; overflow: hidden; text-align: center; }
+    .team-card img { width: 100%; height: 220px; object-fit: cover; }
+    .team-card .team-info { padding: 1.15rem; }
+    .team-card h3 { font-size: 1.05rem; }
+    .team-card p { font-size: 0.82rem; color: var(--cyan); margin: 0.25rem 0 0.5rem; }
+    .team-card span { font-size: 0.78rem; color: var(--muted); }
+
+    /* Innovation */
+    .innovation-split {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: stretch;
+    }
+    @media (max-width: 800px) { .innovation-split { grid-template-columns: 1fr; } }
+    .innovation-box { padding: 1.75rem; }
+    .innovation-box ul { margin-top: 0.75rem; padding-left: 1.1rem; color: var(--muted); font-size: 0.9rem; }
+
+    /* Trust badges */
+    .badges-row {
+      display: flex; flex-wrap: wrap; gap: 0.85rem; justify-content: center;
+    }
+    .badge-pill {
+      padding: 0.65rem 1.1rem; border-radius: 14px; font-size: 0.78rem; font-weight: 700;
+      background: rgba(255, 255, 255, 0.04); border: 1px solid var(--glass-border); color: var(--text);
+    }
+
+    /* Careers */
+    .benefits-list {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0 1.5rem;
+    }
+    .benefits-list span {
+      font-size: 0.78rem; padding: 0.4rem 0.75rem; border-radius: 999px;
+      background: rgba(59, 130, 246, 0.15); color: var(--cyan);
+    }
+
+    /* Blog */
+    .blog-card img { width: 100%; height: 160px; object-fit: cover; border-radius: var(--radius) var(--radius) 0 0; margin: -1px -1px 0; width: calc(100% + 2px); max-width: none; }
+    .blog-card .blog-body { padding: 1.1rem 0 0; }
+    .blog-meta { font-size: 0.72rem; color: var(--muted); margin-bottom: 0.45rem; }
+
+    /* Timeline company */
+    .company-timeline { max-width: 640px; margin: 0 auto 2.5rem; }
+    .tl-item {
+      display: grid; grid-template-columns: 80px 1fr; gap: 1rem; padding-bottom: 1.25rem;
+      border-left: 2px solid var(--glass-border); margin-left: 2rem; padding-left: 1.5rem; position: relative;
+    }
+    .tl-item::before {
+      content: ''; position: absolute; left: -7px; top: 4px; width: 12px; height: 12px;
+      border-radius: 50%; background: var(--cyan); box-shadow: 0 0 12px var(--cyan);
+    }
+    .tl-year { font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--blue); }
+    .presence-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.75rem;
+    }
+    .presence-grid div {
+      padding: 0.85rem; text-align: center; font-size: 0.85rem; font-weight: 600;
+    }
+
+    /* FAQ */
+    .faq-list { max-width: 720px; margin: 0 auto; }
+    .faq-item { margin-bottom: 0.65rem; overflow: hidden; }
+    .faq-q {
+      width: 100%; text-align: left; padding: 1.1rem 1.25rem;
+      background: var(--glass); border: 1px solid var(--glass-border); border-radius: var(--radius);
+      color: var(--white); font-weight: 700; font-size: 0.95rem; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    }
+    .faq-q::after { content: '+'; color: var(--cyan); font-size: 1.3rem; transition: transform 0.3s; }
+    .faq-item.open .faq-q::after { transform: rotate(45deg); }
+    .faq-a {
+      max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s;
+      color: var(--muted); font-size: 0.9rem;
+    }
+    .faq-item.open .faq-a { max-height: 280px; padding: 0 1.25rem 1.15rem; }
+
+    /* CTA band */
+    .cta-band {
+      text-align: center; padding: clamp(3rem, 6vw, 4.5rem) 5%;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(124, 58, 237, 0.15));
+      border-block: 1px solid var(--glass-border);
+    }
+    .cta-band h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); margin-bottom: 0.75rem; }
+
+    /* Contact */
+    .contact-split {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start;
+    }
+    @media (max-width: 900px) { .contact-split { grid-template-columns: 1fr; } }
+    .contact-info p { margin-bottom: 0.65rem; color: var(--muted); font-size: 0.92rem; }
+    .contact-info a { color: var(--cyan); text-decoration: none; font-weight: 600; }
+    .map-wrap {
+      margin-top: 1rem; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--glass-border);
+    }
+    .map-wrap iframe { width: 100%; height: 220px; border: 0; filter: grayscale(0.3) contrast(1.1); }
+    .inquiry-form { padding: 1.75rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+    @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
+    .form-group { margin-bottom: 0.85rem; }
+    .form-group label { display: block; font-size: 0.78rem; font-weight: 600; margin-bottom: 0.35rem; color: var(--muted); }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 0.75rem 0.95rem; border-radius: 12px;
+      border: 1px solid var(--glass-border); background: rgba(0, 0, 0, 0.25); color: var(--white);
+    }
+    .form-group textarea { min-height: 100px; resize: vertical; }
+    .form-status { margin-top: 0.75rem; font-size: 0.88rem; color: var(--cyan); display: none; }
+
+    /* Footer */
+    footer {
+      background: var(--slate); padding: 3.5rem 5% 1.5rem;
+      border-top: 1px solid var(--glass-border);
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 2rem; margin-bottom: 2rem;
+    }
+    @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-grid h4 { font-size: 0.95rem; margin-bottom: 0.85rem; }
+    .footer-grid a {
+      display: block; color: var(--muted); text-decoration: none; font-size: 0.85rem; margin-bottom: 0.45rem;
+    }
+    .footer-grid a:hover { color: var(--cyan); }
+    .newsletter-form { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.65rem; }
+    .newsletter-form input {
+      flex: 1; min-width: 160px; padding: 0.65rem 0.85rem; border-radius: 999px;
+      border: 1px solid var(--glass-border); background: rgba(0, 0, 0, 0.2); color: var(--white);
+    }
+    .newsletter-form button {
+      padding: 0.65rem 1.25rem; border-radius: 999px; border: none; cursor: pointer;
+      background: var(--blue); color: #fff; font-weight: 700;
+    }
+    .footer-bottom {
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.75rem;
+      padding-top: 1.5rem; border-top: 1px solid var(--glass-border);
+      font-size: 0.82rem; color: var(--muted);
+    }
+
+    .wa-float, .back-top, .consult-sticky {
+      position: fixed; z-index: 400; display: grid; place-items: center;
+      border-radius: 50%; box-shadow: var(--shadow); transition: transform 0.25s, opacity 0.25s;
+    }
+    .wa-float {
+      bottom: 5.5rem; right: 1.25rem; width: 56px; height: 56px; background: var(--wa);
+    }
+    .wa-float svg { width: 28px; height: 28px; fill: #fff; }
+    .back-top {
+      bottom: 1.25rem; right: 1.25rem; width: 48px; height: 48px;
+      background: var(--glass); border: 1px solid var(--glass-border); color: var(--white);
+      text-decoration: none; opacity: 0; pointer-events: none;
+    }
+    .back-top.show { opacity: 1; pointer-events: auto; }
+    .consult-sticky {
+      left: 50%; transform: translateX(-50%); bottom: 1rem;
+      width: auto; min-width: 200px; padding: 0 1.25rem; border-radius: 999px;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      color: #fff; font-weight: 700; font-size: 0.85rem; text-decoration: none;
+      opacity: 0; pointer-events: none;
+    }
+    .consult-sticky.show { opacity: 1; pointer-events: auto; }
+    @media (min-width: 1100px) {
+      .consult-sticky { left: auto; right: 5rem; transform: none; bottom: 1.25rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+      html { scroll-behavior: auto; }
+    }
+    @media (max-width: 768px) {
+      .hero-mesh, .dash-mock { animation: none; }
+      .code-snippet { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="loader" aria-hidden="true">
+  <div class="loader-grid" aria-hidden="true"></div>
+  <p class="loader-text">NEXORA Technologies</p>
+</div>
+<div id="scroll-progress" aria-hidden="true"></div>
+
+<p class="demo-banner">This is a demo site created by Onairo Solutions — <a href="../../../index.html">onairosolutions.com</a></p>
+
+<nav id="mainNav" aria-label="Main navigation">
+  <a href="#hero" class="logo">
+    <div class="logo-mark" aria-hidden="true">N</div>
+    <div class="logo-text">NEXORA<span>Technologies — Lahore</span></div>
+  </a>
+  <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#solutions">Solutions</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#technologies">Technologies</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#careers">Careers</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contact" class="nav-cta ripple-btn">Get Free Consultation</a></li>
+  </ul>
+</nav>
+
+<section id="hero" aria-label="Hero">
+  <div class="hero-mesh" aria-hidden="true"></div>
+  <div class="hero-glow" id="heroGlow" aria-hidden="true"></div>
+  <div class="network-nodes" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">✨ ? Lahore — Enterprise-grade engineering since 2016</div>
+      <h1>Engineering Digital Solutions That Drive Business Growth.</h1>
+      <p class="hero-lead">We design, develop and scale world-class software, websites and digital platforms that help businesses grow faster through innovation and technology.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-primary ripple-btn">Start Your Project</a>
+        <a href="#projects" class="btn btn-ghost ripple-btn">View Our Work</a>
+      </div>
+      <div class="hero-stats">
+        <span class="stat-chip"><strong>250+</strong> Projects</span>
+        <span class="stat-chip"><strong>100+</strong> Clients</span>
+        <span class="stat-chip"><strong>99.9%</strong> Uptime</span>
+        <span class="stat-chip"><strong>Enterprise</strong> Security</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="code-snippet s1" aria-hidden="true">const ship = async () =&gt; deploy();</div>
+      <div class="code-snippet s2" aria-hidden="true">kubectl apply -f prod.yaml</div>
+      <div class="dash-mock glass-card">
+        <div class="dash-top">
+          <span class="dash-dot" style="background:#ef4444"></span>
+          <span class="dash-dot" style="background:#eab308"></span>
+          <span class="dash-dot" style="background:#22c55e"></span>
+          <span style="margin-left:auto;font-size:0.7rem;color:var(--muted)">nexora-dashboard — live</span>
+        </div>
+        <div class="dash-body">
+          <div class="dash-panel"><small style="color:var(--muted)">Revenue</small><div style="font-weight:700;margin-top:0.25rem">PKR 4.2M</div><div class="dash-bar"><i style="--w:72%"></i></div></div>
+          <div class="dash-panel"><small style="color:var(--muted)">Active users</small><div style="font-weight:700;margin-top:0.25rem">18,402</div><div class="dash-bar"><i style="--w:88%"></i></div></div>
+          <div class="dash-panel wide"><small style="color:var(--muted)">API latency (p95)</small><div style="font-weight:700;margin-top:0.25rem">124 ms</div><div class="dash-bar"><i style="--w:45%"></i></div></div>
+        </div>
+        <div class="terminal" aria-hidden="true">
+          <div class="terminal-head"><span>bash — deploy</span></div>
+          <div class="terminal-body">
+            <div class="terminal-line">$ nexora build --env production</div>
+            <div class="terminal-line">✓ TypeScript — tests passed</div>
+            <div class="terminal-line">✓ Docker image pushed to ECR</div>
+            <div class="terminal-line cursor-blink">Deploying to cluster—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="clients" aria-label="Clients">
+  <div class="client-logos">
+    <span>PAKSAAS</span><span>HORIZON LOGISTICS</span><span>MERIDIAN HEALTH</span><span>VERTEX RETAIL</span><span>ALNOOR FINTECH</span><span>SKYLINE EDUCATION</span>
+  </div>
+</section>
+
+<section id="services" class="grid-bg">
+  <div class="section-tag reveal">Services</div>
+  <h2 class="section-title reveal">Full-stack capabilities for <span>modern products</span></h2>
+  <p class="section-desc reveal">From discovery to long-term support — one team accountable for outcomes, not just deliverables.</p>
+  <div class="cards-grid">
+    <article class="glass-card service-card reveal"><div class="service-icon">💻</div><h3>Website Development</h3><p>Marketing sites, corporate portals, and Jamstack experiences optimized for Core Web Vitals.</p></article>
+    <article class="glass-card service-card reveal d1"><div class="service-icon">💻</div><h3>Web Applications</h3><p>Custom SaaS dashboards, portals, and multi-tenant platforms with role-based access.</p></article>
+    <article class="glass-card service-card reveal d2"><div class="service-icon">📱</div><h3>Mobile Apps</h3><p>Native-quality iOS and Android apps with Flutter and React Native.</p></article>
+    <article class="glass-card service-card reveal"><div class="service-icon">🎨</div><h3>UI/UX Design</h3><p>Design systems, prototyping, and usability testing aligned with your brand.</p></article>
+    <article class="glass-card service-card reveal d1"><div class="service-icon">☁️</div><h3>Cloud Solutions</h3><p>AWS, Azure, and GCP architecture, migration, and cost optimization.</p></article>
+    <article class="glass-card service-card reveal d2"><div class="service-icon">🤖</div><h3>AI Integration</h3><p>LLM copilots, document intelligence, and predictive models wired into your workflows.</p></article>
+    <article class="glass-card service-card reveal"><div class="service-icon">💼</div><h3>Business Automation</h3><p>RPA-style workflows, webhooks, and integrations that eliminate manual data entry.</p></article>
+    <article class="glass-card service-card reveal d1"><div class="service-icon">⚙️</div><h3>ERP Systems</h3><p>Inventory, finance, and operations modules tailored to manufacturing and retail.</p></article>
+    <article class="glass-card service-card reveal d2"><div class="service-icon">⚙️</div><h3>CRM Development</h3><p>Sales pipelines, customer 360 views, and WhatsApp-first engagement tools.</p></article>
+    <article class="glass-card service-card reveal"><div class="service-icon">🔒</div><h3>Cybersecurity</h3><p>Pen testing, SOC2-ready controls, WAF, and secure SDLC practices.</p></article>
+    <article class="glass-card service-card reveal d1"><div class="service-icon">⚙️</div><h3>API Development</h3><p>REST, GraphQL, and event-driven APIs with versioning and developer docs.</p></article>
+    <article class="glass-card service-card reveal d2"><div class="service-icon">🆘</div><h3>Maintenance &amp; Support</h3><p>24/7 monitoring, SLA-backed fixes, and continuous improvement sprints.</p></article>
+  </div>
+</section>
+
+<section id="why">
+  <div class="section-tag reveal">Why NEXORA</div>
+  <h2 class="section-title reveal">Built like a product team, <span>not a vendor</span></h2>
+  <div class="features-grid">
+    <div class="glass-card feature-card reveal"><h3>Senior engineers only</h3><p>Every sprint is led by architects with 8+ years shipping production systems.</p></div>
+    <div class="glass-card feature-card reveal d1"><h3>Agile with transparency</h3><p>Weekly demos, shared Jira boards, and burndown you can show stakeholders.</p></div>
+    <div class="glass-card feature-card reveal d2"><h3>Security-first SDLC</h3><p>Threat modeling, dependency scanning, and secrets management from day one.</p></div>
+    <div class="glass-card feature-card reveal"><h3>Performance obsessed</h3><p>We benchmark latency, bundle size, and database queries before launch.</p></div>
+    <div class="glass-card feature-card reveal d1"><h3>Local + global delivery</h3><p>Lahore HQ with overlap for US, UK, and GCC time zones.</p></div>
+    <div class="glass-card feature-card reveal d2"><h3>Fixed-scope or dedicated pods</h3><p>Choose milestone-based projects or embedded squads that scale with you.</p></div>
+    <div class="glass-card feature-card reveal"><h3>Post-launch partnership</h3><p>We stay on retainer for analytics, A/B tests, and feature roadmaps.</p></div>
+    <div class="glass-card feature-card reveal d1"><h3>IP &amp; code ownership</h3><p>You own repositories, documentation, and infrastructure — no lock-in.</p></div>
+  </div>
+</section>
+
+<section id="solutions" class="grid-bg">
+  <div class="section-tag reveal">Solutions</div>
+  <h2 class="section-title reveal">Industries we <span>transform</span></h2>
+  <div class="cards-grid">
+    <article class="glass-card industry-card reveal"><h3>Fintech &amp; Banking</h3><p>Payment gateways, KYC flows, and regulatory reporting dashboards.</p></article>
+    <article class="glass-card industry-card reveal d1"><h3>Healthcare</h3><p>HIPAA-aware patient portals, telehealth, and lab integrations.</p></article>
+    <article class="glass-card industry-card reveal d2"><h3>E-commerce &amp; Retail</h3><p>Headless storefronts, inventory sync, and loyalty programs.</p></article>
+    <article class="glass-card industry-card reveal"><h3>Logistics &amp; Supply Chain</h3><p>Fleet tracking, warehouse WMS, and last-mile routing.</p></article>
+    <article class="glass-card industry-card reveal d1"><h3>Education &amp; EdTech</h3><p>LMS platforms, proctored exams, and parent communication apps.</p></article>
+    <article class="glass-card industry-card reveal d2"><h3>Real Estate</h3><p>Property listings, CRM for brokers, and virtual tour integrations.</p></article>
+    <article class="glass-card industry-card reveal"><h3>Manufacturing</h3><p>IoT dashboards, MES integrations, and predictive maintenance.</p></article>
+    <article class="glass-card industry-card reveal d1"><h3>Hospitality &amp; Travel</h3><p>Booking engines, channel managers, and guest experience apps.</p></article>
+    <article class="glass-card industry-card reveal d2"><h3>Legal &amp; Professional Services</h3><p>Matter management, billing, and secure client collaboration.</p></article>
+    <article class="glass-card industry-card reveal"><h3>Media &amp; Entertainment</h3><p>Streaming backends, content CMS, and subscription billing.</p></article>
+    <article class="glass-card industry-card reveal d1"><h3>Government &amp; NGO</h3><p>Citizen portals, grant tracking, and accessibility-compliant UIs.</p></article>
+    <article class="glass-card industry-card reveal d2"><h3>Energy &amp; Utilities</h3><p>Smart meter analytics, outage maps, and field service apps.</p></article>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-tag reveal">Projects</div>
+  <h2 class="section-title reveal">Selected <span>case highlights</span></h2>
+  <div class="cards-grid cards-grid-3">
+    <article class="glass-card project-card reveal">
+      <div class="project-head"><h3>Horizon Fleet Hub</h3><div class="project-tags"><span class="tag">Logistics</span><span class="tag">React — Node — PostgreSQL</span></div></div>
+      <div class="project-body"><p>Real-time GPS tracking and dispatch for 240+ vehicles across Punjab.</p><ul><li>38% faster route assignment</li><li>Unified driver mobile app</li></ul><a class="project-link" href="#case-studies">Read case study ?</a></div>
+    </article>
+    <article class="glass-card project-card reveal d1">
+      <div class="project-head"><h3>Meridian Patient Portal</h3><div class="project-tags"><span class="tag">Healthcare</span><span class="tag">Next.js — FastAPI</span></div></div>
+      <div class="project-body"><p>Secure appointments, lab results, and telehealth for a multi-city clinic group.</p><ul><li>62% reduction in call center load</li><li>HL7 FHIR integrations</li></ul><a class="project-link" href="#case-studies">Read case study ?</a></div>
+    </article>
+    <article class="glass-card project-card reveal d2">
+      <div class="project-head"><h3>Vertex Commerce OS</h3><div class="project-tags"><span class="tag">Retail</span><span class="tag">Vue — Laravel — Redis</span></div></div>
+      <div class="project-body"><p>Omnichannel POS and e-commerce for 18 retail locations.</p><ul><li>PKR 12M+ monthly GMV processed</li><li>Same-day inventory sync</li></ul><a class="project-link" href="#case-studies">Read case study ?</a></div>
+    </article>
+    <article class="glass-card project-card reveal">
+      <div class="project-head"><h3>AlNoor Lending Platform</h3><div class="project-tags"><span class="tag">Fintech</span><span class="tag">TypeScript — AWS — DynamoDB</span></div></div>
+      <div class="project-body"><p>Digital loan origination with credit scoring and Sharia-compliant workflows.</p><ul><li>4-minute average application time</li><li>SOC2-aligned audit trails</li></ul><a class="project-link" href="#case-studies">Read case study ?</a></div>
+    </article>
+  </div>
+</section>
+
+<section id="process" class="grid-bg">
+  <div class="section-tag reveal">Process</div>
+  <h2 class="section-title reveal">How we <span>deliver</span></h2>
+  <div class="process-track reveal">
+    <div class="glass-card process-step"><div class="process-num">1</div><h4>Discovery</h4><p>Workshops, requirements, and success metrics.</p></div>
+    <div class="glass-card process-step"><div class="process-num">2</div><h4>Architecture</h4><p>System design, stack selection, and security review.</p></div>
+    <div class="glass-card process-step"><div class="process-num">3</div><h4>UI/UX</h4><p>Wireframes, design system, and usability tests.</p></div>
+    <div class="glass-card process-step"><div class="process-num">4</div><h4>Development</h4><p>Two-week sprints with CI/CD from sprint one.</p></div>
+    <div class="glass-card process-step"><div class="process-num">5</div><h4>Testing</h4><p>Automated tests, QA, and performance profiling.</p></div>
+    <div class="glass-card process-step"><div class="process-num">6</div><h4>Deployment</h4><p>Blue-green releases and observability setup.</p></div>
+    <div class="glass-card process-step"><div class="process-num">7</div><h4>Support</h4><p>Monitoring, SLAs, and continuous improvement.</p></div>
+  </div>
+</section>
+
+<section id="technologies">
+  <div class="section-tag reveal">Technologies</div>
+  <h2 class="section-title reveal">Stack we <span>master</span></h2>
+  <div class="cards-grid">
+    <div class="glass-card tech-card reveal"><h3>React</h3></div>
+    <div class="glass-card tech-card reveal d1"><h3>Next.js</h3></div>
+    <div class="glass-card tech-card reveal d2"><h3>Vue</h3></div>
+    <div class="glass-card tech-card reveal"><h3>Angular</h3></div>
+    <div class="glass-card tech-card reveal d1"><h3>Node.js</h3></div>
+    <div class="glass-card tech-card reveal d2"><h3>Python</h3></div>
+    <div class="glass-card tech-card reveal"><h3>FastAPI</h3></div>
+    <div class="glass-card tech-card reveal d1"><h3>Laravel</h3></div>
+    <div class="glass-card tech-card reveal d2"><h3>Django</h3></div>
+    <div class="glass-card tech-card reveal"><h3>PostgreSQL</h3></div>
+    <div class="glass-card tech-card reveal d1"><h3>MongoDB</h3></div>
+    <div class="glass-card tech-card reveal d2"><h3>Docker</h3></div>
+    <div class="glass-card tech-card reveal"><h3>Kubernetes</h3></div>
+    <div class="glass-card tech-card reveal d1"><h3>AWS</h3></div>
+    <div class="glass-card tech-card reveal d2"><h3>Azure</h3></div>
+    <div class="glass-card tech-card reveal"><h3>GCP</h3></div>
+    <div class="glass-card tech-card reveal d1"><h3>Flutter</h3></div>
+    <div class="glass-card tech-card reveal d2"><h3>React Native</h3></div>
+    <div class="glass-card tech-card reveal"><h3>Tailwind CSS</h3></div>
+    <div class="glass-card tech-card reveal d1"><h3>TypeScript</h3></div>
+  </div>
+</section>
+
+<section id="metrics">
+  <div class="section-tag reveal">Impact</div>
+  <h2 class="section-title reveal">Numbers that <span>matter</span></h2>
+  <div class="metrics-row reveal">
+    <div class="glass-card metric-box"><div class="num" data-count="250" data-suffix="+">0</div><p>Projects Completed</p></div>
+    <div class="glass-card metric-box"><div class="num" data-count="100" data-suffix="+">0</div><p>Happy Clients</p></div>
+    <div class="glass-card metric-box"><div class="num" data-count="15" data-suffix="+">0</div><p>Industries Served</p></div>
+    <div class="glass-card metric-box"><div class="num" data-count="8" data-suffix="+">0</div><p>Years Experience</p></div>
+    <div class="glass-card metric-box"><div class="num" data-count="99" data-suffix="%">0</div><p>Client Satisfaction</p></div>
+  </div>
+</section>
+
+<section id="case-studies" class="grid-bg">
+  <div class="section-tag reveal">Case Studies</div>
+  <h2 class="section-title reveal">Deep dives into <span>real outcomes</span></h2>
+  <div class="cards-grid cards-grid-3">
+    <article class="glass-card case-card reveal" data-case="1">
+      <h3 style="padding:1rem 1rem 0;font-size:1.05rem">Horizon Fleet Hub</h3>
+      <div class="case-tabs">
+        <button type="button" class="case-tab active" data-panel="problem">Problem</button>
+        <button type="button" class="case-tab" data-panel="solution">Solution</button>
+        <button type="button" class="case-tab" data-panel="tech">Tech</button>
+        <button type="button" class="case-tab" data-panel="timeline">Timeline</button>
+        <button type="button" class="case-tab" data-panel="impact">Impact</button>
+      </div>
+      <div class="case-panel active" data-panel="problem"><strong>Challenge</strong>Dispatch relied on phone calls and spreadsheets — delays cost fuel and customer SLAs.</div>
+      <div class="case-panel" data-panel="solution"><strong>Approach</strong>Unified web dispatch, driver Flutter app, and automated ETA notifications via SMS.</div>
+      <div class="case-panel" data-panel="tech"><strong>Stack</strong>React, Node.js, PostgreSQL, Redis, AWS ECS, Mapbox APIs.</div>
+      <div class="case-panel" data-panel="timeline"><strong>Delivery</strong>14-week MVP, 8-week rollout to 240 vehicles, ongoing support retainer.</div>
+      <div class="case-panel" data-panel="impact"><strong>Results</strong>38% faster assignments, 22% fuel savings, NPS +18 points in six months.</div>
+    </article>
+    <article class="glass-card case-card reveal d1" data-case="2">
+      <h3 style="padding:1rem 1rem 0;font-size:1.05rem">Meridian Patient Portal</h3>
+      <div class="case-tabs">
+        <button type="button" class="case-tab active" data-panel="problem">Problem</button>
+        <button type="button" class="case-tab" data-panel="solution">Solution</button>
+        <button type="button" class="case-tab" data-panel="tech">Tech</button>
+        <button type="button" class="case-tab" data-panel="timeline">Timeline</button>
+        <button type="button" class="case-tab" data-panel="impact">Impact</button>
+      </div>
+      <div class="case-panel active" data-panel="problem"><strong>Challenge</strong>Patients waited on hold for results; staff re-keyed data between legacy EMR and front desk.</div>
+      <div class="case-panel" data-panel="solution"><strong>Approach</strong>Patient self-service portal, HL7 integrations, and encrypted telehealth sessions.</div>
+      <div class="case-panel" data-panel="tech"><strong>Stack</strong>Next.js, FastAPI, PostgreSQL, WebRTC, Azure Key Vault.</div>
+      <div class="case-panel" data-panel="timeline"><strong>Delivery</strong>20 weeks including compliance review and phased clinic rollout.</div>
+      <div class="case-panel" data-panel="impact"><strong>Results</strong>62% fewer inbound calls, 4.8? app rating, 30% more online bookings.</div>
+    </article>
+    <article class="glass-card case-card reveal d2" data-case="3">
+      <h3 style="padding:1rem 1rem 0;font-size:1.05rem">AlNoor Lending Platform</h3>
+      <div class="case-tabs">
+        <button type="button" class="case-tab active" data-panel="problem">Problem</button>
+        <button type="button" class="case-tab" data-panel="solution">Solution</button>
+        <button type="button" class="case-tab" data-panel="tech">Tech</button>
+        <button type="button" class="case-tab" data-panel="timeline">Timeline</button>
+        <button type="button" class="case-tab" data-panel="impact">Impact</button>
+      </div>
+      <div class="case-panel active" data-panel="problem"><strong>Challenge</strong>Paper-heavy loan files slowed approvals and audit preparation for regulators.</div>
+      <div class="case-panel" data-panel="solution"><strong>Approach</strong>Digital KYC, credit decision engine, and Sharia-compliant product configurators.</div>
+      <div class="case-panel" data-panel="tech"><strong>Stack</strong>TypeScript, NestJS, DynamoDB, AWS Lambda, React admin.</div>
+      <div class="case-panel" data-panel="timeline"><strong>Delivery</strong>24-week build with parallel security audit and pilot branch launch.</div>
+      <div class="case-panel" data-panel="impact"><strong>Results</strong>Application time cut to 4 minutes, 3 — loan throughput, audit-ready logs.</div>
+    </article>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="section-tag reveal">Testimonials</div>
+  <h2 class="section-title reveal">Trusted by <span>product leaders</span></h2>
+  <div class="testimonial-wrap reveal">
+    <div class="testimonial-track" id="tTrack">
+      <article class="glass-card testimonial-card"><p>“NEXORA rebuilt our logistics platform in four months. Their engineers feel like an extension of our product team — transparent, fast, and obsessed with uptime.”</p><div class="testimonial-author">Sana Malik</div><div class="testimonial-role">COO, Horizon Logistics</div></article>
+      <article class="glass-card testimonial-card"><p>“From architecture review to go-live, every milestone was documented. Our patient portal passed security review on the first attempt.”</p><div class="testimonial-author">Dr. Imran Qureshi</div><div class="testimonial-role">Director, Meridian Health Group</div></article>
+      <article class="glass-card testimonial-card"><p>“We needed a team that understands retail peaks. NEXORA's cloud autoscaling handled Black Friday without a single checkout failure.”</p><div class="testimonial-author">Ayesha Raza</div><div class="testimonial-role">Head of Digital, Vertex Retail</div></article>
+      <article class="glass-card testimonial-card"><p>“Their AI integration sprint added document classification to our loan workflow — underwriters now focus on exceptions, not data entry.”</p><div class="testimonial-author">Hamza Siddiqui</div><div class="testimonial-role">CTO, AlNoor Fintech</div></article>
+    </div>
+    <div class="testimonial-dots" id="tDots"></div>
+  </div>
+</section>
+
+<section id="team" class="grid-bg">
+  <div class="section-tag reveal">Team</div>
+  <h2 class="section-title reveal">Meet our <span>engineers</span></h2>
+  <div class="team-grid">
+    <article class="glass-card team-card reveal">
+      <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=480&q=80" alt="Usman Ali, Lead Solutions Architect" width="480" height="320" loading="lazy" />
+      <div class="team-info"><h3>Usman Ali</h3><p>Lead Solutions Architect</p><span>Cloud, microservices, 12 yrs</span></div>
+    </article>
+    <article class="glass-card team-card reveal d1">
+      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=480&q=80" alt="Fatima Noor, Head of Product Design" width="480" height="320" loading="lazy" />
+      <div class="team-info"><h3>Fatima Noor</h3><p>Head of Product Design</p><span>Design systems, accessibility</span></div>
+    </article>
+    <article class="glass-card team-card reveal d2">
+      <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=480&q=80" alt="Bilal Hassan, Engineering Manager" width="480" height="320" loading="lazy" />
+      <div class="team-info"><h3>Bilal Hassan</h3><p>Engineering Manager</p><span>React, Node, mobile squads</span></div>
+    </article>
+    <article class="glass-card team-card reveal">
+      <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=480&q=80" alt="Zara Khan, AI Practice Lead" width="480" height="320" loading="lazy" />
+      <div class="team-info"><h3>Zara Khan</h3><p>AI Practice Lead</p><span>LLMs, MLOps, data pipelines</span></div>
+    </article>
+  </div>
+</section>
+
+<section id="innovation">
+  <div class="section-tag reveal">Innovation Lab</div>
+  <h2 class="section-title reveal">R&amp;D for <span>what's next</span></h2>
+  <div class="innovation-split reveal">
+    <div class="glass-card innovation-box">
+      <h3>Innovation Lab</h3>
+      <p style="color:var(--muted);margin-top:0.5rem">Our Lahore lab prototypes emerging tech before it hits your roadmap — so pilots ship in weeks, not quarters.</p>
+      <ul>
+        <li>Edge AI on-device inference for field apps</li>
+        <li>Internal design system and component library</li>
+        <li>Chaos testing and resilience playbooks</li>
+      </ul>
+    </div>
+    <div class="glass-card innovation-box">
+      <h3>AI Solutions</h3>
+      <p style="color:var(--muted);margin-top:0.5rem">Production-grade copilots and automation — grounded in your data with guardrails, audit logs, and human review loops.</p>
+      <ul>
+        <li>Document extraction for finance and legal</li>
+        <li>Support ticket triage and suggested replies</li>
+        <li>Forecasting for inventory and demand planning</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="trust" class="grid-bg">
+  <div class="section-tag reveal">Trust</div>
+  <h2 class="section-title reveal">Awards, certs &amp; <span>partners</span></h2>
+  <div class="badges-row reveal">
+    <span class="badge-pill">✉️ P@SHA ICT Award Finalist 2025</span>
+    <span class="badge-pill">ISO 27001 Aligned Practices</span>
+    <span class="badge-pill">AWS Select Partner</span>
+    <span class="badge-pill">Microsoft Solutions Partner</span>
+    <span class="badge-pill">Google Cloud Partner</span>
+    <span class="badge-pill">OWASP ASVS Level 2</span>
+    <span class="badge-pill">PCI-DSS Aware Builds</span>
+    <span class="badge-pill">Stripe — Twilio — Auth0</span>
+  </div>
+</section>
+
+<section id="careers">
+  <div class="section-tag reveal">Careers</div>
+  <h2 class="section-title reveal">Build the future <span>with us</span></h2>
+  <p class="section-desc reveal">Hybrid-friendly Lahore office — competitive PKR packages — learning budget</p>
+  <div class="benefits-list reveal">
+    <span>Health insurance</span><span>Remote Fridays</span><span>Conference budget</span><span>MacBook Pro</span><span>Stock options (select roles)</span>
+  </div>
+  <div class="cards-grid cards-grid-3">
+    <article class="glass-card role-card reveal"><h3>Senior Full-Stack Engineer</h3><p style="color:var(--muted);font-size:0.88rem;margin:0.5rem 0">React/Node — 5+ years — Lahore hybrid</p><a href="#contact" class="btn btn-ghost ripple-btn" style="margin-top:0.75rem;padding:0.65rem 1.2rem;font-size:0.82rem">Apply</a></article>
+    <article class="glass-card role-card reveal d1"><h3>DevOps Engineer</h3><p style="color:var(--muted);font-size:0.88rem;margin:0.5rem 0">AWS/K8s — Terraform — on-call rotation</p><a href="#contact" class="btn btn-ghost ripple-btn" style="margin-top:0.75rem;padding:0.65rem 1.2rem;font-size:0.82rem">Apply</a></article>
+    <article class="glass-card role-card reveal d2"><h3>UI/UX Designer</h3><p style="color:var(--muted);font-size:0.88rem;margin:0.5rem 0">Figma — design systems — B2B SaaS</p><a href="#contact" class="btn btn-ghost ripple-btn" style="margin-top:0.75rem;padding:0.65rem 1.2rem;font-size:0.82rem">Apply</a></article>
+  </div>
+  <div style="text-align:center;margin-top:2rem" class="reveal"><a href="#contact" class="btn btn-primary ripple-btn">Join NEXORA</a></div>
+</section>
+
+<section id="blog" class="grid-bg">
+  <div class="section-tag reveal">Blog</div>
+  <h2 class="section-title reveal">Engineering <span>insights</span></h2>
+  <div class="cards-grid">
+    <article class="glass-card blog-card reveal">
+      <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80" alt="" width="600" height="400" loading="lazy" />
+      <div class="blog-body"><div class="blog-meta">Mar 12, 2026 — Architecture</div><h3>Designing multi-tenant SaaS on AWS</h3><p style="color:var(--muted);font-size:0.88rem;margin-top:0.35rem">Isolation strategies that balance cost and compliance.</p></div>
+    </article>
+    <article class="glass-card blog-card reveal d1">
+      <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80" alt="" width="600" height="400" loading="lazy" />
+      <div class="blog-body"><div class="blog-meta">Feb 28, 2026 — AI</div><h3>Grounded LLMs for regulated industries</h3><p style="color:var(--muted);font-size:0.88rem;margin-top:0.35rem">RAG patterns we use in finance and healthcare.</p></div>
+    </article>
+    <article class="glass-card blog-card reveal d2">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="" width="600" height="400" loading="lazy" />
+      <div class="blog-body"><div class="blog-meta">Feb 10, 2026 — Performance</div><h3>Core Web Vitals for enterprise SPAs</h3><p style="color:var(--muted);font-size:0.88rem;margin-top:0.35rem">How we cut LCP by 40% on a React dashboard.</p></div>
+    </article>
+    <article class="glass-card blog-card reveal">
+      <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=600&q=80" alt="" width="600" height="400" loading="lazy" />
+      <div class="blog-body"><div class="blog-meta">Jan 22, 2026 — DevOps</div><h3>GitOps without the complexity tax</h3><p style="color:var(--muted);font-size:0.88rem;margin-top:0.35rem">A pragmatic Argo CD setup for mid-size teams.</p></div>
+    </article>
+    <article class="glass-card blog-card reveal d1">
+      <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80" alt="" width="600" height="400" loading="lazy" />
+      <div class="blog-body"><div class="blog-meta">Jan 5, 2026 — Mobile</div><h3>Flutter vs React Native in 2026</h3><p style="color:var(--muted);font-size:0.88rem;margin-top:0.35rem">Decision matrix from twelve production apps.</p></div>
+    </article>
+    <article class="glass-card blog-card reveal d2">
+      <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&q=80" alt="" width="600" height="400" loading="lazy" />
+      <div class="blog-body"><div class="blog-meta">Dec 18, 2025 — Security</div><h3>Threat modeling for agile teams</h3><p style="color:var(--muted);font-size:0.88rem;margin-top:0.35rem">Lightweight STRIDE sessions that developers actually attend.</p></div>
+    </article>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-tag reveal">About</div>
+  <h2 class="section-title reveal">Our story &amp; <span>global reach</span></h2>
+  <div class="company-timeline reveal">
+    <div class="tl-item"><div class="tl-year">2016</div><div><strong style="color:var(--white)">Founded in Lahore</strong><p style="color:var(--muted);font-size:0.9rem">Started as a four-person web studio serving local startups.</p></div></div>
+    <div class="tl-item"><div class="tl-year">2019</div><div><strong style="color:var(--white)">Cloud &amp; mobile practice</strong><p style="color:var(--muted);font-size:0.9rem">Expanded into AWS deployments and cross-platform apps.</p></div></div>
+    <div class="tl-item"><div class="tl-year">2022</div><div><strong style="color:var(--white)">Enterprise &amp; GCC clients</strong><p style="color:var(--muted);font-size:0.9rem">Opened dedicated squads for fintech and logistics at scale.</p></div></div>
+    <div class="tl-item"><div class="tl-year">2026</div><div><strong style="color:var(--white)">AI Innovation Lab</strong><p style="color:var(--muted);font-size:0.9rem">45+ engineers shipping production AI alongside core products.</p></div></div>
+  </div>
+  <h3 class="reveal" style="text-align:center;margin-bottom:1rem;font-size:1.15rem">Global presence</h3>
+  <div class="presence-grid reveal">
+    <div class="glass-card">🇵🇰 Lahore HQ</div>
+    <div class="glass-card">🇦🇪 Dubai</div>
+    <div class="glass-card">🇸🇦 Riyadh</div>
+    <div class="glass-card">🇬🇧 London</div>
+    <div class="glass-card">🇺🇸 Austin</div>
+  </div>
+</section>
+
+<section id="faq" class="grid-bg">
+  <div class="section-tag reveal">FAQ</div>
+  <h2 class="section-title reveal" style="text-align:center">Common <span>questions</span></h2>
+  <div class="faq-list">
+    <div class="faq-item reveal"><button type="button" class="faq-q" aria-expanded="false">How do you price projects?</button><div class="faq-a">We offer fixed-scope milestones for well-defined products and monthly dedicated pods for evolving roadmaps. After discovery we share a transparent breakdown in PKR or USD.</div></div>
+    <div class="faq-item reveal"><button type="button" class="faq-q" aria-expanded="false">Do we own the source code?</button><div class="faq-a">Yes. Repositories, infrastructure-as-code, and documentation are transferred to your organization. We use your GitHub or GitLab from day one.</div></div>
+    <div class="faq-item reveal"><button type="button" class="faq-q" aria-expanded="false">What is a typical timeline for an MVP?</button><div class="faq-a">Most MVPs ship in 10–16 weeks depending on integrations and compliance. We align on a phased launch so you can validate with users early.</div></div>
+    <div class="faq-item reveal"><button type="button" class="faq-q" aria-expanded="false">Can you work with our in-house team?</button><div class="faq-a">Absolutely. We embed via Slack, stand-ups, and shared boards — augmenting your team or owning a workstream end-to-end.</div></div>
+    <div class="faq-item reveal"><button type="button" class="faq-q" aria-expanded="false">How do you handle security and compliance?</button><div class="faq-a">We follow OWASP ASVS, run dependency and SAST scans in CI, and document controls for SOC2 and PCI-aware builds when required.</div></div>
+    <div class="faq-item reveal"><button type="button" class="faq-q" aria-expanded="false">What happens after launch?</button><div class="faq-a">We offer SLA-backed support tiers with monitoring, incident response, and quarterly roadmap reviews so your product keeps improving.</div></div>
+  </div>
+</section>
+
+<section class="cta-band" id="consult-cta" aria-label="Consultation call to action">
+  <h2 class="reveal">Let's Build Something Exceptional Together.</h2>
+  <p class="reveal" style="color:var(--muted);max-width:520px;margin:0 auto 1.5rem">Tell us about your goals — we'll respond within one business day with scope options and a ballpark timeline.</p>
+  <div class="reveal" style="display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:center">
+    <a href="#contact" class="btn btn-primary ripple-btn">Schedule Consultation</a>
+    <a href="#contact" class="btn btn-ghost ripple-btn">Get Free Quote</a>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-tag reveal">Contact</div>
+  <h2 class="section-title reveal">Start your <span>project</span></h2>
+  <div class="contact-split reveal">
+    <div class="contact-info">
+      <p><strong style="color:var(--white)">NEXORA Technologies</strong><br />Office 402, Arfa Software Technology Park, Lahore</p>
+      <p>Phone: <a href="tel:+923001234567">+92 300 123 4567</a></p>
+      <p>Email: <a href="mailto:hello@nexoratech.pk">hello@nexoratech.pk</a></p>
+      <p>Hours: Mon–Sat 9:00–18:00 PKT</p>
+      <div class="map-wrap">
+        <iframe title="NEXORA Technologies Lahore map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3403.5!2d74.358!3d31.47!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDI4JzEyLjAiTiA3NMKwMjEnMjguOCJF!5e0!3m2!1sen!2spk!4v1" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    <form class="glass-card inquiry-form" id="inquiryForm" novalidate>
+      <div class="form-row">
+        <div class="form-group"><label for="fullName">Full Name</label><input id="fullName" name="fullName" type="text" required autocomplete="name" /></div>
+        <div class="form-group"><label for="company">Company</label><input id="company" name="company" type="text" required autocomplete="organization" /></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label for="businessType">Business Type</label>
+          <select id="businessType" name="businessType" required>
+            <option value="">Select…</option>
+            <option>Startup</option><option>SME</option><option>Enterprise</option><option>NGO / Government</option>
+          </select>
+        </div>
+        <div class="form-group"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" required autocomplete="tel" /></div>
+      </div>
+      <div class="form-group"><label for="email">Email</label><input id="email" name="email" type="email" required autocomplete="email" /></div>
+      <div class="form-row">
+        <div class="form-group"><label for="projectType">Project Type</label>
+          <select id="projectType" name="projectType" required>
+            <option value="">Select…</option>
+            <option>New product build</option><option>Redesign / rebuild</option><option>AI / automation</option><option>DevOps / cloud</option><option>Support retainer</option>
+          </select>
+        </div>
+        <div class="form-group"><label for="budget">Budget</label>
+          <select id="budget" name="budget" required>
+            <option value="">Select…</option>
+            <option>Under PKR 500k</option><option>PKR 500k — 2M</option><option>PKR 2M — 5M</option><option>PKR 5M+</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group"><label for="timeline">Timeline</label>
+        <select id="timeline" name="timeline" required>
+          <option value="">Select…</option>
+          <option>ASAP (&lt; 1 month)</option><option>1–3 months</option><option>3–6 months</option><option>6+ months</option>
+        </select>
+      </div>
+      <div class="form-group"><label for="description">Project Description</label><textarea id="description" name="description" required placeholder="Goals, users, integrations—"></textarea></div>
+      <button type="submit" class="btn btn-primary ripple-btn" style="width:100%">Send via WhatsApp</button>
+      <p class="form-status" id="inquiryStatus" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <a href="#hero" class="logo" style="margin-bottom:0.75rem">
+        <div class="logo-mark">N</div>
+        <div class="logo-text">NEXORA<span>Technologies</span></div>
+      </a>
+      <p style="color:var(--muted);font-size:0.88rem;max-width:280px">Engineering digital products that scale — from Lahore to the world.</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" name="email" placeholder="Email for insights" required aria-label="Newsletter email" />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+    <div><h4>Company</h4><a href="#about">About</a><a href="#careers">Careers</a><a href="#blog">Blog</a><a href="#contact">Contact</a></div>
+    <div><h4>Services</h4><a href="#services">Web &amp; Mobile</a><a href="#services">Cloud &amp; DevOps</a><a href="#innovation">AI Solutions</a><a href="#technologies">Technologies</a></div>
+    <div><h4>Legal</h4><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Security</a></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 NEXORA Technologies — Demo by <a href="../../../index.html" style="color:var(--cyan)">Onairo Solutions</a></span>
+    <span>Lahore, Pakistan</span>
+  </div>
+</footer>
+
+<a href="#" class="wa-float ripple-btn" id="floatWa" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.449C18.24 1.245 15.24 0 12 0 5.373 0 0 5.373 0 12c0 2.117.554 4.185 1.606 6.001L0 24l6.155-1.587A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12 0-3.24-1.245-6.24-3.48-8.551zM12 22c-1.822 0-3.609-.489-5.17-1.412l-.37-.22-3.656.942.975-3.556-.24-.378A9.937 9.937 0 012 12C2 6.477 6.477 2 12 2c2.654 0 5.15 1.034 7.025 2.914A9.88 9.88 0 0122 12c0 5.523-4.477 10-10 10zm5.476-7.44c-.3-.15-1.77-.873-2.044-.972-.274-.099-.473-.148-.672.149-.2.297-.772.972-.946 1.17-.174.198-.348.223-.648.074-.3-.149-1.266-.467-2.41-1.486-.89-.794-1.49-1.774-1.664-2.073-.174-.298-.018-.46.13-.608.134-.133.3-.348.45-.522.15-.174.199-.298.299-.497.1-.198.05-.372-.025-.521-.075-.15-.672-1.62-.92-2.217-.242-.582-.487-.503-.672-.513l-.573-.01c-.198 0-.522.074-.795.372-.274.297-1.043 1.02-1.043 2.487 0 1.466 1.069 2.885 1.219 3.083.15.198 2.105 3.21 5.1 4.502.714.308 1.271.492 1.706.63.716.227 1.368.195 1.884.118.574-.085 1.77-.723 2.02-1.421.248-.699.248-1.297.173-1.422-.074-.124-.273-.199-.572-.348z"/></svg>
+</a>
+<a href="#consult-cta" class="consult-sticky ripple-btn" id="consultSticky">Free Consultation</a>
+<a href="#hero" class="back-top" id="backTop" aria-label="Back to top">↑</a>
+
+<script src="demo-globals.js"></script>
+<script>
+  DemoGlobals.init();
+  const WA_NUMBER = '923137863988';
+  document.getElementById('floatWa').href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent("Hi NEXORA Technologies, I'd like a free consultation about my project.");
+
+  window.addEventListener('load', function () {
+    setTimeout(function () { document.getElementById('loader').classList.add('hide'); }, 700);
+  });
+
+  var progress = document.getElementById('scroll-progress');
+  var nav = document.getElementById('mainNav');
+  var backTop = document.getElementById('backTop');
+  var consultSticky = document.getElementById('consultSticky');
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+    backTop.classList.toggle('show', window.scrollY > 500);
+    consultSticky.classList.toggle('show', window.scrollY > 600 && window.scrollY < document.documentElement.scrollHeight - window.innerHeight - 200);
+  }, { passive: true });
+
+  var navToggle = document.getElementById('navToggle');
+  var navLinks = document.getElementById('navLinks');
+  function setNavOpen(open) {
+    navLinks.classList.toggle('open', open);
+    navToggle.classList.toggle('open', open);
+    navToggle.setAttribute('aria-expanded', open);
+    document.body.classList.toggle('nav-open', open);
+  }
+  navToggle.addEventListener('click', function () { setNavOpen(!navLinks.classList.contains('open')); });
+  navLinks.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { setNavOpen(false); });
+  });
+  window.addEventListener('keydown', function (e) { if (e.key === 'Escape') setNavOpen(false); });
+
+  document.querySelectorAll('.ripple-btn').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      var r = this.getBoundingClientRect();
+      var s = Math.max(r.width, r.height);
+      var ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      ripple.style.width = ripple.style.height = s + 'px';
+      ripple.style.left = (e.clientX - r.left - s / 2) + 'px';
+      ripple.style.top = (e.clientY - r.top - s / 2) + 'px';
+      this.appendChild(ripple);
+      setTimeout(function () { ripple.remove(); }, 600);
+    });
+  });
+
+  var revealObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) { if (en.isIntersecting) en.target.classList.add('visible'); });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(function (el) { revealObs.observe(el); });
+
+  var counterObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      var el = en.target;
+      var target = parseFloat(el.dataset.count);
+      var suffix = el.dataset.suffix || '';
+      var decimals = el.dataset.decimals ? parseInt(el.dataset.decimals, 10) : 0;
+      var t0 = performance.now();
+      function tick(now) {
+        var p = Math.min(1, (now - t0) / 1600);
+        var val = (1 - Math.pow(1 - p, 3)) * target;
+        el.textContent = (decimals ? val.toFixed(decimals) : Math.floor(val).toLocaleString()) + (p >= 1 ? suffix : '');
+        if (p < 1) requestAnimationFrame(tick);
+        else el.textContent = (decimals ? target.toFixed(decimals) : target.toLocaleString()) + suffix;
+      }
+      requestAnimationFrame(tick);
+      counterObs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-count]').forEach(function (el) { counterObs.observe(el); });
+
+  var hero = document.getElementById('hero');
+  var glow = document.getElementById('heroGlow');
+  if (hero && glow && window.matchMedia('(hover: hover) and (min-width: 901px)').matches) {
+    hero.addEventListener('mousemove', function (e) {
+      var rect = hero.getBoundingClientRect();
+      var x = e.clientX - rect.left - 240;
+      var y = e.clientY - rect.top - 240;
+      glow.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+    });
+  }
+
+  document.querySelectorAll('.case-card').forEach(function (card) {
+    var tabs = card.querySelectorAll('.case-tab');
+    var panels = card.querySelectorAll('.case-panel');
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var key = tab.dataset.panel;
+        tabs.forEach(function (t) { t.classList.toggle('active', t === tab); });
+        panels.forEach(function (p) { p.classList.toggle('active', p.dataset.panel === key); });
+      });
+    });
+  });
+
+  var track = document.getElementById('tTrack');
+  if (track) {
+    var cards = track.children;
+    var dotsWrap = document.getElementById('tDots');
+    var tIndex = 0;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    for (var i = 0; i < cards.length; i++) {
+      (function (idx) {
+        var d = document.createElement('button');
+        if (idx === 0) d.classList.add('active');
+        d.setAttribute('aria-label', 'Testimonial ' + (idx + 1));
+        d.addEventListener('click', function () { tIndex = idx; updateT(); });
+        dotsWrap.appendChild(d);
+      })(i);
+    }
+    function updateT() {
+      var gap = 18;
+      track.style.transform = 'translateX(-' + (tIndex * (cards[0].offsetWidth + gap)) + 'px)';
+      Array.prototype.forEach.call(dotsWrap.children, function (d, i) { d.classList.toggle('active', i === tIndex); });
+    }
+    if (!reduceMotion) setInterval(function () { tIndex = (tIndex + 1) % cards.length; updateT(); }, 5000);
+    window.addEventListener('resize', updateT);
+    var touchX = 0;
+    track.addEventListener('touchstart', function (e) { touchX = e.changedTouches[0].screenX; }, { passive: true });
+    track.addEventListener('touchend', function (e) {
+      var dx = e.changedTouches[0].screenX - touchX;
+      if (Math.abs(dx) < 40) return;
+      tIndex = dx < 0 ? (tIndex + 1) % cards.length : (tIndex - 1 + cards.length) % cards.length;
+      updateT();
+    }, { passive: true });
+  }
+
+  document.querySelectorAll('.faq-item').forEach(function (item) {
+    var btn = item.querySelector('.faq-q');
+    btn.addEventListener('click', function () {
+      var open = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function (i) {
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!open) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+    });
+  });
+
+  document.getElementById('inquiryForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = e.target;
+    var msg = [
+      'Project Inquiry — NEXORA Technologies',
+      'Name: ' + f.fullName.value.trim(),
+      'Company: ' + f.company.value.trim(),
+      'Business Type: ' + f.businessType.value,
+      'Phone: ' + f.phone.value.trim(),
+      'Email: ' + f.email.value.trim(),
+      'Project Type: ' + f.projectType.value,
+      'Budget: ' + f.budget.value,
+      'Timeline: ' + f.timeline.value,
+      'Description: ' + f.description.value.trim()
+    ].join('\n');
+    document.getElementById('inquiryStatus').style.display = 'block';
+    document.getElementById('inquiryStatus').textContent = 'Opening WhatsApp with your project details—';
+    window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
+  });
+
+  document.getElementById('newsletterForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    alert('Thanks for subscribing to NEXORA engineering insights.');
+    e.target.reset();
+  });
+</script>
+</body>
+</html>

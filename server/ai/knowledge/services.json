@@ -1,0 +1,71 @@
+{
+  "services": [
+    {
+      "id": "website-development",
+      "title": "Professional Website Development",
+      "short": "Custom, conversion-focused websites that look premium on every device and load fast worldwide.",
+      "benefits": ["Unique brand-aligned design", "Mobile-first responsive layouts", "SEO-ready structure", "WhatsApp & Maps integrations", "Fast performance"],
+      "timelineNote": "Most business websites launch in 7–14 days depending on scope and content readiness."
+    },
+    {
+      "id": "custom-software",
+      "title": "Custom Software Development",
+      "short": "Bespoke software built around your workflows — not generic tools that force you to adapt.",
+      "benefits": ["Workflow-fit architecture", "Scalable codebase", "Role-based access", "Integrations", "Ongoing iteration"]
+    },
+    {
+      "id": "desktop-apps",
+      "title": "Desktop Applications",
+      "short": "Reliable Windows desktop apps for offline-capable business operations.",
+      "benefits": ["Offline capability", "Native-feel UX", "Secure local data options", "Printer & hardware support"]
+    },
+    {
+      "id": "business-automation",
+      "title": "Business Automation",
+      "short": "Automate repetitive tasks, approvals, notifications, and data syncing across your tools.",
+      "benefits": ["Fewer manual steps", "Faster response times", "Consistent data"]
+    },
+    {
+      "id": "ai-integration",
+      "title": "AI Integration",
+      "short": "Practical AI features — assistants, document intelligence, and smart recommendations — embedded in your product.",
+      "benefits": ["Faster support", "Smarter search & insights", "Document processing", "Human-in-the-loop controls"]
+    },
+    {
+      "id": "ui-ux-design",
+      "title": "UI/UX Design",
+      "short": "Premium interfaces and user journeys that feel effortless and convert with confidence.",
+      "benefits": ["Strong brand presence", "Higher conversion", "Accessible interfaces"]
+    },
+    {
+      "id": "cloud-solutions",
+      "title": "Cloud Solutions",
+      "short": "Secure cloud architecture, hosting, and deployment pipelines.",
+      "benefits": ["High availability", "Secure infrastructure", "CI/CD", "Monitoring"]
+    },
+    {
+      "id": "database-development",
+      "title": "Database Development",
+      "short": "Clean data models, performant queries, and reliable storage.",
+      "benefits": ["Normalized schemas", "Performance tuning", "Data integrity"]
+    },
+    {
+      "id": "api-development",
+      "title": "API Development",
+      "short": "Secure, well-documented APIs that connect apps, partners, and platforms.",
+      "benefits": ["Clean contracts", "Auth & rate limits", "Integrations"]
+    },
+    {
+      "id": "software-maintenance",
+      "title": "Software Maintenance",
+      "short": "Keep products secure, updated, and evolving with proactive maintenance.",
+      "benefits": ["Priority support", "Security patches", "Feature enhancements"]
+    },
+    {
+      "id": "technology-consulting",
+      "title": "Technology Consulting",
+      "short": "Clear technical guidance for product decisions, architecture, tooling, and digital strategy.",
+      "benefits": ["Unbiased recommendations", "Architecture clarity", "Roadmaps"]
+    }
+  ]
+}

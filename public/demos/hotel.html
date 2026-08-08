@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Maison Aurelia is a luxury coastal resort showcase created by Onairo Solutions." />
+  <meta name="theme-color" content="#171714" />
+  <title>Maison Aurelia | Luxury Coastal Resort</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --ink:#171714;--charcoal:#23231f;--ivory:#f8f5ee;--paper:#fffdf8;
+      --beige:#e9dfd0;--sand:#c8b59b;--gold:#b99555;--gold-light:#d8bd82;
+      --muted:#746f66;--line:rgba(185,149,85,.24);--glass:rgba(255,253,248,.12);
+      --serif:"Cormorant Garamond",serif;--sans:"Manrope",sans-serif;
+      --shadow:0 26px 70px rgba(31,28,22,.14);--radius:2px;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--sans);background:var(--ivory);color:var(--ink);line-height:1.7;overflow-x:hidden}
+    body.menu-open,body.lightbox-open{overflow:hidden}
+    img{display:block;width:100%;height:100%;object-fit:cover}
+    a{color:inherit}button,input{font:inherit}
+    button,a{touch-action:manipulation}
+    h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:.98;letter-spacing:-.025em}
+    .container{width:min(1180px,calc(100% - 2rem));margin-inline:auto}
+    .section{padding:clamp(4.5rem,9vw,8rem) 0}
+    .eyebrow{display:flex;align-items:center;gap:.75rem;color:var(--gold);font-size:.67rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase}
+    .eyebrow::before{content:"";width:34px;height:1px;background:currentColor}
+    .section-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.65fr);align-items:end;gap:2rem;margin-bottom:3rem}
+    .section-title{font-size:clamp(2.7rem,6vw,5.2rem);margin-top:.8rem}
+    .section-copy{color:var(--muted);max-width:540px}
+    .btn{min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:.65rem;padding:.8rem 1.35rem;border:1px solid transparent;border-radius:999px;text-decoration:none;font-size:.72rem;font-weight:600;letter-spacing:.11em;text-transform:uppercase;cursor:pointer;transition:.3s ease}
+    .btn-gold{background:var(--gold);color:#fff}.btn-gold:hover{background:#a98444;transform:translateY(-2px)}
+    .btn-light{border-color:rgba(255,255,255,.55);color:#fff;background:rgba(255,255,255,.06);backdrop-filter:blur(10px)}
+    .btn-light:hover{background:#fff;color:var(--ink)}
+    .btn-dark{background:var(--ink);color:#fff}.btn-dark:hover{background:var(--gold)}
+    .btn-line{border-color:var(--line);color:var(--ink)}.btn-line:hover{border-color:var(--gold);color:var(--gold)}
+    .demo-bar{position:relative;z-index:1000;padding:.48rem 1rem;text-align:center;background:var(--ink);color:rgba(255,255,255,.72);font-size:.67rem;letter-spacing:.06em}
+    .demo-bar a{color:var(--gold-light);font-weight:600}
+
+    .nav{position:absolute;z-index:500;top:34px;left:0;width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.1rem max(1rem,4vw);color:#fff;border-bottom:1px solid rgba(255,255,255,.18);transition:.3s}
+    .nav.scrolled{position:fixed;top:0;background:rgba(23,23,20,.94);backdrop-filter:blur(18px);border-color:rgba(255,255,255,.09)}
+    .logo{text-decoration:none}.logo strong{display:block;font:600 1.45rem/1 var(--serif);letter-spacing:.12em}.logo span{display:block;margin-top:.25rem;color:var(--gold-light);font-size:.52rem;letter-spacing:.26em;text-transform:uppercase}
+    .nav-links{display:flex;align-items:center;gap:1.6rem;list-style:none}.nav-links a{text-decoration:none;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase}
+    .nav-links a:not(.btn)::after{content:"";display:block;width:0;height:1px;margin-top:.2rem;background:var(--gold-light);transition:.25s}.nav-links a:hover::after{width:100%}
+    .nav-toggle{display:none;width:48px;height:48px;border:1px solid rgba(255,255,255,.35);border-radius:50%;background:transparent}
+    .nav-toggle span{display:block;width:18px;height:1px;margin:5px auto;background:#fff;transition:.25s}
+
+    .hero{position:relative;min-height:calc(100svh - 34px);display:grid;align-items:end;isolation:isolate;color:#fff;overflow:hidden}
+    .hero-media{position:absolute;inset:0;z-index:-2;background:url("https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2000&q=88") center/cover;animation:heroZoom 18s ease-out both}
+    .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(16,15,12,.68),rgba(16,15,12,.12) 70%),linear-gradient(0deg,rgba(16,15,12,.72),transparent 55%)}
+    @keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.09)}}
+    .hero-inner{padding:10rem 0 5rem}.hero-copy{max-width:800px}
+    .hero h1{font-size:clamp(3.5rem,8.5vw,7.8rem);max-width:920px;margin:1.1rem 0 1.4rem}
+    .hero-sub{max-width:650px;color:rgba(255,255,255,.8);font-size:clamp(.92rem,1.8vw,1.1rem)}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+    .hero-floats{position:absolute;right:max(1rem,4vw);bottom:4rem;display:grid;gap:.75rem}
+    .float-card{min-width:210px;padding:1rem 1.15rem;border:1px solid rgba(255,255,255,.22);background:rgba(20,19,16,.34);backdrop-filter:blur(14px);box-shadow:0 18px 45px rgba(0,0,0,.18)}
+    .float-card strong{display:block;font:500 1.05rem var(--serif);color:var(--gold-light)}.float-card span{font-size:.66rem;color:rgba(255,255,255,.72)}
+
+    .intro{background:var(--paper)}.intro-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(2rem,7vw,7rem);align-items:center}
+    .intro-media{position:relative;min-height:620px}.intro-media img:first-child{position:absolute;inset:0 15% 8% 0}
+    .intro-media img:last-child{position:absolute;width:45%;height:42%;right:0;bottom:0;border:10px solid var(--paper);box-shadow:var(--shadow)}
+    .intro-copy h2{font-size:clamp(2.7rem,5vw,4.8rem);margin:1rem 0 1.4rem}.intro-copy p{color:var(--muted);margin-bottom:1.5rem}
+    .signature{font:italic 1.55rem var(--serif);color:var(--gold)}
+
+    .experiences{background:var(--ink);color:#fff}.experiences .section-copy{color:rgba(255,255,255,.6)}
+    .experience-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.12)}
+    .experience-card{position:relative;min-height:410px;overflow:hidden;background:#292923}
+    .experience-card:first-child,.experience-card:nth-child(6){grid-column:span 2}
+    .experience-card img{transition:transform .8s ease}.experience-card:hover img{transform:scale(1.055)}
+    .experience-card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,15,12,.9),transparent 62%)}
+    .experience-card div{position:absolute;z-index:2;left:1.3rem;right:1.3rem;bottom:1.2rem}
+    .experience-card small{color:var(--gold-light);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase}.experience-card h3{font-size:2rem;margin:.35rem 0}
+    .experience-card p{max-height:0;opacity:0;color:rgba(255,255,255,.7);font-size:.78rem;transition:.35s}.experience-card:hover p{max-height:70px;opacity:1}
+
+    .rooms{background:var(--ivory)}.room-gallery{display:grid;grid-template-columns:1.2fr .8fr;grid-template-rows:repeat(2,330px);gap:1rem}
+    .room-card{position:relative;overflow:hidden;background:#ddd;isolation:isolate}.room-card:first-child{grid-row:1/3}
+    .room-card img{transition:transform .8s}.room-card:hover img{transform:scale(1.045)}
+    .room-card::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(16,15,12,.88),transparent 65%)}
+    .room-info{position:absolute;z-index:2;left:clamp(1rem,3vw,2rem);right:clamp(1rem,3vw,2rem);bottom:clamp(1rem,3vw,2rem);color:#fff}
+    .room-info h3{font-size:clamp(1.8rem,4vw,3rem)}.room-meta{display:flex;flex-wrap:wrap;gap:.7rem;margin:.55rem 0;color:rgba(255,255,255,.72);font-size:.67rem}
+    .room-price{color:var(--gold-light);font-size:.72rem}.room-price strong{font:500 1.4rem var(--serif)}
+    .room-extra{display:grid;grid-template-rows:0fr;opacity:0;transition:.35s}.room-extra>div{overflow:hidden}.room-card:hover .room-extra{grid-template-rows:1fr;opacity:1}
+    .room-features{display:flex;flex-wrap:wrap;gap:.35rem;margin:.7rem 0}.room-features span{padding:.2rem .48rem;background:rgba(255,255,255,.12);font-size:.57rem}
+    .room-actions{display:flex;gap:.45rem}.room-actions .btn{min-height:42px;padding:.55rem .8rem;font-size:.58rem}
+
+    .amenities{background:#ddd1c0}.amenity-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(23,23,20,.12)}
+    .amenity{min-height:180px;padding:1.4rem;background:var(--ivory);display:flex;flex-direction:column;justify-content:space-between;transition:.3s}
+    .amenity:hover{background:var(--ink);color:#fff}.amenity-icon{font:400 1.55rem var(--serif);color:var(--gold);transition:transform .4s}.amenity:hover .amenity-icon{transform:translateY(-5px)}
+    .amenity h3{font-size:1.35rem}.amenity p{color:var(--muted);font-size:.68rem}.amenity:hover p{color:rgba(255,255,255,.6)}
+
+    .journey{background:var(--paper)}.timeline{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;margin-top:4rem}
+    .timeline::before{content:"";position:absolute;top:25px;left:8%;right:8%;height:1px;background:var(--beige)}
+    .timeline::after{content:"";position:absolute;top:25px;left:8%;width:84%;height:1px;background:var(--gold);transform-origin:left;animation:lineGrow 7s ease-in-out infinite}
+    @keyframes lineGrow{0%,10%{transform:scaleX(0)}70%,100%{transform:scaleX(1)}}
+    .step{position:relative;z-index:2;text-align:center}.step-num{width:50px;height:50px;margin:0 auto 1rem;display:grid;place-items:center;border:1px solid var(--gold);border-radius:50%;background:var(--paper);color:var(--gold);font:500 1.1rem var(--serif)}
+    .step h3{font-size:1.35rem}.step p{color:var(--muted);font-size:.67rem}
+
+    .dining{background:var(--charcoal);color:#fff}.dining-showcase{display:grid;grid-template-columns:1.2fr repeat(2,.8fr);grid-template-rows:repeat(2,280px);gap:.75rem}
+    .dining-card{position:relative;overflow:hidden}.dining-card:first-child{grid-row:1/3}.dining-card img{transition:.7s}.dining-card:hover img{transform:scale(1.05)}
+    .dining-card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,15,12,.85),transparent)}
+    .dining-card div{position:absolute;z-index:2;bottom:1rem;left:1rem}.dining-card small{color:var(--gold-light);font-size:.57rem;letter-spacing:.16em}.dining-card h3{font-size:1.8rem}
+
+    .spa{background:#e5ddd0}.spa-grid,.location-grid{display:grid;grid-template-columns:1fr 1fr;min-height:650px}
+    .spa-image{min-height:540px}.spa-copy{padding:clamp(2rem,7vw,6rem);display:flex;flex-direction:column;justify-content:center}
+    .spa-copy h2{font-size:clamp(2.8rem,5vw,5rem);margin:1rem 0}.spa-copy>p{color:var(--muted)}
+    .spa-list{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:2rem 0}.spa-list span{padding:.7rem 0;border-bottom:1px solid rgba(23,23,20,.14);font:500 1.05rem var(--serif)}
+
+    .events{background:var(--paper)}.event-grid,.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .event-card{border:1px solid var(--line);padding:.65rem}.event-card img{height:280px}.event-card div{padding:1.2rem .7rem}.event-card h3{font-size:1.8rem}.event-card p{color:var(--muted);font-size:.75rem;margin-top:.5rem}
+    .testimonials{background:var(--ink);color:#fff}.testimonial{padding:2rem;border:1px solid rgba(216,189,130,.22);background:rgba(255,255,255,.025)}
+    .stars{color:var(--gold-light);letter-spacing:.12em}.testimonial blockquote{font:400 1.45rem/1.3 var(--serif);margin:1.2rem 0 1.8rem}
+    .guest{display:flex;align-items:center;gap:.8rem}.guest img{width:48px;height:48px;border-radius:50%}.guest strong{display:block;font-size:.75rem}.guest span{color:rgba(255,255,255,.48);font-size:.62rem}
+
+    .location{background:var(--ivory)}.location-copy{padding:clamp(2rem,7vw,6rem);display:flex;flex-direction:column;justify-content:center}.location-copy h2{font-size:clamp(2.8rem,5vw,5rem);margin:1rem 0}
+    .nearby{margin-top:1rem}.nearby li{display:flex;justify-content:space-between;gap:1rem;padding:.75rem 0;border-bottom:1px solid var(--line);font-size:.75rem;list-style:none}.nearby b{font-weight:500}.nearby span{color:var(--muted)}
+    .map{position:relative;min-height:580px;background:url("https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=1400&q=85") center/cover}
+    .map::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(35,35,31,.25),rgba(35,35,31,.35))}
+    .map-card{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);width:min(280px,80%);padding:1.5rem;text-align:center;background:rgba(255,253,248,.9);backdrop-filter:blur(14px);box-shadow:var(--shadow)}.map-pin{color:var(--gold);font-size:2rem}.map-card h3{font-size:1.6rem}.map-card p{color:var(--muted);font-size:.68rem}
+
+    .gallery{background:var(--paper)}.masonry{columns:3;column-gap:.75rem}.gallery-item{position:relative;width:100%;margin-bottom:.75rem;border:0;background:none;cursor:zoom-in;overflow:hidden;break-inside:avoid}.gallery-item:nth-child(3n+1){height:480px}.gallery-item:nth-child(3n+2){height:300px}.gallery-item:nth-child(3n){height:380px}
+    .gallery-item img{transition:.7s}.gallery-item:hover img{transform:scale(1.04)}.gallery-item span{position:absolute;inset:auto 0 0;padding:2rem 1rem 1rem;color:#fff;text-align:left;background:linear-gradient(transparent,rgba(15,15,12,.7));opacity:0;transition:.3s}.gallery-item:hover span{opacity:1}
+    .lightbox{position:fixed;z-index:2000;inset:0;display:none;place-items:center;padding:1rem;background:rgba(10,10,8,.94)}.lightbox.open{display:grid}.lightbox img{width:auto;max-width:92vw;max-height:84vh;object-fit:contain}.lightbox-close,.lightbox-nav{position:absolute;display:grid;place-items:center;width:48px;height:48px;border:1px solid rgba(255,255,255,.3);border-radius:50%;background:rgba(0,0,0,.25);color:#fff;cursor:pointer}.lightbox-close{right:1rem;top:1rem}.lightbox-prev{left:1rem}.lightbox-next{right:1rem}.lightbox-caption{position:absolute;bottom:1rem;color:#fff;font:1.1rem var(--serif)}
+
+    .final-cta{position:relative;min-height:620px;display:grid;place-items:center;text-align:center;color:#fff;background:url("https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=1800&q=88") center/cover fixed}
+    .final-cta::before{content:"";position:absolute;inset:0;background:rgba(18,17,14,.58)}.final-inner{position:relative;width:min(760px,calc(100% - 2rem))}.final-cta h2{font-size:clamp(3rem,7vw,6rem);margin:1rem 0}.final-cta p{color:rgba(255,255,255,.72)}.final-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+    footer{padding:4.5rem 0 1.5rem;background:#11110f;color:rgba(255,255,255,.65)}.footer-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:2rem}.footer-brand p{max-width:320px;margin-top:1rem;font-size:.72rem}.footer-col h3{color:#fff;font:500 1.25rem var(--serif);margin-bottom:1rem}.footer-col a{display:block;margin:.45rem 0;text-decoration:none;font-size:.7rem}.footer-col a:hover{color:var(--gold-light)}.social{display:flex;gap:.5rem;margin-top:1.2rem}.social a{width:40px;height:40px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.16);border-radius:50%}.footer-bottom{display:flex;justify-content:space-between;gap:1rem;margin-top:3rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.1);font-size:.62rem}
+    .toast{position:fixed;z-index:2500;left:50%;bottom:1.25rem;transform:translate(-50%,120px);padding:.9rem 1.2rem;background:var(--ink);color:#fff;border:1px solid var(--gold);font-size:.72rem;opacity:0;transition:.35s}.toast.show{transform:translate(-50%,0);opacity:1}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .75s ease,transform .75s ease}.reveal.visible{opacity:1;transform:none}
+
+    @media(max-width:900px){
+      .nav-links{position:fixed;inset:0;display:flex;flex-direction:column;justify-content:center;gap:1.5rem;background:rgba(23,23,20,.98);transform:translateX(100%);transition:.35s}.nav-links.open{transform:none}.nav-links a{font:500 1.7rem var(--serif);text-transform:none}.nav-toggle{position:relative;z-index:2;display:block}.nav-toggle.open span:first-child{transform:translateY(3px) rotate(45deg)}.nav-toggle.open span:last-child{transform:translateY(-3px) rotate(-45deg)}
+      .hero-floats{display:none}.section-head{grid-template-columns:1fr}.intro-grid,.spa-grid,.location-grid{grid-template-columns:1fr}.intro-media{min-height:500px}.experience-grid{grid-template-columns:repeat(2,1fr)}.amenity-grid{grid-template-columns:repeat(3,1fr)}.event-grid,.testimonial-grid{grid-template-columns:1fr 1fr}.timeline{grid-template-columns:repeat(3,1fr);row-gap:2rem}.timeline::before,.timeline::after{display:none}.dining-showcase{grid-template-columns:1fr 1fr}.dining-card:first-child{grid-row:auto;grid-column:1/3}.footer-grid{grid-template-columns:1.3fr 1fr 1fr}.footer-col:last-child{grid-column:2}
+    }
+    @media(max-width:600px){
+      .container{width:min(100% - 1.25rem,1180px)}.section{padding:4.25rem 0}.section-head{gap:1rem;margin-bottom:2rem}.section-title{font-size:2.8rem}
+      .nav{top:34px;padding:.75rem}.nav.scrolled{top:0}.hero{min-height:760px}.hero-inner{padding:8.5rem 0 3rem}.hero h1{font-size:3.65rem}.hero-actions,.final-actions{display:grid;grid-template-columns:1fr 1fr}.hero-actions .btn,.final-actions .btn{min-width:0;padding:.7rem .4rem;font-size:.62rem}
+      .intro-grid{gap:2rem}.intro-media{min-height:390px}.intro-media img:first-child{inset:0 10% 10% 0}.intro-media img:last-child{border-width:6px}.intro-copy h2{font-size:3rem}
+      .experience-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;background:none;gap:.7rem;padding-bottom:.5rem}.experience-grid::-webkit-scrollbar,.room-gallery::-webkit-scrollbar{display:none}.experience-card,.experience-card:first-child,.experience-card:nth-child(6){flex:0 0 82vw;min-height:380px;grid-column:auto;scroll-snap-align:center}.experience-card p{max-height:70px;opacity:1}
+      .room-gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;grid-template:none}.room-card,.room-card:first-child{flex:0 0 88vw;height:520px;grid-row:auto;scroll-snap-align:center}.room-extra{grid-template-rows:1fr;opacity:1}.room-actions .btn{flex:1;padding:.5rem .25rem}
+      .amenity-grid{grid-template-columns:1fr 1fr}.amenity{min-height:155px;padding:1rem}.amenity h3{font-size:1.15rem}
+      .timeline{display:block;margin-top:2rem;padding-left:2.4rem}.timeline::before{display:block;top:0;bottom:0;left:18px;right:auto;width:1px;height:auto}.timeline::after{display:block;top:0;left:18px;width:1px;height:100%;transform-origin:top;animation:lineGrowY 7s ease-in-out infinite}.step{text-align:left;margin-bottom:1.4rem}.step-num{position:absolute;left:-2.4rem;width:36px;height:36px}.step h3{padding-top:.35rem}@keyframes lineGrowY{0%,10%{transform:scaleY(0)}70%,100%{transform:scaleY(1)}}
+      .dining-showcase{display:flex;overflow-x:auto;scroll-snap-type:x mandatory}.dining-card,.dining-card:first-child{flex:0 0 82vw;height:390px;grid-column:auto;scroll-snap-align:center}
+      .spa-image{min-height:420px}.spa-copy{padding:2rem 1rem}.spa-copy h2{font-size:3rem}.event-grid,.testimonial-grid{grid-template-columns:1fr}.event-card img{height:240px}.location-copy{padding:3rem 1rem}.map{min-height:440px}
+      .masonry{columns:2;column-gap:.5rem}.gallery-item{margin-bottom:.5rem}.gallery-item:nth-child(n){height:260px}.gallery-item:nth-child(3n+1){height:350px}.lightbox-nav{top:auto;bottom:3rem}.final-cta{min-height:560px;background-attachment:scroll}.final-cta h2{font-size:3.5rem}
+      .footer-grid{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}.footer-col:last-child{grid-column:auto}.footer-bottom{flex-direction:column}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-media,.timeline::after{animation:none}.reveal{opacity:1;transform:none;transition:none}*{transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <div class="demo-bar">Onairo Solutions portfolio concept — visual demo only. <a href="../index.html">Return to portfolio</a></div>
+  <nav class="nav" id="nav" aria-label="Primary navigation">
+    <a class="logo" href="#home"><strong>MAISON AURELIA</strong><span>Coastal Resort & Spa</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#rooms">Rooms</a></li><li><a href="#dining">Dining</a></li><li><a href="#wellness">Wellness</a></li>
+      <li><a href="#experiences">Experiences</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#location">Location</a></li>
+      <li><a class="btn btn-gold demo-action" href="#rooms">Book Your Stay</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="hero-media" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">A private sanctuary by the sea</p>
+        <h1>Experience Luxury Beyond Expectations</h1>
+        <p class="hero-sub">Elegant rooms, world-class hospitality and unforgettable stays designed for travellers who expect more.</p>
+        <div class="hero-actions"><a class="btn btn-gold demo-action" href="#rooms">Book Your Stay</a><a class="btn btn-light" href="#rooms">Explore Rooms</a></div>
+      </div>
+    </div>
+    <div class="hero-floats">
+      <div class="float-card"><strong>★★★★★ Luxury Resort</strong><span>An exceptional coastal retreat</span></div>
+      <div class="float-card"><strong>Award Winning Hospitality</strong><span>Welcoming over 12,000 happy guests</span></div>
+    </div>
+  </header>
+
+  <section class="section intro">
+    <div class="container intro-grid">
+      <div class="intro-media reveal">
+        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1100&q=85" alt="Elegant suite overlooking the resort" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=700&q=85" alt="Resort pool surrounded by palms" loading="lazy" />
+      </div>
+      <div class="intro-copy reveal">
+        <p class="eyebrow">The Aurelia experience</p>
+        <h2>Where every moment feels considered</h2>
+        <p>Set between a private cove and fragrant hillside gardens, Maison Aurelia pairs quiet architecture with intuitive service. Every space is composed for rest, connection and a deeper sense of place.</p>
+        <p>Wake to the sound of the sea, dine beneath the stars, and let each day unfold at your own pace.</p>
+        <div class="signature">A sanctuary made memorable.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section experiences" id="experiences">
+    <div class="container">
+      <div class="section-head reveal"><div><p class="eyebrow">Signature experiences</p><h2 class="section-title">The art of a beautiful stay</h2></div><p class="section-copy">From sea-facing suites to candlelit dining, discover experiences designed with elegance, warmth and an effortless sense of calm.</p></div>
+      <div class="experience-grid">
+        <article class="experience-card"><img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=84" alt="Luxury hotel suite" loading="lazy"><div><small>Stay</small><h3>Luxury Suites</h3><p>Generous spaces, private terraces and deeply comfortable interiors.</p></div></article>
+        <article class="experience-card"><img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=84" alt="Ocean view room" loading="lazy"><div><small>Awaken</small><h3>Ocean Views</h3><p>Wake to uninterrupted blue horizons.</p></div></article>
+        <article class="experience-card"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=84" alt="Fine dining table" loading="lazy"><div><small>Taste</small><h3>Fine Dining</h3><p>Seasonal menus with a coastal soul.</p></div></article>
+        <article class="experience-card"><img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=84" alt="Calm luxury spa" loading="lazy"><div><small>Restore</small><h3>Spa & Wellness</h3><p>Ancient rituals for modern wellbeing.</p></div></article>
+        <article class="experience-card"><img src="https://images.unsplash.com/photo-1573843981267-be1999ff37cd?auto=format&fit=crop&w=800&q=84" alt="Infinity pool by the sea" loading="lazy"><div><small>Drift</small><h3>Infinity Pool</h3><p>Swim where water meets the horizon.</p></div></article>
+        <article class="experience-card"><img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1000&q=84" alt="Luxury hotel ballroom" loading="lazy"><div><small>Gather</small><h3>Events & Celebrations</h3><p>Beautifully composed settings for landmark moments, private gatherings and inspired meetings.</p></div></article>
+        <article class="experience-card"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=84" alt="Outdoor destination wedding" loading="lazy"><div><small>Celebrate</small><h3>Garden Weddings</h3><p>Unforgettable vows beside the sea.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section rooms" id="rooms">
+    <div class="container">
+      <div class="section-head reveal"><div><p class="eyebrow">Rooms & residences</p><h2 class="section-title">Your private retreat</h2></div><p class="section-copy">Natural textures, calming light and thoughtful details create a collection of rooms made for unhurried living.</p></div>
+      <div class="room-gallery">
+        <article class="room-card"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1300&q=87" alt="Aurelia ocean residence" loading="lazy"><div class="room-info"><h3>Aurelia Ocean Residence</h3><div class="room-meta"><span>4 guests</span><span>King bed</span><span>115 m²</span></div><div class="room-price">From <strong>$890</strong> / night</div><div class="room-extra"><div><div class="room-features"><span>Private pool</span><span>Butler service</span><span>Sunset terrace</span></div><div class="room-actions"><a class="btn btn-light" href="#gallery">View Room</a><button class="btn btn-gold demo-action">Reserve Now</button></div></div></div></div></article>
+        <article class="room-card"><img src="https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&w=900&q=86" alt="Cliffside suite" loading="lazy"><div class="room-info"><h3>Cliffside Suite</h3><div class="room-meta"><span>2 guests</span><span>King bed</span><span>68 m²</span></div><div class="room-price">From <strong>$520</strong></div><div class="room-extra"><div><div class="room-features"><span>Sea view</span><span>Outdoor bath</span></div><div class="room-actions"><a class="btn btn-light" href="#gallery">View Room</a><button class="btn btn-gold demo-action">Reserve Now</button></div></div></div></div></article>
+        <article class="room-card"><img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=900&q=86" alt="Garden terrace room" loading="lazy"><div class="room-info"><h3>Garden Terrace Room</h3><div class="room-meta"><span>2 guests</span><span>King or twin</span><span>48 m²</span></div><div class="room-price">From <strong>$340</strong></div><div class="room-extra"><div><div class="room-features"><span>Private garden</span><span>Rain shower</span></div><div class="room-actions"><a class="btn btn-light" href="#gallery">View Room</a><button class="btn btn-gold demo-action">Reserve Now</button></div></div></div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section amenities">
+    <div class="container">
+      <div class="section-head reveal"><div><p class="eyebrow">Signature amenities</p><h2 class="section-title">Everything, beautifully at hand</h2></div><p class="section-copy">Considered comforts and exceptional service, available whenever the moment calls for them.</p></div>
+      <div class="amenity-grid">
+        <article class="amenity"><span class="amenity-icon">01</span><div><h3>Infinity Pool</h3><p>Horizon-edge relaxation</p></div></article><article class="amenity"><span class="amenity-icon">02</span><div><h3>Spa & Massage</h3><p>Restorative rituals</p></div></article>
+        <article class="amenity"><span class="amenity-icon">03</span><div><h3>Private Beach</h3><p>Reserved for guests</p></div></article><article class="amenity"><span class="amenity-icon">04</span><div><h3>Fitness Centre</h3><p>Open day and night</p></div></article>
+        <article class="amenity"><span class="amenity-icon">05</span><div><h3>Airport Transfer</h3><p>Private arrival service</p></div></article><article class="amenity"><span class="amenity-icon">06</span><div><h3>Fine Dining</h3><p>Three signature venues</p></div></article>
+        <article class="amenity"><span class="amenity-icon">07</span><div><h3>Business Lounge</h3><p>Quiet and connected</p></div></article><article class="amenity"><span class="amenity-icon">08</span><div><h3>Complimentary Wi-Fi</h3><p>Across the resort</p></div></article>
+        <article class="amenity"><span class="amenity-icon">09</span><div><h3>Kids Club</h3><p>Inspired young explorers</p></div></article><article class="amenity"><span class="amenity-icon">10</span><div><h3>Valet Parking</h3><p>Effortless arrivals</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section journey">
+    <div class="container"><div class="section-head reveal"><div><p class="eyebrow">The guest journey</p><h2 class="section-title">From arrival to lasting memory</h2></div><p class="section-copy">Hospitality that anticipates what you need, while leaving every day open to possibility.</p></div>
+      <div class="timeline"><article class="step"><div class="step-num">1</div><h3>Arrival</h3><p>Private welcome</p></article><article class="step"><div class="step-num">2</div><h3>Check In</h3><p>Seamless and personal</p></article><article class="step"><div class="step-num">3</div><h3>Relax</h3><p>Settle into calm</p></article><article class="step"><div class="step-num">4</div><h3>Dining</h3><p>Flavours to remember</p></article><article class="step"><div class="step-num">5</div><h3>Adventure</h3><p>Discover the coast</p></article><article class="step"><div class="step-num">6</div><h3>Memorable Stay</h3><p>Carry it with you</p></article></div>
+    </div>
+  </section>
+
+  <section class="section dining" id="dining">
+    <div class="container"><div class="section-head reveal"><div><p class="eyebrow">Dining experiences</p><h2 class="section-title">A taste of the coast</h2></div><p class="section-copy">Local ingredients, expressive cooking and settings that make every table feel like a destination.</p></div>
+      <div class="dining-showcase"><article class="dining-card"><img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=1100&q=86" alt="Rooftop fine dining restaurant" loading="lazy"><div><small>DINNER · SEA VIEW</small><h3>Solara Rooftop</h3></div></article><article class="dining-card"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=85" alt="Breakfast buffet" loading="lazy"><div><small>MORNING</small><h3>The Breakfast Room</h3></div></article><article class="dining-card"><img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=800&q=85" alt="Sky lounge bar" loading="lazy"><div><small>COCKTAILS</small><h3>Sky Lounge</h3></div></article><article class="dining-card"><img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=800&q=85" alt="Calm coffee lounge" loading="lazy"><div><small>ALL DAY</small><h3>Maison Café</h3></div></article><article class="dining-card"><img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=85" alt="Wine cellar" loading="lazy"><div><small>PRIVATE TASTINGS</small><h3>The Wine Cellar</h3></div></article></div>
+    </div>
+  </section>
+
+  <section class="spa" id="wellness"><div class="spa-grid"><div class="spa-image"><img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=1300&q=86" alt="Luxury wellness treatment room" loading="lazy"></div><div class="spa-copy reveal"><p class="eyebrow">Aurelia wellness</p><h2>Return to your natural rhythm</h2><p>A sanctuary of soft light, natural stone and botanical aromas. Our rituals combine skilled touch with time-honoured practices to restore both body and mind.</p><div class="spa-list"><span>Massage</span><span>Sauna</span><span>Steam Room</span><span>Yoga</span><span>Meditation</span><span>Relaxation Lounge</span></div><a class="btn btn-dark demo-action" href="#wellness">Discover the Spa</a></div></div></section>
+
+  <section class="section events" id="events">
+    <div class="container"><div class="section-head reveal"><div><p class="eyebrow">Weddings & events</p><h2 class="section-title">Remarkable settings for meaningful moments</h2></div><p class="section-copy">From intimate vows to ambitious gatherings, every occasion is shaped around your vision.</p></div>
+      <div class="event-grid"><article class="event-card reveal"><img src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=900&q=85" alt="Luxury ballroom" loading="lazy"><div><h3>The Aurelia Ballroom</h3><p>Grand celebrations for up to 350 guests, with bespoke menus and dedicated event direction.</p></div></article><article class="event-card reveal"><img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=900&q=85" alt="Modern conference room" loading="lazy"><div><h3>Executive Meetings</h3><p>Quiet, light-filled meeting spaces with seamless technology and attentive support.</p></div></article><article class="event-card reveal"><img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=900&q=85" alt="Garden wedding reception" loading="lazy"><div><h3>Garden Weddings</h3><p>Exchange vows among olive trees, sea air and a golden coastal sunset.</p></div></article></div>
+    </div>
+  </section>
+
+  <section class="section testimonials"><div class="container"><div class="section-head reveal"><div><p class="eyebrow">Guest stories</p><h2 class="section-title">Stays worth remembering</h2></div><p class="section-copy">The details fade. The feeling stays.</p></div>
+    <div class="testimonial-grid"><article class="testimonial"><div class="stars">★★★★★</div><blockquote>“Every detail felt effortless. Our suite, the views and the kindness of the team were exceptional.”</blockquote><div class="guest"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&q=80" alt="Guest portrait" loading="lazy"><div><strong>Amelia Hart</strong><span>United Kingdom</span></div></div></article><article class="testimonial"><div class="stars">★★★★★</div><blockquote>“A rare place that feels refined without ever feeling formal. We extended our stay twice.”</blockquote><div class="guest"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="Guest portrait" loading="lazy"><div><strong>Daniel Foster</strong><span>Australia</span></div></div></article><article class="testimonial"><div class="stars">★★★★★</div><blockquote>“Our wedding weekend was beyond beautiful. The team made every moment deeply personal.”</blockquote><div class="guest"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Guest portrait" loading="lazy"><div><strong>Sofia Mendes</strong><span>Portugal</span></div></div></article></div>
+  </div></section>
+
+  <section class="location" id="location"><div class="location-grid"><div class="location-copy reveal"><p class="eyebrow">The destination</p><h2>Close to everything. Away from it all.</h2><p class="section-copy">Tucked along a quiet Mediterranean cove, Maison Aurelia is moments from the old town and a world away from the everyday.</p><ul class="nearby"><li><b>International Airport</b><span>35 minutes</span></li><li><b>Historic Old Town</b><span>12 minutes</span></li><li><b>Marina & Restaurants</b><span>8 minutes</span></li><li><b>Designer Shopping</b><span>15 minutes</span></li><li><b>Private Beach</b><span>On property</span></li><li><b>Coastal Landmarks</b><span>20 minutes</span></li></ul></div><div class="map" aria-label="Decorative destination map"><div class="map-card"><div class="map-pin">◆</div><h3>Maison Aurelia</h3><p>Azure Coast · Mediterranean</p><p>Demo map — not interactive</p></div></div></div></section>
+
+  <section class="section gallery" id="gallery"><div class="container"><div class="section-head reveal"><div><p class="eyebrow">The gallery</p><h2 class="section-title">A glimpse of Aurelia</h2></div><p class="section-copy">Explore moments of stillness, celebration and coastal beauty.</p></div>
+    <div class="masonry" id="galleryGrid">
+      <button class="gallery-item" data-caption="The infinity pool at dusk"><img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=900&q=85" alt="Infinity pool at dusk" loading="lazy"><span>Infinity at dusk</span></button>
+      <button class="gallery-item" data-caption="Quiet mornings in the Ocean Residence"><img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=900&q=85" alt="Luxury ocean suite" loading="lazy"><span>Ocean Residence</span></button>
+      <button class="gallery-item" data-caption="Private dining beneath the stars"><img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=900&q=85" alt="Elegant outdoor dining" loading="lazy"><span>Dining beneath the stars</span></button>
+      <button class="gallery-item" data-caption="Aurelia Spa"><img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=900&q=85" alt="Spa massage treatment" loading="lazy"><span>Aurelia Spa</span></button>
+      <button class="gallery-item" data-caption="The private cove"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=85" alt="Private beach cove" loading="lazy"><span>The private cove</span></button>
+      <button class="gallery-item" data-caption="Garden celebrations"><img src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=900&q=85" alt="Elegant garden event" loading="lazy"><span>Garden celebrations</span></button>
+      <button class="gallery-item" data-caption="Sunset from the terrace"><img src="https://images.unsplash.com/photo-1455587734955-081b22074882?auto=format&fit=crop&w=900&q=85" alt="Luxury hotel terrace" loading="lazy"><span>Sunset terrace</span></button>
+      <button class="gallery-item" data-caption="Slow coastal mornings"><img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=900&q=85" alt="Coastal luxury resort" loading="lazy"><span>Coastal mornings</span></button>
+    </div>
+  </div></section>
+
+  <section class="final-cta"><div class="final-inner reveal"><p class="eyebrow" style="justify-content:center">Begin your story</p><h2>Your Next Luxury Escape Awaits</h2><p>Discover a stay shaped around quiet luxury, genuine warmth and moments you will carry home.</p><div class="final-actions"><button class="btn btn-gold demo-action">Book Your Stay</button><button class="btn btn-light demo-action">Contact Hotel</button></div></div></section>
+  <footer><div class="container"><div class="footer-grid"><div class="footer-brand"><a class="logo" href="#home"><strong>MAISON AURELIA</strong><span>Coastal Resort & Spa</span></a><p>A private Mediterranean sanctuary for travellers who value beauty, calm and deeply personal hospitality.</p><div class="social"><a href="#" aria-label="Instagram">ig</a><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="Pinterest">p</a></div></div><div class="footer-col"><h3>Discover</h3><a href="#rooms">Rooms & Suites</a><a href="#dining">Dining</a><a href="#wellness">Spa & Wellness</a><a href="#experiences">Experiences</a></div><div class="footer-col"><h3>Explore</h3><a href="#gallery">Gallery</a><a href="#location">Location</a><a href="#events">Weddings</a><a href="#home">Contact</a></div><div class="footer-col"><h3>Contact</h3><a href="#">+00 123 456 789</a><a href="#">stay@maisonaurelia.com</a><a href="#">Azure Coast, Mediterranean</a></div></div><div class="footer-bottom"><span>© 2026 Maison Aurelia. Demo concept by Onairo Solutions.</span><span>Front-end showcase · No real bookings are processed</span></div></div></footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Gallery image viewer"><button class="lightbox-close" aria-label="Close gallery">×</button><button class="lightbox-nav lightbox-prev" aria-label="Previous image">←</button><img src="" alt=""><button class="lightbox-nav lightbox-next" aria-label="Next image">→</button><div class="lightbox-caption"></div></div>
+  <div class="toast" id="toast" role="status">Demo only — no booking will be submitted.</div>
+  <script>
+    const nav=document.getElementById("nav"),toggle=document.getElementById("navToggle"),links=document.getElementById("navLinks");
+    addEventListener("scroll",()=>nav.classList.toggle("scrolled",scrollY>50),{passive:true});
+    function closeMenu(){links.classList.remove("open");toggle.classList.remove("open");toggle.setAttribute("aria-expanded","false");document.body.classList.remove("menu-open")}
+    toggle.addEventListener("click",()=>{const open=!links.classList.contains("open");links.classList.toggle("open",open);toggle.classList.toggle("open",open);toggle.setAttribute("aria-expanded",String(open));document.body.classList.toggle("menu-open",open)});
+    links.querySelectorAll("a").forEach(a=>a.addEventListener("click",closeMenu));
+    document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeMenu();closeLightbox()}});
+    const observer=new IntersectionObserver(entries=>entries.forEach(e=>e.target.classList.toggle("visible",e.isIntersecting)),{threshold:.12});
+    document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+    const toast=document.getElementById("toast");let toastTimer;
+    document.querySelectorAll(".demo-action").forEach(el=>el.addEventListener("click",e=>{e.preventDefault();toast.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove("show"),2600)}));
+
+    const items=[...document.querySelectorAll(".gallery-item")],lightbox=document.getElementById("lightbox"),lightImg=lightbox.querySelector("img"),caption=lightbox.querySelector(".lightbox-caption");let current=0,startX=0;
+    function showImage(index){current=(index+items.length)%items.length;const source=items[current].querySelector("img");lightImg.src=source.src;lightImg.alt=source.alt;caption.textContent=items[current].dataset.caption}
+    function openLightbox(index){showImage(index);lightbox.classList.add("open");document.body.classList.add("lightbox-open");lightbox.querySelector(".lightbox-close").focus()}
+    function closeLightbox(){lightbox.classList.remove("open");document.body.classList.remove("lightbox-open")}
+    items.forEach((item,index)=>item.addEventListener("click",()=>openLightbox(index)));
+    lightbox.querySelector(".lightbox-close").addEventListener("click",closeLightbox);lightbox.querySelector(".lightbox-prev").addEventListener("click",()=>showImage(current-1));lightbox.querySelector(".lightbox-next").addEventListener("click",()=>showImage(current+1));
+    lightbox.addEventListener("click",e=>{if(e.target===lightbox)closeLightbox()});
+    document.addEventListener("keydown",e=>{if(!lightbox.classList.contains("open"))return;if(e.key==="ArrowLeft")showImage(current-1);if(e.key==="ArrowRight")showImage(current+1)});
+    lightbox.addEventListener("touchstart",e=>startX=e.touches[0].clientX,{passive:true});lightbox.addEventListener("touchend",e=>{const dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>50)showImage(current+(dx<0?1:-1))},{passive:true});
+  </script>
+</body>
+</html>

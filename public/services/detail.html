@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Service Detail — Onairo Solutions</title>
+  <meta name="description" content="Learn more about Onairo Solutions services — overview, benefits, process, technology, and FAQs."/>
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../shared/css/tokens.css"/>
+  <link rel="stylesheet" href="../shared/css/base.css"/>
+  <link rel="stylesheet" href="../shared/css/components.css"/>
+  <style>
+    .page-hero {
+      padding: 8.5rem 0 3.5rem;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(37,99,235,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37,99,235,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      width: 480px; height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(37,99,235,0.15), transparent 68%);
+      top: 10%; right: -5%;
+      pointer-events: none;
+    }
+    .page-hero .container { position: relative; z-index: 1; }
+    .svc-icon-lg {
+      width: 64px; height: 64px;
+      border-radius: 16px;
+      background: rgba(37,99,235,0.12);
+      border: 1px solid rgba(37,99,235,0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      margin-bottom: 1rem;
+      max-width: 780px;
+    }
+    .page-hero .lead {
+      color: var(--slate);
+      font-size: 1.08rem;
+      max-width: 620px;
+      line-height: 1.75;
+      margin-bottom: 1.75rem;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+    .breadcrumb {
+      display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center;
+      font-size: 0.85rem; color: var(--slate); margin-bottom: 1.5rem;
+    }
+    .breadcrumb a { color: var(--cobalt-light); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .benefit-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.15rem 1.25rem;
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+    }
+    .benefit-item .check {
+      color: var(--cobalt-light);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .benefit-item p { color: var(--slate-light); font-size: 0.95rem; line-height: 1.5; }
+    .process-list {
+      display: grid;
+      gap: 0.85rem;
+      max-width: 720px;
+    }
+    .process-row {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 1rem;
+      align-items: center;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.25rem;
+    }
+    .process-row .n {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: rgba(37,99,235,0.12);
+      color: var(--cobalt-light);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+    .process-row span { font-weight: 600; }
+    .tech-cloud {
+      display: flex; flex-wrap: wrap; gap: 0.65rem;
+    }
+    .tech-cloud span {
+      padding: 0.65rem 1.1rem;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--slate-light);
+    }
+    .cta-band {
+      background:
+        radial-gradient(circle at 20% 50%, rgba(37,99,235,0.18), transparent 45%),
+        radial-gradient(circle at 80% 40%, rgba(59,130,246,0.12), transparent 40%),
+        var(--navy2);
+      border-block: 1px solid var(--border);
+      text-align: center;
+    }
+    .cta-band h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      margin-bottom: 0.85rem;
+    }
+    .cta-band p {
+      color: var(--slate);
+      max-width: 520px;
+      margin: 0 auto 1.75rem;
+    }
+    .cta-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.85rem; }
+    .not-found {
+      padding: 10rem 0 6rem;
+      text-align: center;
+    }
+    .not-found h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin-bottom: 0.85rem;
+    }
+    .not-found p { color: var(--slate); margin-bottom: 1.75rem; }
+    #svcContent[hidden], #svcNotFound[hidden] { display: none !important; }
+    @media (max-width: 700px) {
+      .benefit-grid { grid-template-columns: 1fr; }
+      .page-hero { padding-top: 7rem; }
+    }
+  </style>
+</head>
+<body data-root=".." data-page="services">
+  <div id="site-nav"></div>
+
+  <div id="svcNotFound" class="not-found" hidden>
+    <div class="container">
+      <p class="section-tag">Not found</p>
+      <h1>Service not found</h1>
+      <p>We couldn’t find that service. Browse the full catalog or request a custom engagement.</p>
+      <a class="btn btn-primary" href="index.html">Back to Services</a>
+    </div>
+  </div>
+
+  <div id="svcContent" hidden>
+    <header class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb reveal" aria-label="Breadcrumb">
+          <a href="index.html">Services</a>
+          <span>/</span>
+          <span id="crumbTitle">Detail</span>
+        </nav>
+        <div class="svc-icon-lg reveal" id="svcIcon"></div>
+        <h1 class="reveal" id="svcTitle"></h1>
+        <p class="lead reveal" id="svcShort"></p>
+        <div class="hero-actions reveal">
+          <a class="btn btn-primary" id="waHeroCta" href="#" target="_blank" rel="noopener">Discuss this service</a>
+          <a class="btn btn-secondary" href="../pages/request-quote.html">Request Quote</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="container">
+        <p class="section-tag reveal">Overview</p>
+        <h2 class="section-title reveal">What this engagement covers</h2>
+        <p class="section-sub reveal" id="svcOverview" style="margin-bottom:0;max-width:720px;"></p>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <p class="section-tag reveal">Benefits</p>
+        <h2 class="section-title reveal">Why teams choose this</h2>
+        <div class="benefit-grid" id="svcBenefits"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="section-tag reveal">Process</p>
+        <h2 class="section-title reveal">How delivery unfolds</h2>
+        <div class="process-list" id="svcProcess"></div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <p class="section-tag reveal">Technology</p>
+        <h2 class="section-title reveal">Tools &amp; capabilities</h2>
+        <div class="tech-cloud reveal" id="svcTech"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="section-tag reveal">FAQ</p>
+        <h2 class="section-title reveal">Common questions</h2>
+        <div class="faq-list" id="svcFaq"></div>
+      </div>
+    </section>
+
+    <section class="section cta-band">
+      <div class="container">
+        <h2 class="reveal" id="ctaTitle">Let’s build this together</h2>
+        <p class="reveal">Share your goals and we’ll outline scope, timeline, and a clear starting point.</p>
+        <div class="cta-actions reveal">
+          <a class="btn btn-primary" id="waCta" href="#" target="_blank" rel="noopener">WhatsApp us</a>
+          <a class="btn btn-secondary" href="index.html">All Services</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="site-footer"></div>
+  <div id="site-chrome-end"></div>
+
+  <script src="../shared/js/config.js"></script>
+  <script src="../shared/js/services-data.js"></script>
+  <script src="../components/chrome.js"></script>
+  <script src="../shared/js/main.js"></script>
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var id = params.get('id');
+      var svc = (ONAIRO.services || []).find(function (s) { return s.id === id; });
+      var notFound = document.getElementById('svcNotFound');
+      var content = document.getElementById('svcContent');
+
+      if (!svc) {
+        notFound.hidden = false;
+        document.title = 'Service Not Found — Onairo Solutions';
+        return;
+      }
+
+      content.hidden = false;
+      document.title = svc.title + ' — Onairo Solutions';
+      document.querySelector('meta[name="description"]').setAttribute('content', svc.short);
+
+      document.getElementById('crumbTitle').textContent = svc.title;
+      document.getElementById('svcIcon').textContent = svc.icon;
+      document.getElementById('svcTitle').textContent = svc.title;
+      document.getElementById('svcShort').textContent = svc.short;
+      document.getElementById('svcOverview').textContent = svc.overview;
+      document.getElementById('ctaTitle').textContent = 'Ready for ' + svc.title + '?';
+
+      var waMsg = 'Hi Onairo Solutions, I\'m interested in ' + svc.title + '.';
+      document.getElementById('waHeroCta').href = ONAIRO.waUrl(waMsg);
+      document.getElementById('waCta').href = ONAIRO.waUrl(waMsg);
+
+      document.getElementById('svcBenefits').innerHTML = (svc.benefits || []).map(function (b) {
+        return '<div class="benefit-item reveal"><span class="check">✓</span><p>' + b + '</p></div>';
+      }).join('');
+
+      document.getElementById('svcProcess').innerHTML = (svc.process || []).map(function (step, i) {
+        var n = String(i + 1).padStart(2, '0');
+        return '<div class="process-row reveal"><div class="n">' + n + '</div><span>' + step + '</span></div>';
+      }).join('');
+
+      document.getElementById('svcTech').innerHTML = (svc.tech || []).map(function (t) {
+        return '<span>' + t + '</span>';
+      }).join('');
+
+      document.getElementById('svcFaq').innerHTML = (svc.faqs || []).map(function (f) {
+        return '<div class="faq-item reveal"><button type="button" class="faq-q">' + f.q + '<span class="icon">+</span></button><div class="faq-a">' + f.a + '</div></div>';
+      }).join('');
+
+      document.querySelectorAll('.faq-item').forEach(function (item) {
+        var btn = item.querySelector('.faq-q');
+        if (!btn) return;
+        btn.addEventListener('click', function () {
+          var open = item.classList.contains('open');
+          item.parentElement.querySelectorAll('.faq-item.open').forEach(function (x) { x.classList.remove('open'); });
+          if (!open) item.classList.add('open');
+        });
+      });
+
+      document.querySelectorAll('#svcContent .reveal').forEach(function (el) {
+        el.classList.add('visible');
+      });
+    })();
+  </script>
+</body>
+</html>

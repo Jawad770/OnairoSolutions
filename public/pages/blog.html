@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog | Website Design, Software & EduTrack Insights | Onairo Solutions</title>
+  <meta name="description" content="SEO-friendly insights on website design, software development, school management, AI, SEO, and business growth from Onairo Solutions."/>
+  <link rel="canonical" href="https://onairosolutions.com/pages/blog.html"/>
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../shared/css/tokens.css"/>
+  <link rel="stylesheet" href="../shared/css/base.css"/>
+  <link rel="stylesheet" href="../shared/css/components.css"/>
+  <link rel="stylesheet" href="../shared/css/seo.css"/>
+  <style>
+    .page-hero { padding: 8.5rem 0 3.5rem; border-bottom: 1px solid var(--border); }
+    .page-hero h1 { font-family: var(--font-display); font-size: clamp(2.1rem, 4.5vw, 3.3rem); font-weight: 800; letter-spacing: var(--heading-tracking, -0.02em); line-height: var(--heading-line-height, 1.18); margin-bottom: 1rem; max-width: 700px; }
+    .page-hero h1 em { font-style: normal; color: var(--cobalt-light); }
+    .page-hero .lead { color: var(--slate); font-size: 1.08rem; max-width: 560px; line-height: 1.75; }
+    .blog-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.75rem; }
+    .blog-filters button { border: 1px solid var(--border); background: transparent; color: var(--slate-light); border-radius: 999px; padding: 0.45rem 0.9rem; cursor: pointer; font: inherit; font-size: 0.82rem; }
+    .blog-filters button.active, .blog-filters button:hover { border-color: rgba(37,99,235,0.45); color: var(--white); }
+    .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .blog-card { background: var(--card2); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column; text-decoration: none; color: inherit; transition: border-color 0.3s, transform 0.3s; }
+    .blog-card:hover { border-color: rgba(37,99,235,0.4); transform: translateY(-6px); }
+    .blog-thumb { height: 160px; background: linear-gradient(135deg, #0e1525, #1e3a8a 60%, #2563eb); }
+    .blog-thumb.alt1 { background: linear-gradient(135deg, #0e1525, #0ea5e9 70%); }
+    .blog-thumb.alt2 { background: linear-gradient(135deg, #0e1525, #10b981 70%); }
+    .blog-thumb.alt3 { background: linear-gradient(135deg, #0e1525, #8b5cf6 70%); }
+    .blog-thumb.alt4 { background: linear-gradient(135deg, #0e1525, #f59e0b 70%); }
+    .blog-thumb.alt5 { background: linear-gradient(135deg, #0e1525, #f43f5e 70%); }
+    .blog-body { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
+    .blog-meta { display: flex; gap: 0.75rem; align-items: center; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cobalt-light); margin-bottom: 0.75rem; }
+    .blog-card h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; margin-bottom: 0.65rem; line-height: 1.35; }
+    .blog-card p { color: var(--slate); font-size: 0.92rem; line-height: 1.65; margin-bottom: 1.25rem; flex: 1; }
+    .blog-card .read { font-size: 0.85rem; font-weight: 600; color: var(--cobalt-light); }
+    .cta-band { background: var(--navy2); border-block: 1px solid var(--border); text-align: center; }
+    .cta-band h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.3rem); margin-bottom: 0.85rem; }
+    .cta-band p { color: var(--slate); max-width: 520px; margin: 0 auto 1.75rem; }
+    .cta-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.85rem; }
+    @media (max-width: 800px) { .blog-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body data-root=".." data-page="blog">
+  <div id="site-nav"></div>
+
+  <header class="page-hero">
+    <div class="container">
+      <nav class="seo-breadcrumbs" aria-label="Breadcrumb">
+        <a href="../../index.html">Home</a><span>/</span><span>Blog</span>
+      </nav>
+      <p class="section-tag reveal">Insights hub</p>
+      <h1 class="reveal">Ideas for building <em>better digital businesses</em></h1>
+      <p class="lead reveal">Articles on website design, software development, school management, SEO, AI, and growth — written for operators who ship.</p>
+      <div class="seo-internal-links">
+        <a href="../services/index.html">Services</a>
+        <a href="../portfolio/index.html">Portfolio</a>
+        <a href="../products/edutrack.html">EduTrack</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-tag reveal">Articles</p>
+        <h2 class="section-title reveal">Browse by category</h2>
+        <p class="section-sub reveal">Filter topics or open any article for SEO-ready guidance.</p>
+      </div>
+      <div class="blog-filters" id="blogFilters" role="tablist" aria-label="Blog categories"></div>
+      <div class="blog-grid" id="blogGrid"></div>
+    </div>
+  </section>
+
+  <section class="section cta-band">
+    <div class="container">
+      <h2 class="reveal">Want a topic covered?</h2>
+      <p class="reveal">Tell us what you’re building — we’ll share relevant guidance or add it to the insights pipeline.</p>
+      <div class="cta-actions reveal">
+        <a class="btn btn-primary" id="waCta" href="#" target="_blank" rel="noopener">Message on WhatsApp</a>
+        <a class="btn btn-secondary" href="contact.html">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+  <div id="site-chrome-end"></div>
+
+  <script src="../shared/js/config.js"></script>
+  <script src="../shared/js/seo-data.js"></script>
+  <script src="../shared/js/seo.js"></script>
+  <script src="../shared/js/blog-data.js"></script>
+  <script src="../components/chrome.js"></script>
+  <script src="../shared/js/main.js"></script>
+  <script>
+    (function () {
+      var filters = document.getElementById('blogFilters');
+      var grid = document.getElementById('blogGrid');
+      var active = 'all';
+      var cats = ONAIRO.blogCategories || [];
+      var posts = ONAIRO.blogPosts || [];
+
+      function labelFor(id) {
+        var c = cats.find(function (x) { return x.id === id; });
+        return c ? c.label : id;
+      }
+
+      function renderFilters() {
+        filters.innerHTML = cats.map(function (c) {
+          return '<button type="button" data-cat="' + c.id + '" class="' + (c.id === active ? 'active' : '') + '">' + c.label + '</button>';
+        }).join('');
+      }
+
+      function renderPosts() {
+        var list = posts.filter(function (p) { return active === 'all' || p.category === active; });
+        grid.innerHTML = list.map(function (p) {
+          return '<a class="blog-card reveal" href="blog/' + p.slug + '.html">' +
+            '<div class="blog-thumb ' + (p.thumb || '') + '" role="img" aria-label="' + p.title + '"></div>' +
+            '<div class="blog-body">' +
+            '<div class="blog-meta"><span>' + labelFor(p.category) + '</span><span>·</span><span>' + p.minutes + ' min</span></div>' +
+            '<h3>' + p.title + '</h3>' +
+            '<p>' + p.description + '</p>' +
+            '<span class="read">Read article →</span>' +
+            '</div></a>';
+        }).join('');
+        if (typeof ONAIRO.observeReveals === 'function') ONAIRO.observeReveals(grid);
+      }
+
+      filters.addEventListener('click', function (e) {
+        var btn = e.target.closest('button[data-cat]');
+        if (!btn) return;
+        active = btn.getAttribute('data-cat');
+        renderFilters();
+        renderPosts();
+      });
+
+      document.getElementById('waCta').href = ONAIRO.waUrl("Hi Onairo Solutions, I was reading your blog and have a question.");
+      renderFilters();
+      renderPosts();
+    })();
+  </script>
+</body>
+</html>

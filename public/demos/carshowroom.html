@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DriveZone Motors — Lahore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:       #080a0f;
+      --bg2:      #0d1017;
+      --surface:  #131720;
+      --red:      #e02020;
+      --red-lt:   #ff4444;
+      --silver:   #c8d0dc;
+      --muted:    #6b7689;
+      --border:   rgba(200,208,220,0.1);
+      --wa:       #25D366;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--silver); line-height:1.65; opacity:0; animation:fadeIn .5s ease forwards; overflow-x:hidden; }
+    @keyframes fadeIn { to { opacity:1; } }
+    h1,h2,h3,h4 { font-family:'Syne',sans-serif; font-weight:700; letter-spacing:-.02em; color:#fff; }
+
+    .demo-banner { background:linear-gradient(90deg,var(--red),#8b0000); color:#fff; text-align:center; padding:.55rem 1rem; font-size:.78rem; font-weight:500; }
+    .demo-banner a { color:#ffd0d0; font-weight:700; }
+
+    nav { position:sticky; top:0; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:.9rem 5%; background:rgba(8,10,15,.95); backdrop-filter:blur(18px); border-bottom:1px solid var(--border); }
+    .logo { font-family:'Syne',sans-serif; font-weight:800; font-size:1.3rem; text-decoration:none; display:flex; align-items:center; gap:.6rem; }
+    .logo-icon { width:36px; height:36px; background:var(--red); border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:1.1rem; }
+    .logo-text { color:#fff; }
+    .logo-text span { display:block; font-size:.65rem; color:var(--muted); letter-spacing:.12em; text-transform:uppercase; font-weight:400; }
+    .nav-links { display:flex; gap:1.75rem; list-style:none; }
+    .nav-links a { color:var(--muted); text-decoration:none; font-size:.875rem; font-weight:500; transition:color .2s; }
+    .nav-links a:hover, .nav-links a.active { color:#fff; }
+    .nav-cta { background:var(--red)!important; color:#fff!important; padding:.5rem 1.25rem; border-radius:6px; font-weight:700!important; }
+    .nav-toggle {
+      min-width: 44px; min-height: 44px; box-sizing: border-box; display:none; flex-direction:column; gap:5px; background:none; border:1px solid var(--border); border-radius:6px; padding:8px; cursor:pointer; }
+    .nav-toggle span { display:block; width:22px; height:2px; background:#fff; transition:.3s; }
+    .nav-toggle.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity:0; }
+    .nav-toggle.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+    /* HERO — full-bleed cinematic */
+    #hero { height:100vh; min-height:600px; position:relative; overflow:hidden; display:flex; align-items:flex-end; }
+    .hero-bg { position:absolute; inset:0; background:linear-gradient(to right,rgba(8,10,15,.96) 0%,rgba(8,10,15,.7) 50%,rgba(8,10,15,.2) 100%), url('../images/carshowroom/hero.jpg') center/cover no-repeat; }
+    .hero-stripe { position:absolute; top:0; right:0; width:3px; height:100%; background:linear-gradient(to bottom,transparent,var(--red),transparent); }
+    .hero-content { position:relative; z-index:1; padding:0 5% 5rem; max-width:640px; }
+    .hero-badge { display:inline-flex; align-items:center; gap:.5rem; font-size:.72rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--red-lt); margin-bottom:1.25rem; }
+    .hero-badge::after { content:''; flex:1; height:1px; background:var(--red-lt); width:30px; }
+    #hero h1 { font-size:clamp(2.6rem,6vw,4.4rem); line-height:1.04; margin-bottom:1rem; color:#fff; }
+    #hero h1 .accent { color:var(--red-lt); }
+    .hero-sub { color:var(--muted); font-size:1.05rem; max-width:460px; margin-bottom:2.25rem; }
+    .hero-btns { display:flex; gap:.75rem; flex-wrap:wrap; }
+    .btn-red { display:inline-flex; align-items:center; gap:.6rem; background:var(--red); color:#fff; padding:.9rem 2rem; border-radius:8px; font-weight:700; text-decoration:none; transition:background .2s,transform .2s; box-shadow:0 6px 24px rgba(224,32,32,.3); }
+    .btn-red:hover { background:var(--red-lt); transform:translateY(-2px); }
+    .btn-outline { display:inline-flex; align-items:center; gap:.5rem; color:var(--silver); border:1px solid var(--border); padding:.9rem 1.75rem; border-radius:8px; font-weight:600; text-decoration:none; transition:border-color .2s,background .2s; }
+    .btn-outline:hover { border-color:var(--silver); background:rgba(255,255,255,.05); }
+    .hero-ticker { position:absolute; bottom:0; left:0; right:0; background:var(--red); padding:.5rem 0; overflow:hidden; }
+    .ticker-inner { display:flex; gap:3rem; white-space:nowrap; animation:ticker 18s linear infinite; font-size:.78rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:#fff; padding:0 2rem; }
+    @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+    section { padding:5rem 5%; }
+    .section-tag { font-size:.72rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--red-lt); margin-bottom:.5rem; }
+    .section-title { font-size:clamp(1.75rem,3vw,2.5rem); margin-bottom:.75rem; }
+    .section-desc { color:var(--muted); max-width:520px; margin-bottom:2.5rem; }
+
+    /* INVENTORY */
+    #inventory { background:var(--bg2); }
+    .filter-bar { display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:2rem; }
+    .filter-btn { background:var(--surface); border:1px solid var(--border); color:var(--muted); padding:.45rem 1.1rem; border-radius:100px; font-size:.82rem; font-weight:600; cursor:pointer; transition:all .2s; font-family:'Inter',sans-serif; }
+    .filter-btn.active, .filter-btn:hover { background:var(--red); color:#fff; border-color:var(--red); }
+    .cars-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; }
+    .car-card { background:var(--surface); border:1px solid var(--border); border-radius:16px; overflow:hidden; transition:transform .3s,box-shadow .3s; position:relative; }
+    .car-card:hover { transform:translateY(-6px); box-shadow:0 24px 60px rgba(0,0,0,.6); border-color:rgba(224,32,32,.3); }
+    .car-img { height:210px; overflow:hidden; position:relative; }
+    .car-img img { width:100%; height:100%; object-fit:cover; transition:transform .5s; }
+    .car-card:hover .car-img img { transform:scale(1.05); }
+    .car-tag { position:absolute; top:1rem; left:1rem; background:var(--red); color:#fff; font-size:.65rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:.3rem .7rem; border-radius:4px; }
+    .car-year { position:absolute; top:1rem; right:1rem; background:rgba(8,10,15,.8); color:var(--silver); font-size:.72rem; font-weight:600; padding:.3rem .7rem; border-radius:4px; }
+    .car-body { padding:1.25rem 1.5rem; }
+    .car-brand { font-size:.72rem; color:var(--red-lt); font-weight:600; letter-spacing:.1em; text-transform:uppercase; margin-bottom:.2rem; }
+    .car-body h3 { font-size:1.1rem; color:#fff; margin-bottom:.75rem; }
+    .car-specs { display:grid; grid-template-columns:1fr 1fr; gap:.4rem .75rem; margin-bottom:1rem; }
+    .car-spec { font-size:.78rem; color:var(--muted); display:flex; align-items:center; gap:.3rem; }
+    .car-spec strong { color:var(--silver); }
+    .car-price-row { display:flex; align-items:center; justify-content:space-between; }
+    .car-price { font-family:'Syne',sans-serif; font-size:1.25rem; font-weight:800; color:#fff; }
+    .car-price small { display:block; font-family:'Inter',sans-serif; font-size:.7rem; color:var(--muted); font-weight:400; }
+    .car-wa { display:inline-flex; align-items:center; gap:.4rem; background:var(--wa); color:#fff; padding:.5rem 1rem; border-radius:6px; font-size:.8rem; font-weight:600; text-decoration:none; transition:opacity .2s; }
+    .car-wa:hover { opacity:.85; }
+
+    /* SERVICES */
+    .services-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.25rem; }
+    .svc-card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:1.75rem; transition:border-color .25s,transform .25s; }
+    .svc-card:hover { border-color:rgba(224,32,32,.4); transform:translateY(-3px); }
+    .svc-icon { font-size:2rem; margin-bottom:1rem; }
+    .svc-card h3 { font-size:1rem; margin-bottom:.4rem; }
+    .svc-card p { font-size:.85rem; color:var(--muted); }
+
+    /* SHOWROOM STRIP */
+    #showroom { padding:0; position:relative; height:400px; overflow:hidden; }
+    .showroom-bg { position:absolute; inset:0; background:linear-gradient(to bottom,rgba(8,10,15,.3) 0%,rgba(8,10,15,.8) 100%), url('../images/carshowroom/showroom.jpg') center/cover no-repeat; }
+    .showroom-content { position:absolute; bottom:0; left:0; right:0; padding:2.5rem 5%; }
+    .showroom-content h2 { font-size:clamp(1.5rem,3vw,2.2rem); color:#fff; margin-bottom:.75rem; }
+    .showroom-content p { color:var(--muted); max-width:480px; margin-bottom:1.5rem; }
+
+    /* TESTIMONIALS */
+    #testimonials { background:var(--bg2); }
+    .testi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.5rem; }
+    .testi { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:1.75rem; position:relative; }
+    .testi::before { content:'"'; font-size:3.5rem; color:rgba(224,32,32,.2); position:absolute; top:.25rem; left:1.25rem; font-family:'Syne',sans-serif; line-height:1; }
+    .testi p { font-size:.92rem; color:var(--muted); padding-top:1.5rem; margin-bottom:1rem; font-style:italic; }
+    .testi-author { font-weight:600; font-size:.88rem; color:#fff; }
+    .testi-stars { color:var(--red-lt); margin-top:.2rem; font-size:.85rem; }
+    .testi-car { font-size:.75rem; color:var(--muted); margin-top:.2rem; }
+
+    footer { background:var(--bg2); border-top:1px solid var(--border); padding:2.5rem 5%; text-align:center; color:var(--muted); font-size:.85rem; }
+    footer strong { color:#fff; }
+
+    .wa-float { position:fixed; bottom:1.5rem; right:1.5rem; z-index:250; width:58px; height:58px; background:var(--wa); border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 24px rgba(37,211,102,.45); transition:transform .2s; text-decoration:none; }
+    .wa-float:hover { transform:scale(1.08); }
+    .wa-float svg { width:30px; height:30px; fill:#fff; }
+
+    .reveal { opacity:0; transform:translateY(28px); transition:opacity .6s ease,transform .6s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+
+    @media(max-width:768px) {
+      .nav-links { display:none; position:fixed; inset:0; background:rgba(8,10,15,.98); flex-direction:column; align-items:center; justify-content:center; gap:2rem; z-index:190; }
+      .nav-links.open { display:flex; }
+      .nav-toggle {
+      min-width: 44px; min-height: 44px; box-sizing: border-box; display:flex; z-index:195; }
+      #hero { height:auto; min-height:80vh; padding-top:3rem; align-items:center; }
+      .hero-content { padding-top:3rem; padding-bottom:5rem; }
+      #showroom { height:280px; }
+    }
+    @media(max-width:375px) { section { padding:3.5rem 4%; } }
+  </style>
+</head>
+<body>
+<div class="demo-banner">This is a demo site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com</div>
+
+<nav>
+  <a href="#" class="logo"><span class="logo-icon">✨</span><div class="logo-text">DriveZone<span>Motors — Lahore</span></div></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#inventory">Inventory</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#showroom" class="nav-cta">Visit Showroom</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-stripe"></div>
+  <div class="hero-content reveal">
+    <div class="hero-badge">Premium — Used — Imported —</div>
+    <h1>Drive Your <span class="accent">Dream</span> Car Today</h1>
+    <p class="hero-sub">Lahore's most trusted car dealership since 2012. 200+ verified vehicles in stock — Japanese imports, local used, and fresh arrivals weekly.</p>
+    <div class="hero-btns">
+      <a href="#inventory" class="btn-red">🚗 🚗 🚗 🚗 🚗 🚗 🚗 🚗 🚗 Browse Inventory</a>
+      <a href="#" class="btn-outline" id="heroWa">💬 WhatsApp Enquiry</a>
+    </div>
+  </div>
+  <div class="hero-ticker">
+    <div class="ticker-inner">
+      <span>• Toyota Corolla 2022 — Rs. 42L</span>
+      <span>• Honda Civic 2021 — Rs. 55L</span>
+      <span>• Suzuki Vitara 2023 — Rs. 48L</span>
+      <span>• Hyundai Tucson 2022 — Rs. 63L</span>
+      <span>✨ KIA Sportage 2023 — Rs. 72L</span>
+      <span>• Toyota Corolla 2022 — Rs. 42L</span>
+      <span>• Honda Civic 2021 — Rs. 55L</span>
+      <span>• Suzuki Vitara 2023 — Rs. 48L</span>
+      <span>• Hyundai Tucson 2022 — Rs. 63L</span>
+      <span>✨ KIA Sportage 2023 — Rs. 72L</span>
+    </div>
+  </div>
+</section>
+
+<section id="inventory">
+  <div class="section-tag reveal">Our Stock</div>
+  <h2 class="section-title reveal">Fresh Arrivals This Week</h2>
+  <p class="section-desc reveal">Every car is inspected, documented, and road-tested before listing. Installment plans available through partner banks.</p>
+  <div class="filter-bar reveal">
+    <button class="filter-btn active">All</button>
+    <button class="filter-btn">Sedans</button>
+    <button class="filter-btn">SUVs</button>
+    <button class="filter-btn">Hatchbacks</button>
+    <button class="filter-btn">Under 40 Lac</button>
+  </div>
+  <!-- cars rendered dynamically from admin inventory -->
+  <div class="cars-grid" id="carsGrid"></div>
+</section>
+
+<div id="showroom">
+  <div class="showroom-bg"></div>
+  <div class="showroom-content reveal">
+    <h2>Visit Our Showroom on MM Alam Road</h2>
+    <p>300+ vehicles spread across 3 floors. Test drive any car before you buy. Our consultants don't pressure — they help.</p>
+    <a href="#" class="btn-red" id="showroomWa">🚗 Book a Test Drive on WhatsApp</a>
+  </div>
+</div>
+
+<section id="services">
+  <div class="section-tag reveal">What We Offer</div>
+  <h2 class="section-title reveal">Beyond Just Selling Cars</h2>
+  <div class="services-grid">
+    <div class="svc-card reveal"><div class="svc-icon">✨</div><h3>Vehicle Inspection</h3><p>Independent 120-point inspection on any car you buy from us. Full report provided.</p></div>
+    <div class="svc-card reveal"><div class="svc-icon">💳</div><h3>Bank Installments</h3><p>Approved by Meezan Bank, HBL, and UBL for car financing. We handle all paperwork.</p></div>
+    <div class="svc-card reveal"><div class="svc-icon">🏠</div><h3>Transfer & Docs</h3><p>Complete ownership transfer, biometric verification, and documentation handled in-house.</p></div>
+    <div class="svc-card reveal"><div class="svc-icon">🛡️</div><h3>Insurance Assistance</h3><p>We get you the best car insurance rates through our network of insurance partners.</p></div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="section-tag reveal">Happy Customers</div>
+  <h2 class="section-title reveal">What Lahori Drivers Say</h2>
+  <div class="testi-grid">
+    <div class="testi reveal"><p>Bought my Civic here last month. The whole process from viewing to transfer took 3 days. Staff were professional and zero pressure. Highly recommend.</p><div class="testi-author">Bilal Ahmed</div><div class="testi-stars">★★★★★</div><div class="testi-car">Honda Civic 2021</div></div>
+    <div class="testi reveal"><p>Got my first car — Cultus AGS — at a very fair price. They let me bring my own mechanic for inspection. No issues. The transfer was done in one day.</p><div class="testi-author">Hasan Javed</div><div class="testi-stars">★★★★★</div><div class="testi-car">Suzuki Cultus 2022</div></div>
+    <div class="testi reveal"><p>DriveZone arranged bank financing for my Sportage within a week. Even sorted the insurance. One-window solution. Will buy my next car here too.</p><div class="testi-author">Kamran Malik</div><div class="testi-stars">★★★★★</div><div class="testi-car">KIA Sportage 2023</div></div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 <strong>DriveZone Motors</strong> — MM Alam Road, Lahore</p>
+  <p style="margin-top:.4rem">Mon–Sat 10AM — 8PM — Sunday 12PM — 6PM — Free test drives daily</p>
+</footer>
+
+<a href="#" class="wa-float" id="floatWa" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M20.52 3.449C18.24 1.245 15.24 0 12 0 5.373 0 0 5.373 0 12c0 2.117.554 4.185 1.606 6.001L0 24l6.155-1.587A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12 0-3.24-1.245-6.24-3.48-8.551zM12 22c-1.822 0-3.609-.489-5.17-1.412l-.37-.22-3.656.942.975-3.556-.24-.378A9.937 9.937 0 012 12C2 6.477 6.477 2 12 2c2.654 0 5.15 1.034 7.025 2.914A9.88 9.88 0 0122 12c0 5.523-4.477 10-10 10zm5.476-7.44c-.3-.15-1.77-.873-2.044-.972-.274-.099-.473-.148-.672.149-.2.297-.772.972-.946 1.17-.174.198-.348.223-.648.074-.3-.149-1.266-.467-2.41-1.486-.89-.794-1.49-1.774-1.664-2.073-.174-.298-.018-.46.13-.608.134-.133.3-.348.45-.522.15-.174.199-.298.299-.497.1-.198.05-.372-.025-.521-.075-.15-.672-1.62-.92-2.217-.242-.582-.487-.503-.672-.513l-.573-.01c-.198 0-.522.074-.795.372-.274.297-1.043 1.02-1.043 2.487 0 1.466 1.069 2.885 1.219 3.083.15.198 2.105 3.21 5.1 4.502.714.308 1.271.492 1.706.63.716.227 1.368.195 1.884.118.574-.085 1.77-.723 2.02-1.421.248-.699.248-1.297.173-1.422-.074-.124-.273-.199-.572-.348z"/></svg></a>
+
+<script src="demo-globals.js"></script>
+<script>
+  const WA = "923137863988";
+  const wl = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+
+  const STORAGE_KEY = "drivezone_inventory";
+  const DEFAULT_CARS = [
+    { id:1, brand:"Toyota",  model:"Corolla Altis 1.6",   year:2022, price:"42 Lac",  fuel:"Petrol", trans:"Auto", km:"28,000 km", tag:"Just In",  img:"../images/carshowroom/car-1.jpg" },
+    { id:2, brand:"Honda",   model:"Civic Oriel 1.8",     year:2021, price:"55 Lac",  fuel:"Petrol", trans:"Auto", km:"45,000 km", tag:"",         img:"../images/carshowroom/car-2.jpg" },
+    { id:3, brand:"KIA",     model:"Sportage AWD Alpha",  year:2023, price:"72 Lac",  fuel:"Petrol", trans:"Auto", km:"15,000 km", tag:"Hot Deal",  img:"../images/carshowroom/car-3.jpg" },
+    { id:4, brand:"Suzuki",  model:"Cultus AGS VXR",      year:2022, price:"24 Lac",  fuel:"Petrol", trans:"Auto", km:"32,000 km", tag:"",         img:"../images/carshowroom/car-4.jpg" },
+    { id:5, brand:"Hyundai", model:"Tucson AWD FWD",      year:2022, price:"63 Lac",  fuel:"Petrol", trans:"Auto", km:"22,000 km", tag:"Imported", img:"../images/carshowroom/car-5.jpg" },
+    { id:6, brand:"Toyota",  model:"Yaris ATIV 1.3",      year:2023, price:"32 Lac",  fuel:"Petrol", trans:"Auto", km:"8,000 km",  tag:"",         img:"../images/carshowroom/car-6.jpg" },
+  ];
+
+  let currentCars = DEFAULT_CARS;
+
+  function renderCars(cars) {
+    currentCars = cars;
+    const grid = document.getElementById('carsGrid');
+    const city = DemoGlobals.getCity();
+    if (!cars.length) {
+      grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--muted)">
+        <div style="font-size:2rem;margin-bottom:.5rem">🚗</div>
+        No cars in inventory right now. Check back soon!
+      </div>`;
+      return;
+    }
+    grid.innerHTML = cars.map(car => {
+      const priceLabel = DemoGlobals.formatStoredPrice(car.price);
+      return `
+      <div class="car-card reveal">
+        <div class="car-img">
+          <img src="${car.img}" onerror="this.src='../images/carshowroom/car-1.jpg'" alt="${car.brand} ${car.model}" loading="lazy">
+          ${car.tag ? `<span class="car-tag">${car.tag}</span>` : ''}
+          <span class="car-year">${car.year}</span>
+        </div>
+        <div class="car-body">
+          <div class="car-brand">${car.brand}</div>
+          <h3>${car.model}</h3>
+          <div class="car-specs">
+            <span class="car-spec">✨ <strong>${car.fuel}</strong></span>
+            <span class="car-spec">✨ <strong>${car.trans}</strong></span>
+            <span class="car-spec">✨ <strong>${city}</strong></span>
+            <span class="car-spec">✨ <strong>${car.km}</strong></span>
+          </div>
+          <div class="car-price-row">
+            <div class="car-price">${priceLabel}<small>Installment available</small></div>
+            <a href="${wl(`Hi, I'm interested in the ${car.brand} ${car.model} (${car.year}) listed at ${priceLabel}`)}" class="car-wa">💬 Enquire</a>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+
+    const obs2 = new IntersectionObserver(e=>e.forEach(x=>{ if(x.isIntersecting){x.target.classList.add('visible');} }),{threshold:.1});
+    grid.querySelectorAll('.reveal').forEach(el=>obs2.observe(el));
+  }
+
+  DemoGlobals.init().then(() => {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    renderCars(stored ? JSON.parse(stored) : DEFAULT_CARS);
+    DemoGlobals.onLocaleChange(() => renderCars(currentCars));
+  });
+
+  document.getElementById('heroWa').href    = wl("Hi, I'd like to enquire about a car at DriveZone Motors.");
+  document.getElementById('showroomWa').href= wl("Hi, I'd like to book a test drive at DriveZone Motors.");
+  document.getElementById('floatWa').href   = wl("Hi, I'm interested in a car at DriveZone Motors.");
+
+  /* -- Filter buttons (visual only in demo) -- */
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  /* -- Mobile nav -- */
+  const nt=document.getElementById('navToggle'),nl=document.getElementById('navLinks');
+  nt.addEventListener('click',()=>{ nl.classList.toggle('open'); nt.classList.toggle('open'); });
+  nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ nl.classList.remove('open'); nt.classList.remove('open'); }));
+
+  /* -- Scroll reveal (static elements) -- */
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{ if(x.isIntersecting){x.target.classList.add('visible');} }),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

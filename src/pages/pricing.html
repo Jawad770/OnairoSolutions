@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Website & Software Pricing | Onairo Solutions</title>
+  <meta name="description" content="Transparent pricing guidance for website packages, custom software, and EduTrack plans from Onairo Solutions."/>
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../shared/css/tokens.css"/>
+  <link rel="stylesheet" href="../shared/css/base.css"/>
+  <link rel="stylesheet" href="../shared/css/components.css"/>
+  <link rel="stylesheet" href="../shared/css/seo.css"/>
+  <style>
+    .page-hero {
+      padding: 8.5rem 0 3.5rem;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(37,99,235,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37,99,235,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+    .page-hero .container { position: relative; z-index: 1; }
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.1rem, 4.5vw, 3.3rem);
+      font-weight: 800;
+      letter-spacing: var(--heading-tracking, -0.02em); line-height: var(--heading-line-height, 1.18);
+      margin-bottom: 1rem;
+    }
+    .page-hero h1 em { font-style: normal; color: var(--cobalt-light); }
+    .page-hero .lead {
+      color: var(--slate);
+      font-size: 1.08rem;
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+    .price-card {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .price-card:hover {
+      border-color: rgba(37,99,235,0.4);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    }
+    .price-card.featured {
+      border-color: rgba(37,99,235,0.45);
+      background: linear-gradient(180deg, rgba(37,99,235,0.12), var(--card2) 40%);
+    }
+    .price-card .badge {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--cobalt-light);
+      background: rgba(37,99,235,0.15);
+      border: 1px solid rgba(37,99,235,0.3);
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+    }
+    .price-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      margin-bottom: 0.35rem;
+    }
+    .price-card .tagline {
+      color: var(--slate);
+      font-size: 0.9rem;
+      margin-bottom: 1.25rem;
+    }
+    .price-card .amount {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.65rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+    }
+    .price-card .amount span {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--slate);
+      display: block;
+      margin-top: 0.25rem;
+    }
+    .price-card .note {
+      font-size: 0.8rem;
+      color: var(--slate);
+      margin-bottom: 1.5rem;
+    }
+    .price-card ul {
+      margin-bottom: 1.75rem;
+      flex: 1;
+    }
+    .price-card li {
+      color: var(--slate-light);
+      font-size: 0.9rem;
+      padding: 0.4rem 0 0.4rem 1.2rem;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+    }
+    .price-card li:last-child { border-bottom: none; }
+    .price-card li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--cobalt-light);
+      font-weight: 700;
+    }
+    .custom-note {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .custom-note h3 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      margin-bottom: 0.65rem;
+    }
+    .custom-note p { color: var(--slate); line-height: 1.7; }
+    .custom-note .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .cta-band {
+      background:
+        radial-gradient(circle at 20% 50%, rgba(37,99,235,0.18), transparent 45%),
+        radial-gradient(circle at 80% 40%, rgba(59,130,246,0.12), transparent 40%),
+        var(--navy2);
+      border-block: 1px solid var(--border);
+      text-align: center;
+    }
+    .cta-band h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      margin-bottom: 0.85rem;
+    }
+    .cta-band p {
+      color: var(--slate);
+      max-width: 520px;
+      margin: 0 auto 1.75rem;
+    }
+    .cta-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.85rem; }
+    @media (max-width: 980px) {
+      .pricing-grid {
+        display: flex;
+        gap: 1rem;
+        max-width: none;
+        margin-inline: calc(var(--gutter) * -1);
+        padding-inline: max(var(--gutter), calc((100vw - min(82vw, 380px)) / 2));
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 50%;
+        overscroll-behavior-x: contain;
+        scrollbar-width: none;
+      }
+      .pricing-grid::-webkit-scrollbar { display: none; }
+      .pricing-grid > .price-card {
+        flex: 0 0 min(82vw, 380px);
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+      }
+      .custom-note { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .page-hero { padding-top: 7rem; }
+    }
+  </style>
+</head>
+<body data-root="../.." data-page="pricing">
+  <div id="site-nav"></div>
+
+  <header class="page-hero">
+    <div class="container">
+      <p class="section-tag reveal">Pricing</p>
+      <h1 class="reveal">Clear packages. <em>Flexible quotes.</em></h1>
+      <p class="lead reveal">Website packages start at accessible entry points. Exact pricing depends on scope — contact us for a tailored quote in USD or PKR.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head center">
+        <p class="section-tag reveal">Website packages</p>
+        <h2 class="section-title reveal">Choose your starting point</h2>
+        <p class="section-sub reveal">Indicative ranges only — final quotes reflect pages, features, and content readiness.</p>
+      </div>
+      <div class="pricing-grid" id="pricingGrid" data-catalog-pricing>
+        <article class="price-card reveal">
+          <h3>Starter</h3>
+          <p class="tagline">Essential presence for new businesses</p>
+          <div class="amount">From $150<span>≈ PKR 15,000 · contact for exact</span></div>
+          <p class="note">Ideal for a polished single-business site with core pages.</p>
+          <ul>
+            <li>Up to 5 pages</li>
+            <li>Mobile-responsive design</li>
+            <li>WhatsApp &amp; contact CTAs</li>
+            <li>Basic SEO structure</li>
+            <li>1 revision round</li>
+          </ul>
+          <a class="btn btn-secondary" id="waStarter" href="#" target="_blank" rel="noopener">Ask about Starter</a>
+        </article>
+        <article class="price-card featured reveal">
+          <span class="badge">Popular</span>
+          <h3>Business</h3>
+          <p class="tagline">Conversion-ready multi-page sites</p>
+          <div class="amount">From $350<span>≈ PKR 35,000 · contact for exact</span></div>
+          <p class="note">Best for established brands that need depth and lead capture.</p>
+          <ul>
+            <li>Up to 10 pages</li>
+            <li>Custom UI direction</li>
+            <li>Maps &amp; WhatsApp integration</li>
+            <li>SEO-ready structure</li>
+            <li>Service / portfolio sections</li>
+            <li>2 revision rounds</li>
+          </ul>
+          <a class="btn btn-primary" id="waBusiness" href="#" target="_blank" rel="noopener">Ask about Business</a>
+        </article>
+        <article class="price-card reveal">
+          <h3>Premium</h3>
+          <p class="tagline">Full brand experience &amp; advanced flows</p>
+          <div class="amount">From $650<span>≈ PKR 65,000 · contact for exact</span></div>
+          <p class="note">For businesses that want distinctive design and richer features.</p>
+          <ul>
+            <li>Custom page count</li>
+            <li>Premium visual design</li>
+            <li>Advanced forms &amp; filters</li>
+            <li>Performance optimization</li>
+            <li>Priority support window</li>
+            <li>Content guidance included</li>
+          </ul>
+          <a class="btn btn-secondary" id="waPremium" href="#" target="_blank" rel="noopener">Ask about Premium</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="custom-note reveal">
+        <div>
+          <h3>Custom software &amp; products</h3>
+          <p>Bespoke software, automation, AI integrations, and commercial products like EduTrack are scoped separately. We’ll map requirements and share a clear estimate — no one-size pricing.</p>
+        </div>
+        <div class="actions">
+          <a class="btn btn-primary" href="request-quote.html">Request a Quote</a>
+          <a class="btn btn-secondary" href="../products/index.html">View Products</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta-band">
+    <div class="container">
+      <h2 class="reveal">Not sure which package fits?</h2>
+      <p class="reveal">Message us with your business type and goals — we’ll recommend the right starting point in minutes.</p>
+      <div class="cta-actions reveal">
+        <a class="btn btn-primary" id="waCta" href="#" target="_blank" rel="noopener">WhatsApp for Pricing</a>
+        <a class="btn btn-secondary" href="contact.html">Contact Form</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+  <div id="site-chrome-end"></div>
+
+    <script src="../shared/js/config.js"></script>
+  <script src="../shared/js/seo-data.js"></script>
+  <script src="../shared/js/seo.js"></script>
+<script src="../components/chrome.js"></script>
+  <script src="../shared/js/main.js"></script>
+  <script src="../shared/js/catalog-client.js"></script>
+  <script>
+    (async function () {
+      const hydrated = await ONAIRO.catalog.hydratePricingGrid(document.getElementById('pricingGrid'));
+      ONAIRO.catalog.centerFeaturedPlan(document.getElementById('pricingGrid'));
+      if (!hydrated) {
+        const waStarter = document.getElementById('waStarter');
+        const waBusiness = document.getElementById('waBusiness');
+        const waPremium = document.getElementById('waPremium');
+        if (waStarter) waStarter.href = ONAIRO.waUrl("Hi Onairo Solutions, I'm interested in the Starter website package. Please share exact pricing.");
+        if (waBusiness) waBusiness.href = ONAIRO.waUrl("Hi Onairo Solutions, I'm interested in the Business website package. Please share exact pricing.");
+        if (waPremium) waPremium.href = ONAIRO.waUrl("Hi Onairo Solutions, I'm interested in the Premium website package. Please share exact pricing.");
+      }
+      let promoHost = document.getElementById('pricingPromoBox');
+      if (!promoHost) {
+        promoHost = document.createElement('div');
+        promoHost.id = 'pricingPromoBox';
+        promoHost.className = 'container';
+        promoHost.style.marginTop = '16px';
+        const grid = document.getElementById('pricingGrid');
+        if (grid && grid.parentNode) grid.parentNode.appendChild(promoHost);
+      }
+      ONAIRO.catalog.mountDiscountBox(promoHost, {
+        productSlug: 'website-business',
+        planName: 'Business',
+      });
+      document.getElementById('waCta').href = ONAIRO.waUrl("Hi Onairo Solutions, I'd like help choosing a website package and getting an exact quote.");
+    })();
+  </script>
+</body>
+</html>
+

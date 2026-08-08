@@ -1,0 +1,11 @@
+node_modules/
+.env
+.env.local
+data/uploads/
+data/sessions/
+backups/
+logs/
+*.log
+.DS_Store
+server/ai/dist/
+artifacts/

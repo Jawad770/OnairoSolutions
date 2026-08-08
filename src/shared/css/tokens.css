@@ -1,0 +1,46 @@
+:root {
+  --navy: #0A0F1E;
+  --navy2: #0e1525;
+  --navy3: #121a2e;
+  --cobalt: #2563EB;
+  --cobalt-light: #3B82F6;
+  --cobalt-glow: rgba(37, 99, 235, 0.55);
+  --gold: #F59E0B;
+  --emerald: #10B981;
+  --rose: #F43F5E;
+  --white: #F8FAFC;
+  --slate: #94A3B8;
+  --slate-light: #CBD5E1;
+  --card: #131929;
+  --card2: #161D2F;
+  --border: rgba(148, 163, 184, 0.1);
+  --border-strong: rgba(148, 163, 184, 0.18);
+  --radius: 14px;
+  --radius-lg: 22px;
+  --shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+  --font-display: 'Outfit', sans-serif;
+  --font-brand: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --heading-line-height: 1.18;
+  --heading-tracking: -0.02em;
+  --nav-h: 76px;
+  --max: 1180px;
+
+  /* Fluid / mobile-first tokens */
+  --gutter: clamp(1rem, 3.5vw, 2.5rem);
+  --section-y: clamp(3.5rem, 8vw, 6rem);
+  --touch: 48px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --float-offset: calc(1rem + var(--safe-bottom));
+  --float-right: calc(1rem + var(--safe-right));
+  --vvh: 100vh;
+  --vvh: 100dvh;
+  --z-nav: 200;
+  --z-drawer: 220;
+  --z-float: 180;
+  --z-ai: 230;
+  --z-sticky: 170;
+}

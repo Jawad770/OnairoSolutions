@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glamour Salon & Spa — Lahore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:     #fdf8f4;
+      --cream2:    #f5ebe3;
+      --rose:      #be185d;
+      --rose-lt:   #ec4899;
+      --rose-pale: #fce7f3;
+      --dark:      #292018;
+      --brown:     #78716c;
+      --border:    rgba(190,24,93,0.12);
+      --wa:        #25D366;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.65;
+      opacity: 0;
+      animation: pageIn 0.5s ease forwards;
+    }
+
+    @keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+
+    h1, h2, h3, h4 { font-family: 'Syne', sans-serif; font-weight: 700; letter-spacing: -0.02em; }
+
+    .demo-banner {
+      background: var(--rose);
+      color: #fff;
+      text-align: center;
+      padding: 0.55rem 1rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+    .demo-banner a { color: var(--cream); font-weight: 700; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 5%;
+      background: rgba(253,248,244,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--rose);
+      text-decoration: none;
+    }
+    .logo span { display: block; font-size: 0.7rem; color: var(--brown); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a { color: var(--brown); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--rose); }
+
+    .nav-toggle {
+      min-width: 44px; min-height: 44px; box-sizing: border-box;
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      cursor: pointer;
+    }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--dark); transition: 0.3s; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    #hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(253,248,244,0.88) 0%, rgba(253,248,244,0.75) 40%, rgba(253,248,244,0.92) 100%),
+        url('../images/salon/hero.jpg') center/cover no-repeat;
+      z-index: 0;
+    }
+
+    .hero-content { max-width: 640px; position: relative; z-index: 1; }
+
+    .hero-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 1.25rem;
+    }
+
+    #hero h1 {
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      line-height: 1.08;
+      margin-bottom: 1rem;
+    }
+    #hero h1 em { font-style: normal; color: var(--rose-lt); }
+
+    .hero-sub { color: var(--brown); font-size: 1.05rem; margin-bottom: 2rem; }
+
+    .btn-rose {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--rose);
+      color: #fff;
+      padding: 0.9rem 2rem;
+      border-radius: 100px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 6px 24px rgba(190,24,93,0.3);
+    }
+    .btn-rose:hover { transform: translateY(-2px); background: var(--rose-lt); }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--rose);
+      border: 2px solid var(--rose);
+      padding: 0.85rem 1.75rem;
+      border-radius: 100px;
+      font-weight: 600;
+      text-decoration: none;
+      margin-left: 0.75rem;
+      transition: background 0.2s;
+    }
+    .btn-outline:hover { background: var(--rose-pale); }
+
+    section { padding: 5rem 5%; }
+    .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem; }
+    .section-title { font-size: clamp(1.75rem, 3.5vw, 2.4rem); margin-bottom: 0.75rem; }
+    .section-desc { color: var(--brown); max-width: 520px; margin-bottom: 2.5rem; }
+
+    /* services */
+    #services { background: var(--cream2); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .service-row {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .service-row:hover { box-shadow: 0 8px 24px rgba(190,24,93,0.08); transform: translateY(-2px); }
+    .service-row h4 { font-size: 1rem; margin-bottom: 0.2rem; }
+    .service-row p { font-size: 0.82rem; color: var(--brown); }
+    .service-price {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      color: var(--rose);
+      white-space: nowrap;
+      font-size: 1.05rem;
+    }
+
+    /* team */
+    #team {}
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .team-card {
+      text-align: center;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .team-card:hover { transform: translateY(-5px); box-shadow: 0 12px 36px rgba(190,24,93,0.1); }
+    .team-avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      overflow: hidden;
+      border: 3px solid var(--rose-pale);
+    }
+    .team-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+    .team-card h3 { font-size: 1.05rem; margin-bottom: 0.25rem; }
+    .team-card .role { color: var(--rose); font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .team-card p { font-size: 0.85rem; color: var(--brown); }
+
+    /* before/after */
+    #gallery { background: var(--cream2); }
+    .ba-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+    .ba-pair {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .ba-labels {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: center;
+      background: #fff;
+      padding: 0.4rem;
+      color: var(--brown);
+    }
+    .ba-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 180px;
+    }
+    .ba-before, .ba-after {
+      overflow: hidden;
+    }
+    .ba-before img, .ba-after img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* testimonials */
+    #testimonials {}
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .testimonial {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      position: relative;
+    }
+    .testimonial::before {
+      content: '"';
+      font-family: 'Syne', sans-serif;
+      font-size: 3rem;
+      color: var(--rose-pale);
+      position: absolute;
+      top: 0.5rem;
+      left: 1.25rem;
+      line-height: 1;
+    }
+    .testimonial p { font-size: 0.92rem; color: var(--brown); margin-bottom: 1rem; padding-top: 1.5rem; font-style: italic; }
+    .testimonial .author { font-weight: 600; font-size: 0.88rem; }
+    .testimonial .stars { color: var(--rose); font-size: 0.85rem; margin-top: 0.25rem; }
+
+    /* book */
+    #book {
+      text-align: center;
+      background: linear-gradient(135deg, var(--rose-pale), var(--cream));
+    }
+    #book p { color: var(--brown); max-width: 480px; margin: 0 auto 2rem; }
+
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 2.5rem 5%;
+      font-size: 0.85rem;
+    }
+    footer strong { color: var(--cream); }
+
+    .wa-float {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 250;
+      width: 58px;
+      height: 58px;
+      background: var(--wa);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.4);
+      transition: transform 0.2s;
+      text-decoration: none;
+    }
+    .wa-float:hover { transform: scale(1.08); }
+    .wa-float svg { width: 30px; height: 30px; fill: #fff; }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(253,248,244,0.98);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        z-index: 190;
+      }
+      .nav-links.open { display: flex; }
+      .nav-toggle {
+      min-width: 44px; min-height: 44px; box-sizing: border-box; display: flex; z-index: 195; }
+      .ba-grid { grid-template-columns: 1fr; }
+      .btn-outline { margin-left: 0; margin-top: 0.75rem; }
+      .hero-actions { display: flex; flex-direction: column; align-items: center; }
+    }
+
+    @media (max-width: 375px) {
+      section { padding: 3.5rem 4%; }
+      .services-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="demo-banner">
+  This is a demo site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com
+</div>
+
+<nav>
+  <a href="#" class="logo">Glamour<span>Salon & Spa — Lahore</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#book">Book</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg-img"></div>
+  <div class="hero-content reveal">
+    <div class="hero-tag">Johar Town — Since 2015</div>
+    <h1>Where Beauty Meets <em>Confidence</em></h1>
+    <p class="hero-sub">Premium hair, skin, and spa services for the modern Pakistani woman. Bridal packages, party makeup, and everyday glam — all under one roof.</p>
+    <div class="hero-actions">
+      <a href="#" class="btn-rose" id="heroWa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.449C18.24 1.245 15.24 0 12 0 5.373 0 0 5.373 0 12c0 2.117.554 4.185 1.606 6.001L0 24l6.155-1.587A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12 0-3.24-1.245-6.24-3.48-8.551z"/></svg>
+        Book Now on WhatsApp
+      </a>
+      <a href="#services" class="btn-outline">View Pricing</a>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-label reveal">Services & Pricing</div>
+  <h2 class="section-title reveal">Transparent pricing, no surprises</h2>
+  <p class="section-desc reveal">All prices in PKR. Bridal packages and group bookings available — ask on WhatsApp.</p>
+  <div class="services-grid">
+    <div class="service-row reveal"><div><h4>Haircut & Blow Dry</h4><p>Wash, cut, and styled finish</p></div><span class="service-price">Rs. 1,500</span></div>
+    <div class="service-row reveal"><div><h4>Hair Color (Full Head)</h4><p>Premium L'Or'al & Wella products</p></div><span class="service-price">Rs. 4,500</span></div>
+    <div class="service-row reveal"><div><h4>Party Makeup</h4><p>Includes lashes & basic hairstyling</p></div><span class="service-price">Rs. 5,000</span></div>
+    <div class="service-row reveal"><div><h4>Bridal Makeup</h4><p>Full bridal look with trial session</p></div><span class="service-price">Rs. 25,000</span></div>
+    <div class="service-row reveal"><div><h4>Facial (Deep Cleanse)</h4><p>45-min treatment with massage</p></div><span class="service-price">Rs. 2,500</span></div>
+    <div class="service-row reveal"><div><h4>Manicure & Pedicure</h4><p>Gel polish optional (+Rs. 800)</p></div><span class="service-price">Rs. 2,000</span></div>
+    <div class="service-row reveal"><div><h4>Threading (Full Face)</h4><p>Eyebrows, upper lip, forehead</p></div><span class="service-price">Rs. 500</span></div>
+    <div class="service-row reveal"><div><h4>Spa Package (3 hrs)</h4><p>Facial + body scrub + head massage</p></div><span class="service-price">Rs. 6,500</span></div>
+  </div>
+</section>
+
+<section id="team">
+  <div class="section-label reveal">Our Team</div>
+  <h2 class="section-title reveal">Meet Our Stylists</h2>
+  <p class="section-desc reveal">Certified professionals with years of experience in Lahore's top salons.</p>
+  <div class="team-grid">
+    <div class="team-card reveal">
+      <div class="team-avatar t1"><img src="../images/salon/team-1.jpg" alt="Sana Ahmed — Hair Stylist" loading="lazy"></div>
+      <h3>Sana Ahmed</h3>
+      <div class="role">Senior Hair Stylist</div>
+      <p>8 years experience. Specializes in balayage, keratin, and bridal updos.</p>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-avatar t2"><img src="../images/salon/team-2.jpg" alt="Maria Khan — Makeup Artist" loading="lazy"></div>
+      <h3>Maria Khan</h3>
+      <div class="role">Makeup Artist</div>
+      <p>MAC-certified. Bridal and party makeup with a natural, glowing finish.</p>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-avatar t3"><img src="../images/salon/team-3.jpg" alt="Zainab Fatima — Spa Specialist" loading="lazy"></div>
+      <h3>Zainab Fatima</h3>
+      <div class="role">Skin & Spa Specialist</div>
+      <p>Facials, chemical peels, and body treatments. Trained in Dubai & Karachi.</p>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="section-label reveal">Transformations</div>
+  <h2 class="section-title reveal">Before & After</h2>
+  <div class="ba-grid reveal">
+    <div class="ba-pair">
+      <div class="ba-labels"><span>Before</span><span>After</span></div>
+      <div class="ba-images">
+        <div class="ba-before"><img src="../images/salon/ba1-before.jpg" alt="Hair before styling" loading="lazy"></div>
+        <div class="ba-after"><img src="../images/salon/ba1-after.jpg" alt="Hair after styling" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="ba-pair">
+      <div class="ba-labels"><span>Before</span><span>After</span></div>
+      <div class="ba-images">
+        <div class="ba-before"><img src="../images/salon/ba2-before.jpg" alt="Before party makeup" loading="lazy"></div>
+        <div class="ba-after"><img src="../images/salon/ba2-after.jpg" alt="After party makeup" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="ba-pair">
+      <div class="ba-labels"><span>Before</span><span>After</span></div>
+      <div class="ba-images">
+        <div class="ba-before"><img src="../images/salon/ba3-before.jpg" alt="Before hair color" loading="lazy"></div>
+        <div class="ba-after"><img src="../images/salon/ba3-after.jpg" alt="After hair color" loading="lazy"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="section-label reveal">Reviews</div>
+  <h2 class="section-title reveal">What Our Clients Say</h2>
+  <div class="testimonials-grid">
+    <div class="testimonial reveal">
+      <p>Got my mehndi makeup done here and I looked absolutely stunning. Sana did my hair and Maria handled makeup — both were so professional and patient.</p>
+      <div class="author">Ayesha Malik</div>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="testimonial reveal">
+      <p>Best facial I've ever had in Lahore. Zainab really knows skin — my acne cleared up after three sessions. Highly recommend the deep cleanse package.</p>
+      <div class="author">Hira Shahid</div>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="testimonial reveal">
+      <p>Booked through WhatsApp at 10 PM for next-day party makeup. They confirmed instantly and the result was flawless. Will definitely come back for my sister's wedding.</p>
+      <div class="author">Nadia Hussain</div>
+      <div class="stars">★★★★★</div>
+    </div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="reveal">
+    <div class="section-label">Book Your Slot</div>
+    <h2 class="section-title">Ready to look your best?</h2>
+    <p>Message us on WhatsApp with your preferred service, date, and time. Walk-ins welcome but appointments get priority.</p>
+    <a href="#" class="btn-rose" id="bookWa" style="background:var(--wa);box-shadow:0 6px 24px rgba(37,211,102,0.35);">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.449C18.24 1.245 15.24 0 12 0 5.373 0 0 5.373 0 12c0 2.117.554 4.185 1.606 6.001L0 24l6.155-1.587A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12 0-3.24-1.245-6.24-3.48-8.551z"/></svg>
+      Book on WhatsApp
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 <strong>Glamour Salon & Spa</strong> — Johar Town, Lahore</p>
+  <p style="margin-top:0.4rem">Open Tue–Sun — 10 AM – 8 PM — Ladies only</p>
+</footer>
+
+<a href="#" class="wa-float" id="floatWa" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M20.52 3.449C18.24 1.245 15.24 0 12 0 5.373 0 0 5.373 0 12c0 2.117.554 4.185 1.606 6.001L0 24l6.155-1.587A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12 0-3.24-1.245-6.24-3.48-8.551zM12 22c-1.822 0-3.609-.489-5.17-1.412l-.37-.22-3.656.942.975-3.556-.24-.378A9.937 9.937 0 012 12C2 6.477 6.477 2 12 2c2.654 0 5.15 1.034 7.025 2.914A9.88 9.88 0 0122 12c0 5.523-4.477 10-10 10zm5.476-7.44c-.3-.15-1.77-.873-2.044-.972-.274-.099-.473-.148-.672.149-.2.297-.772.972-.946 1.17-.174.198-.348.223-.648.074-.3-.149-1.266-.467-2.41-1.486-.89-.794-1.49-1.774-1.664-2.073-.174-.298-.018-.46.13-.608.134-.133.3-.348.45-.522.15-.174.199-.298.299-.497.1-.198.05-.372-.025-.521-.075-.15-.672-1.62-.92-2.217-.242-.582-.487-.503-.672-.513l-.573-.01c-.198 0-.522.074-.795.372-.274.297-1.043 1.02-1.043 2.487 0 1.466 1.069 2.885 1.219 3.083.15.198 2.105 3.21 5.1 4.502.714.308 1.271.492 1.706.63.716.227 1.368.195 1.884.118.574-.085 1.77-.723 2.02-1.421.248-.699.248-1.297.173-1.422-.074-.124-.273-.199-.572-.348z"/></svg>
+</a>
+
+<script src="demo-globals.js"></script>
+<script>
+  DemoGlobals.init();
+
+  const WA_NUMBER = "923137863988";
+  const waLink = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hi, I'd like to book an appointment at Glamour Salon & Spa.")}`;
+
+  ['heroWa', 'bookWa', 'floatWa'].forEach(id => {
+    document.getElementById(id).href = waLink;
+  });
+
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    navToggle.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.classList.remove('open');
+  }));
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

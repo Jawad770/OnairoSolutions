@@ -1,0 +1,49 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: onairo_core
+      POSTGRES_USER: ${POSTGRES_USER:-portal_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-onairo_portal_dev}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/db/init-schemas.sql:/docker-entrypoint-initdb.d/01-schemas.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-portal_user} -d onairo_core"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  portal:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      NODE_ENV: ${NODE_ENV:-production}
+      PORT: 3000
+      DATABASE_URL: postgresql://${POSTGRES_USER:-portal_user}:${POSTGRES_PASSWORD:-onairo_portal_dev}@postgres:5432/onairo_core
+      SESSION_SECRET: ${SESSION_SECRET:?SESSION_SECRET is required}
+      TRUST_PROXY: ${TRUST_PROXY:-true}
+      AUDIT_SALT: ${AUDIT_SALT:-change-audit-salt}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+      SMTP_FROM: ${SMTP_FROM:-hello@onairosolutions.com}
+      INIT_ADMIN_EMAIL: ${INIT_ADMIN_EMAIL:-admin@onairosolutions.com}
+      INIT_ADMIN_PASSWORD: ${INIT_ADMIN_PASSWORD:-}
+    volumes:
+      - portal_uploads:/app/data/uploads
+
+volumes:
+  postgres_data:
+  portal_uploads:

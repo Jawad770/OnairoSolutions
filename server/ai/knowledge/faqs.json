@@ -1,0 +1,59 @@
+{
+  "faqs": [
+    {
+      "id": "what-does-onairo-do",
+      "q": "What does Onairo Solutions do?",
+      "a": "Onairo Solutions is a technology company with four pillars: Build (client services — websites, software, automation, AI), Launch (industry websites), Scale (commercial products like EduTrack and FitTrack), and Sell (Shopify store design and launch)."
+    },
+    {
+      "id": "website-timeline",
+      "q": "How long does a website take?",
+      "a": "Most business websites launch in 7–14 days depending on scope and content readiness."
+    },
+    {
+      "id": "website-pricing",
+      "q": "How much does a website cost?",
+      "a": "Published starting packages: Starter from $150, Business from $350, Premium from $650. These are indicative starting prices — final quotes depend on pages, features, and content."
+    },
+    {
+      "id": "custom-software-price",
+      "q": "How much does custom software cost?",
+      "a": "Custom software is quoted after understanding requirements. There is no one-size published price."
+    },
+    {
+      "id": "edutrack-what",
+      "q": "What is EduTrack?",
+      "a": "EduTrack is Onairo’s school management software (Windows, offline-first) covering admissions, attendance, fees, payroll, ID cards, WhatsApp broadcasts, and reports."
+    },
+    {
+      "id": "edutrack-pricing",
+      "q": "How much is EduTrack?",
+      "a": "Starter Rs. 12k/mo (~300 students), Professional Rs. 24k/mo (~1,000 students), Campus custom. 14-day free trial available."
+    },
+    {
+      "id": "edutrack-trial",
+      "q": "Can I try EduTrack?",
+      "a": "Yes — a 14-day free trial is available. Activate via WhatsApp with the Onairo team."
+    },
+    {
+      "id": "where-based",
+      "q": "Where is Onairo based?",
+      "a": "Pakistan-based with worldwide remote delivery."
+    },
+    {
+      "id": "how-to-contact",
+      "q": "How do I contact Onairo?",
+      "a": "WhatsApp +92 313 7863988, email hello@onairosolutions.com, or the website contact / request-quote forms."
+    },
+    {
+      "id": "portfolio-demos",
+      "q": "Do you have website demos for my industry?",
+      "a": "Yes — Onairo has industry demo websites (dental, gym, school, law, restaurant, real estate, and more) that can be customized for your business."
+    },
+    {
+      "id": "redesign",
+      "q": "Do you redesign existing websites?",
+      "a": "Yes. Onairo can rebuild or refresh an existing site while preserving SEO and brand equity."
+    }
+  ]
+}

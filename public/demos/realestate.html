@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Al-Hayat Properties — Karachi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --ink:       #0b0e17;
+      --ink2:      #141826;
+      --surface:   #1c2235;
+      --gold:      #c9973a;
+      --gold-lt:   #e8b96a;
+      --gold-pale: rgba(201,151,58,0.1);
+      --cream:     #f5f0e8;
+      --muted:     #8a95aa;
+      --border:    rgba(201,151,58,0.18);
+      --wa:        #25D366;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family:'Inter',sans-serif; background:var(--ink); color:var(--cream); line-height:1.65; opacity:0; animation:fadeIn .5s ease forwards; overflow-x:hidden; }
+    @keyframes fadeIn { to { opacity:1; } }
+    h1,h2,h3,h4 { font-family:'Syne',sans-serif; font-weight:700; letter-spacing:-.02em; }
+
+    /* demo banner */
+    .demo-banner { background:linear-gradient(90deg,var(--gold),#a07820); color:#fff; text-align:center; padding:.55rem 1rem; font-size:.78rem; font-weight:500; }
+    .demo-banner a { color:#fff; font-weight:700; }
+
+    /* nav */
+    nav { position:sticky; top:0; z-index:200; display:flex; align-items:center; justify-content:space-between; padding:1rem 5%; background:rgba(11,14,23,.94); backdrop-filter:blur(18px); border-bottom:1px solid var(--border); }
+    .logo { font-family:'Syne',sans-serif; font-weight:800; font-size:1.3rem; color:var(--gold); text-decoration:none; }
+    .logo span { display:block; font-size:.68rem; color:var(--muted); letter-spacing:.14em; text-transform:uppercase; font-weight:500; }
+    .nav-links { display:flex; gap:1.75rem; list-style:none; }
+    .nav-links a { color:var(--muted); text-decoration:none; font-size:.875rem; font-weight:500; transition:color .2s; }
+    .nav-links a:hover { color:var(--gold-lt); }
+    .nav-cta { background:var(--gold)!important; color:var(--ink)!important; padding:.5rem 1.25rem; border-radius:6px; font-weight:700!important; }
+    .nav-toggle {
+      min-width: 44px; min-height: 44px; box-sizing: border-box; display:none; flex-direction:column; gap:5px; background:none; border:1px solid var(--border); border-radius:6px; padding:8px; cursor:pointer; }
+    .nav-toggle span { display:block; width:22px; height:2px; background:var(--cream); transition:.3s; }
+    .nav-toggle.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity:0; }
+    .nav-toggle.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+    /* hero */
+    #hero { min-height:92vh; display:flex; align-items:center; position:relative; overflow:hidden; }
+    .hero-bg { position:absolute; inset:0; background:linear-gradient(100deg,rgba(11,14,23,.95) 0%,rgba(11,14,23,.7) 55%,rgba(11,14,23,.4) 100%), url('../images/realestate/hero.jpg') center/cover no-repeat; }
+    .hero-content { position:relative; z-index:1; padding:0 5%; max-width:680px; }
+    .hero-tag { font-size:.72rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-lt); margin-bottom:1.25rem; display:flex; align-items:center; gap:.5rem; }
+    .hero-tag::before { content:''; width:28px; height:1px; background:var(--gold-lt); }
+    #hero h1 { font-size:clamp(2.4rem,5.5vw,4rem); line-height:1.06; margin-bottom:1.2rem; }
+    #hero h1 em { font-style:normal; -webkit-text-stroke:1px var(--gold); color:transparent; }
+    .hero-sub { color:var(--muted); font-size:1.05rem; max-width:480px; margin-bottom:2.25rem; }
+    .hero-stats { display:flex; gap:2rem; flex-wrap:wrap; margin-top:2.5rem; padding-top:2.5rem; border-top:1px solid var(--border); }
+    .hero-stat strong { display:block; font-family:'Syne',sans-serif; font-size:1.6rem; font-weight:800; color:var(--gold); }
+    .hero-stat span { font-size:.78rem; color:var(--muted); }
+
+    /* search bar */
+    .search-bar { display:flex; gap:.5rem; flex-wrap:wrap; margin-top:2rem; }
+    .search-select { background:rgba(255,255,255,.06); border:1px solid var(--border); color:var(--cream); padding:.7rem 1.1rem; border-radius:8px; font-family:'Inter',sans-serif; font-size:.875rem; flex:1; min-width:140px; appearance:none; cursor:pointer; }
+    .search-select:focus { outline:none; border-color:var(--gold); }
+    .search-btn { background:var(--gold); color:var(--ink); padding:.7rem 1.5rem; border-radius:8px; border:none; font-weight:700; font-size:.9rem; cursor:pointer; white-space:nowrap; transition:background .2s; font-family:'Inter',sans-serif; }
+    .search-btn:hover { background:var(--gold-lt); }
+
+    /* sections */
+    section { padding:5rem 5%; }
+    .section-tag { font-size:.72rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin-bottom:.5rem; }
+    .section-title { font-size:clamp(1.75rem,3vw,2.5rem); margin-bottom:.75rem; }
+    .section-desc { color:var(--muted); max-width:520px; margin-bottom:2.5rem; }
+
+    /* listings */
+    #listings { background:var(--ink2); }
+    .listings-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; }
+    .listing-card { background:var(--surface); border:1px solid var(--border); border-radius:16px; overflow:hidden; transition:transform .3s,box-shadow .3s; }
+    .listing-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(0,0,0,.5); }
+    .listing-img { height:220px; overflow:hidden; position:relative; }
+    .listing-img img { width:100%; height:100%; object-fit:cover; transition:transform .45s; }
+    .listing-card:hover .listing-img img { transform:scale(1.05); }
+    .listing-badge { position:absolute; top:1rem; left:1rem; background:var(--gold); color:var(--ink); font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:.3rem .75rem; border-radius:4px; }
+    .listing-price { position:absolute; bottom:1rem; right:1rem; background:rgba(11,14,23,.85); backdrop-filter:blur(6px); color:var(--gold-lt); font-family:'Syne',sans-serif; font-weight:800; font-size:1rem; padding:.35rem .9rem; border-radius:6px; }
+    .listing-body { padding:1.25rem 1.5rem; }
+    .listing-body h3 { font-size:1.05rem; margin-bottom:.35rem; }
+    .listing-body p { font-size:.85rem; color:var(--muted); margin-bottom:1rem; }
+    .listing-specs { display:flex; gap:1rem; flex-wrap:wrap; }
+    .spec { font-size:.78rem; color:var(--muted); display:flex; align-items:center; gap:.3rem; }
+    .spec strong { color:var(--cream); font-weight:600; }
+    .listing-wa { margin-top:1rem; display:block; text-align:center; background:var(--wa); color:#fff; padding:.6rem; border-radius:8px; font-weight:600; font-size:.88rem; text-decoration:none; transition:opacity .2s; }
+    .listing-wa:hover { opacity:.88; }
+
+    /* why us */
+    .why-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.25rem; }
+    .why-card { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:2rem 1.5rem; text-align:center; transition:border-color .25s,transform .25s; }
+    .why-card:hover { border-color:var(--gold); transform:translateY(-4px); }
+    .why-icon { font-size:2.25rem; margin-bottom:1rem; }
+    .why-card h3 { font-size:1rem; margin-bottom:.4rem; }
+    .why-card p { font-size:.85rem; color:var(--muted); }
+
+    /* agents */
+    #agents { background:var(--ink2); }
+    .agents-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.5rem; }
+    .agent-card { background:var(--surface); border:1px solid var(--border); border-radius:16px; overflow:hidden; transition:transform .25s,box-shadow .25s; }
+    .agent-card:hover { transform:translateY(-5px); box-shadow:0 14px 40px rgba(0,0,0,.4); }
+    .agent-photo { height:240px; overflow:hidden; }
+    .agent-photo img { width:100%; height:100%; object-fit:cover; object-position:top center; transition:transform .45s; }
+    .agent-card:hover .agent-photo img { transform:scale(1.04); }
+    .agent-info { padding:1.25rem 1.5rem; }
+    .agent-info h3 { font-size:1.05rem; margin-bottom:.2rem; }
+    .agent-info .role { color:var(--gold); font-size:.82rem; font-weight:600; margin-bottom:.5rem; }
+    .agent-info p { font-size:.83rem; color:var(--muted); }
+    .agent-wa { display:inline-flex; align-items:center; gap:.4rem; margin-top:.75rem; color:var(--wa); font-size:.82rem; font-weight:600; text-decoration:none; }
+
+    /* interior CTA */
+    #interior { position:relative; overflow:hidden; padding:0; min-height:420px; display:flex; align-items:center; }
+    .interior-bg { position:absolute; inset:0; background:linear-gradient(90deg,rgba(11,14,23,.92) 0%,rgba(11,14,23,.6) 60%,rgba(11,14,23,.3) 100%), url('../images/realestate/interior.jpg') center/cover no-repeat; }
+    .interior-content { position:relative; z-index:1; padding:4rem 5%; max-width:580px; }
+    .interior-content h2 { font-size:clamp(1.75rem,3vw,2.4rem); margin-bottom:1rem; }
+    .interior-content p { color:var(--muted); margin-bottom:2rem; }
+    .btn-gold { display:inline-flex; align-items:center; gap:.6rem; background:var(--gold); color:var(--ink); padding:.9rem 2rem; border-radius:8px; font-weight:700; text-decoration:none; transition:background .2s,transform .2s; }
+    .btn-gold:hover { background:var(--gold-lt); transform:translateY(-2px); }
+    .btn-wa { display:inline-flex; align-items:center; gap:.6rem; background:var(--wa); color:#fff; padding:.9rem 1.75rem; border-radius:8px; font-weight:600; text-decoration:none; margin-left:.75rem; transition:transform .2s; }
+    .btn-wa:hover { transform:translateY(-2px); }
+
+    footer { background:var(--ink2); border-top:1px solid var(--border); padding:2.5rem 5%; text-align:center; color:var(--muted); font-size:.85rem; }
+    footer strong { color:var(--gold); }
+
+    .wa-float { position:fixed; bottom:1.5rem; right:1.5rem; z-index:250; width:58px; height:58px; background:var(--wa); border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 24px rgba(37,211,102,.45); transition:transform .2s; text-decoration:none; }
+    .wa-float:hover { transform:scale(1.08); }
+    .wa-float svg { width:30px; height:30px; fill:#fff; }
+
+    .reveal { opacity:0; transform:translateY(28px); transition:opacity .6s ease,transform .6s ease; }
+    .reveal.visible { opacity:1; transform:none; }
+
+    @media(max-width:768px) {
+      .nav-links { display:none; position:fixed; inset:0; background:rgba(11,14,23,.98); flex-direction:column; align-items:center; justify-content:center; gap:2rem; z-index:190; }
+      .nav-links.open { display:flex; }
+      .nav-toggle {
+      min-width: 44px; min-height: 44px; box-sizing: border-box; display:flex; z-index:195; }
+      #hero { min-height:auto; padding-top:3rem; padding-bottom:3rem; }
+      .search-select { width:100%; }
+    }
+    @media(max-width:375px) { section { padding:3.5rem 4%; } }
+  </style>
+</head>
+<body>
+<div class="demo-banner">This is a demo site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com</div>
+
+<nav>
+  <a href="#" class="logo">Al-Hayat<span>Properties — Karachi</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#listings">Listings</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#agents">Agents</a></li>
+    <li><a href="#interior" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content reveal">
+    <div class="hero-tag">DHA — Bahria — Gulshan — Karachi</div>
+    <h1>Find Your <em>Dream</em> Property in Karachi</h1>
+    <p class="hero-sub">Premium plots, apartments, and commercial spaces across Karachi's most sought-after localities. Trusted by 1,200+ families since 2008.</p>
+    <div class="search-bar">
+      <select class="search-select"><option>Property Type</option><option>Apartment</option><option>House</option><option>Plot</option><option>Commercial</option></select>
+      <select class="search-select"><option>Location</option><option>DHA Phase 6</option><option>Bahria Town</option><option>Gulshan-e-Iqbal</option><option>Clifton</option></select>
+      <select class="search-select"><option>Budget</option><option>Under 50 Lac</option><option>50L — 1 Crore</option><option>1–3 Crore</option><option>3 Crore+</option></select>
+      <button class="search-btn">🔍 Search</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>1,200+</strong><span>Families served</span></div>
+      <div class="hero-stat"><strong>16yr</strong><span>In business</span></div>
+      <div class="hero-stat"><strong>4.9⭐</strong><span>Google rating</span></div>
+      <div class="hero-stat"><strong>350+</strong><span>Active listings</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="listings">
+  <div class="section-tag reveal">Active Listings</div>
+  <h2 class="section-title reveal">Featured Properties</h2>
+  <p class="section-desc reveal">Hand-picked verified listings across Karachi. All properties are personally inspected by our team.</p>
+  <div class="listings-grid">
+    <div class="listing-card reveal">
+      <div class="listing-img"><img src="../images/realestate/prop-1.jpg" alt="3-bed apartment DHA" loading="lazy"><span class="listing-badge">For Sale</span><span class="listing-price">Rs. 2.8 Crore</span></div>
+      <div class="listing-body"><h3>3-Bed Luxury Apartment</h3><p>DHA Phase 6, Block K — Sea-facing, 2nd floor, brand new</p><div class="listing-specs"><span class="spec">🛏️ <strong>3</strong> Beds</span><span class="spec">🛁 <strong>3</strong> Baths</span><span class="spec">📐 <strong>1,800</strong> sqft</span><span class="spec">🅿️ <strong>2</strong> Parking</span></div><a href="#" class="listing-wa" id="wa-prop1">💬 Enquire on WhatsApp</a></div>
+    </div>
+    <div class="listing-card reveal">
+      <div class="listing-img"><img src="../images/realestate/prop-2.jpg" alt="5-marla house Bahria Town" loading="lazy"><span class="listing-badge">For Sale</span><span class="listing-price">Rs. 1.65 Crore</span></div>
+      <div class="listing-body"><h3>5-Marla Double Storey</h3><p>Bahria Town Karachi, Precinct 10 — Corner plot, ready to move</p><div class="listing-specs"><span class="spec">🛏️ <strong>4</strong> Beds</span><span class="spec">🛁 <strong>3</strong> Baths</span><span class="spec">📐 <strong>2,250</strong> sqft</span><span class="spec">✨ <strong>Garden</strong></span></div><a href="#" class="listing-wa" id="wa-prop2">💬 Enquire on WhatsApp</a></div>
+    </div>
+    <div class="listing-card reveal">
+      <div class="listing-img"><img src="../images/realestate/prop-3.jpg" alt="Commercial shop Gulshan" loading="lazy"><span class="listing-badge">For Rent</span><span class="listing-price">Rs. 85,000/mo</span></div>
+      <div class="listing-body"><h3>Ground-Floor Commercial Shop</h3><p>Gulshan-e-Iqbal Block 3 — Main road facing, ideal for retail</p><div class="listing-specs"><span class="spec">📐 <strong>650</strong> sqft</span><span class="spec">✨ <strong>Ground</strong> Floor</span><span class="spec">📍 <strong>3-Phase</strong> Power</span></div><a href="#" class="listing-wa" id="wa-prop3">💬 Enquire on WhatsApp</a></div>
+    </div>
+    <div class="listing-card reveal">
+      <div class="listing-img"><img src="../images/realestate/prop-4.jpg" alt="500 yard plot Clifton" loading="lazy"><span class="listing-badge">Plot</span><span class="listing-price">Rs. 6.5 Crore</span></div>
+      <div class="listing-body"><h3>500-Yard Residential Plot</h3><p>Clifton Block 9 — Prime location, all utilities available</p><div class="listing-specs"><span class="spec">✨ <strong>500</strong> Yard</span><span class="spec">✨ <strong>Corner</strong> Plot</span><span class="spec">✨ <strong>Approved</strong> Plans</span></div><a href="#" class="listing-wa" id="wa-prop4">💬 Enquire on WhatsApp</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="section-tag reveal">Our Edge</div>
+  <h2 class="section-title reveal">Why 1,200 families chose Al-Hayat</h2>
+  <div class="why-grid">
+    <div class="why-card reveal"><div class="why-icon">🏠</div><h3>Verified Listings Only</h3><p>Every property is physically verified by our team. No fake listings, no wasted visits.</p></div>
+    <div class="why-card reveal"><div class="why-icon">🏠</div><h3>Legal Documentation</h3><p>Full legal support for transfer, NOC, and registration through our in-house legal team.</p></div>
+    <div class="why-card reveal"><div class="why-icon">🏠</div><h3>WhatsApp-First Service</h3><p>Message us anytime. Our agents reply within 30 minutes during business hours.</p></div>
+    <div class="why-card reveal"><div class="why-icon">🏠</div><h3>Virtual Tours</h3><p>Can't visit in person? We share detailed video walkthroughs via WhatsApp before you commit.</p></div>
+  </div>
+</section>
+
+<section id="agents">
+  <div class="section-tag reveal">Our Team</div>
+  <h2 class="section-title reveal">Meet Our Property Experts</h2>
+  <p class="section-desc reveal">Seasoned professionals with deep knowledge of Karachi's real estate market.</p>
+  <div class="agents-grid">
+    <div class="agent-card reveal">
+      <div class="agent-photo"><img src="../images/realestate/agent-1.jpg" alt="Imran Qureshi" loading="lazy"></div>
+      <div class="agent-info"><h3>Imran Qureshi</h3><div class="role">Senior Property Consultant</div><p>12 years specializing in DHA & Clifton. Closed 400+ deals.</p><a href="#" class="agent-wa" id="wa-agent1">💬 WhatsApp Imran</a></div>
+    </div>
+    <div class="agent-card reveal">
+      <div class="agent-photo"><img src="../images/realestate/agent-2.jpg" alt="Saqib Nawaz" loading="lazy"></div>
+      <div class="agent-info"><h3>Saqib Nawaz</h3><div class="role">Bahria Town Specialist</div><p>8 years exclusively in Bahria Town Karachi. Certified property valuer.</p><a href="#" class="agent-wa" id="wa-agent2">💬 WhatsApp Saqib</a></div>
+    </div>
+    <div class="agent-card reveal">
+      <div class="agent-photo"><img src="../images/realestate/agent-3.jpg" alt="Nadia Farooq" loading="lazy"></div>
+      <div class="agent-info"><h3>Nadia Farooq</h3><div class="role">Commercial Properties</div><p>Expert in Karachi's commercial belt — Gulshan, PECHS, Korangi.</p><a href="#" class="agent-wa" id="wa-agent3">💬 WhatsApp Nadia</a></div>
+    </div>
+  </div>
+</section>
+
+<div id="interior">
+  <div class="interior-bg"></div>
+  <div class="interior-content reveal">
+    <div class="section-tag">Get In Touch</div>
+    <h2>Ready to buy, sell, or rent?</h2>
+    <p>Message us on WhatsApp or call our Karachi office. We respond fast and speak your language — Urdu or English.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:.75rem;">
+      <a href="#" class="btn-gold" id="heroWa"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.449C18.24 1.245 15.24 0 12 0 5.373 0 0 5.373 0 12c0 2.117.554 4.185 1.606 6.001L0 24l6.155-1.587A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12 0-3.24-1.245-6.24-3.48-8.551z"/></svg>WhatsApp Us Now</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 <strong>Al-Hayat Properties</strong> — Karachi, Pakistan</p>
+  <p style="margin-top:.4rem">RERA Registered — 16 Years in Business — DHA — Bahria — Clifton</p>
+</footer>
+
+<a href="#" class="wa-float" id="floatWa" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M20.52 3.449C18.24 1.245 15.24 0 12 0 5.373 0 0 5.373 0 12c0 2.117.554 4.185 1.606 6.001L0 24l6.155-1.587A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12 0-3.24-1.245-6.24-3.48-8.551zM12 22c-1.822 0-3.609-.489-5.17-1.412l-.37-.22-3.656.942.975-3.556-.24-.378A9.937 9.937 0 012 12C2 6.477 6.477 2 12 2c2.654 0 5.15 1.034 7.025 2.914A9.88 9.88 0 0122 12c0 5.523-4.477 10-10 10zm5.476-7.44c-.3-.15-1.77-.873-2.044-.972-.274-.099-.473-.148-.672.149-.2.297-.772.972-.946 1.17-.174.198-.348.223-.648.074-.3-.149-1.266-.467-2.41-1.486-.89-.794-1.49-1.774-1.664-2.073-.174-.298-.018-.46.13-.608.134-.133.3-.348.45-.522.15-.174.199-.298.299-.497.1-.198.05-.372-.025-.521-.075-.15-.672-1.62-.92-2.217-.242-.582-.487-.503-.672-.513l-.573-.01c-.198 0-.522.074-.795.372-.274.297-1.043 1.02-1.043 2.487 0 1.466 1.069 2.885 1.219 3.083.15.198 2.105 3.21 5.1 4.502.714.308 1.271.492 1.706.63.716.227 1.368.195 1.884.118.574-.085 1.77-.723 2.02-1.421.248-.699.248-1.297.173-1.422-.074-.124-.273-.199-.572-.348z"/></svg></a>
+
+<script src="demo-globals.js"></script>
+<script>
+  DemoGlobals.init();
+
+  const WA = "923137863988";
+  const wl = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+  document.getElementById('heroWa').href = wl("Hi, I'm interested in properties listed on Al-Hayat Properties.");
+  document.getElementById('floatWa').href = wl("Hi, I'd like to enquire about a property.");
+  ['wa-prop1','wa-prop2','wa-prop3','wa-prop4'].forEach((id,i)=> { const el=document.getElementById(id); if(el) el.href=wl(`Hi, I'm interested in Property #${i+1} listed on Al-Hayat Properties.`); });
+  ['wa-agent1','wa-agent2','wa-agent3'].forEach(id=>{ const el=document.getElementById(id); if(el) el.href=wl("Hi, I'd like to speak with a property consultant."); });
+
+  const nt=document.getElementById('navToggle'),nl=document.getElementById('navLinks');
+  nt.addEventListener('click',()=>{ nl.classList.toggle('open'); nt.classList.toggle('open'); });
+  nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ nl.classList.remove('open'); nt.classList.remove('open'); }));
+
+  new IntersectionObserver(entries=>entries.forEach(e=>{ if(e.isIntersecting){e.target.classList.add('visible');} }),{threshold:.1}).observe||0;
+  const obs=new IntersectionObserver(entries=>entries.forEach(e=>{ if(e.isIntersecting){e.target.classList.add('visible');} }),{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

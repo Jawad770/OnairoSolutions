@@ -1,0 +1,1241 @@
+// Onairo Core — PostgreSQL multi-schema foundation
+// Integer PKs preserve existing portal IDs / URLs.
+// UUID PKs are used for future product tables.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  schemas  = ["auth", "crm", "website", "finance", "support", "licensing", "products", "cloud", "system", "ai"]
+}
+
+/* ===================== auth ===================== */
+
+model User {
+  id                    Int       @id
+  email                 String    @unique
+  passwordHash          String    @map("password_hash")
+  role                  String    @default("viewer")
+  isActive              Int       @default(1) @map("is_active")
+  failedLogins          Int       @default(0) @map("failed_logins")
+  lockedUntil           DateTime? @map("locked_until")
+  lastLoginAt           DateTime? @map("last_login_at")
+  fullName              String?   @map("full_name")
+  jobTitle              String?   @map("job_title")
+  phone                 String?
+  avatarUrl             String?   @map("avatar_url")
+  status                String    @default("active")
+  mustChangePassword    Int       @default(0) @map("must_change_password")
+  passwordChangedAt     DateTime? @map("password_changed_at")
+  sessionsRevokedAt     DateTime? @map("sessions_revoked_at")
+  createdBy             Int?      @map("created_by")
+  createdAt             DateTime  @default(now()) @map("created_at")
+  updatedAt             DateTime  @updatedAt @map("updated_at")
+  deletedAt             DateTime? @map("deleted_at")
+
+  userRoles             UserRole[]
+  invitations           Invitation[]           @relation("InvitationUser")
+  sessions              AppSession[]
+  assignedLeads         Lead[]                 @relation("LeadAssignee")
+  leadNotes             LeadNote[]
+  activities            LeadActivity[]
+  ticketsCreated        SupportTicket[]        @relation("TicketCreator")
+  ticketsAssigned       SupportTicket[]        @relation("TicketAssignee")
+  ticketNotes           SupportTicketNote[]
+  auditLogs             AuditLog[]
+  sandboxSessions       SandboxSession[]
+
+  @@index([status])
+  @@index([email])
+  @@map("users")
+  @@schema("auth")
+}
+
+model Role {
+  id                     Int              @id
+  key                    String           @unique
+  name                   String
+  description            String?
+  level                  Int              @default(10)
+  isSystem               Int              @default(0) @map("is_system")
+  permissionsCustomized  Int              @default(0) @map("permissions_customized")
+  createdBy              Int?             @map("created_by")
+  createdAt              DateTime         @default(now()) @map("created_at")
+  updatedAt              DateTime         @updatedAt @map("updated_at")
+  deletedAt              DateTime?        @map("deleted_at")
+
+  rolePermissions        RolePermission[]
+  userRoles              UserRole[]
+  invitations            Invitation[]
+
+  @@index([level])
+  @@map("roles")
+  @@schema("auth")
+}
+
+model Permission {
+  id              Int              @id
+  key             String           @unique
+  module          String
+  action          String
+  label           String
+  rolePermissions RolePermission[]
+
+  @@index([module])
+  @@map("permissions")
+  @@schema("auth")
+}
+
+model RolePermission {
+  id           Int        @id
+  roleId       Int        @map("role_id")
+  permissionId Int        @map("permission_id")
+  role         Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission   Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@unique([roleId, permissionId])
+  @@map("role_permissions")
+  @@schema("auth")
+}
+
+model UserRole {
+  id         Int       @id
+  userId     Int       @map("user_id")
+  roleId     Int       @map("role_id")
+  assignedAt DateTime  @default(now()) @map("assigned_at")
+  assignedBy Int?      @map("assigned_by")
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role       Role      @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, roleId])
+  @@index([roleId])
+  @@map("user_roles")
+  @@schema("auth")
+}
+
+model Invitation {
+  id        Int       @id
+  userId    Int       @map("user_id")
+  email     String
+  roleId    Int       @map("role_id")
+  tokenHash String?   @map("token_hash")
+  status    String    @default("pending")
+  expiresAt DateTime  @map("expires_at")
+  usedAt    DateTime? @map("used_at")
+  createdBy Int?      @map("created_by")
+  createdAt DateTime  @default(now()) @map("created_at")
+  user      User      @relation("InvitationUser", fields: [userId], references: [id], onDelete: Cascade)
+  role      Role      @relation(fields: [roleId], references: [id])
+
+  @@index([email])
+  @@index([tokenHash])
+  @@map("user_invitations")
+  @@schema("auth")
+}
+
+model AppSession {
+  id         Int       @id
+  sid        String    @unique
+  userId     Int       @map("user_id")
+  createdAt  DateTime  @default(now()) @map("created_at")
+  lastSeenAt DateTime  @default(now()) @map("last_seen_at")
+  ipHash     String?   @map("ip_hash")
+  userAgent  String?   @map("user_agent")
+  revokedAt  DateTime? @map("revoked_at")
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("sessions")
+  @@schema("auth")
+}
+
+model LoginAttempt {
+  id        Int      @id
+  email     String
+  success   Int      @default(0)
+  ipHash    String?  @map("ip_hash")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([email])
+  @@index([createdAt])
+  @@map("login_attempts")
+  @@schema("auth")
+}
+
+model ExpressSession {
+  sid    String   @id @db.VarChar(255)
+  sess   Json
+  expire DateTime
+
+  @@index([expire])
+  @@map("express_sessions")
+  @@schema("auth")
+}
+
+model IdCounter {
+  key   String @id
+  value Int    @default(0)
+
+  @@map("id_counters")
+  @@schema("auth")
+}
+
+/* ===================== crm ===================== */
+
+model Lead {
+  id                     Int       @id
+  leadCode               String    @unique @map("lead_code")
+  sourceType             String    @map("source_type")
+  sourceRefId            Int?      @map("source_ref_id")
+  dateCreated            DateTime  @default(now()) @map("date_created")
+  name                   String
+  business               String?
+  industry               String?
+  serviceProduct         String?   @map("service_product")
+  email                  String?
+  whatsapp               String?
+  phone                  String?
+  city                   String?
+  budget                 String?
+  timeline               String?
+  preferredContactMethod String?   @map("preferred_contact_method")
+  projectDescription     String?   @map("project_description") @db.Text
+  status                 String    @default("New")
+  assignedToUserId       Int?      @map("assigned_to_user_id")
+  assignedUserId         Int?      @map("assigned_user_id")
+  assignedAt             DateTime? @map("assigned_at")
+  assignedBy             Int?      @map("assigned_by")
+  websiteUrl             String?   @map("website_url")
+  country                String?
+  countryCode            String?   @map("country_code")
+  dialCode               String?   @map("dial_code")
+  phoneNumber            String?   @map("phone_number")
+  metadataJson           Json?     @map("metadata_json")
+  createdAt              DateTime  @default(now()) @map("created_at")
+  updatedAt              DateTime  @updatedAt @map("updated_at")
+  deletedAt              DateTime? @map("deleted_at")
+
+  assignee               User?          @relation("LeadAssignee", fields: [assignedUserId], references: [id], onDelete: SetNull)
+  notes                  LeadNote[]
+  activities             LeadActivity[]
+
+  @@index([status])
+  @@index([email])
+  @@index([phone])
+  @@index([whatsapp])
+  @@index([dateCreated])
+  @@index([assignedUserId])
+  @@index([sourceType])
+  @@map("leads")
+  @@schema("crm")
+}
+
+model LeadNote {
+  id        Int      @id
+  leadId    Int      @map("lead_id")
+  userId    Int?     @map("user_id")
+  note      String   @db.Text
+  createdAt DateTime @default(now()) @map("created_at")
+  lead      Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  user      User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([leadId])
+  @@map("lead_notes")
+  @@schema("crm")
+}
+
+model LeadActivity {
+  id          Int      @id
+  leadId      Int      @map("lead_id")
+  userId      Int?     @map("user_id")
+  actionType  String   @map("action_type")
+  description String   @db.Text
+  createdAt   DateTime @default(now()) @map("created_at")
+  lead        Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  user        User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([leadId])
+  @@index([createdAt])
+  @@map("lead_activity")
+  @@schema("crm")
+}
+
+model Client {
+  id             Int       @id
+  name           String
+  email          String?
+  phone          String?
+  business       String?
+  assignedUserId Int?      @map("assigned_user_id")
+  metadataJson   Json?     @map("metadata_json")
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+  deletedAt      DateTime? @map("deleted_at")
+  projects       Project[]
+
+  @@index([email])
+  @@index([assignedUserId])
+  @@map("clients")
+  @@schema("crm")
+}
+
+model Project {
+  id        Int       @id
+  name      String
+  clientId  Int?      @map("client_id")
+  status    String    @default("Planning")
+  metadataJson Json?  @map("metadata_json")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  client    Client?   @relation(fields: [clientId], references: [id], onDelete: SetNull)
+
+  @@index([status])
+  @@index([clientId])
+  @@map("projects")
+  @@schema("crm")
+}
+
+/* ===================== website ===================== */
+
+model ContactForm {
+  id        Int      @id
+  name      String
+  business  String?
+  topic     String?
+  email     String?
+  whatsapp  String?
+  phone     String?
+  city      String?
+  country   String?
+  countryCode String? @map("country_code")
+  dialCode  String?  @map("dial_code")
+  phoneNumber String? @map("phone_number")
+  message   String   @db.Text
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([email])
+  @@index([createdAt])
+  @@map("contact_forms")
+  @@schema("website")
+}
+
+model QuoteRequest {
+  id                     Int      @id
+  fullName               String   @map("full_name")
+  businessName           String?  @map("business_name")
+  industry               String?
+  interestedIn           String?  @map("interested_in")
+  email                  String?
+  whatsapp               String?
+  phone                  String?
+  city                   String?
+  country                String?
+  countryCode            String?  @map("country_code")
+  dialCode               String?  @map("dial_code")
+  phoneNumber            String?  @map("phone_number")
+  budget                 String?
+  timeline               String?
+  preferredContactMethod String?  @map("preferred_contact_method")
+  projectDescription     String?  @map("project_description") @db.Text
+  websiteUrl             String?  @map("website_url")
+  attachmentsJson        Json?    @map("attachments_json")
+  createdAt              DateTime @default(now()) @map("created_at")
+
+  @@index([email])
+  @@index([createdAt])
+  @@map("quote_requests")
+  @@schema("website")
+}
+
+model NewsletterSubscriber {
+  id        Int       @id
+  email     String    @unique
+  source    String?
+  createdAt DateTime  @default(now()) @map("created_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  @@index([email])
+  @@map("newsletter_subscribers")
+  @@schema("website")
+}
+
+model BlogPost {
+  id          Int       @id
+  title       String
+  slug        String    @unique
+  summary     String?   @db.Text
+  status      String    @default("Draft")
+  createdBy   Int?      @map("created_by")
+  publishedBy Int?      @map("published_by")
+  publishedAt DateTime? @map("published_at")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  deletedAt   DateTime? @map("deleted_at")
+
+  @@index([status])
+  @@map("blog_posts")
+  @@schema("website")
+}
+
+model PortfolioItem {
+  id          Int       @id
+  title       String
+  slug        String    @unique
+  summary     String?   @db.Text
+  status      String    @default("Draft")
+  createdBy   Int?      @map("created_by")
+  publishedBy Int?      @map("published_by")
+  publishedAt DateTime? @map("published_at")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  deletedAt   DateTime? @map("deleted_at")
+
+  @@index([status])
+  @@map("portfolio_items")
+  @@schema("website")
+}
+
+model TestimonialReview {
+  id               String    @id @default(uuid()) @db.Uuid
+  name             String
+  review           String    @db.Text
+  status           String    @default("pending")
+  approvedAt       DateTime? @map("approved_at")
+  approvedByUserId Int?      @map("approved_by_user_id")
+  rejectedAt       DateTime? @map("rejected_at")
+  ipHash           String?   @map("ip_hash")
+  userAgent        String?   @map("user_agent")
+  createdAt        DateTime  @default(now()) @map("created_at")
+  updatedAt        DateTime  @updatedAt @map("updated_at")
+
+  @@index([status])
+  @@index([createdAt])
+  @@map("testimonial_reviews")
+  @@schema("website")
+}
+
+/* ===================== finance ===================== */
+
+model Invoice {
+  id        Int       @id
+  invoiceNo String    @unique @map("invoice_no")
+  clientName String   @map("client_name")
+  amount    Decimal   @db.Decimal(14, 2)
+  currency  String    @default("PKR")
+  status    String    @default("Draft")
+  issuedAt  DateTime  @default(now()) @map("issued_at")
+  dueAt     DateTime? @map("due_at")
+  paidAt    DateTime? @map("paid_at")
+  createdBy Int?      @map("created_by")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  payments  Payment[]
+
+  @@index([status])
+  @@index([issuedAt])
+  @@map("invoices")
+  @@schema("finance")
+}
+
+model Payment {
+  id         Int      @id
+  invoiceId  Int      @map("invoice_id")
+  amount     Decimal  @db.Decimal(14, 2)
+  currency   String   @default("PKR")
+  recordedBy Int?     @map("recorded_by")
+  createdAt  DateTime @default(now()) @map("created_at")
+  invoice    Invoice  @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+
+  @@index([invoiceId])
+  @@map("payments")
+  @@schema("finance")
+}
+
+/* ===================== support ===================== */
+
+model SupportTicket {
+  id             Int       @id
+  ticketCode     String    @unique @map("ticket_code")
+  subject        String
+  customer       String?
+  description    String?   @db.Text
+  priority       String    @default("Normal")
+  status         String    @default("Open")
+  assignedUserId Int?      @map("assigned_user_id")
+  assignedAt     DateTime? @map("assigned_at")
+  assignedBy     Int?      @map("assigned_by")
+  createdBy      Int?      @map("created_by")
+  createdAt      DateTime  @default(now()) @map("created_at")
+  updatedAt      DateTime  @updatedAt @map("updated_at")
+  deletedAt      DateTime? @map("deleted_at")
+
+  assignee       User?               @relation("TicketAssignee", fields: [assignedUserId], references: [id], onDelete: SetNull)
+  creator        User?               @relation("TicketCreator", fields: [createdBy], references: [id], onDelete: SetNull)
+  notes          SupportTicketNote[]
+
+  @@index([status])
+  @@index([assignedUserId])
+  @@index([createdAt])
+  @@map("support_tickets")
+  @@schema("support")
+}
+
+model SupportTicketNote {
+  id        Int           @id
+  ticketId  Int           @map("ticket_id")
+  userId    Int?          @map("user_id")
+  note      String        @db.Text
+  internal  Int           @default(1)
+  createdAt DateTime      @default(now()) @map("created_at")
+  ticket    SupportTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  user      User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([ticketId])
+  @@map("support_messages")
+  @@schema("support")
+}
+
+/* ===================== system ===================== */
+
+model AuditLog {
+  id            Int      @id
+  userId        Int?     @map("user_id")
+  actorName     String?  @map("actor_name")
+  action        String
+  target        String?
+  targetType    String?  @map("target_type")
+  targetId      String?  @map("target_id")
+  previousValue Json?    @map("previous_value")
+  newValue      Json?    @map("new_value")
+  detail        String?
+  result        String   @default("success")
+  ipHash        String?  @map("ip_hash")
+  userAgent     String?  @map("user_agent")
+  createdAt     DateTime @default(now()) @map("created_at")
+  user          User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([action])
+  @@index([createdAt])
+  @@index([userId])
+  @@map("audit_logs")
+  @@schema("system")
+}
+
+model SystemSetting {
+  id        Int      @id
+  key       String   @unique
+  value     Json?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("system_settings")
+  @@schema("system")
+}
+
+/* ===================== licensing (future-ready) ===================== */
+
+model Product {
+  id          String    @id @default(uuid()) @db.Uuid
+  key         String    @unique
+  name        String
+  description String?
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  deletedAt   DateTime? @map("deleted_at")
+  licenses    License[]
+
+  @@map("products")
+  @@schema("licensing")
+}
+
+model License {
+  id        String    @id @default(uuid()) @db.Uuid
+  productId String    @map("product_id") @db.Uuid
+  keyCode   String    @unique @map("key_code")
+  status    String    @default("inactive")
+  metadata  Json?
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+  product   Product   @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@index([status])
+  @@map("licenses")
+  @@schema("licensing")
+}
+
+/* ===================== products (catalog + downloads) ===================== */
+
+model ProductVersion {
+  id          String    @id @default(uuid()) @db.Uuid
+  productKey  String    @map("product_key")
+  version     String
+  notes       String?   @db.Text
+  downloadUrl String?   @map("download_url")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @updatedAt @map("updated_at")
+  deletedAt   DateTime? @map("deleted_at")
+
+  @@unique([productKey, version])
+  @@map("product_versions")
+  @@schema("products")
+}
+
+model CatalogCategory {
+  id           String        @id @default(uuid()) @db.Uuid
+  name         String
+  slug         String        @unique
+  description  String?       @db.Text
+  displayOrder Int           @default(0) @map("display_order")
+  enabled      Boolean       @default(true)
+  createdAt    DateTime      @default(now()) @map("created_at")
+  updatedAt    DateTime      @updatedAt @map("updated_at")
+  deletedAt    DateTime?     @map("deleted_at")
+  items        CatalogItem[]
+  marketingCampaigns MarketingCampaignCategory[]
+
+  @@index([displayOrder])
+  @@map("catalog_categories")
+  @@schema("products")
+}
+
+model ProductType {
+  id           String        @id @default(uuid()) @db.Uuid
+  name         String
+  slug         String        @unique
+  description  String?       @db.Text
+  displayOrder Int           @default(0) @map("display_order")
+  enabled      Boolean       @default(true)
+  createdAt    DateTime      @default(now()) @map("created_at")
+  updatedAt    DateTime      @updatedAt @map("updated_at")
+  deletedAt    DateTime?     @map("deleted_at")
+  items        CatalogItem[]
+
+  @@index([displayOrder])
+  @@map("product_types")
+  @@schema("products")
+}
+
+model CatalogItem {
+  id                     String             @id @default(uuid()) @db.Uuid
+  name                   String
+  slug                   String             @unique
+  shortDescription       String?            @map("short_description") @db.Text
+  fullDescription        String?            @map("full_description") @db.Text
+  categoryId             String             @map("category_id") @db.Uuid
+  productTypeId          String             @map("product_type_id") @db.Uuid
+  displayOrder           Int                @default(0) @map("display_order")
+  featured               Boolean            @default(false)
+  accentColor            String?            @map("accent_color")
+  ctaText                String?            @map("cta_text")
+  ctaLink                String?            @map("cta_link")
+  seoTitle               String?            @map("seo_title")
+  seoDescription         String?            @map("seo_description") @db.Text
+  comingSoon             Boolean            @default(false) @map("coming_soon")
+  expectedLaunchAt       DateTime?          @map("expected_launch_at")
+  comingSoonDescription  String?            @map("coming_soon_description") @db.Text
+  countdownEnabled       Boolean            @default(false) @map("countdown_enabled")
+  notifyMeEnabled        Boolean            @default(false) @map("notify_me_enabled")
+  workflowStatus         String             @default("draft") @map("workflow_status")
+  publishedAt            DateTime?          @map("published_at")
+  publishAt              DateTime?          @map("publish_at")
+  publishTimezone        String             @default("Asia/Karachi") @map("publish_timezone")
+  scheduledPayloadJson   Json?              @map("scheduled_payload_json")
+  visibleWebsite         Boolean            @default(true) @map("visible_website")
+  visibleAi              Boolean            @default(true) @map("visible_ai")
+  visibleCustomerPortal  Boolean            @default(false) @map("visible_customer_portal")
+  visibleCrm             Boolean            @default(true) @map("visible_crm")
+  visibleDownloads       Boolean            @default(false) @map("visible_downloads")
+  visibleInternal        Boolean            @default(true) @map("visible_internal")
+  visibleComingSoon      Boolean            @default(false) @map("visible_coming_soon")
+  visibleHidden          Boolean            @default(false) @map("visible_hidden")
+  visibleFutureRelease   Boolean            @default(false) @map("visible_future_release")
+  createdAt              DateTime           @default(now()) @map("created_at")
+  updatedAt              DateTime           @updatedAt @map("updated_at")
+  deletedAt              DateTime?          @map("deleted_at")
+  category               CatalogCategory    @relation(fields: [categoryId], references: [id])
+  productType            ProductType        @relation(fields: [productTypeId], references: [id])
+  plans                  CatalogPlan[]
+  media                  CatalogMedia[]
+  changelogs             CatalogChangelog[]
+  campaigns              CatalogCampaign[]
+  notifyInterests        CatalogNotifyInterest[]
+  currentRevisionId      String?            @map("current_revision_id") @db.Uuid
+  currentRevision        CatalogRevision?   @relation("CurrentRevision", fields: [currentRevisionId], references: [id], onDelete: SetNull)
+  revisions              CatalogRevision[]  @relation("ItemRevisions")
+  promotionProducts      PromotionProduct[]
+  marketingCampaignProducts MarketingCampaignProduct[]
+
+  @@index([workflowStatus])
+  @@index([displayOrder])
+  @@index([categoryId])
+  @@index([productTypeId])
+  @@index([publishAt])
+  @@map("catalog_items")
+  @@schema("products")
+}
+
+model CatalogPlan {
+  id                    String        @id @default(uuid()) @db.Uuid
+  itemId                String        @map("item_id") @db.Uuid
+  name                  String
+  subtitle              String?
+  monthlyPrice          Decimal?      @map("monthly_price") @db.Decimal(12, 2)
+  yearlyPrice           Decimal?      @map("yearly_price") @db.Decimal(12, 2)
+  oneTimePrice          Decimal?      @map("one_time_price") @db.Decimal(12, 2)
+  currency              String        @default("PKR")
+  badge                 String?
+  popular               Boolean       @default(false)
+  recommended           Boolean       @default(false)
+  color                 String?
+  icon                  String?
+  displayOrder          Int           @default(0) @map("display_order")
+  ctaText               String?       @map("cta_text")
+  ctaLink               String?       @map("cta_link")
+  workflowStatus        String        @default("draft") @map("workflow_status")
+  publishedAt           DateTime?     @map("published_at")
+  publishAt             DateTime?     @map("publish_at")
+  publishTimezone       String        @default("Asia/Karachi") @map("publish_timezone")
+  scheduledPayloadJson  Json?         @map("scheduled_payload_json")
+  visibleWebsite        Boolean       @default(true) @map("visible_website")
+  archivedAt            DateTime?     @map("archived_at")
+  createdAt             DateTime      @default(now()) @map("created_at")
+  updatedAt             DateTime      @updatedAt @map("updated_at")
+  deletedAt             DateTime?     @map("deleted_at")
+  item                  CatalogItem   @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  features              PlanFeature[]
+  promotionPlans        PromotionPlan[]
+  marketingCampaignPlans MarketingCampaignPlan[]
+
+  @@index([itemId])
+  @@index([displayOrder])
+  @@index([workflowStatus])
+  @@map("product_plans")
+  @@schema("products")
+}
+
+model PlanFeature {
+  id           String      @id @default(uuid()) @db.Uuid
+  planId       String      @map("plan_id") @db.Uuid
+  title        String
+  description  String?     @db.Text
+  included     Boolean     @default(true)
+  valueText    String?     @map("value_text")
+  icon         String?
+  displayOrder Int         @default(0) @map("display_order")
+  enabled      Boolean     @default(true)
+  createdAt    DateTime    @default(now()) @map("created_at")
+  updatedAt    DateTime    @updatedAt @map("updated_at")
+  deletedAt    DateTime?   @map("deleted_at")
+  plan         CatalogPlan @relation(fields: [planId], references: [id], onDelete: Cascade)
+
+  @@index([planId])
+  @@index([displayOrder])
+  @@map("plan_features")
+  @@schema("products")
+}
+
+model CatalogMedia {
+  id           String      @id @default(uuid()) @db.Uuid
+  itemId       String      @map("item_id") @db.Uuid
+  mediaType    String      @map("media_type")
+  url          String
+  alt          String?
+  title        String?
+  displayOrder Int         @default(0) @map("display_order")
+  enabled      Boolean     @default(true)
+  createdAt    DateTime    @default(now()) @map("created_at")
+  updatedAt    DateTime    @updatedAt @map("updated_at")
+  deletedAt    DateTime?   @map("deleted_at")
+  item         CatalogItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+
+  @@index([itemId])
+  @@index([mediaType])
+  @@index([displayOrder])
+  @@map("catalog_media")
+  @@schema("products")
+}
+
+model CatalogChangelog {
+  id             String      @id @default(uuid()) @db.Uuid
+  itemId         String      @map("item_id") @db.Uuid
+  version        String
+  title          String
+  body           String      @db.Text
+  releasedAt     DateTime    @default(now()) @map("released_at")
+  visibleWebsite Boolean     @default(true) @map("visible_website")
+  displayOrder   Int         @default(0) @map("display_order")
+  createdAt      DateTime    @default(now()) @map("created_at")
+  updatedAt      DateTime    @updatedAt @map("updated_at")
+  deletedAt      DateTime?   @map("deleted_at")
+  item           CatalogItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+
+  @@index([itemId])
+  @@index([releasedAt])
+  @@map("catalog_changelogs")
+  @@schema("products")
+}
+
+model CatalogCampaign {
+  id         String       @id @default(uuid()) @db.Uuid
+  name       String
+  slug       String       @unique
+  type       String       @default("launch")
+  itemId     String?      @map("item_id") @db.Uuid
+  startsAt   DateTime?    @map("starts_at")
+  endsAt     DateTime?    @map("ends_at")
+  payloadJson Json?       @map("payload_json")
+  enabled    Boolean      @default(true)
+  createdAt  DateTime     @default(now()) @map("created_at")
+  updatedAt  DateTime     @updatedAt @map("updated_at")
+  deletedAt  DateTime?    @map("deleted_at")
+  item       CatalogItem? @relation(fields: [itemId], references: [id], onDelete: SetNull)
+
+  @@index([itemId])
+  @@index([enabled])
+  @@map("catalog_campaigns")
+  @@schema("products")
+}
+
+model CatalogNotifyInterest {
+  id           String      @id @default(uuid()) @db.Uuid
+  itemId       String      @map("item_id") @db.Uuid
+  name         String?
+  email        String?
+  whatsapp     String?
+  sourcePage   String?     @map("source_page")
+  campaignSlug String?     @map("campaign_slug")
+  leadId       Int?        @map("lead_id")
+  metadataJson Json?       @map("metadata_json")
+  createdAt    DateTime    @default(now()) @map("created_at")
+  item         CatalogItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+
+  @@index([itemId])
+  @@index([email])
+  @@index([createdAt])
+  @@map("catalog_notify_interests")
+  @@schema("products")
+}
+
+/// Immutable catalog content revision (not Downloads ProductVersion).
+model CatalogRevision {
+  id                  String                  @id @default(uuid()) @db.Uuid
+  itemId              String                  @map("item_id") @db.Uuid
+  versionNumber       Int                     @map("version_number")
+  summary             String
+  status              String                  @default("current")
+  snapshotJson        Json                    @map("snapshot_json")
+  createdByUserId     Int?                    @map("created_by_user_id")
+  createdByEmail      String?                 @map("created_by_email")
+  reason              String?
+  ipHash              String?                 @map("ip_hash")
+  userAgent           String?                 @map("user_agent")
+  restoredFromVersion Int?                    @map("restored_from_version")
+  createdAt           DateTime                @default(now()) @map("created_at")
+  item                CatalogItem             @relation("ItemRevisions", fields: [itemId], references: [id], onDelete: Cascade)
+  currentFor          CatalogItem[]           @relation("CurrentRevision")
+  changes             CatalogRevisionChange[]
+
+  @@unique([itemId, versionNumber])
+  @@index([itemId])
+  @@index([status])
+  @@index([createdAt])
+  @@map("catalog_revisions")
+  @@schema("products")
+}
+
+model CatalogRevisionChange {
+  id         String          @id @default(uuid()) @db.Uuid
+  revisionId String          @map("revision_id") @db.Uuid
+  entityType String          @map("entity_type")
+  entityKey  String          @map("entity_key")
+  field      String
+  changeType String          @map("change_type")
+  beforeJson Json?           @map("before_json")
+  afterJson  Json?           @map("after_json")
+  createdAt  DateTime        @default(now()) @map("created_at")
+  revision   CatalogRevision @relation(fields: [revisionId], references: [id], onDelete: Cascade)
+
+  @@index([revisionId])
+  @@index([entityType])
+  @@map("catalog_revision_changes")
+  @@schema("products")
+}
+
+/// Full marketing campaigns (banners, scheduling, targeting). Distinct from light CatalogCampaign.
+model MarketingCampaign {
+  id                 String   @id @default(uuid()) @db.Uuid
+  name               String
+  slug               String   @unique
+  internalNotes      String?  @map("internal_notes") @db.Text
+  campaignType       String   @default("custom") @map("campaign_type")
+  status             String   @default("draft")
+  headline           String?
+  subHeading         String?  @map("sub_heading")
+  description        String?  @db.Text
+  promotionBadge     String?  @map("promotion_badge")
+  buttonText         String?  @map("button_text")
+  buttonLink         String?  @map("button_link")
+  bannerImageUrl     String?  @map("banner_image_url")
+  backgroundImageUrl String?  @map("background_image_url")
+  themeColor         String?  @map("theme_color")
+  accentColor        String?  @map("accent_color")
+  icon               String?
+  animationStyle     String?  @map("animation_style")
+  discountType       String?  @map("discount_type")
+  discountValue      Decimal? @map("discount_value") @db.Decimal(12, 2)
+  discountCode       String?  @map("discount_code")
+  autoApplyDiscount  Boolean  @default(false) @map("auto_apply_discount")
+  promotionId        String?  @map("promotion_id") @db.Uuid
+  startsAt           DateTime? @map("starts_at")
+  endsAt             DateTime? @map("ends_at")
+  timezone           String   @default("Asia/Karachi")
+  showCountdown      Boolean  @default(false) @map("show_countdown")
+  bannerPlacement    String   @default("top_bar") @map("banner_placement")
+  bannerScope        String   @default("entire_website") @map("banner_scope")
+  dismissible        Boolean  @default(true)
+  persistent         Boolean  @default(false)
+  animated           Boolean  @default(true)
+  audience           String   @default("all")
+  utmSource          String?  @map("utm_source")
+  utmMedium          String?  @map("utm_medium")
+  utmCampaign        String?  @map("utm_campaign")
+  trackingJson       Json?    @map("tracking_json")
+  viewCount          Int      @default(0) @map("view_count")
+  bannerClickCount   Int      @default(0) @map("banner_click_count")
+  ctaClickCount      Int      @default(0) @map("cta_click_count")
+  publishedAt        DateTime? @map("published_at")
+  createdAt          DateTime @default(now()) @map("created_at")
+  updatedAt          DateTime @updatedAt @map("updated_at")
+  deletedAt          DateTime? @map("deleted_at")
+  promotion          Promotion? @relation(fields: [promotionId], references: [id], onDelete: SetNull)
+  products           MarketingCampaignProduct[]
+  plans              MarketingCampaignPlan[]
+  categories         MarketingCampaignCategory[]
+  events             MarketingCampaignEvent[]
+
+  @@index([status])
+  @@index([startsAt])
+  @@index([endsAt])
+  @@index([deletedAt])
+  @@map("marketing_campaigns")
+  @@schema("products")
+}
+
+model MarketingCampaignProduct {
+  id         String            @id @default(uuid()) @db.Uuid
+  campaignId String            @map("campaign_id") @db.Uuid
+  itemId     String            @map("item_id") @db.Uuid
+  createdAt  DateTime          @default(now()) @map("created_at")
+  campaign   MarketingCampaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  item       CatalogItem       @relation(fields: [itemId], references: [id], onDelete: Cascade)
+
+  @@unique([campaignId, itemId])
+  @@index([itemId])
+  @@map("marketing_campaign_products")
+  @@schema("products")
+}
+
+model MarketingCampaignPlan {
+  id         String            @id @default(uuid()) @db.Uuid
+  campaignId String            @map("campaign_id") @db.Uuid
+  planId     String            @map("plan_id") @db.Uuid
+  createdAt  DateTime          @default(now()) @map("created_at")
+  campaign   MarketingCampaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  plan       CatalogPlan       @relation(fields: [planId], references: [id], onDelete: Cascade)
+
+  @@unique([campaignId, planId])
+  @@index([planId])
+  @@map("marketing_campaign_plans")
+  @@schema("products")
+}
+
+model MarketingCampaignCategory {
+  id         String            @id @default(uuid()) @db.Uuid
+  campaignId String            @map("campaign_id") @db.Uuid
+  categoryId String            @map("category_id") @db.Uuid
+  createdAt  DateTime          @default(now()) @map("created_at")
+  campaign   MarketingCampaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+  category   CatalogCategory   @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@unique([campaignId, categoryId])
+  @@index([categoryId])
+  @@map("marketing_campaign_categories")
+  @@schema("products")
+}
+
+model MarketingCampaignEvent {
+  id         String            @id @default(uuid()) @db.Uuid
+  campaignId String            @map("campaign_id") @db.Uuid
+  eventType  String            @map("event_type")
+  pagePath   String?           @map("page_path")
+  productSlug String?          @map("product_slug")
+  sessionKey String?           @map("session_key")
+  ipHash     String?           @map("ip_hash")
+  metadataJson Json?           @map("metadata_json")
+  createdAt  DateTime          @default(now()) @map("created_at")
+  campaign   MarketingCampaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+
+  @@index([campaignId])
+  @@index([eventType])
+  @@index([createdAt])
+  @@map("marketing_campaign_events")
+  @@schema("products")
+}
+
+/// Discount / coupon promotions (not CatalogCampaign launch stubs).
+model Promotion {
+  id                String              @id @default(uuid()) @db.Uuid
+  name              String
+  code              String
+  description       String?             @db.Text
+  internalNotes     String?             @map("internal_notes") @db.Text
+  discountType      String              @map("discount_type")
+  discountValue     Decimal             @map("discount_value") @db.Decimal(12, 2)
+  maxUses           Int?                @map("max_uses")
+  usesPerCustomer   Int?                @default(1) @map("uses_per_customer")
+  usedCount         Int                 @default(0) @map("used_count")
+  applyAttemptCount Int                 @default(0) @map("apply_attempt_count")
+  startsAt          DateTime?           @map("starts_at")
+  endsAt            DateTime?           @map("ends_at")
+  autoExpire        Boolean             @default(true) @map("auto_expire")
+  status            String              @default("active")
+  minPurchaseAmount Decimal?            @map("min_purchase_amount") @db.Decimal(12, 2)
+  maxDiscountAmount Decimal?            @map("max_discount_amount") @db.Decimal(12, 2)
+  currency          String              @default("PKR")
+  kind              String              @default("coupon")
+  stackingPolicy    Json?               @map("stacking_policy")
+  createdAt         DateTime            @default(now()) @map("created_at")
+  updatedAt         DateTime            @updatedAt @map("updated_at")
+  deletedAt         DateTime?           @map("deleted_at")
+  products          PromotionProduct[]
+  plans             PromotionPlan[]
+  redemptions       PromotionRedemption[]
+  marketingCampaigns MarketingCampaign[]
+
+  @@unique([code])
+  @@index([status])
+  @@index([endsAt])
+  @@index([deletedAt])
+  @@map("promotions")
+  @@schema("products")
+}
+
+model PromotionProduct {
+  id          String      @id @default(uuid()) @db.Uuid
+  promotionId String      @map("promotion_id") @db.Uuid
+  itemId      String      @map("item_id") @db.Uuid
+  createdAt   DateTime    @default(now()) @map("created_at")
+  promotion   Promotion   @relation(fields: [promotionId], references: [id], onDelete: Cascade)
+  item        CatalogItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+
+  @@unique([promotionId, itemId])
+  @@index([itemId])
+  @@map("promotion_products")
+  @@schema("products")
+}
+
+model PromotionPlan {
+  id          String      @id @default(uuid()) @db.Uuid
+  promotionId String      @map("promotion_id") @db.Uuid
+  planId      String      @map("plan_id") @db.Uuid
+  createdAt   DateTime    @default(now()) @map("created_at")
+  promotion   Promotion   @relation(fields: [promotionId], references: [id], onDelete: Cascade)
+  plan        CatalogPlan @relation(fields: [planId], references: [id], onDelete: Cascade)
+
+  @@unique([promotionId, planId])
+  @@index([planId])
+  @@map("promotion_plans")
+  @@schema("products")
+}
+
+model PromotionRedemption {
+  id               String    @id @default(uuid()) @db.Uuid
+  promotionId      String    @map("promotion_id") @db.Uuid
+  code             String
+  itemId           String?   @map("item_id") @db.Uuid
+  planId           String?   @map("plan_id") @db.Uuid
+  leadId           Int?      @map("lead_id")
+  customerEmail    String?   @map("customer_email")
+  customerWhatsapp String?   @map("customer_whatsapp")
+  originalAmount   Decimal   @map("original_amount") @db.Decimal(12, 2)
+  discountAmount   Decimal   @map("discount_amount") @db.Decimal(12, 2)
+  finalAmount      Decimal   @map("final_amount") @db.Decimal(12, 2)
+  currency         String    @default("PKR")
+  sourcePage       String?   @map("source_page")
+  ipHash           String?   @map("ip_hash")
+  userAgent        String?   @map("user_agent")
+  createdAt        DateTime  @default(now()) @map("created_at")
+  promotion        Promotion @relation(fields: [promotionId], references: [id], onDelete: Cascade)
+
+  @@index([promotionId])
+  @@index([code])
+  @@index([customerEmail])
+  @@index([leadId])
+  @@index([createdAt])
+  @@map("promotion_redemptions")
+  @@schema("products")
+}
+
+/* ===================== cloud (future empty foundation) ===================== */
+
+model CloudBackup {
+  id        String    @id @default(uuid()) @db.Uuid
+  ownerRef  String?   @map("owner_ref")
+  status    String    @default("pending")
+  metadata  Json?
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  @@index([status])
+  @@map("cloud_backups")
+  @@schema("cloud")
+}
+
+/* ===================== ai ===================== */
+
+model AiConversation {
+  id              String      @id @default(uuid()) @db.Uuid
+  sessionId       String      @map("session_id")
+  status          String      @default("active")
+  leadId          Int?        @map("lead_id")
+  summary         String?     @db.Text
+  intentScore     Int?        @map("intent_score")
+  confidenceScore Int?        @map("confidence_score")
+  metadataJson    Json?       @map("metadata_json")
+  createdAt       DateTime    @default(now()) @map("created_at")
+  updatedAt       DateTime    @updatedAt @map("updated_at")
+  expiresAt       DateTime?   @map("expires_at")
+  messages        AiMessage[]
+
+  @@index([sessionId])
+  @@index([leadId])
+  @@index([status])
+  @@index([expiresAt])
+  @@map("conversations")
+  @@schema("ai")
+}
+
+model AiMessage {
+  id             String         @id @default(uuid()) @db.Uuid
+  conversationId String         @map("conversation_id") @db.Uuid
+  role           String
+  content        String         @db.Text
+  toolName       String?        @map("tool_name")
+  toolPayload    Json?          @map("tool_payload")
+  createdAt      DateTime       @default(now()) @map("created_at")
+  conversation   AiConversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  @@index([conversationId])
+  @@index([createdAt])
+  @@map("messages")
+  @@schema("ai")
+}
+
+/* ===================== sandbox (products schema) ===================== */
+
+/// Staging session — isolated catalog/marketing changes until publish.
+model SandboxSession {
+  id          String   @id @default(uuid()) @db.Uuid
+  name        String
+  description String?  @db.Text
+  status      String   @default("draft")
+  createdById Int?     @map("created_by_id")
+  publishedAt DateTime? @map("published_at")
+  archivedAt  DateTime? @map("archived_at")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  deletedAt   DateTime? @map("deleted_at")
+  createdBy   User?    @relation(fields: [createdById], references: [id], onDelete: SetNull)
+  changes     SandboxChange[]
+  tokens      SandboxPreviewToken[]
+  publishJobs SandboxPublishJob[]
+  validations SandboxValidationReport[]
+
+  @@index([status])
+  @@index([deletedAt])
+  @@index([createdById])
+  @@map("sandbox_sessions")
+  @@schema("products")
+}
+
+model SandboxChange {
+  id           String         @id @default(uuid()) @db.Uuid
+  sessionId    String         @map("session_id") @db.Uuid
+  entityType   String         @map("entity_type")
+  entityId     String?        @map("entity_id")
+  entitySlug   String?        @map("entity_slug")
+  changeType   String         @map("change_type")
+  label        String?
+  beforeJson   Json?          @map("before_json")
+  afterJson    Json           @map("after_json")
+  createdAt    DateTime       @default(now()) @map("created_at")
+  updatedAt    DateTime       @updatedAt @map("updated_at")
+  session      SandboxSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId])
+  @@index([entityType])
+  @@index([entityId])
+  @@map("sandbox_changes")
+  @@schema("products")
+}
+
+model SandboxPreviewToken {
+  id         String         @id @default(uuid()) @db.Uuid
+  sessionId  String         @map("session_id") @db.Uuid
+  token      String         @unique
+  expiresAt  DateTime       @map("expires_at")
+  revokedAt  DateTime?      @map("revoked_at")
+  lastUsedAt DateTime?      @map("last_used_at")
+  createdById Int?          @map("created_by_id")
+  createdAt  DateTime       @default(now()) @map("created_at")
+  session    SandboxSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId])
+  @@index([expiresAt])
+  @@map("sandbox_preview_tokens")
+  @@schema("products")
+}
+
+model SandboxPublishJob {
+  id            String         @id @default(uuid()) @db.Uuid
+  sessionId     String         @map("session_id") @db.Uuid
+  status        String         @default("pending")
+  publishMode   String         @default("replace") @map("publish_mode")
+  scheduledFor  DateTime       @map("scheduled_for")
+  timezone      String         @default("Asia/Karachi")
+  startedAt     DateTime?      @map("started_at")
+  completedAt   DateTime?      @map("completed_at")
+  errorMessage  String?        @map("error_message") @db.Text
+  createdById   Int?           @map("created_by_id")
+  createdAt     DateTime       @default(now()) @map("created_at")
+  session       SandboxSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId])
+  @@index([status])
+  @@index([scheduledFor])
+  @@map("sandbox_publish_jobs")
+  @@schema("products")
+}
+
+model SandboxValidationReport {
+  id           String         @id @default(uuid()) @db.Uuid
+  sessionId    String         @map("session_id") @db.Uuid
+  passed       Boolean        @default(false)
+  warningCount Int            @default(0) @map("warning_count")
+  errorCount   Int            @default(0) @map("error_count")
+  reportJson   Json           @map("report_json")
+  createdAt    DateTime       @default(now()) @map("created_at")
+  session      SandboxSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId])
+  @@index([createdAt])
+  @@map("sandbox_validation_reports")
+  @@schema("products")
+}

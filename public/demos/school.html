@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Greenfield Academy — School Website Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ivory:      #faf8f5;
+      --white:      #ffffff;
+      --navy:       #0f172a;
+      --navy-mid:   #1e293b;
+      --blue:       #1e40af;
+      --blue-lt:    #3b82f6;
+      --blue-pale:  #eff6ff;
+      --gold:       #b8860b;
+      --gold-lt:    #d4a017;
+      --gold-pale:  #fef9e7;
+      --slate:      #64748b;
+      --border:     #e2e8f0;
+      --wa:         #25D366;
+    }
+
+    html { scroll-behavior: smooth; width: 100%; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--ivory);
+      color: var(--navy);
+      line-height: 1.65;
+      width: 100%;
+      overflow-x: hidden;
+      opacity: 0;
+      animation: pageIn 0.6s ease forwards;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    button, a, input, select, textarea { touch-action: manipulation; }
+    button, .btn, .nav-toggle { min-height: 44px; min-width: 44px; }
+
+    @keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .demo-banner {
+      background: var(--navy);
+      color: rgba(255,255,255,0.9);
+      text-align: center;
+      padding: 0.5rem 1rem;
+      font-size: 0.76rem;
+      font-weight: 500;
+      width: 100%;
+    }
+    .demo-banner a { color: var(--gold-lt); font-weight: 700; }
+
+    /* top bar */
+    .top-bar {
+      background: var(--navy);
+      color: rgba(255,255,255,0.75);
+      font-size: 0.78rem;
+      padding: 0.45rem clamp(1.25rem, 4vw, 3rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      width: 100%;
+    }
+    .top-bar a { color: rgba(255,255,255,0.85); text-decoration: none; transition: color 0.2s; }
+    .top-bar a:hover { color: var(--gold-lt); }
+    .top-bar-left, .top-bar-right { display: flex; gap: 1.25rem; flex-wrap: wrap; align-items: center; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem clamp(1.25rem, 4vw, 3rem);
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.35s;
+      width: 100%;
+    }
+    nav.scrolled { box-shadow: 0 4px 24px rgba(15,23,42,0.08); }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--navy);
+    }
+    .logo-mark {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-lt);
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 14px rgba(30,64,175,0.25);
+    }
+    .logo-text strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+    .logo-text span {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--slate);
+    }
+
+    .nav-links { display: flex; gap: 1.35rem; list-style: none; align-items: center; }
+    .nav-links a {
+      color: var(--slate);
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 600;
+      transition: color 0.25s;
+      position: relative;
+    }
+    .nav-links a:not(.nav-cta)::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.25s;
+    }
+    .nav-links a:not(.nav-cta):hover { color: var(--navy); }
+    .nav-links a:not(.nav-cta):hover::after { transform: scaleX(1); }
+
+    .nav-cta {
+      background: var(--navy) !important;
+      color: #fff !important;
+      padding: 0.55rem 1.15rem !important;
+      border-radius: 8px;
+      font-weight: 700 !important;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.25s !important;
+    }
+    .nav-cta:hover {
+      background: var(--blue) !important;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(30,64,175,0.3);
+    }
+    .nav-cta::after { display: none !important; }
+
+    .nav-toggle {
+      min-width: 44px; min-height: 44px; align-items: center; justify-content: center; box-sizing: border-box;
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px;
+      cursor: pointer;
+    }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--navy); transition: 0.3s; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* hero */
+    #hero {
+      position: relative;
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      padding: 0;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(15,23,42,0.92) 0%,
+        rgba(15,23,42,0.75) 45%,
+        rgba(15,23,42,0.35) 100%
+      );
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 5rem clamp(1.25rem, 4vw, 3rem) 6rem;
+      width: 100%;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(212,160,23,0.15);
+      border: 1px solid rgba(212,160,23,0.4);
+      color: var(--gold-lt);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+    }
+    #hero h1 {
+      font-size: clamp(2.4rem, 5.5vw, 3.75rem);
+      line-height: 1.08;
+      color: #fff;
+      max-width: 680px;
+      margin-bottom: 1.25rem;
+    }
+    #hero h1 em { font-style: italic; color: var(--gold-lt); }
+    .hero-sub {
+      color: rgba(255,255,255,0.82);
+      font-size: clamp(0.95rem, 2vw, 1.08rem);
+      max-width: 520px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; margin-bottom: 2.5rem; }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: var(--wa);
+      color: #fff;
+      padding: 0.9rem 1.6rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: transform 0.25s, box-shadow 0.25s;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(37,211,102,0.45); }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.5);
+      padding: 0.85rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: background 0.25s, border-color 0.25s, transform 0.25s;
+    }
+    .btn-gold:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: var(--gold-lt);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 12px;
+      overflow: hidden;
+      max-width: min(720px, 100%);
+      backdrop-filter: blur(8px);
+    }
+    .hero-stat {
+      background: rgba(15,23,42,0.5);
+      padding: 1.1rem 1rem;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .hero-stat:hover { background: rgba(30,64,175,0.4); }
+    .hero-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: var(--gold-lt);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.7);
+      margin-top: 0.3rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* trust strip */
+    .trust-strip {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem clamp(1.25rem, 4vw, 3rem);
+      width: 100%;
+    }
+    .trust-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(1.5rem, 4vw, 3rem);
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--slate);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .trust-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    section {
+      padding: 5.5rem clamp(1.25rem, 4vw, 3rem);
+      width: 100%;
+      max-width: none;
+      margin: 0;
+    }
+
+    .section-wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto 3rem;
+    }
+    .section-head.left { text-align: left; margin-left: 0; margin-right: 0; }
+    .section-label {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-size: clamp(1.85rem, 3.5vw, 2.5rem);
+      margin-bottom: 0.75rem;
+      color: var(--navy);
+    }
+    .section-desc { color: var(--slate); font-size: 0.95rem; line-height: 1.7; }
+    .section-rule {
+      width: 48px; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-lt));
+      margin: 1rem auto 0;
+      border-radius: 2px;
+    }
+    .section-head.left .section-rule { margin-left: 0; }
+
+    /* about */
+    #about { padding-top: 5rem; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+    .about-img-wrap { position: relative; }
+    .about-img {
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(15,23,42,0.12);
+    }
+    .about-img img {
+      width: 100%;
+      min-height: 420px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .about-img:hover img { transform: scale(1.03); }
+    .about-accent {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      background: var(--navy);
+      color: #fff;
+      padding: 1.25rem 1.5rem;
+      border-radius: 4px;
+      box-shadow: 0 12px 40px rgba(15,23,42,0.2);
+      max-width: 200px;
+    }
+    .about-accent-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--gold-lt);
+      line-height: 1;
+    }
+    .about-accent p { font-size: 0.78rem; opacity: 0.85; margin-top: 0.25rem; }
+
+    .about-text p { color: var(--slate); font-size: 0.95rem; margin-bottom: 1rem; line-height: 1.75; }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .value-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      padding: 1.25rem 1.35rem;
+      border-radius: 0 8px 8px 0;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .value-card:hover {
+      box-shadow: 0 12px 32px rgba(15,23,42,0.08);
+      transform: translateX(4px);
+    }
+    .value-card h4 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 800;
+      margin-bottom: 0.3rem;
+    }
+    .value-card p { font-size: 0.82rem; color: var(--slate); line-height: 1.55; }
+
+    /* programs */
+    #programs {
+      background: var(--white);
+    }
+    #programs .inner { max-width: 1280px; margin: 0 auto; width: 100%; }
+
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+    .program-card {
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s;
+      position: relative;
+    }
+    .program-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 28px 56px rgba(15,23,42,0.1);
+    }
+    .program-card.featured {
+      border-color: var(--navy);
+      box-shadow: 0 16px 48px rgba(15,23,42,0.12);
+    }
+    .program-card.featured .program-img { height: 220px; }
+    .program-featured-tag {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.65rem;
+      border-radius: 4px;
+      z-index: 2;
+    }
+    .program-img { height: 200px; overflow: hidden; position: relative; }
+    .program-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15,23,42,0.4), transparent 50%);
+    }
+    .program-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s ease;
+    }
+    .program-card:hover .program-img img { transform: scale(1.07); }
+    .program-body { padding: 1.5rem 1.6rem 1.75rem; flex: 1; display: flex; flex-direction: column; }
+    .program-level {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.45rem;
+    }
+    .program-body h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+    .program-body p { font-size: 0.86rem; color: var(--slate); margin-bottom: 1rem; flex: 1; line-height: 1.65; }
+    .program-meta {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--navy);
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* facilities bento */
+    #facilities { padding-top: 5rem; }
+    .facilities-bento {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(2, 240px);
+      gap: 1rem;
+    }
+    .facility-item {
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+      cursor: default;
+    }
+    .facility-item:nth-child(1) { grid-column: span 5; grid-row: span 2; }
+    .facility-item:nth-child(2) { grid-column: span 4; }
+    .facility-item:nth-child(3) { grid-column: span 3; }
+    .facility-item:nth-child(4) { grid-column: span 4; }
+    .facility-item:nth-child(5) { grid-column: span 3; }
+    .facility-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .facility-item:hover img { transform: scale(1.06); }
+    .facility-cap {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15,23,42,0.85) 0%, transparent 60%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.35rem;
+      color: #fff;
+      transition: background 0.35s;
+    }
+    .facility-item:hover .facility-cap {
+      background: linear-gradient(to top, rgba(30,64,175,0.9) 0%, rgba(30,64,175,0.2) 100%);
+    }
+    .facility-cap h3 { font-size: 1.1rem; margin-bottom: 0.2rem; }
+    .facility-cap p { font-size: 0.78rem; opacity: 0.88; }
+
+    /* faculty */
+    #faculty {
+      background: var(--navy);
+      color: #fff;
+    }
+    #faculty .inner { max-width: 1280px; margin: 0 auto; width: 100%; }
+    #faculty .section-title { color: #fff; }
+    #faculty .section-desc { color: rgba(255,255,255,0.65); }
+    #faculty .section-rule { background: linear-gradient(90deg, var(--gold), transparent); }
+
+    .faculty-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .faculty-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: transform 0.35s, background 0.35s, border-color 0.35s;
+    }
+    .faculty-card:hover {
+      transform: translateY(-8px);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(212,160,23,0.4);
+    }
+    .faculty-photo { height: 280px; overflow: hidden; }
+    .faculty-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top;
+      filter: grayscale(20%);
+      transition: filter 0.4s, transform 0.5s;
+    }
+    .faculty-card:hover .faculty-photo img { filter: grayscale(0); transform: scale(1.04); }
+    .faculty-info { padding: 1.35rem 1.5rem; }
+    .faculty-info h3 { font-size: 1.15rem; color: #fff; margin-bottom: 0.25rem; }
+    .faculty-role {
+      font-size: 0.75rem;
+      color: var(--gold-lt);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.65rem;
+    }
+    .faculty-info p { font-size: 0.84rem; color: rgba(255,255,255,0.65); line-height: 1.6; }
+
+    /* testimonials */
+    #testimonials { background: var(--gold-pale); }
+    #testimonials .inner { max-width: 1280px; margin: 0 auto; width: 100%; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .testimonial-card {
+      background: var(--white);
+      padding: 1.75rem 1.5rem;
+      border-radius: 4px;
+      border: 1px solid rgba(184,134,11,0.15);
+      position: relative;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .testimonial-card:hover {
+      box-shadow: 0 16px 40px rgba(15,23,42,0.08);
+      transform: translateY(-4px);
+    }
+    .testimonial-card::before {
+      content: '\201C';
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      color: var(--gold);
+      line-height: 1;
+      opacity: 0.35;
+      position: absolute;
+      top: 0.5rem; left: 1rem;
+    }
+    .testimonial-text {
+      font-size: 0.9rem;
+      color: var(--navy-mid);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+    }
+    .testimonial-author { font-weight: 800; font-size: 0.88rem; }
+    .testimonial-role { font-size: 0.75rem; color: var(--slate); margin-top: 0.15rem; }
+
+    /* admissions */
+    .admissions-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .steps-list { list-style: none; }
+    .step-item {
+      display: flex;
+      gap: 1.25rem;
+      padding: 1.35rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: padding-left 0.3s;
+    }
+    .step-item:first-child { padding-top: 0; }
+    .step-item:hover { padding-left: 0.5rem; }
+    .step-num {
+      width: 44px; height: 44px;
+      flex-shrink: 0;
+      background: var(--navy);
+      color: var(--gold-lt);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+    .step-item h4 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.98rem;
+      font-weight: 800;
+      margin-bottom: 0.25rem;
+    }
+    .step-item p { font-size: 0.86rem; color: var(--slate); line-height: 1.6; }
+
+    .dates-card {
+      background: var(--navy);
+      color: #fff;
+      border-radius: 4px;
+      padding: 2rem;
+      box-shadow: 0 20px 56px rgba(15,23,42,0.2);
+    }
+    .dates-card h3 {
+      font-size: 1.25rem;
+      color: #fff;
+      margin-bottom: 0.35rem;
+    }
+    .dates-card .dates-sub {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 1.5rem;
+    }
+    .date-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.88rem;
+      gap: 1rem;
+    }
+    .date-row:last-of-type { border-bottom: none; margin-bottom: 1.5rem; }
+    .date-row span:first-child { color: rgba(255,255,255,0.75); }
+    .date-row span:last-child { color: var(--gold-lt); font-weight: 700; white-space: nowrap; }
+
+    /* news */
+    #news { background: var(--white); }
+    #news .inner { max-width: 1280px; margin: 0 auto; width: 100%; }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 1.25rem;
+    }
+    .news-card {
+      background: var(--ivory);
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: transform 0.35s, box-shadow 0.35s;
+    }
+    .news-card:first-child { grid-row: span 1; }
+    .news-card:first-child .news-img { height: 240px; }
+    .news-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(15,23,42,0.1);
+    }
+    .news-img { height: 160px; overflow: hidden; }
+    .news-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+    .news-card:hover .news-img img { transform: scale(1.06); }
+    .news-body { padding: 1.25rem 1.35rem 1.5rem; }
+    .news-date {
+      font-size: 0.68rem;
+      color: var(--gold);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .news-body h3 { font-size: 1rem; margin-bottom: 0.45rem; line-height: 1.35; }
+    .news-card:first-child .news-body h3 { font-size: 1.15rem; }
+    .news-body p { font-size: 0.84rem; color: var(--slate); line-height: 1.6; }
+
+    /* gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 200px;
+      gap: 0.65rem;
+    }
+    .gallery-item {
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .gallery-item:hover img { transform: scale(1.08); }
+    .gallery-item.span2 { grid-column: span 2; }
+    .gallery-item.span-row2 { grid-row: span 2; }
+    .gallery-cap {
+      position: absolute;
+      inset: 0;
+      background: rgba(15,23,42,0);
+      display: flex;
+      align-items: flex-end;
+      padding: 1rem;
+      transition: background 0.35s;
+    }
+    .gallery-item:hover .gallery-cap { background: rgba(15,23,42,0.55); }
+    .gallery-cap span {
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .gallery-item:hover .gallery-cap span { opacity: 1; transform: none; }
+
+    /* apply cta */
+    #apply {
+      padding-top: 0;
+      padding-bottom: 5rem;
+    }
+    .apply-box {
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+      border-radius: 4px;
+      padding: 4rem 2rem;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .apply-box::before {
+      content: '';
+      position: absolute;
+      top: -50%; right: -20%;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(212,160,23,0.08);
+    }
+    .apply-box h2 {
+      font-size: clamp(1.75rem, 3vw, 2.35rem);
+      margin-bottom: 0.75rem;
+      position: relative;
+    }
+    .apply-box p {
+      opacity: 0.88;
+      max-width: 480px;
+      margin: 0 auto 1.75rem;
+      font-size: 0.95rem;
+      position: relative;
+    }
+
+    /* contact */
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    .contact-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2rem;
+    }
+    .contact-row {
+      display: flex;
+      gap: 1rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      align-items: flex-start;
+    }
+    .contact-row:last-child { border-bottom: none; }
+    .contact-icon {
+      width: 36px; height: 36px;
+      background: var(--blue-pale);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.9rem;
+    }
+    .contact-row strong { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--slate); margin-bottom: 0.15rem; }
+
+    .map-placeholder {
+      background: var(--blue-pale);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--slate);
+      text-align: center;
+      font-size: 0.9rem;
+      transition: border-color 0.3s;
+    }
+    .map-placeholder:hover { border-color: var(--blue); }
+    .map-placeholder span { font-size: 2rem; margin-bottom: 0.5rem; opacity: 0.5; }
+
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.65);
+      padding: 3rem clamp(1.25rem, 4vw, 3rem) 2rem;
+      width: 100%;
+    }
+    .footer-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 1.5rem;
+    }
+    .footer-brand strong {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: #fff;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .footer-brand p { font-size: 0.84rem; line-height: 1.65; max-width: 260px; }
+    .footer-col h4 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+      margin-bottom: 1rem;
+    }
+    .footer-col a, .footer-col p {
+      display: block;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.84rem;
+      margin-bottom: 0.45rem;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: #fff; }
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+      text-align: center;
+      font-size: 0.8rem;
+    }
+
+    .wa-float {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 190;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--wa);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 28px rgba(37,211,102,0.45);
+      transition: transform 0.25s;
+    }
+    .wa-float:hover { transform: scale(1.08); }
+    .wa-float svg { width: 28px; height: 28px; fill: #fff; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+
+    @media (max-width: 1024px) {
+      .facilities-bento {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .facility-item:nth-child(n) { grid-column: span 1 !important; grid-row: span 1 !important; height: 220px; }
+      .facility-item:nth-child(1) { grid-column: span 2 !important; height: 280px; }
+      .news-grid { grid-template-columns: 1fr 1fr; }
+      .news-card:first-child { grid-column: span 2; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .top-bar { justify-content: center; text-align: center; }
+      .top-bar-right { display: none; }
+
+      .nav-toggle {
+      min-width: 44px; min-height: 44px; align-items: center; justify-content: center; box-sizing: border-box; display: flex; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        inset: 0;
+        top: 0;
+        background: rgba(255,255,255,0.98);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+        z-index: 199;
+        padding-top: 4rem;
+      }
+      .nav-links.open { display: flex; }
+
+      #hero { min-height: auto; }
+      .hero-inner { padding: 4rem clamp(1rem, 4vw, 2rem) 3rem; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); max-width: 100%; }
+
+      .about-grid { grid-template-columns: 1fr; }
+      .about-accent { right: 1rem; bottom: -1rem; }
+      .values-grid { grid-template-columns: 1fr; }
+
+      .programs-grid,
+      .faculty-grid,
+      .testimonials-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+
+      .admissions-wrap,
+      .location-grid { grid-template-columns: 1fr; }
+
+      .news-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+      .news-card:first-child { grid-column: span 1; }
+
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 160px; }
+      .gallery-item.span2, .gallery-item.span-row2 { grid-column: span 1; grid-row: span 1; }
+
+      .footer-grid { grid-template-columns: 1fr; text-align: center; }
+      .footer-brand p { margin: 0 auto; }
+
+      section { padding: 4rem clamp(1rem, 4vw, 2rem); }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; width: 100%; }
+      .hero-actions a { width: 100%; justify-content: center; }
+      .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="demo-banner">This is a demo site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com</div>
+
+<div class="top-bar">
+  <div class="top-bar-left">
+    <a href="tel:+9251234xxxx">📞 +92 51 234 xxxx</a>
+    <a href="mailto:admissions@greenfield-academy.edu">✉️ admissions@greenfield-academy.edu</a>
+  </div>
+  <div class="top-bar-right">
+    <span>Mon–Fri 8:00 AM – 4:00 PM</span>
+  </div>
+</div>
+
+<nav id="mainNav">
+  <a href="#" class="logo">
+    <div class="logo-mark">G</div>
+    <div class="logo-text">
+      <strong>Greenfield</strong>
+      <span>Academy</span>
+    </div>
+  </a>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#facilities">Facilities</a></li>
+    <li><a href="#faculty">Faculty</a></li>
+    <li><a href="#admissions">Admissions</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#apply" class="nav-cta">Apply Now</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg">
+    <img src="../images/school/hero.jpg" alt="Greenfield Academy campus" loading="eager" decoding="sync" fetchpriority="high">
+  </div>
+  <div class="hero-inner">
+    <div class="hero-content reveal">
+      <div class="hero-badge">Est. 2008 — Cambridge Affiliate School</div>
+      <h1>Shaping minds, <em>building futures</em></h1>
+      <p class="hero-sub">A distinguished co-educational day school offering world-class education from early years through O-Levels — where academic excellence meets character, creativity, and care.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary" id="heroWa">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.449C18.24 1.245 15.24 0 12 0 5.373 0 0 5.373 0 12c0 2.117.554 4.185 1.606 6.001L0 24l6.155-1.587A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12 0-3.24-1.245-6.24-3.48-8.551z"/></svg>
+          Book a Campus Tour
+        </a>
+        <a href="#programs" class="btn-gold">Explore Programs →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-num">850+</div><div class="hero-stat-label">Students</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">18</div><div class="hero-stat-label">Years</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">65</div><div class="hero-stat-label">Faculty</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">12:1</div><div class="hero-stat-label">Ratio</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <div class="trust-inner">
+    <div class="trust-item"><span class="trust-dot"></span> Cambridge Curriculum</div>
+    <div class="trust-item"><span class="trust-dot"></span> Registered Institution</div>
+    <div class="trust-item"><span class="trust-dot"></span> Child Safeguarding Certified</div>
+    <div class="trust-item"><span class="trust-dot"></span> 98% Parent Satisfaction</div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="about-grid">
+    <div class="about-img-wrap reveal">
+      <div class="about-img">
+        <img src="../images/school/about.jpg" alt="Students at Greenfield Academy" loading="lazy">
+      </div>
+      <div class="about-accent">
+        <div class="about-accent-num">18+</div>
+        <p>Years of educational excellence</p>
+      </div>
+    </div>
+    <div class="about-text reveal reveal-delay-1">
+      <div class="section-head left">
+        <div class="section-label">About Us</div>
+        <h2 class="section-title">Excellence in every classroom</h2>
+        <div class="section-rule"></div>
+      </div>
+      <p>Greenfield Academy is a premier private day school committed to nurturing intellectual curiosity, moral integrity, and global citizenship. Our Cambridge-aligned curriculum is delivered by qualified educators in a supportive, inclusive environment.</p>
+      <p>From our founding in 2008 to today's purpose-built campus, we have remained dedicated to one goal: preparing students not merely for examinations, but for meaningful, successful lives.</p>
+      <div class="values-grid">
+        <div class="value-card"><h4>Academic Excellence</h4><p>Rigorous Cambridge curriculum with consistently strong O-Level results.</p></div>
+        <div class="value-card"><h4>Character & Values</h4><p>Integrity, respect, and empathy woven into daily school life.</p></div>
+        <div class="value-card"><h4>Holistic Development</h4><p>Arts, athletics, and leadership programmes for every student.</p></div>
+        <div class="value-card"><h4>Global Readiness</h4><p>University placement support and international exposure.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="programs">
+  <div class="inner">
+    <div class="section-head reveal">
+      <div class="section-label">Academics</div>
+      <h2 class="section-title">Programmes for every stage</h2>
+      <p class="section-desc">Structured learning pathways from foundation years through secondary, designed to challenge and inspire at every age.</p>
+      <div class="section-rule"></div>
+    </div>
+    <div class="programs-grid">
+      <div class="program-card reveal">
+        <div class="program-img"><img src="../images/school/prog-early.jpg" alt="Early years" loading="lazy"></div>
+        <div class="program-body">
+          <div class="program-level">Ages 3–5</div>
+          <h3>Early Years</h3>
+          <p>Play-based EYFS framework fostering literacy, numeracy, motor skills, and social confidence in a nurturing setting.</p>
+          <div class="program-meta">Mon–Fri — 8:00 AM – 12:30 PM</div>
+        </div>
+      </div>
+      <div class="program-card featured reveal reveal-delay-1">
+        <div class="program-featured-tag">Most Popular</div>
+        <div class="program-img"><img src="../images/school/prog-primary.jpg" alt="Primary school" loading="lazy"></div>
+        <div class="program-body">
+          <div class="program-level">Grades 1–5</div>
+          <h3>Primary School</h3>
+          <p>Core Cambridge Primary subjects, reading programmes, STEM foundations, and Islamic studies with specialist teachers.</p>
+          <div class="program-meta">Mon–Fri — 7:45 AM – 2:00 PM</div>
+        </div>
+      </div>
+      <div class="program-card reveal reveal-delay-2">
+        <div class="program-img"><img src="../images/school/prog-secondary.jpg" alt="Secondary school" loading="lazy"></div>
+        <div class="program-body">
+          <div class="program-level">Grades 6–10</div>
+          <h3>Secondary & O-Levels</h3>
+          <p>IGCSE preparation, science laboratories, debate society, career counselling, and dedicated university guidance.</p>
+          <div class="program-meta">Mon–Fri — 7:30 AM – 2:30 PM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="facilities">
+  <div class="section-head reveal">
+    <div class="section-label">Our Campus</div>
+    <h2 class="section-title">Facilities that inspire</h2>
+    <p class="section-desc">A modern, secure campus equipped for academic achievement, creative expression, and physical wellbeing.</p>
+    <div class="section-rule"></div>
+  </div>
+  <div class="facilities-bento">
+    <div class="facility-item reveal">
+      <img src="../images/school/fac-library.jpg" alt="Library" loading="lazy">
+      <div class="facility-cap"><h3>Central Library</h3><p>12,000 volumes — Digital resources — Study halls</p></div>
+    </div>
+    <div class="facility-item reveal">
+      <img src="../images/school/fac-lab.jpg" alt="Science lab" loading="lazy">
+      <div class="facility-cap"><h3>Science Laboratories</h3><p>Physics — Chemistry — Biology</p></div>
+    </div>
+    <div class="facility-item reveal">
+      <img src="../images/school/fac-sports.jpg" alt="Sports" loading="lazy">
+      <div class="facility-cap"><h3>Sports Complex</h3><p>Cricket — Football — Gymnasium</p></div>
+    </div>
+    <div class="facility-item reveal">
+      <img src="../images/school/fac-arts.jpg" alt="Arts" loading="lazy">
+      <div class="facility-cap"><h3>Arts & Music</h3><p>Studio — Instruments — Drama hall</p></div>
+    </div>
+    <div class="facility-item reveal">
+      <img src="../images/school/gallery-3.jpg" alt="Campus" loading="lazy">
+      <div class="facility-cap"><h3>Secure Campus</h3><p>CCTV — Gated access — Medical room</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faculty">
+  <div class="inner">
+    <div class="section-head reveal">
+      <div class="section-label">Leadership</div>
+      <h2 class="section-title">Meet our educators</h2>
+      <p class="section-desc">Experienced, qualified professionals committed to the success and wellbeing of every student.</p>
+      <div class="section-rule"></div>
+    </div>
+    <div class="faculty-grid">
+      <div class="faculty-card reveal">
+        <div class="faculty-photo"><img src="../images/school/teacher-1.jpg" alt="Ms. Aisha Malik" loading="lazy"></div>
+        <div class="faculty-info">
+          <h3>Ms. Aisha Malik</h3>
+          <div class="faculty-role">Principal — M.Ed — 20 Years</div>
+          <p>Former Cambridge examiner. Sets school vision, leads faculty development, and builds strong parent partnerships.</p>
+        </div>
+      </div>
+      <div class="faculty-card reveal reveal-delay-1">
+        <div class="faculty-photo"><img src="../images/school/teacher-2.jpg" alt="Mr. James Okonkwo" loading="lazy"></div>
+        <div class="faculty-info">
+          <h3>Mr. James Okonkwo</h3>
+          <div class="faculty-role">Head of Sciences — MSc Physics</div>
+          <p>Leads the STEM programme. Students consistently achieve above national averages in science subjects.</p>
+        </div>
+      </div>
+      <div class="faculty-card reveal reveal-delay-2">
+        <div class="faculty-photo"><img src="../images/school/teacher-3.jpg" alt="Ms. Fatima Noor" loading="lazy"></div>
+        <div class="faculty-info">
+          <h3>Ms. Fatima Noor</h3>
+          <div class="faculty-role">Early Years Lead — B.Ed</div>
+          <p>Child development specialist. Creates engaging, age-appropriate learning environments for our youngest pupils.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="inner">
+    <div class="section-head reveal">
+      <div class="section-label">Parent Voices</div>
+      <h2 class="section-title">Trusted by families</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <p class="testimonial-text">Greenfield has transformed our daughter's confidence. The teachers genuinely care, and the academic standards are exceptional.</p>
+        <div class="testimonial-author">Mrs. Sarah Ahmed</div>
+        <div class="testimonial-role">Parent — Grade 4</div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <p class="testimonial-text">We chose Greenfield for its Cambridge curriculum and values. Three years in, we couldn't be happier with the results and the community.</p>
+        <div class="testimonial-author">Mr. Omar Hassan</div>
+        <div class="testimonial-role">Parent — O-Level Student</div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <p class="testimonial-text">The admissions process was smooth, the campus tour impressed us immediately, and our son settled in within the first week.</p>
+        <div class="testimonial-author">Mrs. Fatima Khan</div>
+        <div class="testimonial-role">Parent — Early Years</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="admissions">
+  <div class="section-head left reveal">
+    <div class="section-label">Admissions</div>
+    <h2 class="section-title">Join our community</h2>
+    <p class="section-desc">A transparent, welcoming admissions process for families who share our commitment to excellence.</p>
+    <div class="section-rule"></div>
+  </div>
+  <div class="admissions-wrap">
+    <ul class="steps-list reveal">
+      <li class="step-item">
+        <div class="step-num">1</div>
+        <div><h4>Submit an enquiry</h4><p>Contact us via WhatsApp or email with your child's name, age, and current school.</p></div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">2</div>
+        <div><h4>Schedule a campus visit</h4><p>Tour our facilities, meet faculty, and experience the Greenfield environment firsthand.</p></div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">3</div>
+        <div><h4>Complete assessment</h4><p>Age-appropriate evaluation and a brief conversation with our admissions team.</p></div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">4</div>
+        <div><h4>Receive your offer</h4><p>Formal offer letter, registration, and a warm welcome to the Greenfield family.</p></div>
+      </li>
+    </ul>
+    <div class="dates-card reveal reveal-delay-1">
+      <h3>2026 Admissions Calendar</h3>
+      <p class="dates-sub">Key dates for the upcoming academic year</p>
+      <div class="date-row"><span>Applications open</span><span>1 March 2026</span></div>
+      <div class="date-row"><span>Open Day</span><span>15 March 2026</span></div>
+      <div class="date-row"><span>Assessment week</span><span>1–10 April 2026</span></div>
+      <div class="date-row"><span>Offers issued</span><span>20 April 2026</span></div>
+      <div class="date-row"><span>Term begins</span><span>1 September 2026</span></div>
+      <a href="#" class="btn-primary" id="admitWa" style="width:100%;justify-content:center;">Start Application</a>
+    </div>
+  </div>
+</section>
+
+<section id="news">
+  <div class="inner">
+    <div class="section-head reveal">
+      <div class="section-label">News & Events</div>
+      <h2 class="section-title">Life at Greenfield</h2>
+      <div class="section-rule"></div>
+    </div>
+    <div class="news-grid">
+      <article class="news-card reveal">
+        <div class="news-img"><img src="../images/school/event-1.jpg" alt="Science fair" loading="lazy"></div>
+        <div class="news-body">
+          <div class="news-date">12 February 2026</div>
+          <h3>Annual Science Fair: Grade 8 Takes Top Honours</h3>
+          <p>Students showcased innovative projects in renewable energy, robotics, and environmental science before a panel of guest judges.</p>
+        </div>
+      </article>
+      <article class="news-card reveal reveal-delay-1">
+        <div class="news-img"><img src="../images/school/event-2.jpg" alt="Workshop" loading="lazy"></div>
+        <div class="news-body">
+          <div class="news-date">5 February 2026</div>
+          <h3>Parent Workshop on Study Habits</h3>
+          <p>Free Saturday session for primary parents on supporting learning at home.</p>
+        </div>
+      </article>
+      <article class="news-card reveal reveal-delay-2">
+        <div class="news-img"><img src="../images/school/event-3.jpg" alt="Sports day" loading="lazy"></div>
+        <div class="news-body">
+          <div class="news-date">28 January 2026</div>
+          <h3>Inter-House Sports Day 2026</h3>
+          <p>Blue House claims the trophy in a day of athletics, football, and relay races.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="section-head reveal">
+    <div class="section-label">Gallery</div>
+    <h2 class="section-title">Campus life</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item span2 reveal"><img src="../images/school/gallery-1.jpg" alt="Classroom" loading="lazy"><div class="gallery-cap"><span>Interactive learning</span></div></div>
+    <div class="gallery-item reveal"><img src="../images/school/gallery-2.jpg" alt="Activity" loading="lazy"><div class="gallery-cap"><span>Group projects</span></div></div>
+    <div class="gallery-item span-row2 reveal"><img src="../images/school/gallery-3.jpg" alt="Campus" loading="lazy"><div class="gallery-cap"><span>Our grounds</span></div></div>
+    <div class="gallery-item reveal"><img src="../images/school/gallery-4.jpg" alt="Session" loading="lazy"><div class="gallery-cap"><span>STEM lab</span></div></div>
+    <div class="gallery-item reveal"><img src="../images/school/gallery-5.jpg" alt="Study" loading="lazy"><div class="gallery-cap"><span>Library time</span></div></div>
+    <div class="gallery-item span2 reveal"><img src="../images/school/gallery-6.jpg" alt="Graduation" loading="lazy"><div class="gallery-cap"><span>Graduation day</span></div></div>
+  </div>
+</section>
+
+<section id="apply">
+  <div class="apply-box reveal">
+    <h2>Begin your child's journey</h2>
+    <p>Limited places available for September 2026. Schedule a campus tour or speak with our admissions team today.</p>
+    <a href="#" class="btn-primary" id="applyWa">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.449C18.24 1.245 15.24 0 12 0 5.373 0 0 5.373 0 12c0 2.117.554 4.185 1.606 6.001L0 24l6.155-1.587A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12 0-3.24-1.245-6.24-3.48-8.551z"/></svg>
+      Enquire on WhatsApp
+    </a>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-head left reveal">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Visit our campus</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="location-grid">
+    <div class="contact-card reveal">
+      <div class="contact-row">
+        <div class="contact-icon">📍</div>
+        <div><strong>Address</strong>Plot 42, Education Boulevard, Sector B, Islamabad 44000</div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">📞</div>
+        <div><strong>Phone</strong>+92 51 234 xxxx</div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">✉️</div>
+        <div><strong>Email</strong>admissions@greenfield-academy.edu</div>
+      </div>
+      <div class="contact-row">
+        <div class="contact-icon">🕐</div>
+        <div><strong>Office Hours</strong>Monday–Friday, 8:00 AM – 4:00 PM<br>Campus tours by appointment</div>
+      </div>
+    </div>
+    <div class="map-placeholder reveal reveal-delay-1">
+      <span>🛏️</span>
+      Google Maps Embed<br>
+      <small style="margin-top:0.35rem;display:block;opacity:0.7">Education Boulevard, Islamabad</small>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <strong>Greenfield Academy</strong>
+      <p>A Cambridge-affiliate day school committed to academic excellence, character development, and preparing students for a global future.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="#about">About</a>
+      <a href="#programs">Programs</a>
+      <a href="#admissions">Admissions</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Academics</h4>
+      <a href="#programs">Early Years</a>
+      <a href="#programs">Primary</a>
+      <a href="#programs">Secondary</a>
+      <a href="#facilities">Facilities</a>
+    </div>
+    <div class="footer-col">
+      <h4>Admissions</h4>
+      <p>2026 intake now open</p>
+      <a href="#" id="footerWa">WhatsApp Us</a>
+      <a href="mailto:admissions@greenfield-academy.edu">Email Admissions</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 Greenfield Academy — Registered Institution — Cambridge Affiliate — Child Safeguarding Policy
+  </div>
+</footer>
+
+<a href="#" class="wa-float" id="floatWa" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M20.52 3.449C18.24 1.245 15.24 0 12 0 5.373 0 0 5.373 0 12c0 2.117.554 4.185 1.606 6.001L0 24l6.155-1.587A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12 0-3.24-1.245-6.24-3.48-8.551zM12 22c-1.822 0-3.609-.489-5.17-1.412l-.37-.22-3.656.942.975-3.556-.24-.378A9.937 9.937 0 012 12C2 6.477 6.477 2 12 2c2.654 0 5.15 1.034 7.025 2.914A9.88 9.88 0 0122 12c0 5.523-4.477 10-10 10zm5.476-7.44c-.3-.15-1.77-.873-2.044-.972-.274-.099-.473-.148-.672.149-.2.297-.772.972-.946 1.17-.174.198-.348.223-.648.074-.3-.149-1.266-.467-2.41-1.486-.89-.794-1.49-1.774-1.664-2.073-.174-.298-.018-.46.13-.608.134-.133.3-.348.45-.522.15-.174.199-.298.299-.497.1-.198.05-.372-.025-.521-.075-.15-.672-1.62-.92-2.217-.242-.582-.487-.503-.672-.513l-.573-.01c-.198 0-.522.074-.795.372-.274.297-1.043 1.02-1.043 2.487 0 1.466 1.069 2.885 1.219 3.083.15.198 2.105 3.21 5.1 4.502.714.308 1.271.492 1.706.63.716.227 1.368.195 1.884.118.574-.085 1.77-.723 2.02-1.421.248-.699.248-1.297.173-1.422-.074-.124-.273-.199-.572-.348z"/></svg>
+</a>
+
+<script src="demo-globals.js"></script>
+<script>
+  document.querySelectorAll('img:not([decoding])').forEach((img) => {
+    img.decoding = 'async';
+  });
+
+  DemoGlobals.init();
+
+  const WA_NUMBER = "923137863988";
+  const waMsg = encodeURIComponent("Hi, I'd like to enquire about admissions at Greenfield Academy.");
+  const waLink = `https://wa.me/${WA_NUMBER}?text=${waMsg}`;
+
+  ['heroWa', 'admitWa', 'applyWa', 'floatWa', 'footerWa'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.href = waLink;
+  });
+
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    navToggle.classList.toggle('open');
+    document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.classList.remove('open');
+    document.body.style.overflow = '';
+  }));
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

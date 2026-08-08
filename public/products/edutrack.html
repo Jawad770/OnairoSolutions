@@ -1,0 +1,2984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduTrack School Management Software | Offline School ERP Pakistan</title>
+  <meta name="description" content="EduTrack is an offline-first Windows school management system for admissions, attendance, fees, payroll, ID cards, WhatsApp broadcasts, and reports. Download a 14-day free trial."/>
+  <meta name="keywords" content="school management software Pakistan, offline school ERP, fee management software, QR attendance, school payroll software, ID card software"/>
+  <link rel="canonical" href="https://onairosolutions.com/products/edutrack.html"/>
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="EduTrack — School Management That Stays on Your PC" />
+  <meta property="og:description" content="One Windows application for attendance, fees, payroll, ID cards, and parent communication. Built for Pakistani schools. Offline-ready." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../shared/css/tokens.css" />
+  <link rel="stylesheet" href="../shared/css/base.css" />
+  <link rel="stylesheet" href="../shared/css/components.css" />
+  <link rel="stylesheet" href="../shared/css/seo.css" />
+  <style>
+    :root {
+      --et: #0F5C4C;
+      --et-light: #1A7A66;
+      --et-soft: rgba(15, 92, 76, 0.12);
+      --et-glow: rgba(26, 122, 102, 0.35);
+      --et-cream: #F4F7F6;
+      --et-ink: #14201C;
+    }
+
+    body.et-page {
+      padding-bottom: 5.25rem;
+      background: #070B14;
+    }
+    body.et-page .section {
+      padding: 70px 0;
+    }
+    @media (min-width: 721px) {
+      body.et-page .section { padding: 110px 0; }
+    }
+    @media (min-width: 1024px) {
+      body.et-page .section { padding: 160px 0; }
+    }
+    body.et-page .section-title {
+      letter-spacing: -0.035em;
+      max-width: 16ch;
+      margin-inline: auto;
+    }
+    body.et-page .section-head.center .section-title,
+    body.et-page .et-chapters__head .section-title {
+      margin-inline: auto;
+    }
+    body.et-page .section-sub {
+      font-size: clamp(1rem, 2.4vw, 1.125rem);
+      color: rgba(148,163,184,0.92);
+      max-width: 42ch;
+    }
+    body.et-page .et-tag {
+      letter-spacing: 0.2em;
+      opacity: 0.9;
+    }
+
+    /* ── Hero — product launch ── */
+    .et-hero {
+      position: relative;
+      padding: calc(var(--nav-h) + clamp(2.5rem, 6vw, 4.5rem)) 0 clamp(3rem, 8vw, 5.5rem);
+      overflow: hidden;
+      isolation: isolate;
+      text-align: center;
+    }
+    .et-hero::before {
+      content: "";
+      position: absolute; inset: 0; z-index: -2;
+      background:
+        radial-gradient(ellipse 55% 40% at 50% 0%, rgba(26,122,102,0.18), transparent 60%),
+        linear-gradient(180deg, #070B14 0%, #0A0F1E 55%, #070B14 100%);
+    }
+    .et-hero::after { display: none; }
+    .et-hero-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: clamp(2rem, 5vw, 3.5rem);
+      width: min(100% - 1.5rem, 1120px);
+      margin-inline: auto;
+    }
+    .et-hero-copy {
+      order: 2;
+      max-width: 40rem;
+    }
+    .et-hero-product {
+      order: 1;
+      width: min(100%, 1024px);
+    }
+    .et-brand-pill {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+      color: #6EE7B7;
+      background: transparent;
+      border: 1px solid rgba(110,231,183,0.22);
+      padding: 0.4rem 0.95rem; border-radius: 999px; margin-bottom: 1.35rem;
+    }
+    .et-brand-pill::before {
+      content: ""; width: 6px; height: 6px; border-radius: 50%; background: #34D399;
+    }
+    .et-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 7vw, 4.1rem);
+      font-weight: 800; letter-spacing: -0.04em; line-height: 1.05;
+      margin: 0 auto 1.15rem; max-width: 16ch;
+    }
+    .et-hero h1 em { font-style: normal; color: #6EE7B7; }
+    .et-hero-lead {
+      color: rgba(148,163,184,0.95); font-size: clamp(1rem, 2.8vw, 1.2rem); line-height: 1.7;
+      max-width: 36ch; margin: 0 auto 1.85rem;
+    }
+    .et-hero-actions {
+      display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.35rem;
+      justify-content: center;
+    }
+    .et-hero-meta {
+      display: flex; flex-wrap: wrap; gap: 0.85rem 1.5rem;
+      justify-content: center;
+      color: rgba(148,163,184,0.75); font-size: 0.8rem; font-weight: 600;
+    }
+    .et-hero-meta span { display: inline-flex; align-items: center; gap: 0.4rem; }
+    .et-hero-meta span::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: #6EE7B7; }
+
+    .et-hero-product .et-device--hero,
+    .et-hero-product .et-frame {
+      --et-device-max: min(1024px, 100%);
+      max-width: var(--et-device-max);
+    }
+    .et-hero-product .et-device__hint {
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .et-hero-product:hover .et-device__hint,
+    .et-hero-product:focus-within .et-device__hint { opacity: 0.8; }
+
+    @media (min-width: 960px) {
+      .et-hero-copy { order: 1; }
+      .et-hero-product { order: 2; }
+      .et-hero-actions .btn { min-width: 168px; }
+    }
+
+    .et-page .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      min-height: 48px;
+      padding: 16px 28px;
+      border-radius: 10px;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      line-height: 1.2;
+      white-space: nowrap;
+      box-sizing: border-box;
+    }
+    .et-btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    @media (min-width: 721px) and (max-width: 1023px) {
+      .et-page .btn {
+        min-height: 46px;
+        padding: 14px 24px;
+      }
+    }
+    @media (max-width: 720px) {
+      .et-page .btn {
+        min-height: 46px;
+        padding: 12px 20px;
+        font-size: 0.9375rem;
+      }
+      .et-hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+        width: min(100%, 22rem);
+        margin-inline: auto;
+      }
+      .et-hero-actions .btn-et--cta { width: 100%; }
+      .et-hero-actions .btn:not(.btn-et--cta) { width: auto; align-self: center; }
+      .et-chapters__actions.et-btn-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .et-chapters__actions .btn-et--cta { width: 100%; }
+      .et-final-actions {
+        flex-direction: column;
+        align-items: stretch;
+        width: min(100%, 22rem);
+        margin-inline: auto;
+      }
+      .et-final-actions .btn-et--cta { width: 100%; }
+    }
+
+    .btn-et {
+      background: var(--et) !important;
+      box-shadow: 0 2px 16px rgba(15,92,76,0.35) !important;
+    }
+    .btn-et:hover {
+      background: var(--et-light) !important;
+      box-shadow: 0 6px 24px rgba(15,92,76,0.4) !important;
+    }
+
+    /* ── Premium device mockups (never upscale past 1024 native) ── */
+    .et-device {
+      --et-device-max: 520px;
+      position: relative;
+      width: 100%;
+      max-width: var(--et-device-max);
+      margin-inline: auto;
+      isolation: isolate;
+    }
+    .et-device--hero { --et-device-max: 600px; }
+    .et-device--compact { --et-device-max: 440px; }
+    .et-device--tablet { --et-device-max: 380px; }
+
+    .et-device__hit {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: zoom-in;
+      text-align: left;
+      border-radius: inherit;
+      transition: transform 300ms ease, filter 300ms ease;
+    }
+    .et-device__hit:focus-visible {
+      outline: 2px solid #6EE7B7;
+      outline-offset: 6px;
+    }
+    .et-device:hover .et-device__hit {
+      transform: scale(1.02);
+    }
+    .et-device:hover .et-device__shell {
+      box-shadow:
+        0 36px 70px rgba(0,0,0,0.5),
+        0 0 0 1px rgba(255,255,255,0.06),
+        0 0 40px rgba(15,92,76,0.18);
+    }
+
+    .et-device__shell {
+      position: relative;
+      background: linear-gradient(160deg, #2a3142 0%, #151a24 55%, #0f131c 100%);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow:
+        0 28px 56px rgba(0,0,0,0.45),
+        0 0 0 1px rgba(255,255,255,0.04),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+      transition: box-shadow 300ms ease;
+    }
+    .et-device--laptop .et-device__shell {
+      border-radius: 12px 12px 8px 8px;
+      padding: 10px 10px 8px;
+    }
+    .et-device--monitor .et-device__shell {
+      border-radius: 10px;
+      padding: 12px 12px 10px;
+    }
+    .et-device--tablet .et-device__shell {
+      border-radius: 22px;
+      padding: 14px;
+    }
+
+    .et-device__camera {
+      width: 6px; height: 6px; margin: 0 auto 7px;
+      border-radius: 50%;
+      background: rgba(148,163,184,0.35);
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.25);
+    }
+    .et-device--tablet .et-device__camera { margin-bottom: 10px; }
+
+    .et-device__screen {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+      background: #0b1220;
+      aspect-ratio: 1024 / 640;
+      max-width: 100%;
+    }
+    .et-device--tablet .et-device__screen { border-radius: 8px; }
+    .et-device__screen::after {
+      content: "";
+      pointer-events: none;
+      position: absolute; inset: 0;
+      background: linear-gradient(125deg, rgba(255,255,255,0.14) 0%, transparent 28%, transparent 62%, rgba(255,255,255,0.04) 100%);
+      mix-blend-mode: soft-light;
+      opacity: 0.55;
+    }
+
+    .et-device__screen img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-width: 1024px;
+      max-height: 640px;
+      margin: 0 auto;
+      object-fit: contain;
+      object-position: top center;
+      image-rendering: auto;
+      image-rendering: high-quality;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+    }
+
+    .et-device__base {
+      height: 9px;
+      width: 108%;
+      margin: 0 auto 0 -4%;
+      background: linear-gradient(180deg, #31384a, #12161f);
+      border-radius: 0 0 10px 10px;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.35);
+    }
+    .et-device__stand {
+      width: 18%;
+      height: 14px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, #2a3140, #151922);
+      clip-path: polygon(18% 0, 82% 0, 100% 100%, 0 100%);
+    }
+    .et-device__foot {
+      width: 34%;
+      height: 5px;
+      margin: 0 auto;
+      border-radius: 999px;
+      background: #1a2030;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+    }
+    .et-device__glow {
+      position: absolute;
+      inset: 18% -12% -24%;
+      background: radial-gradient(ellipse at center, var(--et-glow), transparent 68%);
+      z-index: -1;
+      pointer-events: none;
+    }
+    .et-device__hint {
+      display: block;
+      margin-top: 0.7rem;
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--slate);
+      opacity: 0.75;
+    }
+
+    .et-device-row {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      align-items: stretch;
+      flex-wrap: wrap;
+    }
+    .et-device-row .et-device { flex: 1 1 200px; }
+
+    /* Lightbox */
+    .et-lightbox {
+      position: fixed; inset: 0; z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      background: rgba(6, 10, 18, 0.92);
+      backdrop-filter: blur(16px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 300ms ease, visibility 300ms ease;
+    }
+    .et-lightbox.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+    .et-lightbox__inner {
+      position: relative;
+      width: min(100%, 1100px);
+      max-height: min(92vh, 900px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.85rem;
+    }
+    .et-lightbox__stage {
+      position: relative;
+      width: 100%;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid rgba(148,163,184,0.16);
+      background: #0b1220;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+      touch-action: none;
+      cursor: grab;
+    }
+    .et-lightbox__stage.dragging { cursor: grabbing; }
+    .et-lightbox__stage img {
+      max-width: min(100%, 1024px);
+      max-height: min(78vh, 640px);
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      image-rendering: auto;
+      image-rendering: high-quality;
+      transform-origin: center center;
+      user-select: none;
+      -webkit-user-drag: none;
+      transition: opacity 300ms ease, transform 0.15s ease-out;
+    }
+    .et-lightbox__stage img.is-fading { opacity: 0; }
+    .et-lightbox__toolbar {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      align-items: center; justify-content: center;
+    }
+    .et-lightbox__toolbar button,
+    .et-lightbox__nav {
+      min-width: 42px; height: 42px;
+      border-radius: 10px;
+      border: 1px solid rgba(148,163,184,0.22);
+      background: rgba(19,25,41,0.9);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 0 0.85rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .et-lightbox__toolbar button:hover,
+    .et-lightbox__nav:hover {
+      border-color: rgba(110,231,183,0.45);
+      background: rgba(15,92,76,0.35);
+    }
+    .et-lightbox__nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      z-index: 2;
+    }
+    .et-lightbox__nav.prev { left: 0.5rem; }
+    .et-lightbox__nav.next { right: 0.5rem; }
+    .et-lightbox__caption {
+      color: var(--slate-light);
+      font-size: 0.88rem;
+      text-align: center;
+      max-width: 52ch;
+    }
+    .et-lightbox__counter {
+      color: rgba(203,213,225,0.78);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-variant-numeric: tabular-nums;
+    }
+    .et-lightbox__close {
+      position: absolute; top: 0.75rem; right: 0.75rem; z-index: 3;
+      min-width: 42px; height: 42px;
+      border-radius: 10px;
+      border: 1px solid rgba(148,163,184,0.22);
+      background: rgba(19,25,41,0.9);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    .et-lightbox__close:hover {
+      border-color: rgba(110,231,183,0.45);
+      background: rgba(15,92,76,0.35);
+    }
+    body.et-lb-open { overflow: hidden; }
+
+    /* ── Shared section helpers ── */
+    .et-tag {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; color: #6EE7B7; margin-bottom: 0.75rem;
+    }
+    .et-light {
+      background: var(--et-cream);
+      color: var(--et-ink);
+    }
+    .et-light .section-title,
+    .et-light h2,
+    .et-light h3 { color: var(--et-ink); }
+    .et-light .section-sub,
+    .et-light p { color: #4B5C56; }
+    .et-light .et-tag { color: var(--et); }
+
+    /* ── Interactive product chapters ── */
+    .et-chapters {
+      background: #070B14;
+      overflow: hidden;
+    }
+    .et-chapters__head {
+      text-align: center;
+      margin-bottom: clamp(2rem, 5vw, 3.5rem);
+    }
+    .et-chapters__head .section-sub { margin-inline: auto; }
+    .et-chapters__shell {
+      width: min(100% - 1.5rem, 1240px);
+      margin-inline: auto;
+    }
+    .et-chapters__chapters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem 0.65rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid rgba(148,163,184,0.12);
+    }
+    .et-chapters__chapter {
+      font-family: var(--font-display);
+      font-size: clamp(0.78rem, 2.2vw, 0.88rem);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.18);
+      background: transparent;
+      color: rgba(148,163,184,0.88);
+      cursor: pointer;
+      transition: border-color 200ms, color 200ms, background 200ms;
+      white-space: nowrap;
+    }
+    .et-chapters__chapter:hover {
+      border-color: rgba(110,231,183,0.35);
+      color: #E2E8F0;
+    }
+    .et-chapters__chapter.is-active {
+      background: rgba(15,92,76,0.22);
+      border-color: rgba(110,231,183,0.45);
+      color: #6EE7B7;
+    }
+    .et-chapters__pills-wrap {
+      margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+      margin-inline: -0.25rem;
+      padding-inline: 0.25rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .et-chapters__pills-wrap::-webkit-scrollbar { display: none; }
+    .et-chapters__pills {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 0.5rem;
+      min-width: min-content;
+      padding-bottom: 0.15rem;
+    }
+    .et-chapters__pill {
+      flex-shrink: 0;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      padding: 0.45rem 0.95rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.16);
+      background: rgba(255,255,255,0.03);
+      color: rgba(148,163,184,0.9);
+      cursor: pointer;
+      transition: background 200ms, border-color 200ms, color 200ms, transform 200ms;
+    }
+    .et-chapters__pill.is-active {
+      background: rgba(15,92,76,0.35);
+      border-color: rgba(110,231,183,0.4);
+      color: #E2E8F0;
+    }
+    .et-chapters__stage {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(2rem, 5vw, 3rem);
+      align-items: center;
+    }
+    .et-chapters__preview {
+      width: min(90vw, 1024px);
+      max-width: 100%;
+      order: 1;
+    }
+    .et-chapters__figure {
+      margin: 0;
+      position: relative;
+    }
+    .et-chapters__hit {
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: zoom-in;
+      border-radius: 20px;
+      transition: transform 300ms ease;
+    }
+    .et-chapters__hit:focus-visible {
+      outline: 2px solid rgba(110,231,183,0.65);
+      outline-offset: 4px;
+    }
+    .et-chapters__stack {
+      position: relative;
+      display: block;
+      padding: 0.5rem 0 1.25rem;
+    }
+    .et-chapters__layer {
+      position: absolute;
+      left: 4%;
+      right: 4%;
+      height: 72%;
+      bottom: 8%;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: linear-gradient(145deg, rgba(15,92,76,0.12), rgba(10,15,30,0.65));
+      pointer-events: none;
+    }
+    .et-chapters__layer--back {
+      transform: rotate(-2.5deg) scale(0.94) translateY(18px);
+      opacity: 0.45;
+    }
+    .et-chapters__layer--mid {
+      transform: rotate(1.25deg) scale(0.97) translateY(8px);
+      opacity: 0.55;
+    }
+    .et-chapters__screen {
+      position: relative;
+      z-index: 2;
+      display: block;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow:
+        0 32px 80px rgba(0,0,0,0.55),
+        0 0 0 1px rgba(15,92,76,0.12),
+        0 24px 48px rgba(15,92,76,0.08);
+      background: #0b1220;
+      aspect-ratio: 1024 / 640;
+      transition: opacity 300ms ease, transform 300ms ease;
+    }
+    .et-chapters__screen img {
+      width: 100%;
+      height: 100%;
+      max-width: 1024px;
+      max-height: 640px;
+      object-fit: contain;
+      object-position: top center;
+      display: block;
+    }
+    .et-chapters__preview.is-animating .et-chapters__screen {
+      opacity: 0;
+      transform: translateY(10px) scale(0.985);
+    }
+    .et-chapters__hint {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(148,163,184,0.5);
+    }
+    .et-chapters__detail {
+      width: min(100%, 36rem);
+      order: 2;
+      text-align: left;
+      transition: opacity 300ms ease, transform 300ms ease;
+    }
+    .et-chapters__detail.is-animating {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    .et-chapters__detail.is-entering {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .et-chapters__kicker {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #6EE7B7;
+      margin-bottom: 0.65rem;
+    }
+    .et-chapters__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.45rem, 4.5vw, 2.15rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      margin-bottom: 0.85rem;
+    }
+    .et-chapters__desc {
+      color: rgba(148,163,184,0.92);
+      font-size: clamp(1rem, 2.8vw, 1.08rem);
+      line-height: 1.7;
+      margin-bottom: 1.35rem;
+    }
+    .et-chapters__bullets {
+      display: grid;
+      gap: 0.55rem;
+      margin-bottom: 1.75rem;
+    }
+    .et-chapters__bullets li {
+      position: relative;
+      padding-left: 1.1rem;
+      color: rgba(203,213,225,0.92);
+      font-size: 0.98rem;
+      line-height: 1.5;
+    }
+    .et-chapters__detail.is-entering .et-chapters__bullets li {
+      opacity: 0;
+      transform: translateY(6px);
+      animation: etBulletIn 300ms ease forwards;
+    }
+    .et-chapters__detail.is-entering .et-chapters__bullets li:nth-child(1) { animation-delay: 40ms; }
+    .et-chapters__detail.is-entering .et-chapters__bullets li:nth-child(2) { animation-delay: 80ms; }
+    .et-chapters__detail.is-entering .et-chapters__bullets li:nth-child(3) { animation-delay: 120ms; }
+    .et-chapters__detail.is-entering .et-chapters__bullets li:nth-child(4) { animation-delay: 160ms; }
+    @keyframes etBulletIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .et-chapters__bullets li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: rgba(110,231,183,0.7);
+    }
+    @media (min-width: 1024px) {
+      .et-chapters__chapters {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .et-chapters__chapters::-webkit-scrollbar { display: none; }
+      .et-chapters__preview {
+        width: 70%;
+        max-width: 1024px;
+      }
+      .et-chapters__detail {
+        width: min(70%, 40rem);
+      }
+    }
+    @media (min-width: 1100px) {
+      .et-chapters__stage {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 32%);
+        grid-template-rows: auto auto;
+        gap: 2.5rem 3.5rem;
+        align-items: start;
+      }
+      .et-chapters__preview {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+        width: 100%;
+        max-width: none;
+        justify-self: stretch;
+      }
+      .et-chapters__detail {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        width: 100%;
+        max-width: none;
+        align-self: center;
+      }
+    }
+
+    /* ── Problem ── */
+    .et-pain-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      max-width: 52rem;
+      margin-inline: auto;
+      border-top: 1px solid rgba(148,163,184,0.12);
+    }
+    .et-pain {
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid rgba(148,163,184,0.12);
+      border-radius: 0;
+      padding: 1.65rem 0.15rem 1.75rem;
+      display: grid;
+      grid-template-columns: 2.5rem 1fr;
+      gap: 0.85rem 1.1rem;
+      transition: opacity 0.25s;
+    }
+    .et-pain:hover { opacity: 0.92; transform: none; box-shadow: none; border-color: rgba(148,163,184,0.12); }
+    .et-pain-ico {
+      width: auto; height: auto; border-radius: 0; border: 0; background: transparent;
+      font-family: var(--font-display); font-size: 0.85rem; font-weight: 700;
+      color: rgba(110,231,183,0.55); letter-spacing: 0.04em;
+      margin: 0.15rem 0 0; padding: 0; align-self: start;
+    }
+    .et-pain h3 {
+      font-family: var(--font-display); font-size: 1.05rem;
+      margin: 0 0 0.4rem; grid-column: 2; letter-spacing: -0.02em;
+    }
+    .et-pain p {
+      color: rgba(148,163,184,0.9); font-size: 0.92rem; line-height: 1.65;
+      margin: 0; grid-column: 2; max-width: 42ch;
+    }
+    @media (min-width: 720px) {
+      .et-pain-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0 2.5rem;
+        border-top: 0;
+        max-width: 64rem;
+      }
+      .et-pain {
+        border-top: 1px solid rgba(148,163,184,0.12);
+        border-bottom: 0;
+        padding: 1.85rem 0;
+      }
+    }
+    @media (min-width: 1100px) {
+      .et-pain-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 0 2.75rem;
+      }
+    }
+
+    /* ── Solution ── */
+    .et-sol-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: clamp(2.5rem, 6vw, 4rem);
+      align-items: start;
+      max-width: 60rem;
+      margin-inline: auto;
+    }
+    .et-sol-points { display: grid; gap: 0; margin-top: 2.25rem; }
+    .et-sol-point {
+      display: grid; grid-template-columns: 1fr; gap: 0.35rem;
+      align-items: start;
+      padding: 1.35rem 0;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid rgba(15,92,76,0.14);
+      border-radius: 0;
+    }
+    .et-sol-point .ico { display: none; }
+    .et-sol-point h3 {
+      font-family: var(--font-display); font-size: 1.05rem;
+      margin-bottom: 0.35rem; color: var(--et-ink); letter-spacing: -0.02em;
+    }
+    .et-sol-point p { margin: 0; font-size: 0.95rem; color: #4B5C56; line-height: 1.65; max-width: 40ch; }
+    .et-replace-card {
+      background: transparent;
+      border-radius: 0;
+      padding: 0;
+      box-shadow: none;
+      border: 0;
+      border-top: 1px solid rgba(15,92,76,0.16);
+      padding-top: 1.75rem;
+    }
+    .et-replace-card h3 {
+      font-family: var(--font-display); font-size: 0.78rem;
+      font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(15,92,76,0.7); margin-bottom: 1.15rem;
+    }
+    .et-replace-list { display: grid; gap: 0.55rem; }
+    .et-replace-list li {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.95rem; color: #33443E;
+      padding: 0.55rem 0;
+      background: transparent;
+      border-radius: 0;
+      border-bottom: 1px solid rgba(15,92,76,0.1);
+    }
+    .et-replace-list li span {
+      width: auto; height: auto; border-radius: 0;
+      background: transparent; color: rgba(15,92,76,0.45);
+      display: inline; font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.06em; flex-shrink: 0;
+    }
+    .et-replace-arrow {
+      text-align: left; font-weight: 700; color: var(--et);
+      margin: 1.35rem 0 0.85rem; font-family: var(--font-display);
+      font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+    }
+    .et-replace-win {
+      display: flex; align-items: center; gap: 0.75rem;
+      padding: 1.1rem 0 0;
+      background: transparent;
+      color: var(--et-ink); border-radius: 0;
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 1.1rem; letter-spacing: -0.02em;
+      border-top: 1px solid rgba(15,92,76,0.16);
+    }
+    @media (min-width: 960px) {
+      .et-sol-grid {
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 4.5rem;
+        max-width: 72rem;
+      }
+      .et-replace-card {
+        border-top: 0;
+        border-left: 1px solid rgba(15,92,76,0.14);
+        padding: 0.25rem 0 0 2.75rem;
+      }
+    }
+
+
+    /* ── Feature showcase (mobile-first, screenshot-first) ── */
+    .et-show-intro {
+      padding: clamp(4.5rem, 10vw, 7rem) 1.25rem clamp(1.5rem, 4vw, 2.5rem);
+      text-align: center;
+    }
+    .et-show-intro .section-sub { margin-inline: auto; }
+    .et-show .et-device__glow { display: none; }
+    .et-show .et-device__hint,
+    .et-hero-product .et-device__hint {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(148,163,184,0.55);
+    }
+    .et-show .et-device__hint {
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .et-show:hover .et-device__hint,
+    .et-show:focus-within .et-device__hint { opacity: 0.85; }
+    .et-show__actions .btn-ghost { opacity: 0.85; }
+    .et-frame:hover .et-frame__hit { transform: scale(1.01); }
+
+    .et-show {
+      position: relative;
+      padding: 3.25rem 0 3.75rem;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(148,163,184,0.08);
+    }
+    .et-show:nth-of-type(even) {
+      background: var(--navy2);
+    }
+    .et-show--cinematic,
+    .et-show--fill {
+      padding-block: 3.75rem 4.25rem;
+      background: #0A0F1E;
+    }
+
+    .et-show__inner {
+      width: min(100% - 1.25rem, 1240px);
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+
+    .et-show__visual {
+      order: 1;
+      width: 100%;
+      opacity: 0;
+      transform: translateY(28px) scale(0.96);
+      transition: opacity 0.7s ease, transform 0.75s cubic-bezier(.22,1,.36,1);
+      will-change: transform, opacity;
+    }
+    .et-show__copy {
+      order: 2;
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease 0.08s, transform 0.7s cubic-bezier(.22,1,.36,1) 0.08s;
+    }
+    .et-show.is-in .et-show__visual,
+    .et-show.is-in .et-show__copy {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .et-show__kicker {
+      display: inline-flex;
+      font-size: clamp(0.72rem, 2.2vw, 0.78rem);
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #6EE7B7;
+      margin-bottom: 0.85rem;
+    }
+    .et-show__copy h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 6vw, 2.55rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      margin-bottom: 0.95rem;
+    }
+    .et-show__desc {
+      color: var(--slate);
+      font-size: clamp(1rem, 3.4vw, 1.12rem);
+      line-height: 1.75;
+      margin-bottom: 1.35rem;
+      max-width: 40ch;
+    }
+    .et-show__bullets {
+      display: grid;
+      gap: 0.7rem;
+      margin-bottom: 1.75rem;
+    }
+    .et-show__bullets li {
+      color: var(--slate-light);
+      font-size: clamp(0.95rem, 3.2vw, 1.02rem);
+      line-height: 1.55;
+      padding: 0.15rem 0 0.15rem 1.15rem;
+      position: relative;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+    }
+    .et-show__bullets li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0.55em;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: rgba(110,231,183,0.65);
+    }
+    .et-show__actions {
+      display: grid;
+      gap: 0.75rem;
+    }
+    .btn-show {
+      min-height: 52px;
+      padding: 0.95rem 1.35rem;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      width: 100%;
+      justify-content: center;
+      transition: transform 0.2s, box-shadow 0.25s, background 0.2s, border-color 0.2s;
+    }
+    .btn-show:active { transform: scale(0.985); }
+    .btn-show.btn-et:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Showcase devices — large, never beyond native 1024 */
+    .et-show .et-device--showcase,
+    .et-show .et-frame,
+    .et-show .et-float-stage,
+    .et-show .et-doc {
+      --et-device-max: min(1024px, 94vw);
+      max-width: var(--et-device-max);
+      width: 100%;
+      margin-inline: auto;
+    }
+    .et-show .et-device__hint {
+      margin-top: 0.85rem;
+      font-size: 0.78rem;
+    }
+
+    /* Frameless cinematic / fee fill */
+    .et-frame { position: relative; isolation: isolate; }
+    .et-frame__hit {
+      display: block; width: 100%; padding: 0; border: 0; background: transparent;
+      cursor: zoom-in; border-radius: 18px;
+      transition: transform 300ms ease;
+    }
+    .et-frame:hover .et-frame__hit { transform: scale(1.02); }
+    .et-frame__screen {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 30px 70px rgba(0,0,0,0.5), 0 0 0 1px rgba(15,92,76,0.15);
+      background: #0b1220;
+      aspect-ratio: 1024 / 640;
+    }
+    .et-frame__screen img,
+    .et-float-card img,
+    .et-doc__screen img {
+      width: 100%; height: 100%;
+      max-width: 1024px; max-height: 640px;
+      object-fit: contain; object-position: top center;
+      display: block;
+      image-rendering: auto;
+      image-rendering: high-quality;
+    }
+    .et-show--cinematic .et-frame__screen,
+    .et-show--fill .et-frame__screen {
+      border-radius: 18px;
+      box-shadow: 0 40px 90px rgba(0,0,0,0.55), 0 0 60px rgba(15,92,76,0.18);
+    }
+
+    /* Phone */
+    .et-device--phone { --et-device-max: min(360px, 78vw); }
+    .et-device--phone .et-device__shell {
+      border-radius: 34px;
+      padding: 12px;
+      background: linear-gradient(160deg, #2c3344, #10141c);
+    }
+    .et-device--phone .et-device__screen {
+      border-radius: 24px;
+      aspect-ratio: 1024 / 640;
+    }
+    .et-device--phone .et-device__camera {
+      width: 58px; height: 6px; border-radius: 999px; margin: 2px auto 10px;
+      background: #0a0d14;
+    }
+
+    /* Tablet on reception desk */
+    .et-device--tablet-desk { --et-device-max: min(720px, 92vw); }
+    .et-device--tablet-desk .et-device__shell {
+      border-radius: 22px;
+      padding: 14px;
+      transform: perspective(900px) rotateX(8deg);
+      transform-origin: center bottom;
+    }
+    .et-desk {
+      height: 18px;
+      margin-top: -4px;
+      border-radius: 0 0 40% 40% / 0 0 100% 100%;
+      background: linear-gradient(180deg, #3a2f24, #1c1611);
+      box-shadow: 0 18px 30px rgba(0,0,0,0.35);
+      position: relative;
+    }
+    .et-desk span {
+      position: absolute; left: 10%; right: 10%; top: 0;
+      height: 3px; border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* Ultrawide monitor */
+    .et-device--ultrawide { --et-device-max: min(1024px, 96vw); }
+    .et-device--ultrawide .et-device__shell {
+      border-radius: 12px;
+      padding: 10px 14px 12px;
+    }
+    .et-device--ultrawide .et-device__stand { width: 14%; height: 16px; }
+    .et-device--ultrawide .et-device__foot { width: 42%; }
+
+    /* Messaging chrome */
+    .et-device--message { --et-device-max: min(880px, 94vw); }
+    .et-device--message .et-device__shell {
+      border-radius: 20px;
+      padding: 0;
+      overflow: hidden;
+      background: #121826;
+    }
+    .et-device--message .et-device__camera { display: none; }
+    .et-device--message .et-device__shell::before {
+      content: "Broadcast · WhatsApp";
+      display: block;
+      padding: 0.7rem 1rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #A7F3D0;
+      background: rgba(15,92,76,0.35);
+      border-bottom: 1px solid rgba(148,163,184,0.12);
+    }
+    .et-device--message .et-device__screen { border-radius: 0; }
+
+    /* Floating layered cards */
+    .et-float-stage {
+      position: relative;
+      min-height: clamp(220px, 58vw, 420px);
+      display: grid;
+      place-items: center;
+      isolation: isolate;
+    }
+    .et-float-card {
+      position: absolute;
+      width: min(86%, 920px);
+      padding: 0; border: 0; background: transparent;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: zoom-in;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.28);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: transform 300ms ease, box-shadow 300ms ease;
+    }
+    .et-float-card img { aspect-ratio: 1024 / 640; object-fit: contain; object-position: top center; background: #0b1220; }
+    .et-float-card--back {
+      transform: translate(-8%, -6%) rotate(-6deg) scale(0.9);
+      opacity: 0.55; filter: brightness(0.85);
+      z-index: 1;
+    }
+    .et-float-card--mid {
+      transform: translate(7%, 4%) rotate(5deg) scale(0.94);
+      opacity: 0.75; filter: brightness(0.92);
+      z-index: 2;
+    }
+    .et-float-card--front {
+      position: relative;
+      transform: translateY(0) rotate(-1.5deg) scale(1);
+      z-index: 3;
+      opacity: 1;
+    }
+    .et-float-stage:hover .et-float-card--front { transform: translateY(-6px) rotate(0deg) scale(1.02); }
+    .et-float-stage:hover .et-float-card--mid { transform: translate(9%, 2%) rotate(7deg) scale(0.95); }
+    .et-float-stage:hover .et-float-card--back { transform: translate(-10%, -8%) rotate(-8deg) scale(0.9); }
+    .et-float-stage .et-device__hint {
+      position: absolute; bottom: -0.2rem; left: 0; right: 0;
+    }
+
+    /* Document / salary slip */
+    .et-doc { position: relative; }
+    .et-doc__hit {
+      display: block; width: 100%; padding: 0; border: 0; background: transparent;
+      cursor: zoom-in; transition: transform 300ms ease;
+    }
+    .et-doc:hover .et-doc__hit { transform: scale(1.02); }
+    .et-doc__paper {
+      background: #f7f4ee;
+      border-radius: 10px;
+      padding: 1rem 1rem 1.25rem;
+      box-shadow: 0 28px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.08);
+      transform: rotate(-1.5deg);
+    }
+    .et-doc__clip {
+      width: 42px; height: 14px; margin: 0 auto 0.75rem;
+      border-radius: 4px;
+      background: linear-gradient(180deg, #9aa3b5, #6b7384);
+      box-shadow: 0 2px 0 rgba(0,0,0,0.2);
+    }
+    .et-doc__screen {
+      border-radius: 6px; overflow: hidden;
+      border: 1px solid rgba(20,32,28,0.12);
+      background: #fff;
+      aspect-ratio: 1024 / 640;
+    }
+
+    @media (min-width: 768px) {
+      .et-show { padding: 5.5rem 0 6rem; }
+      .et-show__inner { gap: 3rem; width: min(100% - 2.5rem, 1240px); }
+      .et-show__actions {
+        grid-template-columns: 1fr 1fr;
+      }
+      .btn-show { min-height: 52px; }
+      .et-device--phone { --et-device-max: min(400px, 46vw); }
+    }
+
+    @media (min-width: 960px) {
+      .et-show { padding: 7rem 0 7.5rem; }
+      .et-show--cinematic,
+      .et-show--fill { padding-block: 8rem 8.5rem; }
+      .et-show__inner {
+        display: grid;
+        grid-template-columns: 1.9fr 1fr;
+        gap: clamp(2rem, 4vw, 4rem);
+        align-items: center;
+        width: min(100% - 3rem, 1280px);
+      }
+      .et-show--flip .et-show__visual { order: 2; }
+      .et-show--flip .et-show__copy { order: 1; }
+      .et-show:not(.et-show--flip) .et-show__visual { order: 1; }
+      .et-show:not(.et-show--flip) .et-show__copy { order: 2; }
+      .et-show__actions {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+      }
+      .et-show--flip .et-show__actions { margin-right: auto; }
+      .btn-show {
+        width: auto;
+        min-width: 220px;
+        min-height: 52px;
+        padding: 1rem 1.5rem;
+      }
+      .et-show .et-device--showcase,
+      .et-show .et-frame,
+      .et-show .et-float-stage,
+      .et-show .et-doc {
+        --et-device-max: min(1024px, 100%);
+      }
+      .et-show--cinematic .et-frame,
+      .et-show--fill .et-frame,
+      .et-show--ultrawide .et-device {
+        --et-device-max: min(1024px, 100%);
+      }
+      .et-device--phone { --et-device-max: 320px; margin-inline: 8%; }
+      .et-show__desc { font-size: 1.05rem; }
+    }
+
+    @media (min-width: 1100px) {
+      .et-show__inner {
+        grid-template-columns: 2fr 1fr;
+      }
+      .btn-show { min-height: 54px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .et-show__visual,
+      .et-show__copy {
+        opacity: 1; transform: none; transition: none;
+      }
+    }
+
+    /* ── Day in the office timeline ── */
+    .et-day {
+      position: relative;
+      padding: 6rem 0 5rem;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 50% 30% at 50% 0%, rgba(15,92,76,0.18), transparent 60%),
+        var(--navy);
+    }
+    .et-day .section-sub { max-width: 640px; }
+    .et-timeline {
+      position: relative;
+      max-width: 1080px;
+      margin: 3.5rem auto 0;
+      padding: 0.5rem 0 2rem;
+    }
+    .et-tl-track {
+      position: absolute;
+      top: 0; bottom: 0; left: 50%;
+      width: 3px;
+      transform: translateX(-50%);
+      background: rgba(148,163,184,0.14);
+      border-radius: 999px;
+      z-index: 0;
+    }
+    .et-tl-progress {
+      position: absolute;
+      top: 0; left: 0; width: 100%;
+      height: 0%;
+      border-radius: inherit;
+      background: linear-gradient(180deg, #34D399, var(--et), #0F5C4C);
+      box-shadow: 0 0 18px rgba(52,211,153,0.45);
+      transition: height 0.1s linear;
+    }
+    .et-tl-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 72px 1fr;
+      gap: 1.25rem;
+      align-items: center;
+      margin-bottom: 3.25rem;
+      z-index: 1;
+    }
+    .et-tl-item:last-of-type { margin-bottom: 2rem; }
+    .et-tl-marker {
+      grid-column: 2;
+      justify-self: center;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0;
+      color: transparent;
+      background: #34D399;
+      border: 0;
+      box-shadow: 0 0 0 6px rgba(15,92,76,0.25);
+      backdrop-filter: none;
+      transform: scale(0.4);
+      opacity: 0;
+      transition: transform 0.55s cubic-bezier(.22,1,.36,1), opacity 0.45s;
+      margin-top: 1.35rem;
+    }
+    .et-tl-item.in-view .et-tl-marker {
+      transform: scale(1);
+      opacity: 1;
+      animation: none;
+    }
+    @keyframes etMarkerPulse {
+      0%,100% { box-shadow: 0 0 0 6px rgba(15,92,76,0.25); }
+      50% { box-shadow: 0 0 0 6px rgba(15,92,76,0.25); }
+    }
+    .et-tl-card {
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      overflow: visible;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      box-shadow: none;
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s cubic-bezier(.22,1,.36,1);
+    }
+    .et-tl-item.in-view .et-tl-card {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .et-tl-item:nth-of-type(odd) .et-tl-card { transition-delay: 0.08s; }
+    .et-tl-item:nth-of-type(even) .et-tl-card { transition-delay: 0.16s; }
+    .et-tl-card:hover { border-color: transparent; box-shadow: none; }
+    .et-tl-item:nth-of-type(odd) .et-tl-copy { grid-column: 1; grid-row: 1; text-align: right; }
+    .et-tl-item:nth-of-type(odd) .et-tl-media { grid-column: 3; grid-row: 1; }
+    .et-tl-item:nth-of-type(even) .et-tl-media { grid-column: 1; grid-row: 1; }
+    .et-tl-item:nth-of-type(even) .et-tl-copy { grid-column: 3; grid-row: 1; text-align: left; }
+    .et-tl-item:nth-of-type(odd) .et-tl-chips { justify-content: flex-end; }
+    .et-tl-copy {
+      padding: 0.35rem 0.5rem 0.5rem;
+      border-top: 1px solid rgba(148,163,184,0.14);
+    }
+    .et-tl-time {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(110,231,183,0.85);
+      margin: 1.1rem 0 0.55rem;
+    }
+    .et-tl-copy h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+      font-weight: 800; letter-spacing: -0.02em;
+      margin-bottom: 0.7rem; line-height: 1.2;
+    }
+    .et-tl-copy p {
+      color: var(--slate); font-size: 0.95rem; line-height: 1.7;
+      margin-bottom: 1.1rem;
+    }
+    .et-tl-item:nth-of-type(odd) .et-tl-copy p { margin-left: auto; }
+    .et-tl-item:nth-of-type(odd) .et-tl-copy p,
+    .et-tl-item:nth-of-type(even) .et-tl-copy p { max-width: 36ch; }
+    .et-tl-item:nth-of-type(even) .et-tl-copy p { margin-right: auto; }
+    .et-tl-chips {
+      display: flex; flex-wrap: wrap; gap: 0.45rem;
+    }
+    .et-tl-chips span {
+      font-size: 0.72rem; font-weight: 600;
+      padding: 0; border-radius: 0;
+      color: rgba(148,163,184,0.75);
+      background: transparent;
+      border: 0;
+    }
+    .et-tl-chips span + span::before {
+      content: "·";
+      margin-right: 0.45rem;
+      color: rgba(148,163,184,0.4);
+    }
+    .et-tl-card.et-tl-media {
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      backdrop-filter: none;
+    }
+    .et-tl-card.et-tl-media:hover {
+      border-color: transparent;
+      box-shadow: none;
+    }
+    .et-tl-finale {
+      position: relative; z-index: 2;
+      max-width: 640px; margin: 2.5rem auto 0;
+      text-align: center;
+      padding: 2.5rem 1rem 0;
+      border-radius: 0;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid rgba(148,163,184,0.14);
+      backdrop-filter: none;
+      box-shadow: none;
+    }
+    .et-tl-finale h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      font-weight: 800; letter-spacing: -0.03em;
+      line-height: 1.2; margin-bottom: 0.85rem;
+    }
+    .et-tl-finale p {
+      color: var(--slate); font-size: 1.02rem; line-height: 1.7;
+      max-width: 42ch; margin: 0 auto 1.75rem;
+    }
+    .et-tl-finale .et-hero-actions { justify-content: center; }
+    .btn-glow::after { display: none; }
+
+    /* ── How it works ── */
+    .et-steps {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      position: relative;
+      max-width: 40rem;
+      margin-inline: auto;
+    }
+    .et-steps::before { display: none; }
+    .et-step {
+      position: relative; z-index: 1;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid rgba(148,163,184,0.12);
+      border-radius: 0;
+      padding: 1.5rem 0 1.65rem;
+      text-align: left;
+      display: grid;
+      grid-template-columns: 2.5rem 1fr;
+      gap: 0.85rem 1rem;
+      transition: none;
+    }
+    .et-step:hover { transform: none; border-color: rgba(148,163,184,0.12); }
+    .et-step-num {
+      width: auto; height: auto; margin: 0.15rem 0 0;
+      border-radius: 0;
+      background: transparent;
+      color: rgba(110,231,183,0.55);
+      display: block;
+      font-family: var(--font-display); font-weight: 700; font-size: 0.85rem;
+      box-shadow: none;
+      grid-row: 1 / span 2;
+    }
+    .et-step h3 {
+      font-family: var(--font-display); font-size: 1.05rem;
+      margin: 0 0 0.35rem; letter-spacing: -0.02em;
+    }
+    .et-step p { color: var(--slate); font-size: 0.92rem; line-height: 1.6; margin: 0; max-width: 36ch; }
+    @media (min-width: 720px) {
+      .et-steps {
+        grid-template-columns: 1fr 1fr;
+        gap: 0 2.5rem;
+        max-width: 56rem;
+      }
+    }
+    @media (min-width: 1100px) {
+      .et-steps {
+        grid-template-columns: repeat(5, 1fr);
+        gap: 0 1.75rem;
+        max-width: none;
+      }
+      .et-step {
+        grid-template-columns: 1fr;
+        padding-top: 1.75rem;
+      }
+      .et-step-num { grid-row: auto; margin-bottom: 1rem; }
+    }
+
+    /* ── Comparison ── */
+    .et-compare-wrap {
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 0;
+      border: 1px solid rgba(148,163,184,0.14);
+      background: transparent;
+    }
+    .et-compare {
+      width: 100%; min-width: 720px;
+      border-collapse: collapse;
+    }
+    .et-compare th, .et-compare td {
+      padding: 1rem 1.15rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+    .et-compare thead th {
+      background: rgba(15,92,76,0.15);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .et-compare th:first-child,
+    .et-compare td:first-child {
+      position: sticky;
+      left: 0;
+      z-index: 1;
+      min-width: 154px;
+      background: #0A0F1E;
+      box-shadow: 1px 0 rgba(148,163,184,0.16);
+    }
+    .et-compare thead th:first-child {
+      z-index: 3;
+      background: #10271F;
+    }
+    .et-compare thead th.highlight {
+      background: var(--et);
+      color: #fff;
+    }
+    .et-compare tbody tr:hover td { background: rgba(255,255,255,0.02); }
+    .et-compare td.highlight {
+      background: rgba(15,92,76,0.08);
+      font-weight: 600;
+      color: #6EE7B7;
+    }
+    .et-compare .yes { color: #34D399; font-weight: 700; }
+    .et-compare .no { color: #F87171; font-weight: 600; }
+    .et-compare .maybe { color: #FBBF24; font-weight: 600; }
+
+    /* ── Pricing ── */
+    .et-price-banner {
+      max-width: 42rem; margin: 0 auto 2.75rem;
+      text-align: center;
+      padding: 0 0 1.5rem;
+      border-radius: 0;
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid rgba(148,163,184,0.12);
+      color: var(--slate-light);
+      font-size: 1rem; line-height: 1.7;
+    }
+    .et-price-banner strong { color: #6EE7B7; }
+    .et-pricing {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      align-items: stretch;
+      max-width: 26rem;
+      margin-inline: auto;
+    }
+    .et-price {
+      background: transparent;
+      border: 1px solid rgba(148,163,184,0.14);
+      border-radius: 0;
+      padding: 1.75rem 1.5rem 1.85rem;
+      display: flex; flex-direction: column;
+      position: relative;
+      transition: border-color 0.25s;
+    }
+    .et-price:hover { transform: none; border-color: rgba(110,231,183,0.35); }
+    .et-price.featured {
+      border-color: rgba(110,231,183,0.45);
+      box-shadow: none;
+      background: rgba(15,92,76,0.1);
+    }
+    .et-price-badge {
+      position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+      background: var(--et); color: #fff;
+      font-size: 0.68rem; font-weight: 800; letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem; border-radius: 999px;
+      white-space: nowrap;
+    }
+    @media (min-width: 720px) {
+      .et-pricing {
+        grid-template-columns: 1fr 1fr;
+        max-width: 44rem;
+        gap: 1.15rem;
+      }
+      .et-price.featured { grid-column: 1 / -1; }
+    }
+    @media (min-width: 1100px) {
+      .et-pricing {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: none;
+        gap: 1.25rem;
+      }
+      .et-price.featured { grid-column: auto; }
+    }
+    .et-price h3 {
+      font-family: var(--font-display); font-size: 1.25rem; margin-bottom: 0.4rem;
+    }
+    .et-price-desc { color: var(--slate); font-size: 0.88rem; margin-bottom: 1.15rem; }
+    .et-price-amt {
+      font-family: var(--font-display); font-size: 2rem; font-weight: 800;
+      margin-bottom: 0.25rem;
+    }
+    .et-price-amt span { font-size: 0.9rem; color: var(--slate); font-weight: 600; }
+    .et-price-note { color: var(--slate); font-size: 0.8rem; margin-bottom: 1.25rem; }
+    .et-price ul { margin-bottom: 1.5rem; flex: 1; }
+    .et-price li {
+      color: var(--slate-light); font-size: 0.88rem;
+      padding: 0.4rem 0 0.4rem 1.2rem; position: relative;
+    }
+    .et-price li::before {
+      content: "✓"; position: absolute; left: 0; color: #6EE7B7; font-weight: 800;
+    }
+
+    /* ── Download ── */
+    .et-download {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: center;
+      padding: clamp(2rem, 5vw, 3.5rem) 0 0;
+      border-radius: 0;
+      background: transparent;
+      border: 0;
+      border-top: 1px solid rgba(148,163,184,0.12);
+      max-width: 56rem;
+      margin-inline: auto;
+    }
+    .et-download h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.03em;
+    }
+    .et-download > div > p {
+      color: var(--slate); margin-bottom: 1.5rem; max-width: 42ch; line-height: 1.7;
+    }
+    .et-dl-badges {
+      display: flex; flex-wrap: wrap; gap: 0.85rem 1.35rem; margin-bottom: 1.5rem;
+    }
+    .et-dl-badges span {
+      font-size: 0.8rem; font-weight: 600;
+      padding: 0; border-radius: 0;
+      background: transparent;
+      border: 0;
+      color: rgba(148,163,184,0.8);
+    }
+    .et-dl-badges span + span::before {
+      content: "·";
+      margin-right: 1.35rem;
+      color: rgba(148,163,184,0.35);
+    }
+    .et-dl-card {
+      background: transparent;
+      border: 1px solid rgba(148,163,184,0.16);
+      border-radius: 0;
+      padding: 1.75rem 1.5rem;
+      text-align: left;
+    }
+    .et-dl-card .win-ico {
+      width: 48px; height: 48px; margin: 0 0 1rem;
+      border-radius: 12px;
+      background: var(--et);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.35rem;
+      box-shadow: none;
+    }
+    @media (min-width: 900px) {
+      .et-download {
+        grid-template-columns: 1.25fr 0.75fr;
+        gap: 3.5rem;
+        padding-top: 3.5rem;
+      }
+    }
+    .et-dl-card h3 {
+      font-family: var(--font-display); margin-bottom: 0.4rem;
+    }
+    .et-dl-card p { color: var(--slate); font-size: 0.88rem; margin-bottom: 1.25rem; }
+
+    /* ── Final CTA ── */
+    .et-final {
+      text-align: center;
+      padding: clamp(4.5rem, 10vw, 7rem) 0;
+      background: transparent;
+      border-block: 1px solid rgba(148,163,184,0.12);
+    }
+    .et-final h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 3.4vw, 2.75rem);
+      font-weight: 800; letter-spacing: -0.03em;
+      max-width: 18ch; margin: 0 auto 1rem; line-height: 1.15;
+    }
+    .et-final .lead {
+      color: var(--slate); font-size: 1.08rem; line-height: 1.75;
+      max-width: 52ch; margin: 0 auto 2rem;
+    }
+    .et-final-actions {
+      display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center;
+    }
+
+    /* Sticky */
+    .sticky-cta-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 170;
+      display: none; align-items: center; justify-content: center; gap: 0.75rem;
+      padding: 0.85rem 1rem;
+      background: rgba(10,15,30,0.94);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid var(--border);
+    }
+    .sticky-cta-bar.visible { display: flex; }
+    .sticky-cta-bar .sticky-label {
+      font-family: var(--font-display); font-weight: 700; font-size: 0.9rem;
+      color: #6EE7B7; margin-right: 0.5rem;
+    }
+
+    @media (max-width: 1100px) {
+      .et-device--compact { --et-device-max: 420px; }
+      .et-tl-track { left: 18px; transform: none; }
+      .et-tl-item {
+        grid-template-columns: 28px 1fr;
+        gap: 0.85rem 1.15rem;
+        align-items: start;
+      }
+      .et-tl-marker {
+        grid-column: 1; grid-row: 1 / span 2;
+        width: 10px; height: 10px; margin-top: 1.45rem;
+      }
+      .et-tl-item:nth-of-type(odd) .et-tl-copy,
+      .et-tl-item:nth-of-type(even) .et-tl-copy,
+      .et-tl-item:nth-of-type(odd) .et-tl-media,
+      .et-tl-item:nth-of-type(even) .et-tl-media {
+        grid-column: 2;
+        text-align: left;
+      }
+      .et-tl-item:nth-of-type(odd) .et-tl-copy { grid-row: 1; }
+      .et-tl-item:nth-of-type(odd) .et-tl-media { grid-row: 2; }
+      .et-tl-item:nth-of-type(even) .et-tl-media { grid-row: 2; }
+      .et-tl-item:nth-of-type(even) .et-tl-copy { grid-row: 1; }
+      .et-tl-item:nth-of-type(odd) .et-tl-chips { justify-content: flex-start; }
+      .et-tl-item:nth-of-type(odd) .et-tl-copy p,
+      .et-tl-item:nth-of-type(even) .et-tl-copy p { margin-left: 0; margin-right: 0; max-width: none; }
+      .et-tl-copy { padding: 0.15rem 0 0.35rem; }
+    }
+    @media (max-width: 720px) {
+      .sticky-cta-bar .sticky-label { display: none; }
+      .sticky-cta-bar .btn { flex: 1; min-width: 0; padding-inline: 0.75rem; }
+      .et-hero { padding-top: calc(var(--nav-h) + 1.5rem); }
+      .et-hero-actions { width: min(100%, 22rem); margin-inline: auto; }
+      .et-day { padding: 4.5rem 0 3.5rem; }
+      .et-tl-item { margin-bottom: 2.5rem; }
+      .et-tl-finale { padding: 2rem 0 0; }
+      .et-device-row { flex-direction: column; align-items: center; }
+      .et-lightbox__nav { position: static; transform: none; }
+      .et-lightbox__toolbar { margin-top: 0.25rem; }
+      .et-show__actions { grid-template-columns: 1fr; }
+      .et-lightbox {
+        padding: max(0.5rem, env(safe-area-inset-top)) 0.5rem max(0.5rem, env(safe-area-inset-bottom));
+      }
+      .et-lightbox__inner { max-height: 100%; }
+      .et-lightbox__stage img { max-height: 68vh; }
+      .et-pricing {
+        display: flex;
+        max-width: none;
+        gap: 1rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 50%;
+        overscroll-behavior-x: contain;
+        scrollbar-width: none;
+        padding-inline: max(var(--gutter), calc((100vw - min(84vw, 360px)) / 2));
+        margin-inline: calc(var(--gutter) * -1);
+      }
+      .et-pricing::-webkit-scrollbar { display: none; }
+      .et-pricing > .et-price {
+        flex: 0 0 min(84vw, 360px);
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+      }
+      .et-price.featured { grid-column: auto; }
+    }
+    @media (orientation: landscape) and (max-height: 600px) {
+      .et-lightbox { padding: 0.35rem max(0.5rem, env(safe-area-inset-right)); }
+      .et-lightbox__inner { width: min(88vw, 1100px); max-height: 98vh; gap: 0.35rem; }
+      .et-lightbox__stage img { max-height: 76vh; }
+      .et-lightbox__caption { max-width: 70ch; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    }
+  </style>
+</head>
+<body class="et-page" data-root=".." data-page="edutrack">
+  <div id="site-nav"></div>
+
+  <!-- 1. HERO -->
+  <section class="et-hero" id="hero">
+    <div class="et-hero-grid">
+      <div class="et-hero-product reveal">
+        <figure class="et-frame et-device--showcase et-device--hero" data-et-shot="dashboard">
+          <button type="button" class="et-device__hit et-frame__hit" data-lightbox data-src="../shared/assets/products/edutrack/dashboard.png" data-alt="EduTrack school management dashboard" aria-label="View full-size EduTrack dashboard">
+            <div class="et-frame__screen">
+              <img src="../shared/assets/products/edutrack/dashboard-640.png" srcset="../shared/assets/products/edutrack/dashboard-640.png 640w, ../shared/assets/products/edutrack/dashboard.png 1024w" sizes="(max-width: 720px) 94vw, min(1024px, 90vw)" width="1024" height="640" alt="EduTrack school management dashboard" loading="eager" decoding="async" fetchpriority="high" />
+            </div>
+          </button>
+          <span class="et-device__hint">Click to explore</span>
+        </figure>
+      </div>
+      <div class="et-hero-copy">
+        <div class="et-brand-pill">EduTrack</div>
+        <h1 class="reveal">School management that <em>stays on your PC.</em></h1>
+        <p class="et-hero-lead reveal">
+          One Windows application for attendance, fees, payroll, ID cards, and parent communication — offline-first, built for real school offices.
+        </p>
+        <div class="et-hero-actions reveal">
+          <a class="btn btn-primary btn-et btn-et--cta" href="/downloads/EduTrack-Setup.exe" download="EduTrack-Setup.exe">Download Trial</a>
+          <a class="btn btn-secondary" href="#features">See the product</a>
+          <a class="btn btn-ghost btn-et--cta et-wa" data-wa="Hi Onairo Solutions, I'd like to book a live EduTrack demo for our school." href="https://wa.me/923137863988">Book Live Demo</a>
+        </div>
+        <div class="et-hero-meta reveal">
+          <span>Windows</span>
+          <span>14-day trial</span>
+          <span>Offline-first</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. THE PROBLEM -->
+  <section class="section" id="problem">
+    <div class="container">
+      <div class="section-head center">
+        <p class="et-tag reveal">The problem</p>
+        <h2 class="section-title reveal">Your school office is drowning in disconnected tools</h2>
+        <p class="section-sub reveal">Hours lost to paper, spreadsheets, and scattered chats — instead of teaching and parents.</p>
+      </div>
+      <div class="et-pain-grid">
+        <article class="et-pain reveal">
+          <div class="et-pain-ico">01</div>
+          <h3>Paper attendance registers</h3>
+          <p>Manual roll calls, lost pages, and no instant view of who’s present across classes.</p>
+        </article>
+        <article class="et-pain reveal">
+          <div class="et-pain-ico">02</div>
+          <h3>Multiple Excel files</h3>
+          <p>Student lists, fee sheets, and salary files that break the moment two people edit them.</p>
+        </article>
+        <article class="et-pain reveal">
+          <div class="et-pain-ico">03</div>
+          <h3>Manual fee calculations</h3>
+          <p>Partial payments, overdue balances, and monthly generation done by hand — error-prone and slow.</p>
+        </article>
+        <article class="et-pain reveal">
+          <div class="et-pain-ico">04</div>
+          <h3>Lost student records</h3>
+          <p>Scattered folders and notebooks make it hard to find guardian phones, rolls, or history fast.</p>
+        </article>
+        <article class="et-pain reveal">
+          <div class="et-pain-ico">05</div>
+          <h3>Difficult parent communication</h3>
+          <p>Important notices buried in personal WhatsApp chats with no broadcast control or logs.</p>
+        </article>
+        <article class="et-pain reveal">
+          <div class="et-pain-ico">06</div>
+          <h3>Time-consuming reporting</h3>
+          <p>Board meetings and audits turn into late nights rebuilding the same numbers from scratch.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. THE SOLUTION -->
+  <section class="section et-light" id="solution">
+    <div class="container et-sol-grid">
+      <div>
+        <p class="et-tag reveal">The solution</p>
+        <h2 class="section-title reveal">EduTrack replaces the chaos with one Windows app</h2>
+        <p class="section-sub reveal" style="margin-bottom:0">
+          Install on your PC, keep your data on campus, and run the full school workflow — from enrolment to payroll — without juggling five different tools.
+        </p>
+        <div class="et-sol-points">
+          <div class="et-sol-point reveal">
+            <div class="ico" aria-hidden="true"></div>
+            <div>
+              <h3>Runs on your computer</h3>
+              <p>Desktop-first software designed for school offices — not a fragile browser tab.</p>
+            </div>
+          </div>
+          <div class="et-sol-point reveal">
+            <div class="ico" aria-hidden="true"></div>
+            <div>
+              <h3>You own your data</h3>
+              <p>Records stay local. Backup and restore on your terms, with LAN support when staff need access.</p>
+            </div>
+          </div>
+          <div class="et-sol-point reveal">
+            <div class="ico" aria-hidden="true"></div>
+            <div>
+              <h3>Built for Pakistani schools</h3>
+              <p>PKR fees, class/section workflows, WhatsApp broadcasts, and print-ready documents principals expect.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="et-replace-card reveal">
+        <h3>What it replaces</h3>
+        <ul class="et-replace-list">
+          <li><span>—</span> Paper attendance registers</li>
+          <li><span>—</span> Scattered Excel student &amp; fee sheets</li>
+          <li><span>—</span> Ad-hoc WhatsApp parent groups</li>
+          <li><span>—</span> Separate payroll &amp; ID card tools</li>
+        </ul>
+        <div class="et-replace-arrow">Becomes</div>
+        <div class="et-replace-win">
+          <span>EduTrack — one Windows application</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. INTERACTIVE PRODUCT CHAPTERS -->
+  <section id="features" class="et-chapters section" aria-label="Interactive product tour">
+    <div class="container et-chapters__head">
+      <p class="et-tag reveal">Inside the product</p>
+      <h2 class="section-title reveal">See EduTrack the way your staff will use it</h2>
+      <p class="section-sub reveal">Five chapters, twelve real screens — switch tabs to explore. Tap the preview for fullscreen.</p>
+    </div>
+
+    <div class="et-chapters__shell container" id="etChapters">
+      <nav class="et-chapters__chapters" id="etChapterNav" role="tablist" aria-label="Product chapters"></nav>
+      <div class="et-chapters__pills-wrap">
+        <div class="et-chapters__pills" id="etFeaturePills" role="tablist" aria-label="Screens in this chapter"></div>
+      </div>
+
+      <div class="et-chapters__panel" id="etChapterPanel" role="tabpanel" tabindex="0">
+        <div class="et-chapters__stage">
+          <div class="et-chapters__preview" id="etChapterPreview">
+            <figure class="et-chapters__figure">
+              <button type="button" class="et-chapters__hit" id="etChapterLb" data-lightbox data-src="../shared/assets/products/edutrack/dashboard.png" data-alt="EduTrack dashboard" aria-label="View full-size EduTrack screenshot">
+                <div class="et-chapters__stack" aria-hidden="true">
+                  <span class="et-chapters__layer et-chapters__layer--back"></span>
+                  <span class="et-chapters__layer et-chapters__layer--mid"></span>
+                  <span class="et-chapters__screen">
+                    <img id="etChapterImg" src="../shared/assets/products/edutrack/dashboard-640.png" srcset="../shared/assets/products/edutrack/dashboard-640.png 640w, ../shared/assets/products/edutrack/dashboard.png 1024w" sizes="(max-width: 719px) 90vw, min(1024px, 70vw)" width="1024" height="640" alt="EduTrack dashboard" decoding="async" />
+                  </span>
+                </div>
+              </button>
+              <figcaption class="et-chapters__hint">Click to view fullscreen</figcaption>
+            </figure>
+          </div>
+
+          <div class="et-chapters__detail" id="etChapterDetail">
+            <p class="et-chapters__kicker" id="etChapterKicker">Dashboard</p>
+            <h3 class="et-chapters__title" id="etChapterTitle">Your whole campus at a glance</h3>
+            <p class="et-chapters__desc" id="etChapterDesc"></p>
+            <ul class="et-chapters__bullets" id="etChapterBullets"></ul>
+            <div class="et-chapters__actions et-btn-row">
+              <a class="btn btn-primary btn-et btn-et--cta" href="/downloads/EduTrack-Setup.exe" download="EduTrack-Setup.exe">Download Trial</a>
+              <a class="btn btn-secondary btn-et--cta et-wa" id="etChapterDemo" data-wa="Hi Onairo Solutions, I'd like a live demo of EduTrack." href="https://wa.me/923137863988">Book Live Demo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- A DAY IN THE SCHOOL OFFICE -->
+  <section class="et-day" id="day-in-office" aria-labelledby="dayTitle">
+    <div class="container">
+      <div class="section-head center">
+        <p class="et-tag reveal">A day with EduTrack</p>
+        <h2 class="section-title reveal" id="dayTitle">A Day in the School Office with EduTrack</h2>
+        <p class="section-sub reveal">See how EduTrack simplifies an entire school day—from the first student arriving in the morning to payroll and reports at the end of the month.</p>
+      </div>
+
+      <div class="et-timeline" id="etTimeline">
+        <div class="et-tl-track" aria-hidden="true">
+          <div class="et-tl-progress" id="etTlProgress"></div>
+        </div>
+
+        <!-- 7:30 AM -->
+        <article class="et-tl-item" data-tl-item>
+          <div class="et-tl-card et-tl-copy">
+            <div class="et-tl-time">🌅 7:30 AM</div>
+            <h3>Students Arrive</h3>
+            <p>Students scan their QR ID cards as they enter the school. Attendance is recorded automatically, reducing queues and eliminating manual registers.</p>
+            <div class="et-tl-chips">
+              <span>✓ Fast Check-In</span>
+              <span>✓ Automatic Attendance</span>
+              <span>✓ QR Powered</span>
+            </div>
+          </div>
+          <div class="et-tl-marker" aria-hidden="true"></div>
+          <div class="et-tl-card et-tl-media">
+            <div class="et-device-row"><figure class="et-device et-device--monitor et-device--compact" data-et-shot="kiosk">
+  <div class="et-device__glow" aria-hidden="true"></div>
+  <button type="button" class="et-device__hit" data-lightbox data-src="../shared/assets/products/edutrack/kiosk.png" data-alt="EduTrack kiosk mode for morning student check-in" aria-label="View full-size screenshot: EduTrack kiosk mode for morning student check-in">
+    <div class="et-device__shell">
+      <div class="et-device__camera" aria-hidden="true"></div><div class="et-device__screen"><img src="../shared/assets/products/edutrack/kiosk-640.png" srcset="../shared/assets/products/edutrack/kiosk-640.png 640w, ../shared/assets/products/edutrack/kiosk.png 1024w" sizes="(max-width: 720px) min(90vw, 640px), 440px" width="1024" height="640" alt="EduTrack kiosk mode for morning student check-in" loading="lazy" decoding="async" /></div>
+    </div>
+    <div class="et-device__stand" aria-hidden="true"></div><div class="et-device__foot" aria-hidden="true"></div>
+  </button>
+  
+</figure><figure class="et-device et-device--tablet et-device--compact" data-et-shot="qr-scanner">
+  <div class="et-device__glow" aria-hidden="true"></div>
+  <button type="button" class="et-device__hit" data-lightbox data-src="../shared/assets/products/edutrack/qr-scanner.png" data-alt="EduTrack QR scanner for student ID check-in" aria-label="View full-size screenshot: EduTrack QR scanner for student ID check-in">
+    <div class="et-device__shell">
+      <div class="et-device__camera" aria-hidden="true"></div><div class="et-device__screen"><img src="../shared/assets/products/edutrack/qr-scanner-640.png" srcset="../shared/assets/products/edutrack/qr-scanner-640.png 640w, ../shared/assets/products/edutrack/qr-scanner.png 1024w" sizes="(max-width: 720px) min(90vw, 640px), 440px" width="1024" height="640" alt="EduTrack QR scanner for student ID check-in" loading="lazy" decoding="async" /></div>
+    </div>
+    
+  </button>
+  
+</figure></div>
+          </div>
+        </article>
+
+        <!-- 8:00 AM -->
+        <article class="et-tl-item" data-tl-item>
+          <div class="et-tl-card et-tl-media">
+            <figure class="et-device et-device--laptop et-device--compact" data-et-shot="attendance">
+  <div class="et-device__glow" aria-hidden="true"></div>
+  <button type="button" class="et-device__hit" data-lightbox data-src="../shared/assets/products/edutrack/attendance.png" data-alt="EduTrack morning attendance register" aria-label="View full-size screenshot: EduTrack morning attendance register">
+    <div class="et-device__shell">
+      <div class="et-device__camera" aria-hidden="true"></div><div class="et-device__screen"><img src="../shared/assets/products/edutrack/attendance-640.png" srcset="../shared/assets/products/edutrack/attendance-640.png 640w, ../shared/assets/products/edutrack/attendance.png 1024w" sizes="(max-width: 720px) min(90vw, 640px), 440px" width="1024" height="640" alt="EduTrack morning attendance register" loading="lazy" decoding="async" /></div>
+    </div>
+    <div class="et-device__base" aria-hidden="true"></div>
+  </button>
+  
+</figure>
+          </div>
+          <div class="et-tl-marker" aria-hidden="true"></div>
+          <div class="et-tl-card et-tl-copy">
+            <div class="et-tl-time">🕗 8:00 AM</div>
+            <h3>Morning Attendance</h3>
+            <p>Teachers mark Present, Absent, Late or Leave directly from their classroom. The principal can instantly monitor attendance across the entire school.</p>
+            <div class="et-tl-chips">
+              <span>✓ Live Attendance</span>
+              <span>✓ Multiple Attendance Methods</span>
+              <span>✓ Instant Visibility</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 9:30 AM -->
+        <article class="et-tl-item" data-tl-item>
+          <div class="et-tl-card et-tl-copy">
+            <div class="et-tl-time">🕘 9:30 AM</div>
+            <h3>Admissions &amp; Student Records</h3>
+            <p>The administration office registers new students, updates records, manages guardian information and keeps everything organised in one secure system.</p>
+            <div class="et-tl-chips">
+              <span>✓ Complete Student Profiles</span>
+              <span>✓ Guardian Records</span>
+              <span>✓ Class &amp; Section Management</span>
+            </div>
+          </div>
+          <div class="et-tl-marker" aria-hidden="true"></div>
+          <div class="et-tl-card et-tl-media">
+            <figure class="et-device et-device--monitor et-device--compact" data-et-shot="students">
+  <div class="et-device__glow" aria-hidden="true"></div>
+  <button type="button" class="et-device__hit" data-lightbox data-src="../shared/assets/products/edutrack/students.png" data-alt="EduTrack students and admissions records" aria-label="View full-size screenshot: EduTrack students and admissions records">
+    <div class="et-device__shell">
+      <div class="et-device__camera" aria-hidden="true"></div><div class="et-device__screen"><img src="../shared/assets/products/edutrack/students-640.png" srcset="../shared/assets/products/edutrack/students-640.png 640w, ../shared/assets/products/edutrack/students.png 1024w" sizes="(max-width: 720px) min(90vw, 640px), 440px" width="1024" height="640" alt="EduTrack students and admissions records" loading="lazy" decoding="async" /></div>
+    </div>
+    <div class="et-device__stand" aria-hidden="true"></div><div class="et-device__foot" aria-hidden="true"></div>
+  </button>
+  
+</figure>
+          </div>
+        </article>
+
+        <!-- 10:30 AM -->
+        <article class="et-tl-item" data-tl-item>
+          <div class="et-tl-card et-tl-media">
+            <figure class="et-device et-device--laptop et-device--compact" data-et-shot="fee-collect">
+  <div class="et-device__glow" aria-hidden="true"></div>
+  <button type="button" class="et-device__hit" data-lightbox data-src="../shared/assets/products/edutrack/fee-collect.png" data-alt="EduTrack fee collection desk" aria-label="View full-size screenshot: EduTrack fee collection desk">
+    <div class="et-device__shell">
+      <div class="et-device__camera" aria-hidden="true"></div><div class="et-device__screen"><img src="../shared/assets/products/edutrack/fee-collect-640.png" srcset="../shared/assets/products/edutrack/fee-collect-640.png 640w, ../shared/assets/products/edutrack/fee-collect.png 1024w" sizes="(max-width: 720px) min(90vw, 640px), 440px" width="1024" height="640" alt="EduTrack fee collection desk" loading="lazy" decoding="async" /></div>
+    </div>
+    <div class="et-device__base" aria-hidden="true"></div>
+  </button>
+  
+</figure>
+          </div>
+          <div class="et-tl-marker" aria-hidden="true"></div>
+          <div class="et-tl-card et-tl-copy">
+            <div class="et-tl-time">🕙 10:30 AM</div>
+            <h3>Fee Collection</h3>
+            <p>Parents pay school fees while the receptionist prints professional receipts in seconds. Every payment is instantly reflected in the fee dashboard.</p>
+            <div class="et-tl-chips">
+              <span>✓ Fast Collection</span>
+              <span>✓ Printed Receipts</span>
+              <span>✓ Live Financial Records</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 12:00 PM -->
+        <article class="et-tl-item" data-tl-item>
+          <div class="et-tl-card et-tl-copy">
+            <div class="et-tl-time">🕛 12:00 PM</div>
+            <h3>Principal Dashboard</h3>
+            <p>The principal checks today's attendance, fee collection, student statistics and important notifications from one central dashboard.</p>
+            <div class="et-tl-chips">
+              <span>✓ Real-Time Overview</span>
+              <span>✓ School Statistics</span>
+              <span>✓ Daily Insights</span>
+            </div>
+          </div>
+          <div class="et-tl-marker" aria-hidden="true"></div>
+          <div class="et-tl-card et-tl-media">
+            <figure class="et-device et-device--monitor et-device--compact" data-et-shot="dashboard">
+  <div class="et-device__glow" aria-hidden="true"></div>
+  <button type="button" class="et-device__hit" data-lightbox data-src="../shared/assets/products/edutrack/dashboard.png" data-alt="EduTrack principal dashboard overview" aria-label="View full-size screenshot: EduTrack principal dashboard overview">
+    <div class="et-device__shell">
+      <div class="et-device__camera" aria-hidden="true"></div><div class="et-device__screen"><img src="../shared/assets/products/edutrack/dashboard-640.png" srcset="../shared/assets/products/edutrack/dashboard-640.png 640w, ../shared/assets/products/edutrack/dashboard.png 1024w" sizes="(max-width: 720px) min(90vw, 640px), 440px" width="1024" height="640" alt="EduTrack principal dashboard overview" loading="lazy" decoding="async" /></div>
+    </div>
+    <div class="et-device__stand" aria-hidden="true"></div><div class="et-device__foot" aria-hidden="true"></div>
+  </button>
+  
+</figure>
+          </div>
+        </article>
+
+        <!-- 1:00 PM -->
+        <article class="et-tl-item" data-tl-item>
+          <div class="et-tl-card et-tl-media">
+            <figure class="et-device et-device--laptop et-device--compact" data-et-shot="broadcast">
+  <div class="et-device__glow" aria-hidden="true"></div>
+  <button type="button" class="et-device__hit" data-lightbox data-src="../shared/assets/products/edutrack/broadcast.png" data-alt="EduTrack WhatsApp parent broadcast" aria-label="View full-size screenshot: EduTrack WhatsApp parent broadcast">
+    <div class="et-device__shell">
+      <div class="et-device__camera" aria-hidden="true"></div><div class="et-device__screen"><img src="../shared/assets/products/edutrack/broadcast-640.png" srcset="../shared/assets/products/edutrack/broadcast-640.png 640w, ../shared/assets/products/edutrack/broadcast.png 1024w" sizes="(max-width: 720px) min(90vw, 640px), 440px" width="1024" height="640" alt="EduTrack WhatsApp parent broadcast" loading="lazy" decoding="async" /></div>
+    </div>
+    <div class="et-device__base" aria-hidden="true"></div>
+  </button>
+  
+</figure>
+          </div>
+          <div class="et-tl-marker" aria-hidden="true"></div>
+          <div class="et-tl-card et-tl-copy">
+            <div class="et-tl-time">🕐 1:00 PM</div>
+            <h3>Parent Communication</h3>
+            <p>Need to announce a holiday or remind parents about fee deadlines? Send WhatsApp broadcasts to the entire school, a class or selected parents in just a few clicks.</p>
+            <div class="et-tl-chips">
+              <span>✓ WhatsApp Broadcasts</span>
+              <span>✓ Class Targeting</span>
+              <span>✓ Delivery Logs</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2:30 PM -->
+        <article class="et-tl-item" data-tl-item>
+          <div class="et-tl-card et-tl-copy">
+            <div class="et-tl-time">🕒 2:30 PM</div>
+            <h3>Reports &amp; Decision Making</h3>
+            <p>Generate attendance reports, fee summaries, payroll reports and student statistics for meetings, audits and school management decisions.</p>
+            <div class="et-tl-chips">
+              <span>✓ One-Click Reports</span>
+              <span>✓ Export Options</span>
+              <span>✓ Accurate Data</span>
+            </div>
+          </div>
+          <div class="et-tl-marker" aria-hidden="true"></div>
+          <div class="et-tl-card et-tl-media">
+            <figure class="et-device et-device--monitor et-device--compact" data-et-shot="reports">
+  <div class="et-device__glow" aria-hidden="true"></div>
+  <button type="button" class="et-device__hit" data-lightbox data-src="../shared/assets/products/edutrack/reports.png" data-alt="EduTrack reports and exports" aria-label="View full-size screenshot: EduTrack reports and exports">
+    <div class="et-device__shell">
+      <div class="et-device__camera" aria-hidden="true"></div><div class="et-device__screen"><img src="../shared/assets/products/edutrack/reports-640.png" srcset="../shared/assets/products/edutrack/reports-640.png 640w, ../shared/assets/products/edutrack/reports.png 1024w" sizes="(max-width: 720px) min(90vw, 640px), 440px" width="1024" height="640" alt="EduTrack reports and exports" loading="lazy" decoding="async" /></div>
+    </div>
+    <div class="et-device__stand" aria-hidden="true"></div><div class="et-device__foot" aria-hidden="true"></div>
+  </button>
+  
+</figure>
+          </div>
+        </article>
+
+        <!-- End of month -->
+        <article class="et-tl-item" data-tl-item>
+          <div class="et-tl-card et-tl-media">
+            <figure class="et-device et-device--laptop et-device--compact" data-et-shot="salary-slips">
+  <div class="et-device__glow" aria-hidden="true"></div>
+  <button type="button" class="et-device__hit" data-lightbox data-src="../shared/assets/products/edutrack/salary-slips.png" data-alt="EduTrack salary slips and payroll" aria-label="View full-size screenshot: EduTrack salary slips and payroll">
+    <div class="et-device__shell">
+      <div class="et-device__camera" aria-hidden="true"></div><div class="et-device__screen"><img src="../shared/assets/products/edutrack/salary-slips-640.png" srcset="../shared/assets/products/edutrack/salary-slips-640.png 640w, ../shared/assets/products/edutrack/salary-slips.png 1024w" sizes="(max-width: 720px) min(90vw, 640px), 440px" width="1024" height="640" alt="EduTrack salary slips and payroll" loading="lazy" decoding="async" /></div>
+    </div>
+    <div class="et-device__base" aria-hidden="true"></div>
+  </button>
+  
+</figure>
+          </div>
+          <div class="et-tl-marker" aria-hidden="true"></div>
+          <div class="et-tl-card et-tl-copy">
+            <div class="et-tl-time">🕔 End of the Month</div>
+            <h3>Payroll &amp; Administration</h3>
+            <p>Generate salary slips, print them professionally and archive payroll records without spreadsheets or manual calculations.</p>
+            <div class="et-tl-chips">
+              <span>✓ Professional Salary Slips</span>
+              <span>✓ Payroll History</span>
+              <span>✓ Secure Records</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Anytime -->
+        <article class="et-tl-item" data-tl-item data-tl-stop>
+          <div class="et-tl-card et-tl-copy">
+            <div class="et-tl-time">🎓 Anytime</div>
+            <h3>Student Identity &amp; Printing</h3>
+            <p>Design and print student ID cards, fee vouchers and other documents using professional templates customised with your school's branding.</p>
+            <div class="et-tl-chips">
+              <span>✓ QR ID Cards</span>
+              <span>✓ Custom Templates</span>
+              <span>✓ Professional Printing</span>
+            </div>
+          </div>
+          <div class="et-tl-marker" aria-hidden="true"></div>
+          <div class="et-tl-card et-tl-media">
+            <div class="et-device-row"><figure class="et-device et-device--laptop et-device--compact" data-et-shot="id-cards">
+  <div class="et-device__glow" aria-hidden="true"></div>
+  <button type="button" class="et-device__hit" data-lightbox data-src="../shared/assets/products/edutrack/id-cards.png" data-alt="EduTrack student ID cards" aria-label="View full-size screenshot: EduTrack student ID cards">
+    <div class="et-device__shell">
+      <div class="et-device__camera" aria-hidden="true"></div><div class="et-device__screen"><img src="../shared/assets/products/edutrack/id-cards-640.png" srcset="../shared/assets/products/edutrack/id-cards-640.png 640w, ../shared/assets/products/edutrack/id-cards.png 1024w" sizes="(max-width: 720px) min(90vw, 640px), 440px" width="1024" height="640" alt="EduTrack student ID cards" loading="lazy" decoding="async" /></div>
+    </div>
+    <div class="et-device__base" aria-hidden="true"></div>
+  </button>
+  
+</figure><figure class="et-device et-device--monitor et-device--compact" data-et-shot="templates">
+  <div class="et-device__glow" aria-hidden="true"></div>
+  <button type="button" class="et-device__hit" data-lightbox data-src="../shared/assets/products/edutrack/templates.png" data-alt="EduTrack professional print templates" aria-label="View full-size screenshot: EduTrack professional print templates">
+    <div class="et-device__shell">
+      <div class="et-device__camera" aria-hidden="true"></div><div class="et-device__screen"><img src="../shared/assets/products/edutrack/templates-640.png" srcset="../shared/assets/products/edutrack/templates-640.png 640w, ../shared/assets/products/edutrack/templates.png 1024w" sizes="(max-width: 720px) min(90vw, 640px), 440px" width="1024" height="640" alt="EduTrack professional print templates" loading="lazy" decoding="async" /></div>
+    </div>
+    <div class="et-device__stand" aria-hidden="true"></div><div class="et-device__foot" aria-hidden="true"></div>
+  </button>
+  
+</figure></div>
+          </div>
+        </article>
+
+        <div class="et-tl-finale reveal">
+          <h3>Everything your school needs.<br />One powerful Windows application.</h3>
+          <p>From morning attendance to monthly payroll, EduTrack keeps every department connected through one modern school management system.</p>
+          <div class="et-hero-actions">
+            <a class="btn btn-primary btn-et btn-glow" href="/downloads/EduTrack-Setup.exe" download="EduTrack-Setup.exe">Download Free Trial</a>
+            <a class="btn btn-secondary btn-glow et-wa" data-wa="Hi Onairo Solutions, I'd like to book a live EduTrack demo." href="https://wa.me/923137863988">Book Live Demo</a>
+            <a class="btn btn-ghost" href="#pricing">See Pricing</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. HOW IT WORKS -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div class="section-head center">
+        <p class="et-tag reveal">How EduTrack works</p>
+        <h2 class="section-title reveal">From download to daily school ops</h2>
+        <p class="section-sub reveal">A clear path your IT-savvy admin — or any principal — can follow.</p>
+      </div>
+      <div class="et-steps">
+        <article class="et-step reveal">
+          <div class="et-step-num">1</div>
+          <h3>Download EduTrack</h3>
+          <p>Get the Windows installer and start your evaluation.</p>
+        </article>
+        <article class="et-step reveal">
+          <div class="et-step-num">2</div>
+          <h3>Run the Installer</h3>
+          <p>Standard setup on your school PC in a few minutes.</p>
+        </article>
+        <article class="et-step reveal">
+          <div class="et-step-num">3</div>
+          <h3>Complete Setup Wizard</h3>
+          <p>Create your school profile, classes, and first admin user.</p>
+        </article>
+        <article class="et-step reveal">
+          <div class="et-step-num">4</div>
+          <h3>Trial or License</h3>
+          <p>Start your free trial — or activate your purchased license.</p>
+        </article>
+        <article class="et-step reveal">
+          <div class="et-step-num">5</div>
+          <h3>Manage Your School</h3>
+          <p>Enrol students, take attendance, collect fees, and broadcast.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. WHY DIFFERENT -->
+  <section class="section section-alt" id="compare">
+    <div class="container">
+      <div class="section-head center">
+        <p class="et-tag reveal">Why EduTrack is different</p>
+        <h2 class="section-title reveal">Built for schools that need control</h2>
+        <p class="section-sub reveal">See how EduTrack compares to paper/Excel workflows and generic cloud tools.</p>
+      </div>
+      <div class="et-compare-wrap reveal" id="etComparison">
+        <table class="et-compare">
+          <thead>
+            <tr>
+              <th>Capability</th>
+              <th class="highlight">EduTrack</th>
+              <th>Manual / Excel</th>
+              <th>Generic Cloud Software</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Offline-ready</td>
+              <td class="highlight"><span class="yes">✔ Yes</span></td>
+              <td><span class="maybe">Partial</span></td>
+              <td><span class="no">✗ Needs internet</span></td>
+            </tr>
+            <tr>
+              <td>Own your data</td>
+              <td class="highlight"><span class="yes">✔ On your PC</span></td>
+              <td><span class="maybe">Fragile files</span></td>
+              <td><span class="maybe">Vendor-hosted</span></td>
+            </tr>
+            <tr>
+              <td>QR Attendance</td>
+              <td class="highlight"><span class="yes">✔ Built-in</span></td>
+              <td><span class="no">✗ No</span></td>
+              <td><span class="maybe">Add-on / rare</span></td>
+            </tr>
+            <tr>
+              <td>Kiosk Mode</td>
+              <td class="highlight"><span class="yes">✔ TV / tablet</span></td>
+              <td><span class="no">✗ No</span></td>
+              <td><span class="maybe">Limited</span></td>
+            </tr>
+            <tr>
+              <td>Local network support</td>
+              <td class="highlight"><span class="yes">✔ LAN URLs</span></td>
+              <td><span class="no">✗ No</span></td>
+              <td><span class="maybe">Cloud only</span></td>
+            </tr>
+            <tr>
+              <td>WhatsApp Broadcast</td>
+              <td class="highlight"><span class="yes">✔ Dashboard</span></td>
+              <td><span class="maybe">Manual chats</span></td>
+              <td><span class="maybe">Varies</span></td>
+            </tr>
+            <tr>
+              <td>Fee Dashboard</td>
+              <td class="highlight"><span class="yes">✔ PKR-ready</span></td>
+              <td><span class="maybe">Spreadsheets</span></td>
+              <td><span class="maybe">Generic</span></td>
+            </tr>
+            <tr>
+              <td>Payroll / Salary slips</td>
+              <td class="highlight"><span class="yes">✔ Included</span></td>
+              <td><span class="maybe">Separate files</span></td>
+              <td><span class="maybe">Extra module</span></td>
+            </tr>
+            <tr>
+              <td>ID Cards</td>
+              <td class="highlight"><span class="yes">✔ Print templates</span></td>
+              <td><span class="no">✗ External tools</span></td>
+              <td><span class="maybe">Extra cost</span></td>
+            </tr>
+            <tr>
+              <td>Pakistani school workflow</td>
+              <td class="highlight"><span class="yes">✔ Purpose-built</span></td>
+              <td><span class="maybe">Improvised</span></td>
+              <td><span class="no">✗ Global generic</span></td>
+            </tr>
+            <tr>
+              <td>Backup &amp; restore</td>
+              <td class="highlight"><span class="yes">✔ Local control</span></td>
+              <td><span class="maybe">Copy folders</span></td>
+              <td><span class="maybe">Vendor backup</span></td>
+            </tr>
+            <tr>
+              <td>Professional print templates</td>
+              <td class="highlight"><span class="yes">✔ Designer</span></td>
+              <td><span class="no">✗ No</span></td>
+              <td><span class="maybe">Limited</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. PRICING -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <div class="section-head center">
+        <p class="et-tag reveal">Pricing</p>
+        <h2 class="section-title reveal">Plans that scale with your campus</h2>
+        <p class="section-sub reveal">Transparent tiers for growing schools. Message us on WhatsApp to activate a plan.</p>
+      </div>
+
+      <div class="et-price-banner reveal">
+        <strong>Every plan includes the complete school management system.</strong>
+        You upgrade for school size and advanced template customization — not to unlock attendance, fees or payroll.
+      </div>
+
+      <div class="et-pricing" id="etPricing" data-catalog-edutrack-pricing>
+        <article class="et-price reveal">
+          <h3>Starter</h3>
+          <p class="et-price-desc">For single campuses getting organized.</p>
+          <div class="et-price-amt">Rs. 12k <span>/ mo</span></div>
+          <p class="et-price-note">Up to ~300 students · billed annually available</p>
+          <ul>
+            <li>Complete school management system</li>
+            <li>Student &amp; staff records</li>
+            <li>Attendance module</li>
+            <li>Fee billing basics</li>
+            <li>Parent notices</li>
+            <li>Email support</li>
+          </ul>
+          <a class="btn btn-secondary et-wa" data-wa="Hi Onairo Solutions, I'm interested in the EduTrack Starter plan. Please share setup details." href="https://wa.me/923137863988">Get Starter</a>
+        </article>
+
+        <article class="et-price featured reveal">
+          <div class="et-price-badge">Recommended · Professional</div>
+          <h3>Professional</h3>
+          <p class="et-price-desc">For established schools that need full ops coverage and advanced templates.</p>
+          <div class="et-price-amt">Rs. 24k <span>/ mo</span></div>
+          <p class="et-price-note">Up to ~1,000 students · priority onboarding</p>
+          <ul>
+            <li>Everything in Starter</li>
+            <li>Admissions pipeline</li>
+            <li>Academics &amp; report cards</li>
+            <li>Parent portal access</li>
+            <li>Advanced reports</li>
+            <li>Advanced template create / import / export</li>
+            <li>Priority WhatsApp support</li>
+          </ul>
+          <a class="btn btn-primary btn-et et-wa" data-wa="Hi Onairo Solutions, I'm interested in the EduTrack Professional plan. Please share pricing and onboarding." href="https://wa.me/923137863988">Get Professional</a>
+        </article>
+
+        <article class="et-price reveal">
+          <h3>Campus</h3>
+          <p class="et-price-desc">For multi-branch networks and larger institutions.</p>
+          <div class="et-price-amt">Custom</div>
+          <p class="et-price-note">Unlimited scale · dedicated success</p>
+          <ul>
+            <li>Everything in Professional</li>
+            <li>Multi-campus controls</li>
+            <li>Staff HR-lite</li>
+            <li>Custom workflows</li>
+            <li>Training &amp; rollout support</li>
+            <li>Named account manager</li>
+          </ul>
+          <a class="btn btn-secondary et-wa" data-wa="Hi Onairo Solutions, I'd like a custom EduTrack Campus plan quote for our institution." href="https://wa.me/923137863988">Talk to Sales</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FAQ -->
+  <section class="section section-alt" id="faq">
+    <div class="container">
+      <div class="section-head center">
+        <p class="et-tag reveal">FAQ</p>
+        <h2 class="section-title reveal">Questions principals ask before installing</h2>
+        <p class="section-sub reveal">Installation, licensing, backups, offline use, networking, updates, printing, and support.</p>
+      </div>
+      <div class="faq-list reveal" style="margin-inline:auto">
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false">How do I install EduTrack?<span class="icon">+</span></button>
+          <div class="faq-a">Download the Windows installer, run it on your school PC, and follow the setup wizard. Most installations finish in a few minutes. We’ll help on WhatsApp if you need a hand.</div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false">How does licensing work?<span class="icon">+</span></button>
+          <div class="faq-a">Start with a 14-day free trial. When you’re ready, activate Starter, Professional, or Campus. Every plan includes the complete system — upgrades are for school size and advanced template customization.</div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false">Can we back up and restore our data?<span class="icon">+</span></button>
+          <div class="faq-a">Yes. EduTrack is designed so your school owns its data on the PC. Use backup &amp; restore as part of your regular office routine so records stay safe.</div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false">Does EduTrack work offline?<span class="icon">+</span></button>
+          <div class="faq-a">EduTrack is offline-first. Core school operations continue on your PC without depending on a constant cloud connection — ideal for campuses with uneven internet.</div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false">How does local networking work?<span class="icon">+</span></button>
+          <div class="faq-a">Network Info provides LAN URLs and QR links so staff devices on your school network can reach attendance tools like QR Scanner and Kiosk Mode.</div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false">How do we receive updates?<span class="icon">+</span></button>
+          <div class="faq-a">Onairo Solutions ships product updates for licensed schools. We’ll guide you through update steps so you keep attendance, fees, and templates current.</div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false">Can we print ID cards and salary slips?<span class="icon">+</span></button>
+          <div class="faq-a">Yes. Preview and print student/teacher ID cards and salary slips. The Template Designer supports professional layouts; advanced create/import/export is available on Professional.</div>
+        </div>
+        <div class="faq-item">
+          <button type="button" class="faq-q" aria-expanded="false">What support do we get?<span class="icon">+</span></button>
+          <div class="faq-a">WhatsApp-first support from Onairo Solutions. Professional and Campus include priority help and onboarding. Book a live demo anytime if your team wants a walkthrough.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. DOWNLOAD -->
+  <section class="section" id="download">
+    <div class="container">
+      <div class="et-download reveal">
+        <div>
+          <p class="et-tag">Download</p>
+          <h2>Get EduTrack on your school PC today</h2>
+          <p>Windows installer · 14-day free trial · quick setup. Prefer a guided tour? Book a live demo or talk to sales before you install.</p>
+          <div class="et-dl-badges">
+            <span>Windows Installer</span>
+            <span>14-Day Free Trial</span>
+            <span>Quick Installation</span>
+            <span>Offline-ready</span>
+          </div>
+          <div class="et-hero-actions">
+            <a class="btn btn-primary btn-et" href="/downloads/EduTrack-Setup.exe" download="EduTrack-Setup.exe">Download Windows Installer</a>
+            <a class="btn btn-secondary et-wa" data-wa="Hi Onairo Solutions, I'd like to book a live EduTrack demo for our school." href="https://wa.me/923137863988">Book Live Demo</a>
+            <a class="btn btn-ghost et-wa" data-wa="Hi Onairo Solutions, I'd like to speak with sales about EduTrack." href="https://wa.me/923137863988">Contact Sales</a>
+          </div>
+        </div>
+        <div class="et-dl-card">
+          <div class="win-ico">🪟</div>
+          <h3>EduTrack for Windows</h3>
+          <p>Installer package with guided setup wizard and trial activation.</p>
+          <a class="btn btn-primary btn-et" style="width:100%" href="/downloads/EduTrack-Setup.exe" download="EduTrack-Setup.exe">Start Free Trial</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. FINAL CTA -->
+  <section class="et-final" id="final-cta">
+    <div class="container">
+      <h2 class="reveal">Stop juggling Excel sheets, paper registers and WhatsApp chats.</h2>
+      <p class="lead reveal">Manage your admissions, attendance, fees, payroll and communication from one powerful Windows application built specifically for schools.</p>
+      <div class="et-final-actions reveal">
+        <a class="btn btn-primary btn-et" href="/downloads/EduTrack-Setup.exe" download="EduTrack-Setup.exe">Download EduTrack</a>
+        <a class="btn btn-secondary" href="/downloads/EduTrack-Setup.exe" download="EduTrack-Setup.exe">Start Free Trial</a>
+        <a class="btn btn-ghost et-wa" data-wa="Hi Onairo Solutions, I'd like to book a live EduTrack demo." href="https://wa.me/923137863988">Book Live Demo</a>
+        <a class="btn btn-ghost et-wa" data-wa="Hi Onairo Solutions, I'd like to contact you about EduTrack." href="https://wa.me/923137863988">Contact Onairo Solutions</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="sticky-cta-bar" id="stickyCta" role="region" aria-label="Quick actions">
+    <span class="sticky-label">EduTrack</span>
+    <a class="btn btn-ghost btn-sm" href="#compare">Compare Plans</a>
+    <a class="btn btn-primary btn-sm btn-et" href="/downloads/EduTrack-Setup.exe" download="EduTrack-Setup.exe">Download Trial</a>
+    <a class="btn btn-secondary btn-sm et-wa" data-wa="Hi Onairo Solutions, I'd like to speak with sales about EduTrack for our school." href="https://wa.me/923137863988">Contact Sales</a>
+  </div>
+
+  <div class="et-lightbox" id="etLightbox" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Screenshot viewer">
+    <button type="button" class="et-lightbox__close" id="etLbClose" aria-label="Close screenshot viewer">✕</button>
+    <button type="button" class="et-lightbox__nav prev" id="etLbPrev" aria-label="Previous screenshot">‹</button>
+    <button type="button" class="et-lightbox__nav next" id="etLbNext" aria-label="Next screenshot">›</button>
+    <div class="et-lightbox__inner">
+      <div class="et-lightbox__stage" id="etLbStage">
+        <img id="etLbImg" src="" alt="" width="1024" height="640" />
+      </div>
+      <p class="et-lightbox__caption" id="etLbCaption"></p>
+      <p class="et-lightbox__counter" id="etLbCounter" aria-live="polite"></p>
+      <div class="et-lightbox__toolbar" role="toolbar" aria-label="Zoom controls">
+        <button type="button" id="etLbZoomOut" aria-label="Zoom out">−</button>
+        <button type="button" id="etLbZoomReset" aria-label="Reset zoom">100%</button>
+        <button type="button" id="etLbZoomIn" aria-label="Zoom in">+</button>
+        <button type="button" id="etLbFullscreen" aria-label="Enter fullscreen">Fullscreen</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="site-footer"></div>
+  <div id="site-chrome-end"></div>
+
+  <script src="../shared/js/config.js"></script>
+  <script src="../shared/js/seo-data.js"></script>
+  <script src="../shared/js/seo.js"></script>
+  <script src="../components/chrome.js"></script>
+  <script src="../shared/js/main.js"></script>
+  <script src="../shared/js/catalog-client.js"></script>
+  <script src="../shared/js/edutrack-chapters.js"></script>
+  <script>
+    (function () {
+      function wireWaLinks() {
+        if (!window.ONAIRO || typeof ONAIRO.waUrl !== 'function') return;
+        document.querySelectorAll('.et-wa[data-wa]').forEach(function (el) {
+          el.setAttribute('href', ONAIRO.waUrl(el.getAttribute('data-wa')));
+        });
+      }
+
+      function initStickyBar() {
+        var bar = document.getElementById('stickyCta');
+        var hero = document.getElementById('hero');
+        if (!bar || !hero) return;
+        function update() {
+          var heroBottom = hero.offsetTop + hero.offsetHeight;
+          if (window.scrollY > heroBottom - 40) bar.classList.add('visible');
+          else bar.classList.remove('visible');
+        }
+        update();
+        window.addEventListener('scroll', update, { passive: true });
+        window.addEventListener('resize', update);
+      }
+
+      function initDayTimeline() {
+        var timeline = document.getElementById('etTimeline');
+        var track = timeline ? timeline.querySelector('.et-tl-track') : null;
+        var progress = document.getElementById('etTlProgress');
+        var items = timeline ? timeline.querySelectorAll('[data-tl-item]') : [];
+        if (!timeline || !track || !progress || !items.length) return;
+
+        var stopItem = timeline.querySelector('[data-tl-stop]') || items[items.length - 1];
+
+        var itemObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) en.target.classList.add('in-view');
+          });
+        }, { threshold: 0.28, rootMargin: '0px 0px -8% 0px' });
+
+        items.forEach(function (item) { itemObs.observe(item); });
+
+        var ticking = false;
+        function updateTrackLimit() {
+          var stopOffset = stopItem.offsetTop + stopItem.offsetHeight;
+          track.style.height = stopOffset + 'px';
+          track.style.bottom = 'auto';
+        }
+
+        function updateProgress() {
+          ticking = false;
+          var firstRect = items[0].getBoundingClientRect();
+          var stopRect = stopItem.getBoundingClientRect();
+          var viewMid = window.innerHeight * 0.45;
+          var start = firstRect.top;
+          // Stop progress at the end of the designated story chapter.
+          var end = stopRect.bottom - window.innerHeight * 0.25;
+          var span = Math.max(end - start, 1);
+          var raw = (viewMid - start) / span;
+          var pct = Math.max(0, Math.min(1, raw)) * 100;
+          progress.style.height = pct + '%';
+        }
+
+        function onScroll() {
+          if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(updateProgress);
+          }
+        }
+
+        updateTrackLimit();
+        updateProgress();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', function () {
+          updateTrackLimit();
+          updateProgress();
+        });
+      }
+
+      function initLightbox() {
+        var root = document.getElementById('etLightbox');
+        var stage = document.getElementById('etLbStage');
+        var img = document.getElementById('etLbImg');
+        var caption = document.getElementById('etLbCaption');
+        var counter = document.getElementById('etLbCounter');
+        var btnClose = document.getElementById('etLbClose');
+        var btnPrev = document.getElementById('etLbPrev');
+        var btnNext = document.getElementById('etLbNext');
+        var btnIn = document.getElementById('etLbZoomIn');
+        var btnOut = document.getElementById('etLbZoomOut');
+        var btnReset = document.getElementById('etLbZoomReset');
+        var btnFullscreen = document.getElementById('etLbFullscreen');
+        if (!root || !img) return;
+
+        var triggers = Array.prototype.slice.call(document.querySelectorAll('[data-lightbox]'));
+        var items = triggers.map(function (btn) {
+          return { src: btn.getAttribute('data-src'), alt: btn.getAttribute('data-alt') || '' };
+        });
+        if (Array.isArray(window.ET_CHAPTERS)) {
+          window.ET_CHAPTERS.forEach(function (chapter) {
+            chapter.features.forEach(function (feature) {
+              items.push({
+                src: '../shared/assets/products/edutrack/' + feature.slug + '.png',
+                alt: 'EduTrack ' + feature.kicker
+              });
+            });
+          });
+        }
+        // de-dupe by src while keeping order
+        var seen = {};
+        items = items.filter(function (it) {
+          if (!it.src || seen[it.src]) return false;
+          seen[it.src] = true;
+          return true;
+        });
+
+        var index = 0;
+        var scale = 1;
+        var tx = 0;
+        var ty = 0;
+        var dragging = false;
+        var lastX = 0;
+        var lastY = 0;
+        var pointers = new Map();
+        var pointerStarts = new Map();
+        var pinchStartDist = 0;
+        var pinchStartScale = 1;
+        var lastTapAt = 0;
+        var lastTrigger = null;
+
+        function clampPan() {
+          if (scale <= 1) {
+            tx = 0;
+            ty = 0;
+            return;
+          }
+          var maxX = Math.max(0, (img.offsetWidth * scale - stage.clientWidth) / 2);
+          var maxY = Math.max(0, (img.offsetHeight * scale - stage.clientHeight) / 2);
+          tx = Math.max(-maxX, Math.min(maxX, tx));
+          ty = Math.max(-maxY, Math.min(maxY, ty));
+        }
+
+        function applyTransform() {
+          clampPan();
+          img.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(' + scale + ')';
+          btnReset.textContent = Math.round(scale * 100) + '%';
+        }
+
+        function show(i) {
+          if (!items.length) return;
+          index = (i + items.length) % items.length;
+          var it = items[index];
+          function applyImage() {
+            img.src = it.src;
+            img.alt = it.alt;
+            caption.textContent = it.alt;
+            counter.textContent = (index + 1) + ' / ' + items.length;
+            scale = 1; tx = 0; ty = 0;
+            applyTransform();
+            img.classList.remove('is-fading');
+          }
+          if (root.classList.contains('open')) {
+            img.classList.add('is-fading');
+            window.setTimeout(applyImage, 150);
+          } else {
+            applyImage();
+          }
+        }
+
+        function open(i, trigger) {
+          lastTrigger = trigger || document.activeElement;
+          show(i);
+          root.hidden = false;
+          root.classList.add('open');
+          root.setAttribute('aria-hidden', 'false');
+          document.body.classList.add('et-lb-open');
+          requestAnimationFrame(function () {
+            btnClose.focus();
+          });
+        }
+
+        function close() {
+          root.classList.remove('open');
+          window.setTimeout(function () {
+            root.hidden = true;
+            img.removeAttribute('src');
+          }, 300);
+          root.setAttribute('aria-hidden', 'true');
+          document.body.classList.remove('et-lb-open');
+          if (document.fullscreenElement === root && document.exitFullscreen) {
+            document.exitFullscreen().catch(function () {});
+          }
+          if (lastTrigger && typeof lastTrigger.focus === 'function') lastTrigger.focus();
+        }
+
+        triggers.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var src = btn.getAttribute('data-src');
+            var i = items.findIndex(function (it) { return it.src === src; });
+            open(i < 0 ? 0 : i, btn);
+          });
+        });
+
+        btnClose.addEventListener('click', close);
+        btnPrev.addEventListener('click', function () { show(index - 1); });
+        btnNext.addEventListener('click', function () { show(index + 1); });
+        btnIn.addEventListener('click', function () { scale = Math.min(3, scale + 0.25); applyTransform(); });
+        btnOut.addEventListener('click', function () { scale = Math.max(1, scale - 0.25); if (scale === 1) { tx = 0; ty = 0; } applyTransform(); });
+        btnReset.addEventListener('click', function () { scale = 1; tx = 0; ty = 0; applyTransform(); });
+        btnFullscreen.addEventListener('click', function () {
+          if (document.fullscreenElement === root) {
+            if (document.exitFullscreen) document.exitFullscreen();
+            return;
+          }
+          if (root.requestFullscreen) {
+            root.requestFullscreen().then(function () {
+              if (screen.orientation && screen.orientation.lock) {
+                screen.orientation.lock('landscape').catch(function () {});
+              }
+            }).catch(function () {});
+          }
+        });
+        document.addEventListener('fullscreenchange', function () {
+          btnFullscreen.textContent = document.fullscreenElement === root ? 'Exit Fullscreen' : 'Fullscreen';
+          btnFullscreen.setAttribute('aria-label', document.fullscreenElement === root ? 'Exit fullscreen' : 'Enter fullscreen');
+          requestAnimationFrame(applyTransform);
+        });
+
+        root.addEventListener('click', function (e) {
+          if (e.target === root) close();
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (!root.classList.contains('open')) return;
+          if (e.key === 'Escape') close();
+          if (e.key === 'ArrowLeft') show(index - 1);
+          if (e.key === 'ArrowRight') show(index + 1);
+          if (e.key === '+' || e.key === '=') { scale = Math.min(3, scale + 0.25); applyTransform(); }
+          if (e.key === '-') { scale = Math.max(1, scale - 0.25); if (scale === 1) { tx = 0; ty = 0; } applyTransform(); }
+          if (e.key === 'Tab') {
+            var focusable = Array.prototype.slice.call(root.querySelectorAll('button:not([disabled]), [href], [tabindex]:not([tabindex="-1"])'));
+            if (!focusable.length) return;
+            var first = focusable[0];
+            var last = focusable[focusable.length - 1];
+            if (e.shiftKey && document.activeElement === first) {
+              e.preventDefault();
+              last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+              e.preventDefault();
+              first.focus();
+            }
+          }
+        });
+
+        // Pointer / swipe / pinch
+        stage.addEventListener('pointerdown', function (e) {
+          stage.setPointerCapture(e.pointerId);
+          pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+          pointerStarts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+          if (pointers.size === 1) {
+            dragging = true;
+            stage.classList.add('dragging');
+            lastX = e.clientX;
+            lastY = e.clientY;
+          } else if (pointers.size === 2) {
+            var pts = Array.from(pointers.values());
+            var dx = pts[0].x - pts[1].x;
+            var dy = pts[0].y - pts[1].y;
+            pinchStartDist = Math.hypot(dx, dy) || 1;
+            pinchStartScale = scale;
+          }
+        });
+
+        stage.addEventListener('pointermove', function (e) {
+          if (!pointers.has(e.pointerId)) return;
+          pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+          if (pointers.size === 2) {
+            var pts = Array.from(pointers.values());
+            var dx = pts[0].x - pts[1].x;
+            var dy = pts[0].y - pts[1].y;
+            var dist = Math.hypot(dx, dy) || 1;
+            scale = Math.max(1, Math.min(3, pinchStartScale * (dist / pinchStartDist)));
+            applyTransform();
+            return;
+          }
+          if (!dragging) return;
+          if (scale > 1) {
+            tx += e.clientX - lastX;
+            ty += e.clientY - lastY;
+            applyTransform();
+          }
+          lastX = e.clientX;
+          lastY = e.clientY;
+        });
+
+        function endPointer(e) {
+          if (!pointers.has(e.pointerId)) return;
+          var start = pointerStarts.get(e.pointerId);
+          pointers.delete(e.pointerId);
+          pointerStarts.delete(e.pointerId);
+          if (pointers.size === 0) {
+            stage.classList.remove('dragging');
+            if (dragging && scale === 1 && start) {
+              var dx = e.clientX - start.x;
+              if (Math.abs(dx) > 60) {
+                if (dx < 0) show(index + 1);
+                else show(index - 1);
+              }
+            }
+            if (start && Math.hypot(e.clientX - start.x, e.clientY - start.y) < 12) {
+              var now = Date.now();
+              if (now - lastTapAt < 320) {
+                scale = scale > 1 ? 1 : 2;
+                tx = 0;
+                ty = 0;
+                applyTransform();
+                lastTapAt = 0;
+              } else {
+                lastTapAt = now;
+              }
+            }
+            dragging = false;
+          }
+        }
+        stage.addEventListener('pointerup', endPointer);
+        stage.addEventListener('pointercancel', endPointer);
+        stage.addEventListener('wheel', function (e) {
+          if (!root.classList.contains('open')) return;
+          e.preventDefault();
+          var delta = e.deltaY < 0 ? 0.1 : -0.1;
+          scale = Math.max(1, Math.min(3, scale + delta));
+          if (scale === 1) { tx = 0; ty = 0; }
+          applyTransform();
+        }, { passive: false });
+        window.addEventListener('resize', applyTransform);
+      }
+
+
+      async function boot() {
+        wireWaLinks();
+        initStickyBar();
+        initDayTimeline();
+        if (typeof initEduTrackChapters === 'function') initEduTrackChapters();
+        initLightbox();
+        if (window.ONAIRO && ONAIRO.catalog) {
+          await ONAIRO.catalog.hydrateEduTrack(document.getElementById('etPricing'), null);
+          ONAIRO.catalog.centerFeaturedPlan(document.getElementById('etPricing'));
+          var promoHost = document.getElementById('etPromoBox');
+          if (!promoHost) {
+            promoHost = document.createElement('div');
+            promoHost.id = 'etPromoBox';
+            var pricing = document.getElementById('etPricing');
+            if (pricing && pricing.parentNode) pricing.parentNode.insertBefore(promoHost, pricing.nextSibling);
+          }
+          ONAIRO.catalog.mountDiscountBox(promoHost, {
+            productSlug: 'edutrack',
+            planName: function () {
+              var featured = document.querySelector('.et-price.featured h3');
+              return featured ? featured.textContent.trim() : 'Professional';
+            }
+          });
+        }
+        if (typeof ONAIRO.observeReveals === 'function') ONAIRO.observeReveals(document);
+        wireWaLinks();
+      }
+
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+      else boot();
+    })();
+  </script>
+</body>
+</html>

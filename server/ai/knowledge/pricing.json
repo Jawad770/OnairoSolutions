@@ -1,0 +1,77 @@
+{
+  "disclaimer": "Published prices are starting / indicative. Final pricing depends on scope and requirements. Never invent prices beyond this file.",
+  "websitePackages": [
+    {
+      "id": "starter",
+      "name": "Starter",
+      "fromUsd": 150,
+      "approxPkr": 15000,
+      "tagline": "Essential presence for new businesses",
+      "includes": [
+        "Up to 5 pages",
+        "Mobile-responsive design",
+        "WhatsApp & contact CTAs",
+        "Basic SEO structure",
+        "1 revision round"
+      ]
+    },
+    {
+      "id": "business",
+      "name": "Business",
+      "fromUsd": 350,
+      "approxPkr": 35000,
+      "recommended": true,
+      "tagline": "Conversion-ready multi-page sites",
+      "includes": [
+        "Up to 10 pages",
+        "Custom UI direction",
+        "Maps & WhatsApp integration",
+        "SEO-ready structure",
+        "Service / portfolio sections",
+        "2 revision rounds"
+      ]
+    },
+    {
+      "id": "premium",
+      "name": "Premium",
+      "fromUsd": 650,
+      "approxPkr": 65000,
+      "tagline": "Full brand experience & advanced flows",
+      "includes": [
+        "Custom page count",
+        "Premium visual design",
+        "Advanced forms & filters",
+        "Performance optimization",
+        "Priority support window",
+        "Content guidance included"
+      ]
+    }
+  ],
+  "edutrackPlans": [
+    {
+      "id": "starter",
+      "name": "Starter",
+      "price": "Rs. 12,000 / month",
+      "approxStudents": "~300 students",
+      "notes": "Complete school management system; billed annually available"
+    },
+    {
+      "id": "professional",
+      "name": "Professional",
+      "price": "Rs. 24,000 / month",
+      "approxStudents": "~1,000 students",
+      "recommended": true,
+      "notes": "Priority onboarding; advanced template customization"
+    },
+    {
+      "id": "campus",
+      "name": "Campus",
+      "price": "Custom",
+      "notes": "Quoted after understanding campus size and requirements"
+    }
+  ],
+  "edutrackTrial": "14-day free trial available",
+  "customSoftware": {
+    "rule": "Custom software, automation, AI integrations, and bespoke work are scoped separately. Pricing depends on requirements — never invent an estimate. Offer a personalised quotation after understanding needs."
+  }
+}

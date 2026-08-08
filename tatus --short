@@ -1,0 +1,48 @@
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'scripts/build-public.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'scripts/lighthouse-mobile.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'scripts/responsive-audit.js', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'server/main.js', LF will be replaced by CRLF the next time Git touches it
+M	README.md
+D	demos/boutique.html
+D	demos/building.html
+D	demos/carrental.html
+D	demos/carshowroom-admin.html
+D	demos/carshowroom.html
+D	demos/clinic.html
+D	demos/demo-globals.js
+D	demos/dental.html
+D	demos/gym.html
+D	demos/it.html
+D	demos/lawfirm.html
+D	demos/menssalon.html
+D	demos/realestate.html
+D	demos/restaurant.html
+D	demos/salon.html
+D	demos/school.html
+D	demos/travel.html
+D	public/downloads/EduTrack-Setup-2.0.2.exe
+D	public/downloads/EduTrack-Setup.exe
+M	scripts/build-public.js
+M	scripts/lighthouse-mobile.js
+M	scripts/responsive-audit.js
+M	server/main.js
+D	src/portfolio/demos/accounting.html
+D	src/portfolio/demos/boutique.html
+D	src/portfolio/demos/building.html
+D	src/portfolio/demos/carrental.html
+D	src/portfolio/demos/carshowroom-admin.html
+D	src/portfolio/demos/carshowroom.html
+D	src/portfolio/demos/clinic.html
+D	src/portfolio/demos/demo-globals.js
+D	src/portfolio/demos/dental.html
+D	src/portfolio/demos/gym.html
+D	src/portfolio/demos/hotel.html
+D	src/portfolio/demos/it.html
+D	src/portfolio/demos/lawfirm.html
+D	src/portfolio/demos/menssalon.html
+D	src/portfolio/demos/realestate.html
+D	src/portfolio/demos/restaurant.html
+D	src/portfolio/demos/salon.html
+D	src/portfolio/demos/school.html
+D	src/portfolio/demos/travel.html

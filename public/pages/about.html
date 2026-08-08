@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Onairo Solutions | Technology Company in Pakistan</title>
+  <meta name="description" content="Learn about Onairo Solutions — a technology company building websites, custom software, and products like EduTrack for businesses worldwide."/>
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../shared/css/tokens.css"/>
+  <link rel="stylesheet" href="../shared/css/base.css"/>
+  <link rel="stylesheet" href="../shared/css/components.css"/>
+  <link rel="stylesheet" href="../shared/css/seo.css"/>
+  <link rel="stylesheet" href="../shared/css/home.css"/>
+  <style>
+    .page-hero {
+      padding: 8.5rem 0 4rem;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(37,99,235,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37,99,235,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      width: 520px; height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(37,99,235,0.16), transparent 68%);
+      top: 20%; right: -8%;
+      pointer-events: none;
+    }
+    .page-hero .container { position: relative; z-index: 1; }
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.1rem, 4.5vw, 3.4rem);
+      font-weight: 800;
+      letter-spacing: var(--heading-tracking, -0.02em); line-height: var(--heading-line-height, 1.18);
+      margin-bottom: 1rem;
+      max-width: 720px;
+    }
+    .page-hero h1 em { font-style: normal; color: var(--cobalt-light); }
+    .page-hero .lead {
+      color: var(--slate);
+      font-size: 1.08rem;
+      max-width: 560px;
+      line-height: 1.75;
+    }
+    .mission-box {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      max-width: 800px;
+      position: relative;
+      overflow: hidden;
+    }
+    .mission-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--cobalt), transparent);
+    }
+    .mission-box p {
+      color: var(--slate-light);
+      font-size: 1.15rem;
+      line-height: 1.8;
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+    .value-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+    .value-item h3 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+    }
+    .value-item p { color: var(--slate); font-size: 0.92rem; line-height: 1.65; }
+    .cta-band {
+      background:
+        radial-gradient(circle at 20% 50%, rgba(37,99,235,0.18), transparent 45%),
+        radial-gradient(circle at 80% 40%, rgba(59,130,246,0.12), transparent 40%),
+        var(--navy2);
+      border-block: 1px solid var(--border);
+      text-align: center;
+    }
+    .cta-band h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      margin-bottom: 0.85rem;
+    }
+    .cta-band p {
+      color: var(--slate);
+      max-width: 520px;
+      margin: 0 auto 1.75rem;
+    }
+    .cta-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.85rem; }
+    @media (max-width: 980px) {
+      .values-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .page-hero { padding-top: 7rem; }
+      .mission-box { padding: 1.75rem; }
+    }
+  </style>
+</head>
+<body data-root=".." data-page="about">
+  <div id="site-nav"></div>
+
+  <header class="page-hero">
+    <div class="container">
+      <p class="section-tag reveal">About Onairo</p>
+      <h1 class="reveal">A technology partner for <em>ambitious businesses</em></h1>
+      <p class="lead reveal">Onairo Solutions builds premium digital services, industry-ready websites, and commercial software products — with craftsmanship, clarity, and long-term thinking.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container">
+      <p class="section-tag reveal">Who we are</p>
+      <h2 class="section-title reveal">Built for outcomes, not buzzwords</h2>
+      <p class="section-sub reveal" style="max-width:680px;">We’re a technology company that helps organizations look sharper online, operate smarter with software, and ship products that customers actually use. Every engagement is scoped for real business impact — faster leads, cleaner operations, and systems that scale.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <p class="section-tag reveal">Mission</p>
+      <h2 class="section-title reveal">Make premium technology accessible</h2>
+      <div class="mission-box reveal">
+        <p>Our mission is to give growing businesses access to the same caliber of design, engineering, and product thinking usually reserved for large enterprises — without the complexity, fluff, or endless timelines.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="pillars">
+    <div class="container">
+      <div class="section-head center">
+        <p class="section-tag reveal">Our Model</p>
+        <h2 class="section-title reveal">Four specialised divisions. One brand.</h2>
+        <p class="section-sub reveal">Choose the Onairo division built around your next business outcome.</p>
+      </div>
+      <div class="pillar-intro-grid">
+        <article class="pillar-card pillar-services reveal">
+          <div class="pillar-orb" aria-hidden="true"></div>
+          <div class="pillar-icon" aria-hidden="true">✦</div>
+          <div class="pillar-num">PILLAR 01 · BUILD</div>
+          <h3>Client Services</h3>
+          <span class="pillar-subtitle">Technology engineered around your business.</span>
+          <p>Professional website development, custom software, automation, AI, cloud, APIs, and consulting — engineered for client outcomes.</p>
+          <div class="pillar-actions">
+            <a class="btn btn-primary btn-sm" href="request-quote.html">Build My Project</a>
+            <a class="btn btn-ghost btn-sm" href="../portfolio/index.html">See Our Work</a>
+          </div>
+        </article>
+        <article class="pillar-card pillar-websites reveal">
+          <div class="pillar-orb" aria-hidden="true"></div>
+          <div class="pillar-icon" aria-hidden="true">◫</div>
+          <div class="pillar-num">PILLAR 02 · LAUNCH</div>
+          <h3>Industry Websites</h3>
+          <span class="pillar-subtitle">Proven digital experiences, tailored fast.</span>
+          <p>A growing library of industry-specific demo websites — gyms, clinics, law firms, travel, schools, and more — ready to customize.</p>
+          <div class="pillar-actions">
+            <a class="btn btn-primary btn-sm" href="../portfolio/index.html">Browse Demos</a>
+            <a class="btn btn-ghost btn-sm" href="request-quote.html">Launch My Website</a>
+          </div>
+        </article>
+        <article class="pillar-card pillar-products reveal">
+          <div class="pillar-orb" aria-hidden="true"></div>
+          <div class="pillar-icon" aria-hidden="true">⬡</div>
+          <div class="pillar-num">PILLAR 03 · SCALE</div>
+          <h3>Software Products</h3>
+          <span class="pillar-subtitle">Commercial platforms ready to perform.</span>
+          <p>Commercial software products starting with EduTrack, with StoreTrack, MediTrack, FitTrack, HRTrack, and HotelTrack on the roadmap.</p>
+          <div class="pillar-actions">
+            <a class="btn btn-primary btn-sm" href="../products/index.html">Explore Products</a>
+            <a class="btn btn-ghost btn-sm" href="../products/edutrack.html#trial">Download Trial</a>
+          </div>
+        </article>
+        <article class="pillar-card pillar-shopify reveal">
+          <div class="pillar-orb" aria-hidden="true"></div>
+          <div class="pillar-icon" aria-hidden="true">🛒</div>
+          <div class="pillar-num">PILLAR 04 · SELL</div>
+          <h3>Shopify Store Design &amp; Launch</h3>
+          <span class="pillar-subtitle">Launch a professional online store that sells.</span>
+          <p>From design to launch, we build beautiful Shopify stores that help businesses sell products online with confidence.</p>
+          <div class="pillar-actions">
+            <a class="btn btn-primary btn-sm" href="request-quote.html?service=shopify">Launch My Store</a>
+            <a class="btn btn-ghost btn-sm" href="../../index.html#shopify-showcase">View Shopify Demo</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-tag reveal">Values</p>
+        <h2 class="section-title reveal">What we stand for</h2>
+        <p class="section-sub reveal">Principles that shape every brief, design, and release.</p>
+      </div>
+      <div class="values-grid">
+        <div class="value-item reveal">
+          <h3>Clarity first</h3>
+          <p>We communicate scope, timelines, and trade-offs honestly — so decisions stay grounded and projects stay on track.</p>
+        </div>
+        <div class="value-item reveal">
+          <h3>Craft over clutter</h3>
+          <p>Interfaces should feel premium and purposeful. We avoid generic layouts and design for trust and conversion.</p>
+        </div>
+        <div class="value-item reveal">
+          <h3>Practical innovation</h3>
+          <p>AI, automation, and modern stacks only when they create measurable value — never technology for its own sake.</p>
+        </div>
+        <div class="value-item reveal">
+          <h3>Long-term partnership</h3>
+          <p>Launch is the start. We support, iterate, and maintain so your digital investment keeps compounding.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta-band">
+    <div class="container">
+      <h2 class="reveal">Let’s build something enduring</h2>
+      <p class="reveal">Whether you need a website, custom software, or a product like EduTrack — we’re ready to talk.</p>
+      <div class="cta-actions reveal">
+        <a class="btn btn-primary" id="waCta" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a>
+        <a class="btn btn-secondary" href="contact.html">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+  <div id="site-chrome-end"></div>
+
+    <script src="../shared/js/config.js"></script>
+  <script src="../shared/js/seo-data.js"></script>
+  <script src="../shared/js/seo.js"></script>
+<script src="../components/chrome.js"></script>
+  <script src="../shared/js/main.js"></script>
+  <script>
+    document.getElementById('waCta').href = ONAIRO.waUrl("Hi Onairo Solutions, I'd like to learn more about your company.");
+  </script>
+</body>
+</html>
+

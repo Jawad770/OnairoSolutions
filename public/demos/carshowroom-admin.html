@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin — DriveZone Motors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:      #080a0f;
+      --bg2:     #0d1017;
+      --surface: #131720;
+      --surface2:#1a2030;
+      --red:     #e02020;
+      --red-lt:  #ff4444;
+      --silver:  #c8d0dc;
+      --muted:   #6b7689;
+      --border:  rgba(200,208,220,0.1);
+      --green:   #22c55e;
+      --amber:   #f59e0b;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--silver); min-height: 100vh; }
+    h1,h2,h3 { font-family: 'Plus Jakarta Sans', sans-serif; color: #fff; }
+
+    /* ── LOGIN SCREEN ── */
+    #loginScreen {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 2rem;
+      background: radial-gradient(ellipse at center, rgba(224,32,32,0.08) 0%, transparent 65%), var(--bg);
+    }
+    .login-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      width: 100%; max-width: 380px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+      text-align: center;
+    }
+    .login-logo {
+      width: 56px; height: 56px;
+      background: var(--red);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      margin: 0 auto 1.5rem;
+      box-shadow: 0 6px 24px rgba(224,32,32,0.35);
+    }
+    .login-box h2 { font-size: 1.4rem; margin-bottom: 0.3rem; }
+    .login-box p { font-size: 0.85rem; color: var(--muted); margin-bottom: 2rem; }
+    .login-field { position: relative; margin-bottom: 1rem; }
+    .login-field input {
+      width: 100%;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.875rem 1rem 0.875rem 2.75rem;
+      color: var(--silver);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+      letter-spacing: 0.08em;
+    }
+    .login-field input:focus { border-color: var(--red); }
+    .login-field .field-icon {
+      position: absolute; left: 0.875rem; top: 50%; transform: translateY(-50%);
+      font-size: 1rem; color: var(--muted); pointer-events: none;
+    }
+    .login-error {
+      background: rgba(224,32,32,0.12);
+      border: 1px solid rgba(224,32,32,0.3);
+      border-radius: 8px;
+      padding: 0.6rem 1rem;
+      font-size: 0.83rem;
+      color: #ff8080;
+      margin-bottom: 1rem;
+      display: none;
+    }
+    .login-error.show { display: block; }
+    .btn-login {
+      width: 100%;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 0.9rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 20px rgba(224,32,32,0.3);
+    }
+    .btn-login:hover { background: var(--red-lt); transform: translateY(-1px); }
+    .demo-hint {
+      margin-top: 1.25rem;
+      padding: 0.75rem 1rem;
+      background: rgba(245,158,11,0.08);
+      border: 1px solid rgba(245,158,11,0.2);
+      border-radius: 8px;
+      font-size: 0.78rem;
+      color: var(--amber);
+    }
+    .demo-hint strong { color: #fcd34d; }
+
+    /* ── ADMIN DASHBOARD ── */
+    #adminDash { display: none; min-height: 100vh; }
+
+    /* top bar */
+    .admin-topbar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0.875rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .admin-topbar-left { display: flex; align-items: center; gap: 0.75rem; }
+    .admin-topbar-left .icon { font-size: 1.2rem; }
+    .admin-topbar-left h1 { font-size: 1rem; color: #fff; }
+    .admin-topbar-left span { font-size: 0.75rem; color: var(--muted); }
+    .topbar-right { display: flex; align-items: center; gap: 0.75rem; }
+    .live-badge {
+      display: flex; align-items: center; gap: 0.4rem;
+      font-size: 0.72rem; font-weight: 600;
+      color: var(--green);
+      background: rgba(34,197,94,0.1);
+      border: 1px solid rgba(34,197,94,0.2);
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+    }
+    .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: blink 1.5s infinite; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .btn-view {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: transparent; border: 1px solid var(--border);
+      color: var(--silver); padding: 0.4rem 0.9rem;
+      border-radius: 8px; font-size: 0.8rem; font-weight: 600;
+      cursor: pointer; text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-view:hover { border-color: var(--silver); color: #fff; }
+    .btn-logout {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: rgba(224,32,32,0.1); border: 1px solid rgba(224,32,32,0.25);
+      color: #ff8080; padding: 0.4rem 0.9rem;
+      border-radius: 8px; font-size: 0.8rem; font-weight: 600;
+      cursor: pointer; transition: background 0.2s;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn-logout:hover { background: rgba(224,32,32,0.2); }
+
+    /* main layout */
+    .admin-main { padding: 2rem; max-width: 1100px; margin: 0 auto; }
+
+    /* stats row */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .stat-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+    }
+    .stat-box .stat-label { font-size: 0.72rem; color: var(--muted); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .stat-box .stat-val { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.75rem; font-weight: 800; color: #fff; }
+    .stat-box .stat-val.red { color: var(--red-lt); }
+    .stat-box .stat-val.green { color: var(--green); }
+    .stat-box .stat-val.amber { color: var(--amber); }
+
+    /* two-column layout */
+    .admin-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    /* PANEL */
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .panel-header {
+      padding: 1.1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .panel-header h3 { font-size: 0.95rem; color: #fff; }
+    .panel-header span { font-size: 0.75rem; color: var(--muted); }
+    .panel-body { padding: 1.5rem; }
+
+    /* ADD CAR FORM */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-group.full { grid-column: span 2; }
+    .form-group label { font-size: 0.72rem; font-weight: 600; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+    .form-group input, .form-group select {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.625rem 0.875rem;
+      color: var(--silver);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .form-group input:focus, .form-group select:focus { border-color: var(--red); }
+    .form-group select option { background: var(--surface2); }
+    .btn-add-car {
+      width: 100%;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.8rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 0.5rem;
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    }
+    .btn-add-car:hover { background: var(--red-lt); transform: translateY(-1px); }
+
+    /* INVENTORY LIST */
+    .inv-item {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: border-color 0.2s;
+    }
+    .inv-item:hover { border-color: rgba(200,208,220,0.2); }
+    .inv-item:last-child { margin-bottom: 0; }
+    .inv-img {
+      width: 72px; height: 52px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--bg2);
+    }
+    .inv-img img { width: 100%; height: 100%; object-fit: cover; }
+    .inv-info { flex: 1; min-width: 0; }
+    .inv-info .inv-brand { font-size: 0.65rem; color: var(--red-lt); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+    .inv-info .inv-name { font-size: 0.92rem; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .inv-info .inv-meta { display: flex; gap: 0.75rem; margin-top: 0.3rem; flex-wrap: wrap; }
+    .inv-info .inv-meta span { font-size: 0.72rem; color: var(--muted); }
+    .inv-price { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.9rem; color: #fff; white-space: nowrap; margin-right: 0.25rem; }
+    .inv-tag {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 0.2rem 0.5rem; border-radius: 4px;
+    }
+    .tag-new { background: rgba(34,197,94,0.15); color: var(--green); }
+    .tag-hot { background: rgba(245,158,11,0.15); color: var(--amber); }
+    .tag-imp { background: rgba(59,130,246,0.15); color: #93c5fd; }
+    .tag-none { display: none; }
+    .btn-del {
+      width: 32px; height: 32px; flex-shrink: 0;
+      background: rgba(224,32,32,0.1);
+      border: 1px solid rgba(224,32,32,0.2);
+      border-radius: 8px;
+      color: #ff8080; font-size: 0.9rem;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .btn-del:hover { background: rgba(224,32,32,0.25); }
+
+    .empty-inv {
+      text-align: center; padding: 2.5rem 1rem;
+      color: var(--muted); font-size: 0.88rem;
+    }
+    .empty-inv .empty-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+
+    /* toast notification */
+    .toast {
+      position: fixed; bottom: 1.5rem; right: 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.875rem 1.25rem;
+      font-size: 0.85rem;
+      display: flex; align-items: center; gap: 0.6rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      transform: translateY(20px);
+      opacity: 0;
+      transition: transform 0.3s, opacity 0.3s;
+      z-index: 999;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast.success { border-color: rgba(34,197,94,0.3); color: var(--green); }
+    .toast.error   { border-color: rgba(224,32,32,0.3); color: #ff8080; }
+
+    /* delete confirm modal */
+    .confirm-backdrop {
+      position: fixed; inset: 0; z-index: 400;
+      background: rgba(5,8,18,0.8);
+      backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 1.5rem;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .confirm-backdrop.open { opacity: 1; pointer-events: all; }
+    .confirm-box {
+      background: var(--surface);
+      border: 1px solid rgba(224,32,32,0.3);
+      border-radius: 16px;
+      padding: 2rem;
+      max-width: 360px; width: 100%;
+      text-align: center;
+      transform: scale(0.95);
+      transition: transform 0.2s;
+    }
+    .confirm-backdrop.open .confirm-box { transform: scale(1); }
+    .confirm-box .confirm-icon { font-size: 2.25rem; margin-bottom: 1rem; }
+    .confirm-box h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+    .confirm-box p { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem; }
+    .confirm-btns { display: flex; gap: 0.75rem; }
+    .btn-cancel {
+      flex: 1; padding: 0.7rem;
+      background: transparent; border: 1px solid var(--border);
+      color: var(--silver); border-radius: 8px;
+      font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.88rem;
+      cursor: pointer; transition: border-color 0.2s;
+    }
+    .btn-cancel:hover { border-color: var(--silver); }
+    .btn-confirm-del {
+      flex: 1; padding: 0.7rem;
+      background: var(--red); border: none;
+      color: #fff; border-radius: 8px;
+      font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 0.88rem;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .btn-confirm-del:hover { background: var(--red-lt); }
+
+    @media (max-width: 768px) {
+      .admin-grid { grid-template-columns: 1fr; }
+      .admin-topbar { padding: 0.875rem 1rem; }
+      .admin-main { padding: 1rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: span 1; }
+      .topbar-right .btn-view { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════
+     LOGIN SCREEN
+══════════════════════════════ -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="login-logo">🚗</div>
+    <h2>DriveZone Admin</h2>
+    <p>Enter your password to manage inventory</p>
+
+    <div class="login-error" id="loginError">Incorrect password. Please try again.</div>
+
+    <div class="login-field">
+      <span class="field-icon">🔒</span>
+      <input type="password" id="passwordInput" placeholder="Enter password" autocomplete="current-password"/>
+    </div>
+    <button class="btn-login" id="loginBtn">Unlock Dashboard</button>
+
+    <div class="demo-hint">
+      🎯 <strong>Demo password:</strong> drivezone123<br>
+      <span style="opacity:.7">(Change this to your own in the code)</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     ADMIN DASHBOARD
+══════════════════════════════ -->
+<div id="adminDash">
+
+  <div class="admin-topbar">
+    <div class="admin-topbar-left">
+      <span class="icon">🚗</span>
+      <div>
+        <h1>DriveZone Motors — Admin</h1>
+        <span>MM Alam Road, Lahore</span>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="live-badge"><div class="live-dot"></div>Live</div>
+      <a href="carshowroom.html" target="_blank" class="btn-view">👁 View Site</a>
+      <button class="btn-logout" id="logoutBtn">⬅ Logout</button>
+    </div>
+  </div>
+
+  <div class="admin-main">
+
+    <!-- Stats -->
+    <div class="stats-row" id="statsRow">
+      <div class="stat-box">
+        <div class="stat-label">Total Cars</div>
+        <div class="stat-val" id="statTotal">0</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">For Sale</div>
+        <div class="stat-val green" id="statSale">0</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Avg. Price</div>
+        <div class="stat-val amber" id="statAvg">—</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Just In</div>
+        <div class="stat-val red" id="statNew">0</div>
+      </div>
+    </div>
+
+    <div class="admin-grid">
+
+      <!-- ADD CAR FORM -->
+      <div class="panel">
+        <div class="panel-header">
+          <h3>➕ Add New Car</h3>
+        </div>
+        <div class="panel-body">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Brand</label>
+              <select id="fBrand">
+                <option value="">Select brand</option>
+                <option>Toyota</option>
+                <option>Honda</option>
+                <option>Suzuki</option>
+                <option>KIA</option>
+                <option>Hyundai</option>
+                <option>Changan</option>
+                <option>MG</option>
+                <option>Proton</option>
+                <option>DFSK</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Model Name</label>
+              <input type="text" id="fModel" placeholder="e.g. Corolla Altis"/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Year</label>
+              <input type="number" id="fYear" placeholder="2023" min="2000" max="2026"/>
+            </div>
+            <div class="form-group">
+              <label>Price (Lac — shown in visitor's currency)</label>
+              <input type="number" id="fPrice" placeholder="42" step="0.5"/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Fuel Type</label>
+              <select id="fFuel">
+                <option>Petrol</option>
+                <option>Diesel</option>
+                <option>Hybrid</option>
+                <option>CNG</option>
+                <option>Electric</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Transmission</label>
+              <select id="fTransmission">
+                <option>Auto</option>
+                <option>Manual</option>
+                <option>AMT</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Mileage (km)</label>
+              <input type="number" id="fKm" placeholder="25000"/>
+            </div>
+            <div class="form-group">
+              <label>Badge</label>
+              <select id="fTag">
+                <option value="">None</option>
+                <option value="Just In">Just In</option>
+                <option value="Hot Deal">Hot Deal</option>
+                <option value="Imported">Imported</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group full">
+              <label>Image URL <span style="color:var(--muted);font-size:.65rem;font-weight:400">(optional — paste any image link)</span></label>
+              <input type="url" id="fImage" placeholder="https://..."/>
+            </div>
+          </div>
+          <button class="btn-add-car" id="addCarBtn">➕ Add to Inventory</button>
+        </div>
+      </div>
+
+      <!-- INVENTORY LIST -->
+      <div class="panel">
+        <div class="panel-header">
+          <h3>🚗 Current Inventory</h3>
+          <span id="invCount">0 cars</span>
+        </div>
+        <div class="panel-body" style="max-height:520px; overflow-y:auto; padding-right:0.5rem;" id="inventoryList">
+          <div class="empty-inv">
+            <div class="empty-icon">🚗</div>
+            Loading inventory...
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- DELETE CONFIRM MODAL -->
+<div class="confirm-backdrop" id="confirmBackdrop">
+  <div class="confirm-box">
+    <div class="confirm-icon">🗑️</div>
+    <h3>Remove this car?</h3>
+    <p id="confirmCarName">This car will be removed from the inventory. This cannot be undone.</p>
+    <div class="confirm-btns">
+      <button class="btn-cancel" id="cancelDelBtn">Cancel</button>
+      <button class="btn-confirm-del" id="confirmDelBtn">Yes, Remove</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="demo-globals.js"></script>
+<script>
+  /* ═══════════════════════════════════════
+     PASSWORD — change this to your own!
+  ═══════════════════════════════════════ */
+  const ADMIN_PASSWORD = "drivezone123";
+  const STORAGE_KEY    = "drivezone_inventory";
+
+  /* ── Default inventory (loaded first time) ── */
+  const DEFAULT_CARS = [
+    { id: 1, brand:"Toyota",  model:"Corolla Altis 1.6",    year:2022, price:"42 Lac",  fuel:"Petrol", trans:"Auto", km:"28,000 km", tag:"Just In",  img:"../images/carshowroom/car-1.jpg" },
+    { id: 2, brand:"Honda",   model:"Civic Oriel 1.8",      year:2021, price:"55 Lac",  fuel:"Petrol", trans:"Auto", km:"45,000 km", tag:"",         img:"../images/carshowroom/car-2.jpg" },
+    { id: 3, brand:"KIA",     model:"Sportage AWD Alpha",   year:2023, price:"72 Lac",  fuel:"Petrol", trans:"Auto", km:"15,000 km", tag:"Hot Deal",  img:"../images/carshowroom/car-3.jpg" },
+    { id: 4, brand:"Suzuki",  model:"Cultus AGS VXR",       year:2022, price:"24 Lac",  fuel:"Petrol", trans:"Auto", km:"32,000 km", tag:"",         img:"../images/carshowroom/car-4.jpg" },
+    { id: 5, brand:"Hyundai", model:"Tucson AWD FWD",       year:2022, price:"63 Lac",  fuel:"Petrol", trans:"Auto", km:"22,000 km", tag:"Imported", img:"../images/carshowroom/car-5.jpg" },
+    { id: 6, brand:"Toyota",  model:"Yaris ATIV 1.3",       year:2023, price:"32 Lac",  fuel:"Petrol", trans:"Auto", km:"8,000 km",  tag:"",         img:"../images/carshowroom/car-6.jpg" },
+  ];
+
+  /* ── State ── */
+  let inventory = [];
+  let pendingDeleteId = null;
+
+  /* ══════════════════════════════════════
+     LOGIN
+  ══════════════════════════════════════ */
+  const loginScreen  = document.getElementById('loginScreen');
+  const adminDash    = document.getElementById('adminDash');
+  const passwordInput= document.getElementById('passwordInput');
+  const loginBtn     = document.getElementById('loginBtn');
+  const loginError   = document.getElementById('loginError');
+
+  function tryLogin() {
+    if (passwordInput.value === ADMIN_PASSWORD) {
+      loginScreen.style.display = 'none';
+      adminDash.style.display   = 'block';
+      loadInventory();
+    } else {
+      loginError.classList.add('show');
+      passwordInput.value = '';
+      passwordInput.focus();
+      setTimeout(() => loginError.classList.remove('show'), 3000);
+    }
+  }
+
+  loginBtn.addEventListener('click', tryLogin);
+  passwordInput.addEventListener('keydown', e => { if (e.key === 'Enter') tryLogin(); });
+
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    adminDash.style.display   = 'none';
+    loginScreen.style.display = 'flex';
+    passwordInput.value = '';
+  });
+
+  /* ══════════════════════════════════════
+     INVENTORY — load / save / render
+  ══════════════════════════════════════ */
+  function loadInventory() {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    inventory = stored ? JSON.parse(stored) : [...DEFAULT_CARS];
+    if (!stored) saveInventory();
+    renderInventory();
+    updateStats();
+  }
+
+  function saveInventory() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(inventory));
+  }
+
+  function updateStats() {
+    document.getElementById('statTotal').textContent = inventory.length;
+    document.getElementById('statSale').textContent  = inventory.length;
+    document.getElementById('invCount').textContent  = `${inventory.length} car${inventory.length !== 1 ? 's' : ''}`;
+
+    const newCount = inventory.filter(c => c.tag === 'Just In').length;
+    document.getElementById('statNew').textContent = newCount;
+
+    if (inventory.length > 0) {
+      const nums = inventory.map(c => parseFloat(c.price));
+      const valid = nums.filter(n => !isNaN(n));
+      const avg = valid.length ? (valid.reduce((a,b) => a+b,0) / valid.length).toFixed(1) : '—';
+      document.getElementById('statAvg').textContent = valid.length ? `${avg}L` : '—';
+    } else {
+      document.getElementById('statAvg').textContent = '—';
+    }
+  }
+
+  function tagClass(tag) {
+    if (tag === 'Just In')  return 'tag-new';
+    if (tag === 'Hot Deal') return 'tag-hot';
+    if (tag === 'Imported') return 'tag-imp';
+    return 'tag-none';
+  }
+
+  function renderInventory() {
+    const list = document.getElementById('inventoryList');
+    if (inventory.length === 0) {
+      list.innerHTML = `<div class="empty-inv"><div class="empty-icon">🚗</div>No cars in inventory yet.<br>Add your first car using the form.</div>`;
+      return;
+    }
+    list.innerHTML = inventory.map(car => `
+      <div class="inv-item" id="car-${car.id}">
+        <div class="inv-img">
+          <img src="${car.img || '../images/carshowroom/car-1.jpg'}"
+               onerror="this.src='../images/carshowroom/car-1.jpg'"
+               alt="${car.brand} ${car.model}" loading="lazy">
+        </div>
+        <div class="inv-info">
+          <div class="inv-brand">${car.brand}</div>
+          <div class="inv-name">${car.model}</div>
+          <div class="inv-meta">
+            <span>📅 ${car.year}</span>
+            <span>⛽ ${car.fuel}</span>
+            <span>📏 ${car.km}</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:0.4rem;flex-shrink:0">
+          <div class="inv-price">${DemoGlobals.formatStoredPrice(car.price)}</div>
+          ${car.tag ? `<span class="inv-tag ${tagClass(car.tag)}">${car.tag}</span>` : ''}
+        </div>
+        <button class="btn-del" onclick="askDelete(${car.id}, '${car.brand} ${car.model}')" title="Remove">🗑</button>
+      </div>
+    `).join('');
+  }
+
+  /* ══════════════════════════════════════
+     ADD CAR
+  ══════════════════════════════════════ */
+  document.getElementById('addCarBtn').addEventListener('click', () => {
+    const brand = document.getElementById('fBrand').value.trim();
+    const model = document.getElementById('fModel').value.trim();
+    const year  = document.getElementById('fYear').value;
+    const price = document.getElementById('fPrice').value;
+    const fuel  = document.getElementById('fFuel').value;
+    const trans = document.getElementById('fTransmission').value;
+    const km    = document.getElementById('fKm').value;
+    const tag   = document.getElementById('fTag').value;
+    const img   = document.getElementById('fImage').value.trim();
+
+    if (!brand || !model || !year || !price) {
+      showToast('Please fill in Brand, Model, Year and Price.', 'error');
+      return;
+    }
+
+    const newCar = {
+      id:    Date.now(),
+      brand, model,
+      year:  parseInt(year),
+      price: `${parseFloat(price)} Lac`,
+      fuel, trans,
+      km:    km ? `${parseInt(km).toLocaleString()} km` : 'N/A',
+      tag,
+      img:   img || '../images/carshowroom/car-1.jpg',
+    };
+
+    inventory.unshift(newCar);
+    saveInventory();
+    renderInventory();
+    updateStats();
+    clearForm();
+    showToast(`✅ ${brand} ${model} added to inventory!`, 'success');
+  });
+
+  function clearForm() {
+    ['fBrand','fModel','fYear','fPrice','fKm','fImage'].forEach(id => {
+      document.getElementById(id).value = '';
+    });
+    document.getElementById('fFuel').value         = 'Petrol';
+    document.getElementById('fTransmission').value = 'Auto';
+    document.getElementById('fTag').value          = '';
+  }
+
+  /* ══════════════════════════════════════
+     DELETE CAR
+  ══════════════════════════════════════ */
+  const confirmBackdrop = document.getElementById('confirmBackdrop');
+  const confirmCarName  = document.getElementById('confirmCarName');
+
+  function askDelete(id, name) {
+    pendingDeleteId = id;
+    confirmCarName.textContent = `"${name}" will be permanently removed from inventory.`;
+    confirmBackdrop.classList.add('open');
+  }
+
+  document.getElementById('cancelDelBtn').addEventListener('click', () => {
+    confirmBackdrop.classList.remove('open');
+    pendingDeleteId = null;
+  });
+
+  document.getElementById('confirmDelBtn').addEventListener('click', () => {
+    if (pendingDeleteId === null) return;
+    const car = inventory.find(c => c.id === pendingDeleteId);
+    inventory = inventory.filter(c => c.id !== pendingDeleteId);
+    saveInventory();
+    renderInventory();
+    updateStats();
+    confirmBackdrop.classList.remove('open');
+    if (car) showToast(`🗑 ${car.brand} ${car.model} removed.`, 'error');
+    pendingDeleteId = null;
+  });
+
+  /* ══════════════════════════════════════
+     TOAST
+  ══════════════════════════════════════ */
+  let toastTimer;
+  function showToast(msg, type = 'success') {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = `toast ${type} show`;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 3200);
+  }
+
+  DemoGlobals.init();
+  DemoGlobals.onLocaleChange(() => {
+    const dash = document.getElementById('adminDash');
+    if (dash && dash.style.display !== 'none') {
+      renderInventory();
+      updateStats();
+    }
+  });
+</script>
+</body>
+</html>

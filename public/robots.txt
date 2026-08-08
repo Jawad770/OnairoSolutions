@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /portal
+Disallow: /portal/
+Disallow: /api/
+Disallow: /api/enquiries/
+Disallow: /data/
+Disallow: /server/
+Disallow: /node_modules/
+Disallow: /uploads/
+
+Sitemap: https://onairosolutions.com/sitemap.xml

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MedCare Clinic — Islamabad</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:     #ffffff;
+      --off-white: #f8fafc;
+      --blue:      #1d4ed8;
+      --blue-light:#3b82f6;
+      --blue-pale: #eff6ff;
+      --navy:      #0f172a;
+      --slate:     #64748b;
+      --border:    #e2e8f0;
+      --card:      #ffffff;
+      --wa:        #25D366;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--off-white);
+      color: var(--navy);
+      line-height: 1.65;
+      opacity: 0;
+      animation: pageIn 0.5s ease forwards;
+    }
+
+    @keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+
+    h1, h2, h3, h4 { font-family: 'Syne', sans-serif; font-weight: 700; letter-spacing: -0.02em; }
+
+    .demo-banner {
+      background: var(--blue);
+      color: #fff;
+      text-align: center;
+      padding: 0.55rem 1rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+    .demo-banner a { color: #fff; font-weight: 700; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 5%;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+    }
+
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--blue);
+      text-decoration: none;
+    }
+    .logo span { color: var(--slate); font-weight: 500; font-size: 0.75rem; display: block; letter-spacing: 0.06em; text-transform: uppercase; }
+
+    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+    .nav-links a { color: var(--slate); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--blue); }
+
+    .nav-toggle {
+      min-width: 44px; min-height: 44px; box-sizing: border-box;
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px;
+      cursor: pointer;
+    }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--navy); transition: 0.3s; }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    #hero {
+      padding: 5rem 5% 4rem;
+      background: linear-gradient(135deg, var(--blue-pale) 0%, var(--white) 60%);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      min-height: 80vh;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--blue-pale);
+      color: var(--blue);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.25rem;
+    }
+
+    #hero h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 1.12; margin-bottom: 1rem; }
+    .hero-sub { color: var(--slate); font-size: 1.05rem; margin-bottom: 2rem; max-width: 440px; }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--wa);
+      color: #fff;
+      padding: 0.9rem 1.75rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 16px rgba(37,211,102,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--blue);
+      border: 2px solid var(--blue);
+      padding: 0.85rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      margin-left: 0.75rem;
+      transition: background 0.2s;
+    }
+    .btn-secondary:hover { background: var(--blue-pale); }
+
+    .hero-visual {
+      border-radius: 20px;
+      height: 360px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(29,78,216,0.2);
+    }
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    section { padding: 5rem 5%; }
+    .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.5rem; }
+    .section-title { font-size: clamp(1.75rem, 3vw, 2.4rem); margin-bottom: 0.75rem; }
+    .section-desc { color: var(--slate); max-width: 540px; margin-bottom: 2.5rem; }
+
+    /* services */
+    #services { background: var(--white); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+    .service-card {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: box-shadow 0.25s, border-color 0.25s, transform 0.25s;
+    }
+    .service-card:hover { box-shadow: 0 8px 30px rgba(29,78,216,0.1); border-color: var(--blue-light); transform: translateY(-4px); }
+    .service-img {
+      height: 140px;
+      overflow: hidden;
+    }
+    .service-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .service-card-body { padding: 1.25rem 1.75rem 1.75rem; }
+    .service-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .service-card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+    .service-card p { font-size: 0.88rem; color: var(--slate); }
+
+    /* doctors */
+    #doctors { background: var(--blue-pale); }
+    .doctors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .doctor-card {
+      background: var(--white);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      text-align: center;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .doctor-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+    .doctor-photo {
+      height: 220px;
+      overflow: hidden;
+    }
+    .doctor-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+    .doctor-info { padding: 1.5rem; }
+    .doctor-info h3 { font-size: 1.1rem; margin-bottom: 0.25rem; }
+    .doctor-info .specialty { color: var(--blue); font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .doctor-info p { font-size: 0.85rem; color: var(--slate); }
+
+    /* why us */
+    #why { background: var(--white); }
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    .trust-item {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      transition: border-color 0.2s;
+    }
+    .trust-item:hover { border-color: var(--blue-light); }
+    .trust-icon { font-size: 2.25rem; margin-bottom: 0.75rem; }
+    .trust-item h3 { font-size: 1rem; margin-bottom: 0.4rem; }
+    .trust-item p { font-size: 0.85rem; color: var(--slate); }
+
+    /* appointment */
+    #appointment {
+      background: linear-gradient(135deg, var(--blue) 0%, #1e3a8a 100%);
+      color: #fff;
+      text-align: center;
+    }
+    #appointment .section-label { color: rgba(255,255,255,0.7); }
+    #appointment .section-title { color: #fff; }
+    #appointment p { color: rgba(255,255,255,0.85); max-width: 500px; margin: 0 auto 2rem; }
+
+    /* location */
+    #location { background: var(--off-white); }
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 2rem;
+    }
+    .location-info p { color: var(--slate); margin-bottom: 0.6rem; font-size: 0.95rem; }
+    .hours-list { margin-top: 1.5rem; }
+    .hours-list li { list-style: none; padding: 0.5rem 0; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--slate); }
+    .hours-list li span:last-child { color: var(--navy); font-weight: 500; }
+
+    .map-placeholder {
+      height: 260px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--slate);
+      font-size: 0.9rem;
+    }
+    .map-placeholder span { font-size: 2.5rem; }
+
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 2rem 5%;
+      font-size: 0.85rem;
+    }
+    footer strong { color: #fff; }
+
+    .wa-float {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 250;
+      width: 58px;
+      height: 58px;
+      background: var(--wa);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.4);
+      transition: transform 0.2s;
+      text-decoration: none;
+    }
+    .wa-float:hover { transform: scale(1.08); }
+    .wa-float svg { width: 30px; height: 30px; fill: #fff; }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 768px) {
+      #hero { grid-template-columns: 1fr; text-align: center; min-height: auto; }
+      .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-visual { height: 220px; font-size: 4rem; }
+      .btn-secondary { margin-left: 0; margin-top: 0.75rem; }
+      .hero-actions { display: flex; flex-direction: column; align-items: center; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(255,255,255,0.98);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        z-index: 190;
+      }
+      .nav-links.open { display: flex; }
+      .nav-toggle {
+      min-width: 44px; min-height: 44px; box-sizing: border-box; display: flex; z-index: 195; }
+      .location-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 375px) {
+      section { padding: 3.5rem 4%; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="demo-banner">
+  This is a demo site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com
+</div>
+
+<nav>
+  <a href="#" class="logo">MedCare<span>Clinic — Islamabad</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#doctors">Doctors</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#appointment">Book</a></li>
+    <li><a href="#location">Location</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<section id="hero">
+  <div class="reveal">
+    <div class="hero-badge">PMDC Registered — Since 2010</div>
+    <h1>Quality Healthcare You Can Trust</h1>
+    <p class="hero-sub">Experienced doctors, modern diagnostics, and compassionate care — right in the heart of F-7 Markaz, Islamabad.</p>
+    <div class="hero-actions">
+      <a href="#" class="btn-primary" id="heroWa">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.449C18.24 1.245 15.24 0 12 0 5.373 0 0 5.373 0 12c0 2.117.554 4.185 1.606 6.001L0 24l6.155-1.587A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12 0-3.24-1.245-6.24-3.48-8.551z"/></svg>
+        Book Appointment via WhatsApp
+      </a>
+      <a href="#services" class="btn-secondary">Our Services</a>
+    </div>
+  </div>
+  <div class="hero-visual reveal">
+    <img src="../images/clinic/hero.jpg" alt="Modern medical clinic reception" loading="lazy">
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-label reveal">What We Offer</div>
+  <h2 class="section-title reveal">Comprehensive Medical Services</h2>
+  <p class="section-desc reveal">From routine check-ups to specialist consultations — all under one roof.</p>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-img"><img src="../images/clinic/svc-general.jpg" alt="General medicine consultation" loading="lazy"></div>
+      <div class="service-card-body"><div class="service-icon">🦷</div><h3>General Medicine</h3><p>Diagnosis and treatment for common illnesses, fever, infections, and chronic conditions.</p></div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-img"><img src="../images/clinic/svc-pediatrics.jpg" alt="Pediatric care for children" loading="lazy"></div>
+      <div class="service-card-body"><div class="service-icon">👶</div><h3>Pediatrics</h3><p>Child health, vaccinations, growth monitoring, and newborn care by specialist pediatricians.</p></div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-img"><img src="../images/clinic/svc-lab.jpg" alt="Laboratory testing equipment" loading="lazy"></div>
+      <div class="service-card-body"><div class="service-icon">🧪</div><h3>Lab Tests</h3><p>On-site pathology lab — CBC, LFT, RFT, HbA1c, thyroid panel, and more. Results in 24 hours.</p></div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-img"><img src="../images/clinic/svc-pharmacy.jpg" alt="In-house pharmacy medicines" loading="lazy"></div>
+      <div class="service-card-body"><div class="service-icon">🧪</div><h3>Pharmacy</h3><p>In-house pharmacy with genuine medicines. Prescriptions filled while you wait.</p></div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-img"><img src="../images/clinic/svc-dental.jpg" alt="Dental care treatment" loading="lazy"></div>
+      <div class="service-card-body"><div class="service-icon">🦷</div><h3>Dental Care</h3><p>Cleanings, fillings, extractions, and cosmetic dentistry by qualified dental surgeons.</p></div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-img"><img src="../images/clinic/svc-cardio.jpg" alt="Cardiology heart health check" loading="lazy"></div>
+      <div class="service-card-body"><div class="service-icon">❤️</div><h3>Cardiology</h3><p>ECG, blood pressure monitoring, and heart health consultations every Tuesday & Thursday.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="doctors">
+  <div class="section-label reveal">Our Team</div>
+  <h2 class="section-title reveal">Meet the Doctors</h2>
+  <p class="section-desc reveal">PMDC-registered specialists with years of experience serving Islamabad families.</p>
+  <div class="doctors-grid">
+    <div class="doctor-card reveal">
+      <div class="doctor-photo d1"><img src="../images/clinic/doc-1.jpg" alt="Dr. Ahmed Khan" loading="lazy"></div>
+      <div class="doctor-info">
+        <h3>Dr. Ahmed Khan</h3>
+        <div class="specialty">General Physician — MBBS, FCPS</div>
+        <p>15 years experience. Specializes in diabetes, hypertension, and preventive care.</p>
+      </div>
+    </div>
+    <div class="doctor-card reveal">
+      <div class="doctor-photo d2"><img src="../images/clinic/doc-2.jpg" alt="Dr. Fatima Siddiqui" loading="lazy"></div>
+      <div class="doctor-info">
+        <h3>Dr. Fatima Siddiqui</h3>
+        <div class="specialty">Pediatrician — MBBS, DCH</div>
+        <p>Child specialist with a gentle approach. Available Mon–Sat, 10 AM – 2 PM.</p>
+      </div>
+    </div>
+    <div class="doctor-card reveal">
+      <div class="doctor-photo d3"><img src="../images/clinic/doc-3.jpg" alt="Dr. Hassan Raza" loading="lazy"></div>
+      <div class="doctor-info">
+        <h3>Dr. Hassan Raza</h3>
+        <div class="specialty">Cardiologist — MBBS, MRCP</div>
+        <p>Heart health expert. ECG and consultation available Tue & Thu afternoons.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="section-label reveal">Why MedCare</div>
+  <h2 class="section-title reveal">Why Patients Choose Us</h2>
+  <div class="trust-grid">
+    <div class="trust-item reveal"><div class="trust-icon">✅</div><h3>PMDC Registered</h3><p>All doctors fully licensed and verified by Pakistan Medical Commission.</p></div>
+    <div class="trust-item reveal"><div class="trust-icon">✅</div><h3>Short Wait Times</h3><p>Walk-in appointments usually seen within 20 minutes. WhatsApp booking available.</p></div>
+    <div class="trust-item reveal"><div class="trust-icon">🧪</div><h3>On-Site Lab</h3><p>No need to visit a separate lab — get tested and consult in one visit.</p></div>
+    <div class="trust-item reveal"><div class="trust-icon">💰</div><h3>Affordable Fees</h3><p>Consultation from Rs. 1,500. Lab tests at competitive Islamabad rates.</p></div>
+  </div>
+</section>
+
+<section id="appointment">
+  <div class="reveal">
+    <div class="section-label">Book Now</div>
+    <h2 class="section-title">Ready to See a Doctor?</h2>
+    <p>Message us on WhatsApp with your name, preferred date, and reason for visit. We'll confirm your slot within the hour.</p>
+    <a href="#" class="btn-primary" id="apptWa">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.449C18.24 1.245 15.24 0 12 0 5.373 0 0 5.373 0 12c0 2.117.554 4.185 1.606 6.001L0 24l6.155-1.587A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12 0-3.24-1.245-6.24-3.48-8.551z"/></svg>
+      Book on WhatsApp
+    </a>
+  </div>
+</section>
+
+<section id="location">
+  <div class="section-label reveal">Find Us</div>
+  <h2 class="section-title reveal">Location & Hours</h2>
+  <div class="location-grid">
+    <div class="location-info reveal">
+      <p><strong>MedCare Clinic</strong></p>
+      <p>📍 Shop 14, Block 12, F-7 Markaz, Islamabad 44000</p>
+      <p>✉️ 051-234-xxxx</p>
+      <p>✉️ info@medcare-clinic.pk</p>
+      <ul class="hours-list">
+        <li><span>Monday–Friday</span><span>9:00 AM – 9:00 PM</span></li>
+        <li><span>Saturday</span><span>9:00 AM – 5:00 PM</span></li>
+        <li><span>Sunday</span><span>10:00 AM – 2:00 PM</span></li>
+        <li><span>Emergency Line</span><span>24/7 on WhatsApp</span></li>
+      </ul>
+    </div>
+    <div class="map-placeholder reveal">
+      <span>🛏️</span>
+      Google Maps Embed Placeholder<br>
+      <small>F-7 Markaz, Islamabad</small>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 <strong>MedCare Clinic</strong> — Islamabad, Pakistan</p>
+  <p style="margin-top:0.4rem">PMDC Registered — Licensed Pharmacy — ISO-compliant Lab</p>
+</footer>
+
+<a href="#" class="wa-float" id="floatWa" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M20.52 3.449C18.24 1.245 15.24 0 12 0 5.373 0 0 5.373 0 12c0 2.117.554 4.185 1.606 6.001L0 24l6.155-1.587A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12 0-3.24-1.245-6.24-3.48-8.551zM12 22c-1.822 0-3.609-.489-5.17-1.412l-.37-.22-3.656.942.975-3.556-.24-.378A9.937 9.937 0 012 12C2 6.477 6.477 2 12 2c2.654 0 5.15 1.034 7.025 2.914A9.88 9.88 0 0122 12c0 5.523-4.477 10-10 10zm5.476-7.44c-.3-.15-1.77-.873-2.044-.972-.274-.099-.473-.148-.672.149-.2.297-.772.972-.946 1.17-.174.198-.348.223-.648.074-.3-.149-1.266-.467-2.41-1.486-.89-.794-1.49-1.774-1.664-2.073-.174-.298-.018-.46.13-.608.134-.133.3-.348.45-.522.15-.174.199-.298.299-.497.1-.198.05-.372-.025-.521-.075-.15-.672-1.62-.92-2.217-.242-.582-.487-.503-.672-.513l-.573-.01c-.198 0-.522.074-.795.372-.274.297-1.043 1.02-1.043 2.487 0 1.466 1.069 2.885 1.219 3.083.15.198 2.105 3.21 5.1 4.502.714.308 1.271.492 1.706.63.716.227 1.368.195 1.884.118.574-.085 1.77-.723 2.02-1.421.248-.699.248-1.297.173-1.422-.074-.124-.273-.199-.572-.348z"/></svg>
+</a>
+
+<script src="demo-globals.js"></script>
+<script>
+  DemoGlobals.init();
+
+  const WA_NUMBER = "923137863988";
+  const waLink = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hi, I'd like to book an appointment at MedCare Clinic.")}`;
+
+  ['heroWa', 'apptWa', 'floatWa'].forEach(id => {
+    document.getElementById(id).href = waLink;
+  });
+
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    navToggle.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.classList.remove('open');
+  }));
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+node_modules
+.git
+data/sessions
+data/uploads
+backups
+.env
+*.md
+src

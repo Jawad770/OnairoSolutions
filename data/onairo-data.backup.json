@@ -1,0 +1,2172 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "admin@onairosolutions.com",
+      "password_hash": "$2b$12$P8U.e0utdlhWzyWh6go3D.MbiZP5uJInvVDYVFxdqMLB.NRyDjhQ.",
+      "role": "super_admin",
+      "is_active": 1,
+      "failed_logins": 0,
+      "locked_until": null,
+      "last_login_at": "2026-07-29T02:08:55.691Z",
+      "created_at": "2026-07-28T08:08:20.625Z",
+      "updated_at": "2026-07-29T02:50:03.369Z",
+      "full_name": "admin",
+      "job_title": null,
+      "phone": null,
+      "avatar_url": null,
+      "status": "active",
+      "must_change_password": 0,
+      "password_changed_at": "2026-07-29T01:54:40.960Z",
+      "sessions_revoked_at": null,
+      "created_by": null
+    }
+  ],
+  "leads": [
+    {
+      "id": 1,
+      "lead_code": "LD-000001",
+      "source_type": "contact",
+      "source_ref_id": 1,
+      "date_created": "2026-07-29T00:54:09.407Z",
+      "name": "jawad",
+      "business": "gym",
+      "industry": null,
+      "service_product": "Website",
+      "email": "jawadjan770@gmail.com",
+      "whatsapp": "+923272340500",
+      "phone": "03272340500",
+      "city": "karachi",
+      "budget": null,
+      "timeline": null,
+      "preferred_contact_method": "WhatsApp",
+      "project_description": "i wanna build a website for my gym",
+      "status": "Contacted",
+      "assigned_to_user_id": null,
+      "website_url": null,
+      "metadata_json": null,
+      "assigned_user_id": null,
+      "assigned_at": null,
+      "assigned_by": null,
+      "dial_code": "+92",
+      "country": "Pakistan"
+    },
+    {
+      "id": 2,
+      "lead_code": "LD-000002",
+      "source_type": "contact",
+      "source_ref_id": 2,
+      "date_created": "2026-07-29T02:00:05.276Z",
+      "name": "jawad",
+      "business": null,
+      "industry": null,
+      "service_product": "Website",
+      "email": "onairos101@gmail.com",
+      "whatsapp": null,
+      "phone": null,
+      "city": null,
+      "budget": null,
+      "timeline": null,
+      "preferred_contact_method": "WhatsApp",
+      "project_description": "dafd",
+      "status": "Lost",
+      "assigned_to_user_id": null,
+      "assigned_user_id": null,
+      "assigned_at": null,
+      "assigned_by": null,
+      "website_url": null,
+      "metadata_json": null,
+      "country": null,
+      "country_code": null,
+      "dial_code": null,
+      "phone_number": null
+    },
+    {
+      "id": 3,
+      "lead_code": "LD-000003",
+      "source_type": "contact",
+      "source_ref_id": 3,
+      "date_created": "2026-07-29T02:16:32.483Z",
+      "name": "WA Only",
+      "business": null,
+      "industry": null,
+      "service_product": "General inquiry",
+      "email": null,
+      "whatsapp": "+923001112233",
+      "phone": null,
+      "country": "Pakistan",
+      "country_code": "PK",
+      "dial_code": "+92",
+      "phone_number": "3001112233",
+      "city": null,
+      "budget": null,
+      "timeline": null,
+      "preferred_contact_method": "WhatsApp",
+      "project_description": "Need a site",
+      "status": "Proposal Sent",
+      "assigned_to_user_id": null,
+      "assigned_user_id": null,
+      "assigned_at": null,
+      "assigned_by": null,
+      "website_url": null,
+      "metadata_json": null
+    },
+    {
+      "id": 4,
+      "lead_code": "LD-000004",
+      "source_type": "contact",
+      "source_ref_id": 4,
+      "date_created": "2026-07-29T02:16:32.498Z",
+      "name": "Email Only",
+      "business": null,
+      "industry": null,
+      "service_product": "General inquiry",
+      "email": "only@example.com",
+      "whatsapp": null,
+      "phone": null,
+      "country": null,
+      "country_code": null,
+      "dial_code": null,
+      "phone_number": null,
+      "city": null,
+      "budget": null,
+      "timeline": null,
+      "preferred_contact_method": "Email",
+      "project_description": "Need a site",
+      "status": "New",
+      "assigned_to_user_id": null,
+      "assigned_user_id": null,
+      "assigned_at": null,
+      "assigned_by": null,
+      "website_url": null,
+      "metadata_json": null
+    },
+    {
+      "id": 5,
+      "lead_code": "LD-000005",
+      "source_type": "contact",
+      "source_ref_id": 5,
+      "date_created": "2026-07-29T02:17:38.021Z",
+      "name": "B",
+      "business": null,
+      "industry": null,
+      "service_product": "General inquiry",
+      "email": null,
+      "whatsapp": "+971501234567",
+      "phone": null,
+      "country": "United Arab Emirates",
+      "country_code": "AE",
+      "dial_code": "+971",
+      "phone_number": "501234567",
+      "city": null,
+      "budget": null,
+      "timeline": null,
+      "preferred_contact_method": "WhatsApp",
+      "project_description": "C",
+      "status": "New",
+      "assigned_to_user_id": null,
+      "assigned_user_id": null,
+      "assigned_at": null,
+      "assigned_by": null,
+      "website_url": null,
+      "metadata_json": null
+    },
+    {
+      "id": 6,
+      "lead_code": "LD-000006",
+      "source_type": "contact",
+      "source_ref_id": 6,
+      "date_created": "2026-07-29T02:50:02.953Z",
+      "name": "Norm Test",
+      "business": null,
+      "industry": null,
+      "service_product": "General inquiry",
+      "email": null,
+      "whatsapp": "+923001234567",
+      "phone": null,
+      "country": "Pakistan",
+      "country_code": null,
+      "dial_code": "+92",
+      "phone_number": "3001234567",
+      "city": null,
+      "budget": null,
+      "timeline": null,
+      "preferred_contact_method": "WhatsApp",
+      "project_description": "Hi",
+      "status": "New",
+      "assigned_to_user_id": null,
+      "assigned_user_id": null,
+      "assigned_at": null,
+      "assigned_by": null,
+      "website_url": null,
+      "metadata_json": null
+    }
+  ],
+  "leadNotes": [],
+  "activities": [
+    {
+      "id": 1,
+      "lead_id": 1,
+      "user_id": null,
+      "action_type": "LEAD_CREATED",
+      "description": "Lead created from contact form",
+      "created_at": "2026-07-29T00:54:09.408Z"
+    },
+    {
+      "id": 2,
+      "lead_id": 1,
+      "user_id": 1,
+      "action_type": "STATUS_CHANGE",
+      "description": "Moved to Meeting Scheduled",
+      "created_at": "2026-07-29T01:12:13.584Z"
+    },
+    {
+      "id": 3,
+      "lead_id": 1,
+      "user_id": 1,
+      "action_type": "STATUS_CHANGE",
+      "description": "Moved to New",
+      "created_at": "2026-07-29T01:12:16.752Z"
+    },
+    {
+      "id": 4,
+      "lead_id": 1,
+      "user_id": 1,
+      "action_type": "STATUS_CHANGE",
+      "description": "Moved to Contacted",
+      "created_at": "2026-07-29T01:55:55.401Z"
+    },
+    {
+      "id": 5,
+      "lead_id": 1,
+      "user_id": 1,
+      "action_type": "STATUS_CHANGE",
+      "description": "Moved to New",
+      "created_at": "2026-07-29T01:55:56.728Z"
+    },
+    {
+      "id": 6,
+      "lead_id": 2,
+      "user_id": null,
+      "action_type": "LEAD_CREATED",
+      "description": "Lead created from contact form",
+      "created_at": "2026-07-29T02:00:05.277Z"
+    },
+    {
+      "id": 7,
+      "lead_id": 3,
+      "user_id": null,
+      "action_type": "LEAD_CREATED",
+      "description": "Lead created from contact form",
+      "created_at": "2026-07-29T02:16:32.484Z"
+    },
+    {
+      "id": 8,
+      "lead_id": 4,
+      "user_id": null,
+      "action_type": "LEAD_CREATED",
+      "description": "Lead created from contact form",
+      "created_at": "2026-07-29T02:16:32.501Z"
+    },
+    {
+      "id": 9,
+      "lead_id": 5,
+      "user_id": null,
+      "action_type": "LEAD_CREATED",
+      "description": "Lead created from contact form",
+      "created_at": "2026-07-29T02:17:38.022Z"
+    },
+    {
+      "id": 10,
+      "lead_id": 1,
+      "user_id": 1,
+      "action_type": "STATUS_CHANGE",
+      "description": "Moved to Contacted",
+      "created_at": "2026-07-29T02:37:23.677Z"
+    },
+    {
+      "id": 11,
+      "lead_id": 2,
+      "user_id": 1,
+      "action_type": "STATUS_CHANGE",
+      "description": "Moved to Meeting Scheduled",
+      "created_at": "2026-07-29T02:37:25.334Z"
+    },
+    {
+      "id": 12,
+      "lead_id": 3,
+      "user_id": 1,
+      "action_type": "STATUS_CHANGE",
+      "description": "Moved to Proposal Sent",
+      "created_at": "2026-07-29T02:37:27.207Z"
+    },
+    {
+      "id": 13,
+      "lead_id": 2,
+      "user_id": 1,
+      "action_type": "STATUS_CHANGE",
+      "description": "Moved to Lost",
+      "created_at": "2026-07-29T02:37:30.061Z"
+    },
+    {
+      "id": 14,
+      "lead_id": 6,
+      "user_id": null,
+      "action_type": "LEAD_CREATED",
+      "description": "Lead created from contact form",
+      "created_at": "2026-07-29T02:50:02.954Z"
+    }
+  ],
+  "clients": [],
+  "projects": [],
+  "contactMessages": [
+    {
+      "id": 1,
+      "name": "jawad",
+      "business": "gym",
+      "topic": "Website",
+      "email": "jawadjan770@gmail.com",
+      "whatsapp": "03272340500",
+      "phone": "03272340500",
+      "city": "karachi",
+      "message": "i wanna build a website for my gym",
+      "created_at": "2026-07-29T00:54:09.407Z"
+    },
+    {
+      "id": 2,
+      "name": "jawad",
+      "business": null,
+      "topic": "Website",
+      "email": "onairos101@gmail.com",
+      "whatsapp": null,
+      "phone": null,
+      "city": null,
+      "message": "dafd",
+      "created_at": "2026-07-29T02:00:05.276Z"
+    },
+    {
+      "id": 3,
+      "name": "WA Only",
+      "business": null,
+      "topic": null,
+      "email": null,
+      "whatsapp": "+923001112233",
+      "phone": null,
+      "country": "Pakistan",
+      "country_code": "PK",
+      "dial_code": "+92",
+      "phone_number": "3001112233",
+      "city": null,
+      "message": "Need a site",
+      "created_at": "2026-07-29T02:16:32.483Z"
+    },
+    {
+      "id": 4,
+      "name": "Email Only",
+      "business": null,
+      "topic": null,
+      "email": "only@example.com",
+      "whatsapp": null,
+      "phone": null,
+      "country": null,
+      "country_code": null,
+      "dial_code": null,
+      "phone_number": null,
+      "city": null,
+      "message": "Need a site",
+      "created_at": "2026-07-29T02:16:32.498Z"
+    },
+    {
+      "id": 5,
+      "name": "B",
+      "business": null,
+      "topic": null,
+      "email": null,
+      "whatsapp": "+971501234567",
+      "phone": null,
+      "country": "United Arab Emirates",
+      "country_code": "AE",
+      "dial_code": "+971",
+      "phone_number": "501234567",
+      "city": null,
+      "message": "C",
+      "created_at": "2026-07-29T02:17:38.021Z"
+    },
+    {
+      "id": 6,
+      "name": "Norm Test",
+      "business": null,
+      "topic": null,
+      "email": null,
+      "whatsapp": "+923001234567",
+      "phone": null,
+      "country": "Pakistan",
+      "country_code": null,
+      "dial_code": "+92",
+      "phone_number": "3001234567",
+      "city": null,
+      "message": "Hi",
+      "created_at": "2026-07-29T02:50:02.953Z"
+    }
+  ],
+  "quoteRequests": [],
+  "newsletterSubscribers": [
+    {
+      "id": 1,
+      "email": "news@example.com",
+      "source": "footer",
+      "created_at": "2026-07-29T02:50:02.967Z"
+    },
+    {
+      "id": 2,
+      "email": "ready@onairo.test",
+      "source": "footer",
+      "created_at": "2026-07-29T02:53:03.837Z"
+    }
+  ],
+  "settings": [],
+  "auditLogs": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "action": "AUTH_LOGIN",
+      "target": "admin@onairosolutions.com",
+      "ip_hash": "9f6cb9e1e4efa3a74b27214bb3ad8ec9745002fd0e02f3bbc3b7d90fc2ccb80f",
+      "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.19041.6456",
+      "created_at": "2026-07-29T00:40:58.973Z"
+    },
+    {
+      "id": 2,
+      "user_id": 1,
+      "action": "AUTH_LOGIN",
+      "target": "admin@onairosolutions.com",
+      "ip_hash": "9f6cb9e1e4efa3a74b27214bb3ad8ec9745002fd0e02f3bbc3b7d90fc2ccb80f",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/3.13.10 Chrome/144.0.7559.236 Electron/40.10.3 Safari/537.36",
+      "created_at": "2026-07-29T00:42:39.834Z"
+    },
+    {
+      "id": 3,
+      "user_id": 1,
+      "action": "LEAD_STATUS_CHANGE",
+      "target": "1:Meeting Scheduled",
+      "ip_hash": "9f6cb9e1e4efa3a74b27214bb3ad8ec9745002fd0e02f3bbc3b7d90fc2ccb80f",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/3.13.10 Chrome/144.0.7559.236 Electron/40.10.3 Safari/537.36",
+      "created_at": "2026-07-29T01:12:13.628Z"
+    },
+    {
+      "id": 4,
+      "user_id": 1,
+      "action": "LEAD_STATUS_CHANGE",
+      "target": "1:New",
+      "ip_hash": "9f6cb9e1e4efa3a74b27214bb3ad8ec9745002fd0e02f3bbc3b7d90fc2ccb80f",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/3.13.10 Chrome/144.0.7559.236 Electron/40.10.3 Safari/537.36",
+      "created_at": "2026-07-29T01:12:16.752Z"
+    },
+    {
+      "id": 5,
+      "user_id": 1,
+      "actor_name": "admin",
+      "action": "AUTH_LOGIN",
+      "target": "1",
+      "target_type": "user",
+      "target_id": "1",
+      "previous_value": null,
+      "new_value": null,
+      "detail": null,
+      "result": "success",
+      "ip_hash": "9f6cb9e1e4efa3a74b27214bb3ad8ec9745002fd0e02f3bbc3b7d90fc2ccb80f",
+      "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.19041.6456",
+      "created_at": "2026-07-29T01:25:04.174Z"
+    },
+    {
+      "id": 6,
+      "user_id": 1,
+      "actor_name": "admin",
+      "action": "AUTH_LOGIN",
+      "target": "1",
+      "target_type": "user",
+      "target_id": "1",
+      "previous_value": null,
+      "new_value": null,
+      "detail": null,
+      "result": "success",
+      "ip_hash": "289e1f7f7b21c54593a98d59c7f4c57150246aa55c5205ac69b7dfae9a43aa96",
+      "user_agent": "node",
+      "created_at": "2026-07-29T01:26:20.217Z"
+    },
+    {
+      "id": 7,
+      "user_id": 1,
+      "actor_name": "admin",
+      "action": "AUTH_LOGIN",
+      "target": "1",
+      "target_type": "user",
+      "target_id": "1",
+      "previous_value": null,
+      "new_value": null,
+      "detail": null,
+      "result": "success",
+      "ip_hash": "289e1f7f7b21c54593a98d59c7f4c57150246aa55c5205ac69b7dfae9a43aa96",
+      "user_agent": "node",
+      "created_at": "2026-07-29T01:28:29.797Z"
+    },
+    {
+      "id": 8,
+      "user_id": 1,
+      "actor_name": "admin",
+      "action": "AUTH_LOGIN",
+      "target": "1",
+      "target_type": "user",
+      "target_id": "1",
+      "previous_value": null,
+      "new_value": null,
+      "detail": null,
+      "result": "success",
+      "ip_hash": "289e1f7f7b21c54593a98d59c7f4c57150246aa55c5205ac69b7dfae9a43aa96",
+      "user_agent": "node",
+      "created_at": "2026-07-29T01:28:48.663Z"
+    },
+    {
+      "id": 9,
+      "user_id": 1,
+      "actor_name": "admin",
+      "action": "AUTH_LOGIN",
+      "target": "1",
+      "target_type": "user",
+      "target_id": "1",
+      "previous_value": null,
+      "new_value": null,
+      "detail": null,
+      "result": "success",
+      "ip_hash": "289e1f7f7b21c54593a98d59c7f4c57150246aa55c5205ac69b7dfae9a43aa96",
+      "user_agent": "node",
+      "created_at": "2026-07-29T01:30:20.132Z"
+    },
+    {
+      "id": 10,
+      "user_id": 1,
+      "actor_name": "admin",
+      "action": "AUTH_LOGIN",
+      "target": "1",
+      "target_type": "user",
+      "target_id": "1",
+      "previous_value": null,
+      "new_value": null,
+      "detail": null,
+      "result": "success",
+      "ip_hash": "289e1f7f7b21c54593a98d59c7f4c57150246aa55c5205ac69b7dfae9a43aa96",
+      "user_agent": "node",
+      "created_at": "2026-07-29T01:31:48.878Z"
+    },
+    {
+      "id": 11,
+      "user_id": 1,
+      "actor_name": "admin",
+      "action": "AUTH_LOGIN",
+      "target": "1",
+      "target_type": "user",
+      "target_id": "1",
+      "previous_value": null,
+      "new_value": null,
+      "detail": null,
+      "result": "success",
+      "ip_hash": "289e1f7f7b21c54593a98d59c7f4c57150246aa55c5205ac69b7dfae9a43aa96",
+      "user_agent": "node",
+      "created_at": "2026-07-29T01:33:19.937Z"
+    },
+    {
+      "id": 12,
+      "user_id": 1,
+      "actor_name": "admin",
+      "action": "PASSWORD_CHANGED",
+      "target": "1",
+      "target_type": "user",
+      "target_id": "1",
+      "previous_value": null,
+      "new_value": null,
+      "detail": null,
+      "result": "success",
+      "ip_hash": "9f6cb9e1e4efa3a74b27214bb3ad8ec9745002fd0e02f3bbc3b7d90fc2ccb80f",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/3.13.10 Chrome/144.0.7559.236 Electron/40.10.3 Safari/537.36",
+      "created_at": "2026-07-29T01:54:41.000Z"
+    },
+    {
+      "id": 13,
+      "user_id": 1,
+      "actor_name": "admin",
+      "action": "LEAD_STATUS_CHANGED",
+      "target": "1",
+      "target_type": "lead",
+      "target_id": "1",
+      "previous_value": {
+        "status": "New"
+      },
+      "new_value": {
+        "status": "Contacted"
+      },
+      "detail": null,
+      "result": "success",
+      "ip_hash": "9f6cb9e1e4efa3a74b27214bb3ad8ec9745002fd0e02f3bbc3b7d90fc2ccb80f",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/3.13.10 Chrome/144.0.7559.236 Electron/40.10.3 Safari/537.36",
+      "created_at": "2026-07-29T01:55:55.461Z"
+    },
+    {
+      "id": 14,
+      "user_id": 1,
+      "actor_name": "admin",
+      "action": "LEAD_STATUS_CHANGED",
+      "target": "1",
+      "target_type": "lead",
+      "target_id": "1",
+      "previous_value": {
+        "status": "Contacted"
+      },
+      "new_value": {
+        "status": "New"
+      },
+      "detail": null,
+      "result": "success",
+      "ip_hash": "9f6cb9e1e4efa3a74b27214bb3ad8ec9745002fd0e02f3bbc3b7d90fc2ccb80f",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/3.13.10 Chrome/144.0.7559.236 Electron/40.10.3 Safari/537.36",
+      "created_at": "2026-07-29T01:55:56.729Z"
+    },
+    {
+      "id": 15,
+      "user_id": 1,
+      "actor_name": "admin",
+      "action": "AUTH_LOGOUT",
+      "target": "1",
+      "target_type": "user",
+      "target_id": "1",
+      "previous_value": null,
+      "new_value": null,
+      "detail": null,
+      "result": "success",
+      "ip_hash": "9f6cb9e1e4efa3a74b27214bb3ad8ec9745002fd0e02f3bbc3b7d90fc2ccb80f",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/3.13.10 Chrome/144.0.7559.236 Electron/40.10.3 Safari/537.36",
+      "created_at": "2026-07-29T01:57:42.982Z"
+    },
+    {
+      "id": 16,
+      "user_id": 1,
+      "actor_name": "admin",
+      "action": "AUTH_LOGIN",
+      "target": "1",
+      "target_type": "user",
+      "target_id": "1",
+      "previous_value": null,
+      "new_value": null,
+      "detail": null,
+      "result": "success",
+      "ip_hash": "9f6cb9e1e4efa3a74b27214bb3ad8ec9745002fd0e02f3bbc3b7d90fc2ccb80f",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/3.13.10 Chrome/144.0.7559.236 Electron/40.10.3 Safari/537.36",
+      "created_at": "2026-07-29T01:58:34.281Z"
+    },
+    {
+      "id": 17,
+      "user_id": 1,
+      "actor_name": "admin",
+      "action": "AUTH_LOGIN",
+      "target": "1",
+      "target_type": "user",
+      "target_id": "1",
+      "previous_value": null,
+      "new_value": null,
+      "detail": null,
+      "result": "success",
+      "ip_hash": "9f6cb9e1e4efa3a74b27214bb3ad8ec9745002fd0e02f3bbc3b7d90fc2ccb80f",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+      "created_at": "2026-07-29T02:08:55.711Z"
+    },
+    {
+      "id": 18,
+      "user_id": 1,
+      "actor_name": "admin",
+      "action": "LEAD_STATUS_CHANGED",
+      "target": "1",
+      "target_type": "lead",
+      "target_id": "1",
+      "previous_value": {
+        "status": "New"
+      },
+      "new_value": {
+        "status": "Contacted"
+      },
+      "detail": null,
+      "result": "success",
+      "ip_hash": "9f6cb9e1e4efa3a74b27214bb3ad8ec9745002fd0e02f3bbc3b7d90fc2ccb80f",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+      "created_at": "2026-07-29T02:37:23.679Z"
+    },
+    {
+      "id": 19,
+      "user_id": 1,
+      "actor_name": "admin",
+      "action": "LEAD_STATUS_CHANGED",
+      "target": "2",
+      "target_type": "lead",
+      "target_id": "2",
+      "previous_value": {
+        "status": "New"
+      },
+      "new_value": {
+        "status": "Meeting Scheduled"
+      },
+      "detail": null,
+      "result": "success",
+      "ip_hash": "9f6cb9e1e4efa3a74b27214bb3ad8ec9745002fd0e02f3bbc3b7d90fc2ccb80f",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+      "created_at": "2026-07-29T02:37:25.335Z"
+    },
+    {
+      "id": 20,
+      "user_id": 1,
+      "actor_name": "admin",
+      "action": "LEAD_STATUS_CHANGED",
+      "target": "3",
+      "target_type": "lead",
+      "target_id": "3",
+      "previous_value": {
+        "status": "New"
+      },
+      "new_value": {
+        "status": "Proposal Sent"
+      },
+      "detail": null,
+      "result": "success",
+      "ip_hash": "9f6cb9e1e4efa3a74b27214bb3ad8ec9745002fd0e02f3bbc3b7d90fc2ccb80f",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+      "created_at": "2026-07-29T02:37:27.209Z"
+    },
+    {
+      "id": 21,
+      "user_id": 1,
+      "actor_name": "admin",
+      "action": "LEAD_STATUS_CHANGED",
+      "target": "2",
+      "target_type": "lead",
+      "target_id": "2",
+      "previous_value": {
+        "status": "Meeting Scheduled"
+      },
+      "new_value": {
+        "status": "Lost"
+      },
+      "detail": null,
+      "result": "success",
+      "ip_hash": "9f6cb9e1e4efa3a74b27214bb3ad8ec9745002fd0e02f3bbc3b7d90fc2ccb80f",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+      "created_at": "2026-07-29T02:37:30.062Z"
+    }
+  ],
+  "loginAttempts": [
+    {
+      "id": 1,
+      "email": "admin@onairosolutions.com",
+      "success": 1,
+      "ip_hash": "9f6cb9e1e4efa3a74b27214bb3ad8ec9745002fd0e02f3bbc3b7d90fc2ccb80f",
+      "created_at": "2026-07-29T00:40:58.971Z"
+    },
+    {
+      "id": 2,
+      "email": "admin@onairosolutions.com",
+      "success": 1,
+      "ip_hash": "9f6cb9e1e4efa3a74b27214bb3ad8ec9745002fd0e02f3bbc3b7d90fc2ccb80f",
+      "created_at": "2026-07-29T00:42:39.833Z"
+    },
+    {
+      "id": 3,
+      "email": "admin@onairosolutions.com",
+      "success": 1,
+      "ip_hash": "9f6cb9e1e4efa3a74b27214bb3ad8ec9745002fd0e02f3bbc3b7d90fc2ccb80f",
+      "created_at": "2026-07-29T01:25:04.171Z"
+    },
+    {
+      "id": 4,
+      "email": "admin@onairosolutions.com",
+      "success": 1,
+      "ip_hash": "289e1f7f7b21c54593a98d59c7f4c57150246aa55c5205ac69b7dfae9a43aa96",
+      "created_at": "2026-07-29T01:26:20.216Z"
+    },
+    {
+      "id": 5,
+      "email": "admin@onairosolutions.com",
+      "success": 1,
+      "ip_hash": "289e1f7f7b21c54593a98d59c7f4c57150246aa55c5205ac69b7dfae9a43aa96",
+      "created_at": "2026-07-29T01:28:29.794Z"
+    },
+    {
+      "id": 6,
+      "email": "admin@onairosolutions.com",
+      "success": 1,
+      "ip_hash": "289e1f7f7b21c54593a98d59c7f4c57150246aa55c5205ac69b7dfae9a43aa96",
+      "created_at": "2026-07-29T01:28:48.661Z"
+    },
+    {
+      "id": 7,
+      "email": "admin@onairosolutions.com",
+      "success": 1,
+      "ip_hash": "289e1f7f7b21c54593a98d59c7f4c57150246aa55c5205ac69b7dfae9a43aa96",
+      "created_at": "2026-07-29T01:30:20.130Z"
+    },
+    {
+      "id": 8,
+      "email": "admin@onairosolutions.com",
+      "success": 1,
+      "ip_hash": "289e1f7f7b21c54593a98d59c7f4c57150246aa55c5205ac69b7dfae9a43aa96",
+      "created_at": "2026-07-29T01:31:48.876Z"
+    },
+    {
+      "id": 9,
+      "email": "admin@onairosolutions.com",
+      "success": 1,
+      "ip_hash": "289e1f7f7b21c54593a98d59c7f4c57150246aa55c5205ac69b7dfae9a43aa96",
+      "created_at": "2026-07-29T01:33:19.935Z"
+    },
+    {
+      "id": 10,
+      "email": "admin@onairosolutions.com",
+      "success": 1,
+      "ip_hash": "9f6cb9e1e4efa3a74b27214bb3ad8ec9745002fd0e02f3bbc3b7d90fc2ccb80f",
+      "created_at": "2026-07-29T01:58:34.279Z"
+    },
+    {
+      "id": 11,
+      "email": "admin@onairosolutions.com",
+      "success": 1,
+      "ip_hash": "9f6cb9e1e4efa3a74b27214bb3ad8ec9745002fd0e02f3bbc3b7d90fc2ccb80f",
+      "created_at": "2026-07-29T02:08:55.691Z"
+    },
+    {
+      "id": 12,
+      "email": "admin@onairosolutions.com",
+      "success": 0,
+      "ip_hash": "289e1f7f7b21c54593a98d59c7f4c57150246aa55c5205ac69b7dfae9a43aa96",
+      "created_at": "2026-07-29T02:50:03.370Z"
+    }
+  ],
+  "roles": [
+    {
+      "id": 1,
+      "key": "super_admin",
+      "name": "Super Admin",
+      "description": "Unrestricted access to every module, user, role and setting.",
+      "level": 100,
+      "is_system": 1,
+      "created_by": null,
+      "created_at": "2026-07-29T01:14:19.091Z",
+      "updated_at": "2026-07-29T01:14:19.099Z",
+      "permissions_customized": 0
+    },
+    {
+      "id": 2,
+      "key": "sales_manager",
+      "name": "Sales Manager",
+      "description": "Owns the sales pipeline: all leads, quotations, clients and sales projects.",
+      "level": 60,
+      "is_system": 1,
+      "created_by": null,
+      "created_at": "2026-07-29T01:14:19.100Z",
+      "updated_at": "2026-07-29T01:14:19.100Z",
+      "permissions_customized": 0
+    },
+    {
+      "id": 3,
+      "key": "sales_executive",
+      "name": "Sales Executive",
+      "description": "Works only the leads assigned to them, with follow-up notes and status changes.",
+      "level": 30,
+      "is_system": 1,
+      "created_by": null,
+      "created_at": "2026-07-29T01:14:19.100Z",
+      "updated_at": "2026-07-29T01:14:19.100Z",
+      "permissions_customized": 0
+    },
+    {
+      "id": 4,
+      "key": "support_manager",
+      "name": "Support Manager",
+      "description": "Runs customer support: all tickets, assignment and support analytics.",
+      "level": 60,
+      "is_system": 1,
+      "created_by": null,
+      "created_at": "2026-07-29T01:14:19.100Z",
+      "updated_at": "2026-07-29T01:14:19.100Z",
+      "permissions_customized": 0
+    },
+    {
+      "id": 5,
+      "key": "support_agent",
+      "name": "Support Agent",
+      "description": "Handles only the support tickets assigned to them.",
+      "level": 30,
+      "is_system": 1,
+      "created_by": null,
+      "created_at": "2026-07-29T01:14:19.100Z",
+      "updated_at": "2026-07-29T01:14:19.100Z",
+      "permissions_customized": 0
+    },
+    {
+      "id": 6,
+      "key": "content_manager",
+      "name": "Content Manager",
+      "description": "Manages public website content. Publishing requires Super Admin approval.",
+      "level": 50,
+      "is_system": 1,
+      "created_by": null,
+      "created_at": "2026-07-29T01:14:19.100Z",
+      "updated_at": "2026-07-29T01:14:19.100Z",
+      "permissions_customized": 0
+    },
+    {
+      "id": 7,
+      "key": "finance_manager",
+      "name": "Finance Manager",
+      "description": "Manages invoices, payments and financial reporting.",
+      "level": 60,
+      "is_system": 1,
+      "created_by": null,
+      "created_at": "2026-07-29T01:14:19.100Z",
+      "updated_at": "2026-07-29T01:14:19.100Z",
+      "permissions_customized": 0
+    },
+    {
+      "id": 8,
+      "key": "viewer",
+      "name": "Viewer / Reporting",
+      "description": "Read-only access to approved dashboards, analytics and reports.",
+      "level": 10,
+      "is_system": 1,
+      "created_by": null,
+      "created_at": "2026-07-29T01:14:19.100Z",
+      "updated_at": "2026-07-29T01:14:19.100Z",
+      "permissions_customized": 0
+    }
+  ],
+  "permissions": [
+    {
+      "id": 1,
+      "key": "dashboard.view",
+      "module": "dashboard",
+      "action": "view",
+      "label": "View dashboard"
+    },
+    {
+      "id": 2,
+      "key": "leads.view",
+      "module": "leads",
+      "action": "view",
+      "label": "View leads"
+    },
+    {
+      "id": 3,
+      "key": "leads.view_all",
+      "module": "leads",
+      "action": "view_all",
+      "label": "View all leads (not just assigned)"
+    },
+    {
+      "id": 4,
+      "key": "leads.create",
+      "module": "leads",
+      "action": "create",
+      "label": "Create leads"
+    },
+    {
+      "id": 5,
+      "key": "leads.update",
+      "module": "leads",
+      "action": "update",
+      "label": "Update leads"
+    },
+    {
+      "id": 6,
+      "key": "leads.delete",
+      "module": "leads",
+      "action": "delete",
+      "label": "Delete leads"
+    },
+    {
+      "id": 7,
+      "key": "leads.export",
+      "module": "leads",
+      "action": "export",
+      "label": "Export leads"
+    },
+    {
+      "id": 8,
+      "key": "leads.assign",
+      "module": "leads",
+      "action": "assign",
+      "label": "Assign leads"
+    },
+    {
+      "id": 9,
+      "key": "leads.change_status",
+      "module": "leads",
+      "action": "change_status",
+      "label": "Change lead status"
+    },
+    {
+      "id": 10,
+      "key": "lead_notes.view",
+      "module": "lead_notes",
+      "action": "view",
+      "label": "View lead notes"
+    },
+    {
+      "id": 11,
+      "key": "lead_notes.create",
+      "module": "lead_notes",
+      "action": "create",
+      "label": "Add lead notes"
+    },
+    {
+      "id": 12,
+      "key": "lead_notes.update",
+      "module": "lead_notes",
+      "action": "update",
+      "label": "Edit lead notes"
+    },
+    {
+      "id": 13,
+      "key": "lead_notes.delete",
+      "module": "lead_notes",
+      "action": "delete",
+      "label": "Delete lead notes"
+    },
+    {
+      "id": 14,
+      "key": "clients.view",
+      "module": "clients",
+      "action": "view",
+      "label": "View clients"
+    },
+    {
+      "id": 15,
+      "key": "clients.view_all",
+      "module": "clients",
+      "action": "view_all",
+      "label": "View all clients (not just assigned)"
+    },
+    {
+      "id": 16,
+      "key": "clients.create",
+      "module": "clients",
+      "action": "create",
+      "label": "Create clients"
+    },
+    {
+      "id": 17,
+      "key": "clients.update",
+      "module": "clients",
+      "action": "update",
+      "label": "Update clients"
+    },
+    {
+      "id": 18,
+      "key": "clients.delete",
+      "module": "clients",
+      "action": "delete",
+      "label": "Delete clients"
+    },
+    {
+      "id": 19,
+      "key": "projects.view",
+      "module": "projects",
+      "action": "view",
+      "label": "View projects"
+    },
+    {
+      "id": 20,
+      "key": "projects.create",
+      "module": "projects",
+      "action": "create",
+      "label": "Create projects"
+    },
+    {
+      "id": 21,
+      "key": "projects.update",
+      "module": "projects",
+      "action": "update",
+      "label": "Update projects"
+    },
+    {
+      "id": 22,
+      "key": "projects.delete",
+      "module": "projects",
+      "action": "delete",
+      "label": "Delete projects"
+    },
+    {
+      "id": 23,
+      "key": "website_forms.view",
+      "module": "website_forms",
+      "action": "view",
+      "label": "View website form submissions"
+    },
+    {
+      "id": 24,
+      "key": "website_forms.export",
+      "module": "website_forms",
+      "action": "export",
+      "label": "Export website form submissions"
+    },
+    {
+      "id": 25,
+      "key": "edutrack.view",
+      "module": "edutrack",
+      "action": "view",
+      "label": "View EduTrack module"
+    },
+    {
+      "id": 26,
+      "key": "edutrack.manage",
+      "module": "edutrack",
+      "action": "manage",
+      "label": "Manage EduTrack module"
+    },
+    {
+      "id": 27,
+      "key": "products.view",
+      "module": "products",
+      "action": "view",
+      "label": "View products"
+    },
+    {
+      "id": 28,
+      "key": "products.manage",
+      "module": "products",
+      "action": "manage",
+      "label": "Manage products"
+    },
+    {
+      "id": 29,
+      "key": "support.view",
+      "module": "support",
+      "action": "view",
+      "label": "View support tickets"
+    },
+    {
+      "id": 30,
+      "key": "support.view_all",
+      "module": "support",
+      "action": "view_all",
+      "label": "View all tickets (not just assigned)"
+    },
+    {
+      "id": 31,
+      "key": "support.create",
+      "module": "support",
+      "action": "create",
+      "label": "Create support tickets"
+    },
+    {
+      "id": 32,
+      "key": "support.update",
+      "module": "support",
+      "action": "update",
+      "label": "Update support tickets"
+    },
+    {
+      "id": 33,
+      "key": "support.assign",
+      "module": "support",
+      "action": "assign",
+      "label": "Assign support tickets"
+    },
+    {
+      "id": 34,
+      "key": "support.delete",
+      "module": "support",
+      "action": "delete",
+      "label": "Delete support tickets"
+    },
+    {
+      "id": 35,
+      "key": "newsletter.view",
+      "module": "newsletter",
+      "action": "view",
+      "label": "View newsletter subscribers"
+    },
+    {
+      "id": 36,
+      "key": "newsletter.manage",
+      "module": "newsletter",
+      "action": "manage",
+      "label": "Manage newsletter"
+    },
+    {
+      "id": 37,
+      "key": "blog.view",
+      "module": "blog",
+      "action": "view",
+      "label": "View blog posts"
+    },
+    {
+      "id": 38,
+      "key": "blog.create",
+      "module": "blog",
+      "action": "create",
+      "label": "Create blog posts"
+    },
+    {
+      "id": 39,
+      "key": "blog.update",
+      "module": "blog",
+      "action": "update",
+      "label": "Edit blog posts"
+    },
+    {
+      "id": 40,
+      "key": "blog.publish",
+      "module": "blog",
+      "action": "publish",
+      "label": "Publish blog posts"
+    },
+    {
+      "id": 41,
+      "key": "blog.delete",
+      "module": "blog",
+      "action": "delete",
+      "label": "Delete blog posts"
+    },
+    {
+      "id": 42,
+      "key": "portfolio.view",
+      "module": "portfolio",
+      "action": "view",
+      "label": "View portfolio entries"
+    },
+    {
+      "id": 43,
+      "key": "portfolio.create",
+      "module": "portfolio",
+      "action": "create",
+      "label": "Create portfolio entries"
+    },
+    {
+      "id": 44,
+      "key": "portfolio.update",
+      "module": "portfolio",
+      "action": "update",
+      "label": "Edit portfolio entries"
+    },
+    {
+      "id": 45,
+      "key": "portfolio.publish",
+      "module": "portfolio",
+      "action": "publish",
+      "label": "Publish portfolio entries"
+    },
+    {
+      "id": 46,
+      "key": "portfolio.delete",
+      "module": "portfolio",
+      "action": "delete",
+      "label": "Delete portfolio entries"
+    },
+    {
+      "id": 47,
+      "key": "invoices.view",
+      "module": "invoices",
+      "action": "view",
+      "label": "View invoices"
+    },
+    {
+      "id": 48,
+      "key": "invoices.create",
+      "module": "invoices",
+      "action": "create",
+      "label": "Create invoices"
+    },
+    {
+      "id": 49,
+      "key": "invoices.update",
+      "module": "invoices",
+      "action": "update",
+      "label": "Update invoices and record payments"
+    },
+    {
+      "id": 50,
+      "key": "invoices.delete",
+      "module": "invoices",
+      "action": "delete",
+      "label": "Delete invoices"
+    },
+    {
+      "id": 51,
+      "key": "analytics.view",
+      "module": "analytics",
+      "action": "view",
+      "label": "View analytics"
+    },
+    {
+      "id": 52,
+      "key": "users.view",
+      "module": "users",
+      "action": "view",
+      "label": "View users"
+    },
+    {
+      "id": 53,
+      "key": "users.create",
+      "module": "users",
+      "action": "create",
+      "label": "Create and invite users"
+    },
+    {
+      "id": 54,
+      "key": "users.update",
+      "module": "users",
+      "action": "update",
+      "label": "Update users"
+    },
+    {
+      "id": 55,
+      "key": "users.disable",
+      "module": "users",
+      "action": "disable",
+      "label": "Disable and enable users"
+    },
+    {
+      "id": 56,
+      "key": "users.reset_password",
+      "module": "users",
+      "action": "reset_password",
+      "label": "Reset user passwords"
+    },
+    {
+      "id": 57,
+      "key": "users.delete",
+      "module": "users",
+      "action": "delete",
+      "label": "Delete user accounts"
+    },
+    {
+      "id": 58,
+      "key": "roles.view",
+      "module": "roles",
+      "action": "view",
+      "label": "View roles"
+    },
+    {
+      "id": 59,
+      "key": "roles.create",
+      "module": "roles",
+      "action": "create",
+      "label": "Create roles"
+    },
+    {
+      "id": 60,
+      "key": "roles.update",
+      "module": "roles",
+      "action": "update",
+      "label": "Update role permissions"
+    },
+    {
+      "id": 61,
+      "key": "roles.delete",
+      "module": "roles",
+      "action": "delete",
+      "label": "Delete roles"
+    },
+    {
+      "id": 62,
+      "key": "roles.assign",
+      "module": "roles",
+      "action": "assign",
+      "label": "Assign roles to users"
+    },
+    {
+      "id": 63,
+      "key": "settings.view",
+      "module": "settings",
+      "action": "view",
+      "label": "View settings"
+    },
+    {
+      "id": 64,
+      "key": "settings.update",
+      "module": "settings",
+      "action": "update",
+      "label": "Update settings"
+    },
+    {
+      "id": 65,
+      "key": "audit_logs.view",
+      "module": "audit_logs",
+      "action": "view",
+      "label": "View audit logs"
+    }
+  ],
+  "rolePermissions": [
+    {
+      "id": 1,
+      "role_id": 1,
+      "permission_id": 1
+    },
+    {
+      "id": 2,
+      "role_id": 1,
+      "permission_id": 2
+    },
+    {
+      "id": 3,
+      "role_id": 1,
+      "permission_id": 3
+    },
+    {
+      "id": 4,
+      "role_id": 1,
+      "permission_id": 4
+    },
+    {
+      "id": 5,
+      "role_id": 1,
+      "permission_id": 5
+    },
+    {
+      "id": 6,
+      "role_id": 1,
+      "permission_id": 6
+    },
+    {
+      "id": 7,
+      "role_id": 1,
+      "permission_id": 7
+    },
+    {
+      "id": 8,
+      "role_id": 1,
+      "permission_id": 8
+    },
+    {
+      "id": 9,
+      "role_id": 1,
+      "permission_id": 9
+    },
+    {
+      "id": 10,
+      "role_id": 1,
+      "permission_id": 10
+    },
+    {
+      "id": 11,
+      "role_id": 1,
+      "permission_id": 11
+    },
+    {
+      "id": 12,
+      "role_id": 1,
+      "permission_id": 12
+    },
+    {
+      "id": 13,
+      "role_id": 1,
+      "permission_id": 13
+    },
+    {
+      "id": 14,
+      "role_id": 1,
+      "permission_id": 14
+    },
+    {
+      "id": 15,
+      "role_id": 1,
+      "permission_id": 15
+    },
+    {
+      "id": 16,
+      "role_id": 1,
+      "permission_id": 16
+    },
+    {
+      "id": 17,
+      "role_id": 1,
+      "permission_id": 17
+    },
+    {
+      "id": 18,
+      "role_id": 1,
+      "permission_id": 18
+    },
+    {
+      "id": 19,
+      "role_id": 1,
+      "permission_id": 19
+    },
+    {
+      "id": 20,
+      "role_id": 1,
+      "permission_id": 20
+    },
+    {
+      "id": 21,
+      "role_id": 1,
+      "permission_id": 21
+    },
+    {
+      "id": 22,
+      "role_id": 1,
+      "permission_id": 22
+    },
+    {
+      "id": 23,
+      "role_id": 1,
+      "permission_id": 23
+    },
+    {
+      "id": 24,
+      "role_id": 1,
+      "permission_id": 24
+    },
+    {
+      "id": 25,
+      "role_id": 1,
+      "permission_id": 25
+    },
+    {
+      "id": 26,
+      "role_id": 1,
+      "permission_id": 26
+    },
+    {
+      "id": 27,
+      "role_id": 1,
+      "permission_id": 27
+    },
+    {
+      "id": 28,
+      "role_id": 1,
+      "permission_id": 28
+    },
+    {
+      "id": 29,
+      "role_id": 1,
+      "permission_id": 29
+    },
+    {
+      "id": 30,
+      "role_id": 1,
+      "permission_id": 30
+    },
+    {
+      "id": 31,
+      "role_id": 1,
+      "permission_id": 31
+    },
+    {
+      "id": 32,
+      "role_id": 1,
+      "permission_id": 32
+    },
+    {
+      "id": 33,
+      "role_id": 1,
+      "permission_id": 33
+    },
+    {
+      "id": 34,
+      "role_id": 1,
+      "permission_id": 34
+    },
+    {
+      "id": 35,
+      "role_id": 1,
+      "permission_id": 35
+    },
+    {
+      "id": 36,
+      "role_id": 1,
+      "permission_id": 36
+    },
+    {
+      "id": 37,
+      "role_id": 1,
+      "permission_id": 37
+    },
+    {
+      "id": 38,
+      "role_id": 1,
+      "permission_id": 38
+    },
+    {
+      "id": 39,
+      "role_id": 1,
+      "permission_id": 39
+    },
+    {
+      "id": 40,
+      "role_id": 1,
+      "permission_id": 40
+    },
+    {
+      "id": 41,
+      "role_id": 1,
+      "permission_id": 41
+    },
+    {
+      "id": 42,
+      "role_id": 1,
+      "permission_id": 42
+    },
+    {
+      "id": 43,
+      "role_id": 1,
+      "permission_id": 43
+    },
+    {
+      "id": 44,
+      "role_id": 1,
+      "permission_id": 44
+    },
+    {
+      "id": 45,
+      "role_id": 1,
+      "permission_id": 45
+    },
+    {
+      "id": 46,
+      "role_id": 1,
+      "permission_id": 46
+    },
+    {
+      "id": 47,
+      "role_id": 1,
+      "permission_id": 47
+    },
+    {
+      "id": 48,
+      "role_id": 1,
+      "permission_id": 48
+    },
+    {
+      "id": 49,
+      "role_id": 1,
+      "permission_id": 49
+    },
+    {
+      "id": 50,
+      "role_id": 1,
+      "permission_id": 50
+    },
+    {
+      "id": 51,
+      "role_id": 1,
+      "permission_id": 51
+    },
+    {
+      "id": 52,
+      "role_id": 1,
+      "permission_id": 52
+    },
+    {
+      "id": 53,
+      "role_id": 1,
+      "permission_id": 53
+    },
+    {
+      "id": 54,
+      "role_id": 1,
+      "permission_id": 54
+    },
+    {
+      "id": 55,
+      "role_id": 1,
+      "permission_id": 55
+    },
+    {
+      "id": 56,
+      "role_id": 1,
+      "permission_id": 56
+    },
+    {
+      "id": 57,
+      "role_id": 1,
+      "permission_id": 57
+    },
+    {
+      "id": 58,
+      "role_id": 1,
+      "permission_id": 58
+    },
+    {
+      "id": 59,
+      "role_id": 1,
+      "permission_id": 59
+    },
+    {
+      "id": 60,
+      "role_id": 1,
+      "permission_id": 60
+    },
+    {
+      "id": 61,
+      "role_id": 1,
+      "permission_id": 61
+    },
+    {
+      "id": 62,
+      "role_id": 1,
+      "permission_id": 62
+    },
+    {
+      "id": 63,
+      "role_id": 1,
+      "permission_id": 63
+    },
+    {
+      "id": 64,
+      "role_id": 1,
+      "permission_id": 64
+    },
+    {
+      "id": 65,
+      "role_id": 1,
+      "permission_id": 65
+    },
+    {
+      "id": 66,
+      "role_id": 2,
+      "permission_id": 1
+    },
+    {
+      "id": 67,
+      "role_id": 2,
+      "permission_id": 2
+    },
+    {
+      "id": 68,
+      "role_id": 2,
+      "permission_id": 3
+    },
+    {
+      "id": 69,
+      "role_id": 2,
+      "permission_id": 4
+    },
+    {
+      "id": 70,
+      "role_id": 2,
+      "permission_id": 5
+    },
+    {
+      "id": 71,
+      "role_id": 2,
+      "permission_id": 7
+    },
+    {
+      "id": 72,
+      "role_id": 2,
+      "permission_id": 8
+    },
+    {
+      "id": 73,
+      "role_id": 2,
+      "permission_id": 9
+    },
+    {
+      "id": 74,
+      "role_id": 2,
+      "permission_id": 10
+    },
+    {
+      "id": 75,
+      "role_id": 2,
+      "permission_id": 11
+    },
+    {
+      "id": 76,
+      "role_id": 2,
+      "permission_id": 12
+    },
+    {
+      "id": 77,
+      "role_id": 2,
+      "permission_id": 14
+    },
+    {
+      "id": 78,
+      "role_id": 2,
+      "permission_id": 15
+    },
+    {
+      "id": 79,
+      "role_id": 2,
+      "permission_id": 16
+    },
+    {
+      "id": 80,
+      "role_id": 2,
+      "permission_id": 17
+    },
+    {
+      "id": 81,
+      "role_id": 2,
+      "permission_id": 19
+    },
+    {
+      "id": 82,
+      "role_id": 2,
+      "permission_id": 20
+    },
+    {
+      "id": 83,
+      "role_id": 2,
+      "permission_id": 21
+    },
+    {
+      "id": 84,
+      "role_id": 2,
+      "permission_id": 23
+    },
+    {
+      "id": 85,
+      "role_id": 2,
+      "permission_id": 24
+    },
+    {
+      "id": 86,
+      "role_id": 2,
+      "permission_id": 51
+    },
+    {
+      "id": 87,
+      "role_id": 3,
+      "permission_id": 1
+    },
+    {
+      "id": 88,
+      "role_id": 3,
+      "permission_id": 2
+    },
+    {
+      "id": 89,
+      "role_id": 3,
+      "permission_id": 5
+    },
+    {
+      "id": 90,
+      "role_id": 3,
+      "permission_id": 9
+    },
+    {
+      "id": 91,
+      "role_id": 3,
+      "permission_id": 10
+    },
+    {
+      "id": 92,
+      "role_id": 3,
+      "permission_id": 11
+    },
+    {
+      "id": 93,
+      "role_id": 3,
+      "permission_id": 14
+    },
+    {
+      "id": 94,
+      "role_id": 4,
+      "permission_id": 1
+    },
+    {
+      "id": 95,
+      "role_id": 4,
+      "permission_id": 29
+    },
+    {
+      "id": 96,
+      "role_id": 4,
+      "permission_id": 30
+    },
+    {
+      "id": 97,
+      "role_id": 4,
+      "permission_id": 31
+    },
+    {
+      "id": 98,
+      "role_id": 4,
+      "permission_id": 32
+    },
+    {
+      "id": 99,
+      "role_id": 4,
+      "permission_id": 33
+    },
+    {
+      "id": 100,
+      "role_id": 4,
+      "permission_id": 14
+    },
+    {
+      "id": 101,
+      "role_id": 4,
+      "permission_id": 15
+    },
+    {
+      "id": 102,
+      "role_id": 4,
+      "permission_id": 17
+    },
+    {
+      "id": 103,
+      "role_id": 4,
+      "permission_id": 27
+    },
+    {
+      "id": 104,
+      "role_id": 4,
+      "permission_id": 51
+    },
+    {
+      "id": 105,
+      "role_id": 5,
+      "permission_id": 1
+    },
+    {
+      "id": 106,
+      "role_id": 5,
+      "permission_id": 29
+    },
+    {
+      "id": 107,
+      "role_id": 5,
+      "permission_id": 31
+    },
+    {
+      "id": 108,
+      "role_id": 5,
+      "permission_id": 32
+    },
+    {
+      "id": 109,
+      "role_id": 5,
+      "permission_id": 14
+    },
+    {
+      "id": 119,
+      "role_id": 7,
+      "permission_id": 1
+    },
+    {
+      "id": 120,
+      "role_id": 7,
+      "permission_id": 47
+    },
+    {
+      "id": 121,
+      "role_id": 7,
+      "permission_id": 48
+    },
+    {
+      "id": 122,
+      "role_id": 7,
+      "permission_id": 49
+    },
+    {
+      "id": 123,
+      "role_id": 7,
+      "permission_id": 14
+    },
+    {
+      "id": 124,
+      "role_id": 7,
+      "permission_id": 15
+    },
+    {
+      "id": 125,
+      "role_id": 7,
+      "permission_id": 51
+    },
+    {
+      "id": 126,
+      "role_id": 8,
+      "permission_id": 1
+    },
+    {
+      "id": 127,
+      "role_id": 8,
+      "permission_id": 51
+    },
+    {
+      "id": 128,
+      "role_id": 8,
+      "permission_id": 2
+    },
+    {
+      "id": 129,
+      "role_id": 8,
+      "permission_id": 3
+    },
+    {
+      "id": 130,
+      "role_id": 8,
+      "permission_id": 23
+    },
+    {
+      "id": 131,
+      "role_id": 6,
+      "permission_id": 1
+    },
+    {
+      "id": 132,
+      "role_id": 6,
+      "permission_id": 37
+    },
+    {
+      "id": 133,
+      "role_id": 6,
+      "permission_id": 38
+    },
+    {
+      "id": 134,
+      "role_id": 6,
+      "permission_id": 39
+    },
+    {
+      "id": 135,
+      "role_id": 6,
+      "permission_id": 42
+    },
+    {
+      "id": 136,
+      "role_id": 6,
+      "permission_id": 43
+    },
+    {
+      "id": 137,
+      "role_id": 6,
+      "permission_id": 44
+    },
+    {
+      "id": 138,
+      "role_id": 6,
+      "permission_id": 27
+    }
+  ],
+  "userRoles": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "role_id": 1,
+      "assigned_at": "2026-07-29T01:14:19.101Z",
+      "assigned_by": null
+    }
+  ],
+  "invitations": [],
+  "sessions": [
+    {
+      "id": 1,
+      "sid": "MgwP5L0aETSUTzRBEzGxqMZD2GzB38bn",
+      "user_id": 1,
+      "created_at": "2026-07-29T01:25:04.172Z",
+      "last_seen_at": "2026-07-29T01:25:04.172Z",
+      "ip_hash": "9f6cb9e1e4efa3a74b27214bb3ad8ec9745002fd0e02f3bbc3b7d90fc2ccb80f",
+      "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.19041.6456",
+      "revoked_at": null
+    },
+    {
+      "id": 2,
+      "sid": "ioQYwcLSwe0HrIpDpIHQj5b4H2g9mb3u",
+      "user_id": 1,
+      "created_at": "2026-07-29T01:26:20.216Z",
+      "last_seen_at": "2026-07-29T01:26:20.216Z",
+      "ip_hash": "289e1f7f7b21c54593a98d59c7f4c57150246aa55c5205ac69b7dfae9a43aa96",
+      "user_agent": "node",
+      "revoked_at": null
+    },
+    {
+      "id": 3,
+      "sid": "wrnU0xMvevzRMhaJGYOo-0gGw-DUj9MI",
+      "user_id": 1,
+      "created_at": "2026-07-29T01:28:29.795Z",
+      "last_seen_at": "2026-07-29T01:28:29.795Z",
+      "ip_hash": "289e1f7f7b21c54593a98d59c7f4c57150246aa55c5205ac69b7dfae9a43aa96",
+      "user_agent": "node",
+      "revoked_at": null
+    },
+    {
+      "id": 4,
+      "sid": "1fh_AzOBjH0ipZOGQsgxy7g3nzeVNn4R",
+      "user_id": 1,
+      "created_at": "2026-07-29T01:28:48.662Z",
+      "last_seen_at": "2026-07-29T01:28:48.662Z",
+      "ip_hash": "289e1f7f7b21c54593a98d59c7f4c57150246aa55c5205ac69b7dfae9a43aa96",
+      "user_agent": "node",
+      "revoked_at": null
+    },
+    {
+      "id": 5,
+      "sid": "c-rnShoSgpDf4sezoFS5wV7eXcf6t0AJ",
+      "user_id": 1,
+      "created_at": "2026-07-29T01:30:20.131Z",
+      "last_seen_at": "2026-07-29T01:30:20.131Z",
+      "ip_hash": "289e1f7f7b21c54593a98d59c7f4c57150246aa55c5205ac69b7dfae9a43aa96",
+      "user_agent": "node",
+      "revoked_at": null
+    },
+    {
+      "id": 6,
+      "sid": "hHC61pSKnM7EYBbwXrCaGG_YwCoZyoJ-",
+      "user_id": 1,
+      "created_at": "2026-07-29T01:31:48.877Z",
+      "last_seen_at": "2026-07-29T01:31:48.877Z",
+      "ip_hash": "289e1f7f7b21c54593a98d59c7f4c57150246aa55c5205ac69b7dfae9a43aa96",
+      "user_agent": "node",
+      "revoked_at": null
+    },
+    {
+      "id": 7,
+      "sid": "s3MvV9xg6XRgllMTartQva4c4O6MoeSS",
+      "user_id": 1,
+      "created_at": "2026-07-29T01:33:19.936Z",
+      "last_seen_at": "2026-07-29T01:33:19.936Z",
+      "ip_hash": "289e1f7f7b21c54593a98d59c7f4c57150246aa55c5205ac69b7dfae9a43aa96",
+      "user_agent": "node",
+      "revoked_at": null
+    },
+    {
+      "id": 8,
+      "sid": "CCe7JthZ8cwxL3q-Xxtz3znFfBeBMO2D",
+      "user_id": 1,
+      "created_at": "2026-07-29T01:58:34.280Z",
+      "last_seen_at": "2026-07-29T01:58:34.280Z",
+      "ip_hash": "9f6cb9e1e4efa3a74b27214bb3ad8ec9745002fd0e02f3bbc3b7d90fc2ccb80f",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cursor/3.13.10 Chrome/144.0.7559.236 Electron/40.10.3 Safari/537.36",
+      "revoked_at": null
+    },
+    {
+      "id": 9,
+      "sid": "aPhPQ70wzYHoyFlxk9bpjm-bGJnnMmQm",
+      "user_id": 1,
+      "created_at": "2026-07-29T02:08:55.709Z",
+      "last_seen_at": "2026-07-29T02:08:55.709Z",
+      "ip_hash": "9f6cb9e1e4efa3a74b27214bb3ad8ec9745002fd0e02f3bbc3b7d90fc2ccb80f",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36",
+      "revoked_at": null
+    }
+  ],
+  "tickets": [],
+  "ticketNotes": [],
+  "invoices": [],
+  "payments": [],
+  "blogPosts": [],
+  "portfolioItems": [],
+  "counters": {
+    "users": 1,
+    "loginAttempts": 12,
+    "auditLogs": 21,
+    "contactMessages": 6,
+    "leads": 6,
+    "activities": 14,
+    "permissions": 65,
+    "roles": 8,
+    "rolePermissions": 138,
+    "userRoles": 1,
+    "sessions": 9,
+    "newsletterSubscribers": 2
+  }
+}
