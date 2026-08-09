@@ -1546,9 +1546,9 @@
 </a>
 <a href="#hero" class="back-top" id="backTop" aria-label="Back to top">↑</a>
 
-<script src="demo-globals.js"></script>
+<script src="/showcase/demo-globals.js"></script>
 <script>
-  DemoGlobals.init();
+  if (window.DemoGlobals) DemoGlobals.init();
 
   document.querySelectorAll('img').forEach((img) => {
     if (!img.hasAttribute('decoding')) img.decoding = 'async';
@@ -1784,12 +1784,12 @@
   document.getElementById('contactForm').addEventListener('submit', (e) => {
     e.preventDefault();
     document.getElementById('contactStatus').style.display = 'block';
-    document.getElementById('contactStatus').textContent = 'Message sent — we'll reply soon.';
+    document.getElementById('contactStatus').textContent = "Message sent — we'll reply soon.";
     e.target.reset();
   });
   document.getElementById('newsletterForm').addEventListener('submit', (e) => {
     e.preventDefault();
-    alert('You're subscribed to AURORA travel deals.');
+    alert("You're subscribed to AURORA travel deals.");
     e.target.reset();
   });
 </script>

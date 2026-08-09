@@ -231,8 +231,11 @@
     return null;
   }
 
-  /** Restore visibility after bfcache Back/Forward (CSS fade animations do not re-run). */
-  function ensurePageVisible() {
+  /**
+   * Restore visibility after bfcache Back/Forward and when window.load is delayed
+   * by third-party images/maps (CSS fade / .reveal must not stay stuck at opacity 0).
+   */
+  function ensurePageVisible(forceReveals) {
     try {
       if (document.body) {
         document.body.style.opacity = '1';
@@ -243,16 +246,41 @@
         loader.classList.add('hide');
         loader.setAttribute('aria-hidden', 'true');
       }
+      const reveals = document.querySelectorAll('.reveal');
+      if (!reveals.length) return;
+      const vh = window.innerHeight || document.documentElement.clientHeight || 0;
+      reveals.forEach((el) => {
+        if (forceReveals || el.classList.contains('visible')) {
+          el.classList.add('visible');
+          return;
+        }
+        const rect = el.getBoundingClientRect();
+        if (rect.bottom > 0 && rect.top < vh + 80) el.classList.add('visible');
+      });
     } catch (_) {}
   }
 
   if (typeof window !== 'undefined') {
-    window.addEventListener('pageshow', ensurePageVisible);
-    if (document.readyState === 'complete') {
-      setTimeout(ensurePageVisible, 0);
-    } else {
-      window.addEventListener('load', () => setTimeout(ensurePageVisible, 50));
+    let visibilityScheduled = false;
+    function scheduleEnsureVisible() {
+      if (visibilityScheduled) return;
+      visibilityScheduled = true;
+      // Do not wait only on window.load — Unsplash/CSS backgrounds + maps can hang it.
+      const run = () => ensurePageVisible(false);
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => setTimeout(run, 80), { once: true });
+      } else {
+        setTimeout(run, 80);
+      }
+      window.addEventListener('load', () => setTimeout(run, 50), { once: true });
+      // Hard fallback so the branded loader cannot cover the demo indefinitely.
+      setTimeout(() => ensurePageVisible(true), 1800);
     }
+    scheduleEnsureVisible();
+    window.addEventListener('pageshow', (event) => {
+      ensurePageVisible(!!event.persisted);
+    });
+    window.addEventListener('pagehide', () => ensurePageVisible(false));
   }
 
   function pkrToForeign(pkr, currency) {
@@ -490,6 +518,7 @@
     onLocaleChange,
     detectCurrency,
     init,
+    ensurePageVisible,
     get locale() {
       return {
         country: activeCurrency === 'SAR' ? 'Saudi Arabia' : activeCurrency === 'AED' ? 'UAE' : 'Pakistan',

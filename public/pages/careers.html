@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Careers at Onairo Solutions | Apply</title>
+  <meta name="description" content="Apply to join Onairo Solutions. Submit a careers application — saved securely to our portal CRM and Website Forms for hiring follow-up."/>
+  <link rel="canonical" href="https://onairosolutions.com/pages/careers.html"/>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../shared/css/tokens.css"/>
+  <link rel="stylesheet" href="../shared/css/base.css"/>
+  <link rel="stylesheet" href="../shared/css/components.css"/>
+  <link rel="stylesheet" href="../shared/css/seo.css"/>
+  <link rel="stylesheet" href="../shared/css/form-ux.css"/>
+  <style>
+    .page-hero {
+      padding: 8.5rem 0 3.5rem;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(37,99,235,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37,99,235,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      width: 480px; height: 480px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(37,99,235,0.15), transparent 68%);
+      top: 15%; right: -8%;
+      pointer-events: none;
+    }
+    .page-hero .container { position: relative; z-index: 1; }
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.1rem, 4.5vw, 3.3rem);
+      font-weight: 800;
+      letter-spacing: var(--heading-tracking, -0.02em);
+      line-height: var(--heading-line-height, 1.18);
+      margin-bottom: 1rem;
+      max-width: 640px;
+    }
+    .page-hero h1 em { font-style: normal; color: var(--cobalt-light); }
+    .page-hero .lead {
+      color: var(--slate);
+      font-size: 1.08rem;
+      max-width: 540px;
+      line-height: 1.75;
+    }
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .info-card {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+    .info-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+    }
+    .info-card p,
+    .info-card a {
+      color: var(--slate);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      text-decoration: none;
+    }
+    .info-card a:hover { color: var(--cobalt-light); }
+    .info-card .value {
+      color: var(--white);
+      font-weight: 600;
+      font-size: 1.05rem;
+      display: block;
+      margin-top: 0.35rem;
+    }
+    .info-card ul {
+      margin: 0.75rem 0 0;
+      padding-left: 1.1rem;
+      color: var(--slate);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+    .contact-form {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+    }
+    .contact-form h2 {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      margin-bottom: 0.35rem;
+    }
+    .contact-form .form-intro {
+      color: var(--slate);
+      font-size: 0.92rem;
+      margin-bottom: 1.5rem;
+    }
+    .form-group {
+      margin-bottom: 1.15rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--slate-light);
+      margin-bottom: 0.4rem;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      color: var(--white);
+      font: inherit;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--cobalt);
+    }
+    .form-group textarea { min-height: 140px; resize: vertical; }
+    .form-group select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394A3B8' stroke-width='1.5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .form-hint {
+      font-size: 0.8rem;
+      color: var(--slate);
+      margin-top: 0.85rem;
+    }
+    @media (max-width: 900px) {
+      .contact-layout { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .page-hero { padding-top: 7rem; }
+      .contact-form { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body data-root=".." data-page="careers">
+  <div id="site-nav"></div>
+
+  <header class="page-hero">
+    <div class="container">
+      <p class="section-tag reveal">Careers</p>
+      <h1 class="reveal">Build the next chapter <em>with Onairo</em></h1>
+      <p class="lead reveal">We’re hiring people who care about craft — websites, software products, and digital experiences shipped with care. Applications go into our CRM for hiring review.</p>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="container contact-layout">
+      <div class="contact-info reveal">
+        <div class="info-card">
+          <h3>How hiring works</h3>
+          <p>Applications use the same secure enquiry pipeline as our contact forms and appear in the portal under Website Forms.</p>
+          <ul>
+            <li>Topic tagged as Careers in CRM</li>
+            <li>Include portfolio or LinkedIn when you can</li>
+            <li>We reply by email or WhatsApp</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>What to include</h3>
+          <p>Role interest, relevant experience, and a short note on why Onairo. Links help us review faster.</p>
+          <span class="value">Clear · Concise · Honest</span>
+        </div>
+        <div class="info-card">
+          <h3>Response time</h3>
+          <p>We typically respond within a few business days — sooner for strong matches.</p>
+          <span class="value">Mon–Sat · Worldwide</span>
+        </div>
+        <a class="btn btn-primary" id="waCta" href="#" target="_blank" rel="noopener">Ask about openings</a>
+      </div>
+
+      <form class="contact-form reveal" id="careersForm" data-onairo-form="careers" novalidate>
+        <h2>Submit an application</h2>
+        <p class="form-intro">Every application is saved in our CRM and tracked for hiring follow-up. Provide an email or WhatsApp number so we can reply.</p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full name *</label>
+            <input type="text" id="name" name="name" required autocomplete="name" placeholder="Your name"/>
+          </div>
+          <div class="form-group">
+            <label for="business">Current company / title</label>
+            <input type="text" id="business" name="business" autocomplete="organization" placeholder="Company or current role"/>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="topic">Role interested in *</label>
+            <select id="topic" name="topic" required>
+              <option value="">Select a role</option>
+              <option value="Careers — Frontend Developer">Frontend Developer</option>
+              <option value="Careers — Backend Developer">Backend Developer</option>
+              <option value="Careers — Full-Stack Developer">Full-Stack Developer</option>
+              <option value="Careers — UI/UX Designer">UI/UX Designer</option>
+              <option value="Careers — Product / Project">Product / Project</option>
+              <option value="Careers — Sales / Partnerships">Sales / Partnerships</option>
+              <option value="Careers — Intern / Junior">Intern / Junior</option>
+              <option value="Careers — Other">Other / Open application</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="experience">Experience level</label>
+            <select id="experience" name="experience">
+              <option value="">Select level</option>
+              <option value="0–1 years">0–1 years</option>
+              <option value="1–3 years">1–3 years</option>
+              <option value="3–5 years">3–5 years</option>
+              <option value="5+ years">5+ years</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="you@company.com"/>
+          </div>
+          <div class="form-group">
+            <label for="whatsapp">WhatsApp</label>
+            <input type="text" id="whatsapp" name="whatsapp" placeholder="3XX XXXXXXX"/>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="text" id="phone" name="phone" placeholder="3XX XXXXXXX"/>
+          </div>
+          <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" placeholder="Lahore"/>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="website">Portfolio / LinkedIn</label>
+            <input type="url" id="website" name="website" placeholder="https://"/>
+          </div>
+          <div class="form-group">
+            <label for="availability">Availability</label>
+            <select id="availability" name="availability">
+              <option value="">Select availability</option>
+              <option value="Immediately">Immediately</option>
+              <option value="2 weeks">Within 2 weeks</option>
+              <option value="1 month">Within 1 month</option>
+              <option value="Flexible">Flexible</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Cover message *</label>
+          <textarea id="message" name="message" required placeholder="Tell us about your experience, what you’d like to work on, and why Onairo…"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="careersSubmit">Submit Application</button>
+        <p class="form-hint" id="careersHint">Your application is saved securely for hiring follow-up.</p>
+      </form>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+  <div id="site-chrome-end"></div>
+
+  <script src="../shared/js/config.js"></script>
+  <script src="../shared/js/seo-data.js"></script>
+  <script src="../shared/js/seo.js"></script>
+  <script src="../components/chrome.js"></script>
+  <script src="../shared/js/main.js"></script>
+  <script src="../shared/js/countries.js"></script>
+  <script src="../shared/js/form-ux.js"></script>
+  <script>
+    (function () {
+      var waMsg = "Hi Onairo Solutions, I'd like to ask about open roles / careers.";
+      var waCta = document.getElementById('waCta');
+      if (waCta) waCta.href = ONAIRO.waUrl(waMsg);
+
+      document.getElementById('careersForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        var hint = document.getElementById('careersHint');
+        var controller = new AbortController();
+        var timeout = setTimeout(function () { controller.abort(); }, 20000);
+        ONAIRO.FormUX.setSubmitting(this, true, 'Submitting…');
+        hint.textContent = 'Submitting...';
+        hint.setAttribute('role', 'status');
+        var form = this;
+        var fd = new FormData(form);
+        var payload = Object.fromEntries(fd.entries());
+        payload.name = (payload.name || '').trim();
+        var cover = (payload.message || '').trim();
+        var experience = (payload.experience || '').trim();
+        var availability = (payload.availability || '').trim();
+        var extras = [];
+        if (experience) extras.push('Experience: ' + experience);
+        if (availability) extras.push('Availability: ' + availability);
+        payload.message = extras.length ? (cover + '\n\n' + extras.join('\n')) : cover;
+        payload.topic = (payload.topic || '').trim() || 'Careers — Other';
+        payload.industry = 'Careers';
+        payload.preferredContactMethod = payload.whatsapp ? 'WhatsApp' : (payload.email ? 'Email' : 'WhatsApp');
+        delete payload.experience;
+        delete payload.availability;
+        try {
+          var res = await fetch('/api/enquiries/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+            signal: controller.signal
+          });
+          var data = await res.json().catch(function () { return {}; });
+          if (!res.ok || !data.ok) throw new Error((data && data.error) || 'Submission failed');
+          hint.textContent = 'Application submitted successfully. Reference: ' + data.leadCode;
+          ONAIRO.FormUX.clearDraft(form);
+          form.reset();
+        } catch (err) {
+          hint.textContent = err.name === 'AbortError'
+            ? 'The request timed out. Your draft is saved — please try again.'
+            : (err.message || 'Could not submit application. Your draft is saved.');
+          hint.setAttribute('role', 'alert');
+        } finally {
+          clearTimeout(timeout);
+          ONAIRO.FormUX.setSubmitting(form, false);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

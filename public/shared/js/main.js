@@ -532,12 +532,37 @@
     });
   }
 
+  /** Clear the full-screen navy overlay after Back/Forward (bfcache) or interrupted navigations. */
+  function clearPageTransition() {
+    const el = document.getElementById('pageTransition');
+    if (el) {
+      el.classList.remove('active');
+      el.setAttribute('aria-hidden', 'true');
+    }
+  }
+
+  function restoreRevealsAfterBfcache() {
+    document.querySelectorAll('.reveal').forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      const inView = rect.bottom > 0 && rect.top < (window.innerHeight || 0);
+      if (inView || el.classList.contains('visible')) el.classList.add('visible');
+    });
+    if (typeof ONAIRO.observeReveals === 'function') ONAIRO.observeReveals(document);
+  }
+
   function boot() {
+    clearPageTransition();
     initReveal();
     initFaq();
     initDelegatedActions();
     initLpMedia();
   }
+
+  window.addEventListener('pagehide', clearPageTransition);
+  window.addEventListener('pageshow', (event) => {
+    clearPageTransition();
+    if (event.persisted) restoreRevealsAfterBfcache();
+  });
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', boot);

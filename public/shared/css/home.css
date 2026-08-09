@@ -417,6 +417,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.25rem;
+  align-items: stretch;
 }
 
 .why-item {
@@ -425,6 +426,17 @@
   border-radius: 14px;
   padding: 1.5rem;
   transition: transform 0.25s, border-color 0.25s;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.why-item h3,
+.why-item p {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .why-item:hover {
@@ -959,7 +971,15 @@
 }
 
 @media (max-width: 600px) {
-  .why-grid { grid-template-columns: 1fr; }
+  /* Keep Why Choose Us as a 2×2 grid on phones that support two columns */
+  .why-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+  .why-item { padding: 1.1rem; }
+  .why-item .ico { font-size: 1.25rem; margin-bottom: 0.65rem; }
+  .why-item h3 { font-size: 0.92rem; }
+  .why-item p { font-size: 0.8rem; line-height: 1.45; }
   .home-hero { padding-top: 7rem; padding-bottom: 3rem; }
   .hero-actions { width: 100%; }
   .hero-actions .btn { flex: 1 1 auto; justify-content: center; }

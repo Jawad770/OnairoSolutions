@@ -1939,9 +1939,9 @@
 </a>
 <a href="#hero" class="back-top" id="backTop" aria-label="Back to top">↑</a>
 
-<script src="demo-globals.js"></script>
+<script src="/showcase/demo-globals.js"></script>
 <script>
-  DemoGlobals.init();
+  if (window.DemoGlobals) DemoGlobals.init();
 
   document.querySelectorAll('img').forEach((img) => {
     if (!img.hasAttribute('decoding')) img.decoding = 'async';
@@ -2067,10 +2067,10 @@
 
   /* Quotes */
   const quotes = [
-    { q: '—The only bad workout is the one that didn't happen.—', a: '— APEX Daily Motivation' },
+    { q: "\u201CThe only bad workout is the one that didn\u2019t happen.\u201D", a: "\u2014 APEX Daily Motivation" },
     { q: '—Discipline is choosing what you want most over what you want now.—', a: '— APEX Coaching Desk' },
     { q: '—Strong is the new beautiful. Show up again tomorrow.—', a: '— Coach Ayesha' },
-    { q: '—Your body can stand almost anything. It's your mind you have to convince.—', a: '— Coach Usman' },
+    { q: "\u201CYour body can stand almost anything. It\u2019s your mind you have to convince.\u201D", a: "\u2014 Coach Usman" },
   ];
   let qi = 0;
   setInterval(() => {
@@ -2095,6 +2095,7 @@
   document.querySelectorAll('[data-ba]').forEach((slider) => {
     const after = slider.querySelector('.ba-after');
     const handle = slider.querySelector('.ba-handle');
+    if (!after || !handle) return;
     let dragging = false;
     function setPos(clientX) {
       const rect = slider.getBoundingClientRect();
@@ -2107,6 +2108,7 @@
     slider.addEventListener('pointermove', (e) => { if (dragging) setPos(e.clientX); });
     slider.addEventListener('pointerup', () => { dragging = false; });
     slider.addEventListener('pointerleave', () => { dragging = false; });
+    slider.addEventListener('pointercancel', () => { dragging = false; });
   });
 
   /* BMI */
@@ -2120,7 +2122,7 @@
     if (bmi < 18.5) { cat = 'Underweight'; tip = 'Focus on progressive strength training and a calorie surplus with high protein. Book a nutrition consult.'; pct = 20; }
     else if (bmi < 25) { cat = 'Healthy Range'; tip = 'Great baseline. Maintain with strength training 3–5x/week and protein at every meal.'; pct = 45; }
     else if (bmi < 30) { cat = 'Overweight'; tip = 'A structured fat-loss block with HIIT + strength can reshape your body composition quickly.'; pct = 70; }
-    else { cat = 'Obese'; tip = 'Start with Coach Ayesha's Weight Loss program — sustainable deficit, strength work and weekly check-ins.'; pct = 92; }
+    else { cat = 'Obese'; tip = "Start with Coach Ayesha\u2019s Weight Loss program \u2014 sustainable deficit, strength work and weekly check-ins."; pct = 92; }
     document.getElementById('bmiScore').textContent = score;
     document.getElementById('bmiCategory').textContent = cat;
     document.getElementById('bmiTip').textContent = tip;
@@ -2192,7 +2194,7 @@
   });
   document.getElementById('newsletterForm').addEventListener('submit', (e) => {
     e.preventDefault();
-    alert('You're on the list — weekly tips coming soon.');
+    alert("You\u2019re on the list \u2014 weekly tips coming soon.");
     e.target.reset();
   });
 </script>

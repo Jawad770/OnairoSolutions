@@ -96,7 +96,7 @@
       const waKey = item.waKey || item.id;
       const tags = (item.tags || []).map((t) => `<span>${t}</span>`).join('');
       const seo = (ONAIRO.portfolioSeo && ONAIRO.portfolioSeo[item.id]) || null;
-      const seoHref = seo ? ONAIRO.path(`src/portfolio/${seo.slug}.html`) : '';
+      const seoHref = seo ? ONAIRO.path(`portfolio/${seo.slug}.html`) : '';
       const seoLink = seoHref
         ? `<a href="${seoHref}" class="btn btn-ghost btn-sm seo-page-link">SEO Page</a>`
         : '';
@@ -126,7 +126,7 @@
     if (!container) return;
     const list = typeof limit === 'number' ? items.slice(0, limit) : items;
     container.innerHTML = list.map((svc) => {
-      const href = ONAIRO.path(`src/services/detail.html?id=${svc.id}`);
+      const href = ONAIRO.path(`services/detail.html?id=${svc.id}`);
       return `<article class="svc-card reveal" id="${svc.id}">
         <div class="svc-icon">${svc.icon}</div>
         <h3>${svc.title}</h3>
@@ -532,12 +532,37 @@
     });
   }
 
+  /** Clear the full-screen navy overlay after Back/Forward (bfcache) or interrupted navigations. */
+  function clearPageTransition() {
+    const el = document.getElementById('pageTransition');
+    if (el) {
+      el.classList.remove('active');
+      el.setAttribute('aria-hidden', 'true');
+    }
+  }
+
+  function restoreRevealsAfterBfcache() {
+    document.querySelectorAll('.reveal').forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      const inView = rect.bottom > 0 && rect.top < (window.innerHeight || 0);
+      if (inView || el.classList.contains('visible')) el.classList.add('visible');
+    });
+    if (typeof ONAIRO.observeReveals === 'function') ONAIRO.observeReveals(document);
+  }
+
   function boot() {
+    clearPageTransition();
     initReveal();
     initFaq();
     initDelegatedActions();
     initLpMedia();
   }
+
+  window.addEventListener('pagehide', clearPageTransition);
+  window.addEventListener('pageshow', (event) => {
+    clearPageTransition();
+    if (event.persisted) restoreRevealsAfterBfcache();
+  });
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', boot);

@@ -166,6 +166,7 @@
             <a href="${p('pages/pricing.html')}">Pricing</a>
             <a href="${p('pages/blog.html')}">Blog</a>
             <a href="${p('pages/contact.html')}">Contact</a>
+            <a href="${p('pages/careers.html')}">Careers</a>
             <a href="${p('pages/request-quote.html')}">Request Quote</a>
           </div>
           <div class="footer-col">
