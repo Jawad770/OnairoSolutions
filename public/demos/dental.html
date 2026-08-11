@@ -325,7 +325,7 @@
     .filter-btn.active, .filter-btn:hover {
       background: var(--sky); color: #fff; border-color: var(--sky);
     }
-    .ba-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.35rem; }
+    .ba-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 1.35rem; }
     .ba-card {
       background: var(--white); border-radius: var(--radius); overflow: hidden;
       border: 1px solid rgba(96,165,250,0.12);
@@ -695,23 +695,28 @@
     .footer-bottom a { color: rgba(255,255,255,0.55); text-decoration: none; margin-left: 1rem; }
 
     .wa-float, .back-top, .book-float {
-      position: fixed; right: 1.25rem; z-index: 180;
+      position: fixed;
+      right: max(1rem, env(safe-area-inset-right, 0px));
+      z-index: 180;
       display: grid; place-items: center; text-decoration: none;
       box-shadow: 0 8px 28px rgba(30,58,95,0.2); transition: transform 0.25s, opacity 0.3s;
     }
     .wa-float {
-      bottom: 1.25rem; width: 52px; height: 52px; border-radius: 50%; background: var(--wa);
+      bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+      width: 52px; height: 52px; border-radius: 50%; background: var(--wa);
       animation: bounceSoft 3s ease-in-out infinite;
     }
     .wa-float svg { width: 26px; height: 26px; fill: #fff; }
     .book-float {
-      bottom: 5.5rem; background: var(--sky-deep); color: #fff;
+      bottom: calc(4.85rem + env(safe-area-inset-bottom, 0px));
+      background: var(--sky-deep); color: #fff;
       padding: 0.7rem 1.15rem; border-radius: 999px; font-size: 0.78rem; font-weight: 700;
-      white-space: nowrap;
+      white-space: nowrap; max-width: calc(100vw - 2rem);
     }
     .book-float:hover { background: var(--mint-deep); transform: scale(1.04); }
     .back-top {
-      bottom: 9.5rem; width: 44px; height: 44px; border-radius: 50%;
+      bottom: calc(8.75rem + env(safe-area-inset-bottom, 0px));
+      width: 44px; height: 44px; border-radius: 50%;
       background: var(--white); color: var(--sky-deep); border: 1px solid var(--silver);
       opacity: 0; pointer-events: none;
     }
@@ -751,13 +756,19 @@
       .form-row { grid-template-columns: 1fr; }
       .treat-grid, .doc-grid { grid-template-columns: 1fr 1fr; }
       .hero-cards { grid-template-columns: 1fr 1fr; }
+      .wa-float { bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); width: 48px; height: 48px; }
+      .back-top { bottom: calc(4.85rem + env(safe-area-inset-bottom, 0px)); width: 44px; height: 44px; }
     }
     @media (max-width: 600px) {
-      section { padding: 3.5rem 1.15rem; }
+      section { padding: 3.25rem 1.15rem; }
       nav { padding: 0.75rem 1rem; }
       .why-grid, .treat-grid, .doc-grid, .tech-grid, .tips-grid, .pay-grid, .resource-grid {
-        grid-template-columns: 1fr 1fr; gap: 0.65rem;
+        grid-template-columns: 1fr; gap: 0.85rem;
       }
+      .ba-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .wa-float { bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); }
+      .back-top { bottom: calc(4.85rem + env(safe-area-inset-bottom, 0px)); }
       .why-card, .treat-card, .pay-card, .resource-card { padding: 1rem 0.85rem; }
       .why-card p, .treat-card p { font-size: 0.78rem; }
       .hero-btns { flex-direction: column; }
@@ -786,14 +797,14 @@
 </head>
 <body>
 
-<div id="loader" role="status"><div class="loader-smile">✨</div><div class="loader-text">Lumina Dental</div></div>
+<div id="loader" role="status"><div class="loader-smile">🦷</div><div class="loader-text">Lumina Dental</div></div>
 <div id="scroll-progress" aria-hidden="true"></div>
 
-<div class="demo-banner">This is a demo site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com</div>
+<div class="demo-banner">This is a showcase site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com</div>
 
 <nav id="mainNav" aria-label="Primary">
   <a href="#hero" class="logo">
-    <div class="logo-mark">✨</div>
+    <div class="logo-mark" aria-hidden="true">🦷</div>
     <div class="logo-text">Lumina<span>Dental — Lahore</span></div>
   </a>
   <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
@@ -1354,7 +1365,7 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <a href="#hero" class="logo"><div class="logo-mark">✨</div><div class="logo-text">Lumina<span>Dental — Lahore</span></div></a>
+      <a href="#hero" class="logo"><div class="logo-mark" aria-hidden="true">🦷</div><div class="logo-text">Lumina<span>Dental — Lahore</span></div></a>
       <p>Bright, family-friendly dentistry with advanced technology and a patient-first philosophy.</p>
     </div>
     <div class="footer-col">
@@ -1383,7 +1394,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Lumina Dental — Demo by <a href="../../../index.html" style="color:var(--mint);margin:0">Onairo Solutions</a></span>
+    <span>© 2026 Lumina Dental — Showcase by <a href="../../../index.html" style="color:var(--mint);margin:0">Onairo Solutions</a></span>
     <span><a href="#">Privacy Policy</a><a href="#">Patient Resources</a></span>
   </div>
 </footer>
@@ -1397,7 +1408,7 @@
 <script src="/showcase/demo-globals.js"></script>
 <script>
   if (window.DemoGlobals) DemoGlobals.init();
-  const WA_NUMBER = '923137863988';
+  const WA_NUMBER = '923272340505';
   document.getElementById('floatWa').href = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hi Lumina Dental, I'd like to book an appointment / free smile consultation.")}`;
 
   window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('hide'), 650));

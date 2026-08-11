@@ -25,6 +25,7 @@
     html { scroll-behavior: smooth; }
 
     body {
+      overflow-x: hidden;
       font-family: 'Inter', sans-serif;
       background: var(--cream);
       color: var(--dark);
@@ -105,7 +106,7 @@
       inset: 0;
       background:
         linear-gradient(180deg, rgba(253,248,244,0.88) 0%, rgba(253,248,244,0.75) 40%, rgba(253,248,244,0.92) 100%),
-        url('../images/salon/hero.jpg') center/cover no-repeat;
+        url('/images/salon/hero.jpg') center/cover no-repeat;
       z-index: 0;
     }
 
@@ -352,16 +353,21 @@
       .hero-actions { display: flex; flex-direction: column; align-items: center; }
     }
 
-    @media (max-width: 375px) {
+    @media (max-width: 480px) {
       section { padding: 3.5rem 4%; }
       .services-grid { grid-template-columns: 1fr; }
+    }
+      /* Showcase QA: single WA safe-area */
+    .wa-float {
+      bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px)) !important;
+      right: max(1rem, env(safe-area-inset-right, 0px)) !important;
     }
   </style>
 </head>
 <body>
 
 <div class="demo-banner">
-  This is a demo site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com
+  This is a showcase site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com
 </div>
 
 <nav>
@@ -414,19 +420,19 @@
   <p class="section-desc reveal">Certified professionals with years of experience in Lahore's top salons.</p>
   <div class="team-grid">
     <div class="team-card reveal">
-      <div class="team-avatar t1"><img src="../images/salon/team-1.jpg" alt="Sana Ahmed — Hair Stylist" loading="lazy"></div>
+      <div class="team-avatar t1"><img src="/images/salon/team-1.jpg" alt="Sana Ahmed — Hair Stylist" loading="lazy"></div>
       <h3>Sana Ahmed</h3>
       <div class="role">Senior Hair Stylist</div>
       <p>8 years experience. Specializes in balayage, keratin, and bridal updos.</p>
     </div>
     <div class="team-card reveal">
-      <div class="team-avatar t2"><img src="../images/salon/team-2.jpg" alt="Maria Khan — Makeup Artist" loading="lazy"></div>
+      <div class="team-avatar t2"><img src="/images/salon/team-2.jpg" alt="Maria Khan — Makeup Artist" loading="lazy"></div>
       <h3>Maria Khan</h3>
       <div class="role">Makeup Artist</div>
       <p>MAC-certified. Bridal and party makeup with a natural, glowing finish.</p>
     </div>
     <div class="team-card reveal">
-      <div class="team-avatar t3"><img src="../images/salon/team-3.jpg" alt="Zainab Fatima — Spa Specialist" loading="lazy"></div>
+      <div class="team-avatar t3"><img src="/images/salon/team-3.jpg" alt="Zainab Fatima — Spa Specialist" loading="lazy"></div>
       <h3>Zainab Fatima</h3>
       <div class="role">Skin & Spa Specialist</div>
       <p>Facials, chemical peels, and body treatments. Trained in Dubai & Karachi.</p>
@@ -441,22 +447,22 @@
     <div class="ba-pair">
       <div class="ba-labels"><span>Before</span><span>After</span></div>
       <div class="ba-images">
-        <div class="ba-before"><img src="../images/salon/ba1-before.jpg" alt="Hair before styling" loading="lazy"></div>
-        <div class="ba-after"><img src="../images/salon/ba1-after.jpg" alt="Hair after styling" loading="lazy"></div>
+        <div class="ba-before"><img src="/images/salon/ba1-before.jpg" alt="Hair before styling" loading="lazy"></div>
+        <div class="ba-after"><img src="/images/salon/ba1-after.jpg" alt="Hair after styling" loading="lazy"></div>
       </div>
     </div>
     <div class="ba-pair">
       <div class="ba-labels"><span>Before</span><span>After</span></div>
       <div class="ba-images">
-        <div class="ba-before"><img src="../images/salon/ba2-before.jpg" alt="Before party makeup" loading="lazy"></div>
-        <div class="ba-after"><img src="../images/salon/ba2-after.jpg" alt="After party makeup" loading="lazy"></div>
+        <div class="ba-before"><img src="/images/salon/ba2-before.jpg" alt="Before party makeup" loading="lazy"></div>
+        <div class="ba-after"><img src="/images/salon/ba2-after.jpg" alt="After party makeup" loading="lazy"></div>
       </div>
     </div>
     <div class="ba-pair">
       <div class="ba-labels"><span>Before</span><span>After</span></div>
       <div class="ba-images">
-        <div class="ba-before"><img src="../images/salon/ba3-before.jpg" alt="Before hair color" loading="lazy"></div>
-        <div class="ba-after"><img src="../images/salon/ba3-after.jpg" alt="After hair color" loading="lazy"></div>
+        <div class="ba-before"><img src="/images/salon/ba3-before.jpg" alt="Before hair color" loading="lazy"></div>
+        <div class="ba-after"><img src="/images/salon/ba3-after.jpg" alt="After hair color" loading="lazy"></div>
       </div>
     </div>
   </div>
@@ -509,7 +515,7 @@
 <script>
   DemoGlobals.init();
 
-  const WA_NUMBER = "923137863988";
+  const WA_NUMBER = "923272340505";
   const waLink = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hi, I'd like to book an appointment at Glamour Salon & Spa.")}`;
 
   ['heroWa', 'bookWa', 'floatWa'].forEach(id => {

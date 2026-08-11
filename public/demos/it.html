@@ -357,7 +357,7 @@
     .cards-grid {
       display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.25rem;
     }
-    .cards-grid-3 { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+    .cards-grid-3 { grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); }
     .service-card, .feature-card, .industry-card, .tech-card, .blog-card, .role-card {
       padding: 1.35rem; transition: transform 0.3s, border-color 0.3s;
     }
@@ -593,17 +593,22 @@
       border-radius: 50%; box-shadow: var(--shadow); transition: transform 0.25s, opacity 0.25s;
     }
     .wa-float {
-      bottom: 5.5rem; right: 1.25rem; width: 56px; height: 56px; background: var(--wa);
+      bottom: calc(10rem + env(safe-area-inset-bottom, 0px));
+      right: max(1.25rem, env(safe-area-inset-right, 0px));
+      width: 56px; height: 56px; background: var(--wa);
     }
     .wa-float svg { width: 28px; height: 28px; fill: #fff; }
     .back-top {
-      bottom: 1.25rem; right: 1.25rem; width: 48px; height: 48px;
+      bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+      right: max(1.25rem, env(safe-area-inset-right, 0px));
+      width: 48px; height: 48px;
       background: var(--glass); border: 1px solid var(--glass-border); color: var(--white);
       text-decoration: none; opacity: 0; pointer-events: none;
     }
     .back-top.show { opacity: 1; pointer-events: auto; }
     .consult-sticky {
-      left: 50%; transform: translateX(-50%); bottom: 1rem;
+      left: 50%; transform: translateX(-50%);
+      bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
       width: auto; min-width: 200px; padding: 0 1.25rem; border-radius: 999px;
       background: linear-gradient(135deg, var(--blue), var(--purple));
       color: #fff; font-weight: 700; font-size: 0.85rem; text-decoration: none;
@@ -611,7 +616,11 @@
     }
     .consult-sticky.show { opacity: 1; pointer-events: auto; }
     @media (min-width: 1100px) {
-      .consult-sticky { left: auto; right: 5rem; transform: none; bottom: 1.25rem; }
+      .consult-sticky {
+        left: auto; right: max(5rem, env(safe-area-inset-right, 0px));
+        transform: none; bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+      }
+      .wa-float { bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px)); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -633,7 +642,7 @@
 </div>
 <div id="scroll-progress" aria-hidden="true"></div>
 
-<p class="demo-banner">This is a demo site created by Onairo Solutions — <a href="../../../index.html">onairosolutions.com</a></p>
+<p class="demo-banner">This is a showcase site created by Onairo Solutions — <a href="../../../index.html">onairosolutions.com</a></p>
 
 <nav id="mainNav" aria-label="Main navigation">
   <a href="#hero" class="logo">
@@ -1131,7 +1140,7 @@
     <div><h4>Legal</h4><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Security</a></div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 NEXORA Technologies — Demo by <a href="../../../index.html" style="color:var(--cyan)">Onairo Solutions</a></span>
+    <span>© 2026 NEXORA Technologies — Showcase by <a href="../../../index.html" style="color:var(--cyan)">Onairo Solutions</a></span>
     <span>Lahore, Pakistan</span>
   </div>
 </footer>
@@ -1145,7 +1154,7 @@
 <script src="/showcase/demo-globals.js"></script>
 <script>
   DemoGlobals.init();
-  const WA_NUMBER = '923137863988';
+  const WA_NUMBER = '923272340505';
   document.getElementById('floatWa').href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent("Hi NEXORA Technologies, I'd like a free consultation about my project.");
 
   window.addEventListener('load', function () {

@@ -57,26 +57,29 @@ function stringify(obj: unknown): string {
   return JSON.stringify(obj);
 }
 
-function formatPlanPrice(plan: {
+function formatPlanPrice(_plan: {
   monthlyPrice?: number | null;
   yearlyPrice?: number | null;
   oneTimePrice?: number | null;
   currency?: string | null;
 }): string {
-  const currency = plan.currency || "USD";
-  if (plan.monthlyPrice != null) {
-    if (currency === "PKR") return `Rs. ${Number(plan.monthlyPrice).toLocaleString()} / month`;
-    return `$${Number(plan.monthlyPrice).toLocaleString()} / month`;
+  /* Public AI must never expose amounts — plans are described by name/features only. */
+  return "Quote on request";
+}
+
+function stripPricesDeep<T>(value: T): T {
+  if (Array.isArray(value)) return value.map((v) => stripPricesDeep(v)) as T;
+  if (!value || typeof value !== "object") return value;
+  const out: Record<string, unknown> = {};
+  for (const [k, v] of Object.entries(value as Record<string, unknown>)) {
+    if (
+      /price|fromusd|approxpkr|monthlyprice|yearlyprice|onetimeprice|amount|cost|fee/i.test(k)
+    ) {
+      continue;
+    }
+    out[k] = stripPricesDeep(v);
   }
-  if (plan.oneTimePrice != null) {
-    if (currency === "PKR") return `From Rs. ${Number(plan.oneTimePrice).toLocaleString()}`;
-    return `From $${Number(plan.oneTimePrice).toLocaleString()}`;
-  }
-  if (plan.yearlyPrice != null) {
-    if (currency === "PKR") return `Rs. ${Number(plan.yearlyPrice).toLocaleString()} / year`;
-    return `$${Number(plan.yearlyPrice).toLocaleString()} / year`;
-  }
-  return "Custom";
+  return out as T;
 }
 
 /**
@@ -115,8 +118,9 @@ export async function syncCatalogKnowledge(): Promise<boolean> {
             features,
             url: item.ctaLink || null,
             pricingNote: item.comingSoon
-              ? "Coming soon — no published price"
-              : plans.map((p) => `${p.name}: ${formatPlanPrice(p as never)}`).join("; ") || "See pricing",
+              ? "Coming soon"
+              : plans.map((p) => String(p.name || "")).filter(Boolean).join(", ") ||
+                "Plans available — quote on request",
           };
         }),
       };
@@ -133,7 +137,6 @@ export async function syncCatalogKnowledge(): Promise<boolean> {
       return {
         id: String(pkg.slug || "").replace(/^website-/, ""),
         name: pkg.name,
-        fromUsd: plan.oneTimePrice ?? plan.monthlyPrice ?? null,
         tagline: pkg.shortDescription || "",
         recommended: Boolean(plan.recommended || plan.popular || pkg.featured),
         includes: ((plan.features as Array<{ title?: string; included?: boolean }>) || [])
@@ -149,7 +152,6 @@ export async function syncCatalogKnowledge(): Promise<boolean> {
             .toLowerCase()
             .replace(/\s+/g, "-"),
           name: p.name,
-          price: formatPlanPrice(p as never),
           recommended: Boolean(p.recommended),
           notes: p.subtitle || "",
         })) as Array<Record<string, unknown>>)
@@ -159,7 +161,7 @@ export async function syncCatalogKnowledge(): Promise<boolean> {
       catalogPricing = {
         disclaimer:
           staticPricing.disclaimer ||
-          "Published prices are starting / indicative. Final pricing depends on scope.",
+          "Never disclose numeric prices. Describe plans only; commercial terms are quote-only.",
         websitePackages: websitePackages.length
           ? websitePackages
           : (loadKnowledge().pricing as { websitePackages?: unknown[] }).websitePackages,
@@ -186,12 +188,14 @@ function activeProducts(): { products: Array<Record<string, unknown>> } {
 }
 
 export function searchPricing(query = ""): unknown {
-  const pricing = activePricing() as {
-    websitePackages?: unknown[];
-    edutrackPlans?: unknown[];
-    customSoftware?: unknown;
-    disclaimer?: string;
-  };
+  const pricing = stripPricesDeep(
+    activePricing() as {
+      websitePackages?: unknown[];
+      edutrackPlans?: unknown[];
+      customSoftware?: unknown;
+      disclaimer?: string;
+    }
+  );
   if (!query.trim()) return pricing;
   const items: unknown[] = [];
   for (const pkg of pricing.websitePackages || []) {
@@ -204,7 +208,9 @@ export function searchPricing(query = ""): unknown {
     items.push({ type: "custom_software", ...(pricing.customSoftware as object) });
   }
   return {
-    disclaimer: pricing.disclaimer,
+    disclaimer:
+      pricing.disclaimer ||
+      "Never disclose numeric prices. Describe plans only; invite Request Quote or WhatsApp for commercial terms.",
     results: items.length ? items : pricing,
   };
 }
@@ -281,9 +287,9 @@ export function knowledgeIndex(): string {
     `Products: ${productNames}`,
     `Portfolio demo industries: ${industries}`,
     catalogPricing || catalogProducts
-      ? "Pricing/products sourced from live Catalog Manager when available."
-      : "Use tools to look up detailed pricing, FAQs, services, products, and portfolio demos.",
-    "Never invent prices. Custom software is always quoted after requirements.",
+      ? "Plans/products sourced from live Catalog Manager when available (names and inclusions only — never amounts)."
+      : "Use tools to look up plans, FAQs, services, products, and portfolio showcases.",
+    "Never disclose or invent prices. Describe plans only. Custom software is always quoted after requirements.",
   ].join("\n");
 }
 

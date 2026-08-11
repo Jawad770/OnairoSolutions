@@ -47,7 +47,7 @@
 
     /* hero */
     #hero { min-height:92vh; display:flex; align-items:center; position:relative; overflow:hidden; }
-    .hero-bg { position:absolute; inset:0; background:linear-gradient(100deg,rgba(11,14,23,.95) 0%,rgba(11,14,23,.7) 55%,rgba(11,14,23,.4) 100%), url('../images/realestate/hero.jpg') center/cover no-repeat; }
+    .hero-bg { position:absolute; inset:0; background:linear-gradient(100deg,rgba(11,14,23,.95) 0%,rgba(11,14,23,.7) 55%,rgba(11,14,23,.4) 100%), url('/images/realestate/hero.jpg') center/cover no-repeat; }
     .hero-content { position:relative; z-index:1; padding:0 5%; max-width:680px; }
     .hero-tag { font-size:.72rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-lt); margin-bottom:1.25rem; display:flex; align-items:center; gap:.5rem; }
     .hero-tag::before { content:''; width:28px; height:1px; background:var(--gold-lt); }
@@ -73,7 +73,7 @@
 
     /* listings */
     #listings { background:var(--ink2); }
-    .listings-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; }
+    .listings-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:1.5rem; }
     .listing-card { background:var(--surface); border:1px solid var(--border); border-radius:16px; overflow:hidden; transition:transform .3s,box-shadow .3s; }
     .listing-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(0,0,0,.5); }
     .listing-img { height:220px; overflow:hidden; position:relative; }
@@ -114,7 +114,7 @@
 
     /* interior CTA */
     #interior { position:relative; overflow:hidden; padding:0; min-height:420px; display:flex; align-items:center; }
-    .interior-bg { position:absolute; inset:0; background:linear-gradient(90deg,rgba(11,14,23,.92) 0%,rgba(11,14,23,.6) 60%,rgba(11,14,23,.3) 100%), url('../images/realestate/interior.jpg') center/cover no-repeat; }
+    .interior-bg { position:absolute; inset:0; background:linear-gradient(90deg,rgba(11,14,23,.92) 0%,rgba(11,14,23,.6) 60%,rgba(11,14,23,.3) 100%), url('/images/realestate/interior.jpg') center/cover no-repeat; }
     .interior-content { position:relative; z-index:1; padding:4rem 5%; max-width:580px; }
     .interior-content h2 { font-size:clamp(1.75rem,3vw,2.4rem); margin-bottom:1rem; }
     .interior-content p { color:var(--muted); margin-bottom:2rem; }
@@ -142,10 +142,15 @@
       .search-select { width:100%; }
     }
     @media(max-width:375px) { section { padding:3.5rem 4%; } }
+      /* Showcase QA: single WA safe-area */
+    .wa-float {
+      bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px)) !important;
+      right: max(1rem, env(safe-area-inset-right, 0px)) !important;
+    }
   </style>
 </head>
 <body>
-<div class="demo-banner">This is a demo site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com</div>
+<div class="demo-banner">This is a showcase site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com</div>
 
 <nav>
   <a href="#" class="logo">Al-Hayat<span>Properties — Karachi</span></a>
@@ -185,19 +190,19 @@
   <p class="section-desc reveal">Hand-picked verified listings across Karachi. All properties are personally inspected by our team.</p>
   <div class="listings-grid">
     <div class="listing-card reveal">
-      <div class="listing-img"><img src="../images/realestate/prop-1.jpg" alt="3-bed apartment DHA" loading="lazy"><span class="listing-badge">For Sale</span><span class="listing-price">Rs. 2.8 Crore</span></div>
+      <div class="listing-img"><img src="/images/realestate/prop-1.jpg" alt="3-bed apartment DHA" loading="lazy"><span class="listing-badge">For Sale</span><span class="listing-price">Rs. 2.8 Crore</span></div>
       <div class="listing-body"><h3>3-Bed Luxury Apartment</h3><p>DHA Phase 6, Block K — Sea-facing, 2nd floor, brand new</p><div class="listing-specs"><span class="spec">🛏️ <strong>3</strong> Beds</span><span class="spec">🛁 <strong>3</strong> Baths</span><span class="spec">📐 <strong>1,800</strong> sqft</span><span class="spec">🅿️ <strong>2</strong> Parking</span></div><a href="#" class="listing-wa" id="wa-prop1">💬 Enquire on WhatsApp</a></div>
     </div>
     <div class="listing-card reveal">
-      <div class="listing-img"><img src="../images/realestate/prop-2.jpg" alt="5-marla house Bahria Town" loading="lazy"><span class="listing-badge">For Sale</span><span class="listing-price">Rs. 1.65 Crore</span></div>
+      <div class="listing-img"><img src="/images/realestate/prop-2.jpg" alt="5-marla house Bahria Town" loading="lazy"><span class="listing-badge">For Sale</span><span class="listing-price">Rs. 1.65 Crore</span></div>
       <div class="listing-body"><h3>5-Marla Double Storey</h3><p>Bahria Town Karachi, Precinct 10 — Corner plot, ready to move</p><div class="listing-specs"><span class="spec">🛏️ <strong>4</strong> Beds</span><span class="spec">🛁 <strong>3</strong> Baths</span><span class="spec">📐 <strong>2,250</strong> sqft</span><span class="spec">✨ <strong>Garden</strong></span></div><a href="#" class="listing-wa" id="wa-prop2">💬 Enquire on WhatsApp</a></div>
     </div>
     <div class="listing-card reveal">
-      <div class="listing-img"><img src="../images/realestate/prop-3.jpg" alt="Commercial shop Gulshan" loading="lazy"><span class="listing-badge">For Rent</span><span class="listing-price">Rs. 85,000/mo</span></div>
+      <div class="listing-img"><img src="/images/realestate/prop-3.jpg" alt="Commercial shop Gulshan" loading="lazy"><span class="listing-badge">For Rent</span><span class="listing-price">Rs. 85,000/mo</span></div>
       <div class="listing-body"><h3>Ground-Floor Commercial Shop</h3><p>Gulshan-e-Iqbal Block 3 — Main road facing, ideal for retail</p><div class="listing-specs"><span class="spec">📐 <strong>650</strong> sqft</span><span class="spec">✨ <strong>Ground</strong> Floor</span><span class="spec">📍 <strong>3-Phase</strong> Power</span></div><a href="#" class="listing-wa" id="wa-prop3">💬 Enquire on WhatsApp</a></div>
     </div>
     <div class="listing-card reveal">
-      <div class="listing-img"><img src="../images/realestate/prop-4.jpg" alt="500 yard plot Clifton" loading="lazy"><span class="listing-badge">Plot</span><span class="listing-price">Rs. 6.5 Crore</span></div>
+      <div class="listing-img"><img src="/images/realestate/prop-4.jpg" alt="500 yard plot Clifton" loading="lazy"><span class="listing-badge">Plot</span><span class="listing-price">Rs. 6.5 Crore</span></div>
       <div class="listing-body"><h3>500-Yard Residential Plot</h3><p>Clifton Block 9 — Prime location, all utilities available</p><div class="listing-specs"><span class="spec">✨ <strong>500</strong> Yard</span><span class="spec">✨ <strong>Corner</strong> Plot</span><span class="spec">✨ <strong>Approved</strong> Plans</span></div><a href="#" class="listing-wa" id="wa-prop4">💬 Enquire on WhatsApp</a></div>
     </div>
   </div>
@@ -220,15 +225,15 @@
   <p class="section-desc reveal">Seasoned professionals with deep knowledge of Karachi's real estate market.</p>
   <div class="agents-grid">
     <div class="agent-card reveal">
-      <div class="agent-photo"><img src="../images/realestate/agent-1.jpg" alt="Imran Qureshi" loading="lazy"></div>
+      <div class="agent-photo"><img src="/images/realestate/agent-1.jpg" alt="Imran Qureshi" loading="lazy"></div>
       <div class="agent-info"><h3>Imran Qureshi</h3><div class="role">Senior Property Consultant</div><p>12 years specializing in DHA & Clifton. Closed 400+ deals.</p><a href="#" class="agent-wa" id="wa-agent1">💬 WhatsApp Imran</a></div>
     </div>
     <div class="agent-card reveal">
-      <div class="agent-photo"><img src="../images/realestate/agent-2.jpg" alt="Saqib Nawaz" loading="lazy"></div>
+      <div class="agent-photo"><img src="/images/realestate/agent-2.jpg" alt="Saqib Nawaz" loading="lazy"></div>
       <div class="agent-info"><h3>Saqib Nawaz</h3><div class="role">Bahria Town Specialist</div><p>8 years exclusively in Bahria Town Karachi. Certified property valuer.</p><a href="#" class="agent-wa" id="wa-agent2">💬 WhatsApp Saqib</a></div>
     </div>
     <div class="agent-card reveal">
-      <div class="agent-photo"><img src="../images/realestate/agent-3.jpg" alt="Nadia Farooq" loading="lazy"></div>
+      <div class="agent-photo"><img src="/images/realestate/agent-3.jpg" alt="Nadia Farooq" loading="lazy"></div>
       <div class="agent-info"><h3>Nadia Farooq</h3><div class="role">Commercial Properties</div><p>Expert in Karachi's commercial belt — Gulshan, PECHS, Korangi.</p><a href="#" class="agent-wa" id="wa-agent3">💬 WhatsApp Nadia</a></div>
     </div>
   </div>
@@ -257,7 +262,7 @@
 <script>
   DemoGlobals.init();
 
-  const WA = "923137863988";
+  const WA = "923272340505";
   const wl = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
   document.getElementById('heroWa').href = wl("Hi, I'm interested in properties listed on Al-Hayat Properties.");
   document.getElementById('floatWa').href = wl("Hi, I'd like to enquire about a property.");

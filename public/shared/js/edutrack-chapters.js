@@ -5,7 +5,7 @@
   'use strict';
 
   var ASSET = '../shared/assets/products/edutrack/';
-  var WA = 'https://wa.me/923137863988';
+  var WA = 'https://wa.me/923272340505';
 
   var CHAPTERS = [
     {

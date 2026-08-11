@@ -280,7 +280,9 @@
 
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Gallery image viewer"><button class="lightbox-close" aria-label="Close gallery">×</button><button class="lightbox-nav lightbox-prev" aria-label="Previous image">←</button><img src="" alt=""><button class="lightbox-nav lightbox-next" aria-label="Next image">→</button><div class="lightbox-caption"></div></div>
   <div class="toast" id="toast" role="status">Demo only — no booking will be submitted.</div>
+  <script src="/showcase/demo-globals.js"></script>
   <script>
+    if (window.DemoGlobals) DemoGlobals.init();
     const nav=document.getElementById("nav"),toggle=document.getElementById("navToggle"),links=document.getElementById("navLinks");
     addEventListener("scroll",()=>nav.classList.toggle("scrolled",scrollY>50),{passive:true});
     function closeMenu(){links.classList.remove("open");toggle.classList.remove("open");toggle.setAttribute("aria-expanded","false");document.body.classList.remove("menu-open")}

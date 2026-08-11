@@ -18,7 +18,7 @@
       "url": "/products/edutrack.html",
       "download": "/downloads/EduTrack-Setup.exe",
       "trial": "14-day free trial",
-      "pricingNote": "See pricing knowledge for Starter / Professional / Campus plans"
+      "pricingNote": "Starter / Professional / Campus plans — quote on request"
     },
     {
       "id": "storetrack",
@@ -26,7 +26,7 @@
       "status": "coming",
       "tagline": "Inventory and retail operations in one place.",
       "features": ["Inventory control", "POS-ready workflows", "Supplier management", "Sales analytics"],
-      "pricingNote": "Coming soon — no published price"
+      "pricingNote": "Coming soon"
     },
     {
       "id": "fittrack",
@@ -34,7 +34,7 @@
       "status": "coming",
       "tagline": "Memberships, classes, and member success.",
       "features": ["Membership plans", "Class scheduling", "Trainer assignment", "Renewal reminders"],
-      "pricingNote": "Coming soon — no published price"
+      "pricingNote": "Coming soon"
     },
     {
       "id": "meditrack",
@@ -42,7 +42,7 @@
       "status": "coming",
       "tagline": "Clinic operations without the paperwork chaos.",
       "features": ["Appointment booking", "Patient records", "Prescription notes", "Billing & follow-ups"],
-      "pricingNote": "Coming soon — no published price"
+      "pricingNote": "Coming soon"
     },
     {
       "id": "hrtrack",
@@ -50,7 +50,7 @@
       "status": "coming",
       "tagline": "People operations for growing teams.",
       "features": ["Employee directory", "Leave management", "Attendance logs", "HR documents"],
-      "pricingNote": "Coming soon — no published price"
+      "pricingNote": "Coming soon"
     },
     {
       "id": "hoteltrack",
@@ -58,7 +58,7 @@
       "status": "coming",
       "tagline": "Reservations and hospitality ops, streamlined.",
       "features": ["Room inventory", "Booking calendar", "Guest profiles", "Housekeeping status"],
-      "pricingNote": "Coming soon — no published price"
+      "pricingNote": "Coming soon"
     }
   ]
 }

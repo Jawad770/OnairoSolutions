@@ -92,7 +92,9 @@
 
   <footer><div class="container"><div class="footer-grid"><div class="footer-brand"><a class="logo" href="#home"><strong style="color:#fff">VERITY</strong><span>Financial Advisory</span></a><p>Accounting, taxation and business advice delivered with clarity, precision and professional care.</p></div><div class="footer-col"><h3>Company</h3><a href="#team">About</a><a href="#team">Our Team</a><a href="#">Careers</a><a href="#contact">Contact</a></div><div class="footer-col"><h3>Services</h3><a href="#services">Accounting</a><a href="#services">Tax</a><a href="#services">Payroll</a><a href="#services">Advisory</a></div><div class="footer-col"><h3>Explore</h3><a href="#industries">Industries</a><a href="#insights">Resources</a><a href="#insights">Insights</a><a href="#">LinkedIn</a></div><div class="footer-col"><h3>Financial Briefing</h3><p style="font-size:.65rem">A monthly preview of practical finance insights.</p><div class="newsletter"><input type="email" placeholder="Email address" aria-label="Email address"><button class="demo-action" aria-label="Subscribe">→</button></div></div></div><div class="footer-bottom"><span>© 2026 Verity Financial Advisory. Demo concept by Onairo Solutions.</span><span>Front-end showcase · No client services are processed</span></div></div></footer>
   <div class="toast" id="toast" role="status">Demo only — no information has been submitted.</div>
+  <script src="/showcase/demo-globals.js"></script>
   <script>
+    if (window.DemoGlobals) DemoGlobals.init();
     const nav=document.getElementById("nav"),toggle=document.getElementById("navToggle"),links=document.getElementById("navLinks");
     let navAnchor=nav.offsetTop;addEventListener("scroll",()=>nav.classList.toggle("fixed",scrollY>navAnchor),{passive:true});
     function closeMenu(){links.classList.remove("open");toggle.classList.remove("open");toggle.setAttribute("aria-expanded","false");document.body.classList.remove("menu-open")}

@@ -35,8 +35,8 @@
   function navHtml(active) {
     const p = ONAIRO.path;
     const email = ONAIRO.config.email;
-    const phone = '+92 313 786 3988';
-    const phoneHref = 'tel:+923137863988';
+    const phone = '+92 327 234 0505';
+    const phoneHref = 'tel:+923272340505';
 
     const desktopItems = [
       { id: 'home', label: 'Home', href: p('index.html') },
@@ -88,7 +88,6 @@
               <ul class="nav-group-list" id="navGroupExplore">
                 ${linkItem(p('index.html'), 'Home', active, 'home')}
                 ${linkItem(p('pages/about.html'), 'About', active, 'about')}
-                ${linkItem(p('pages/pricing.html'), 'Pricing', active, 'pricing')}
                 ${linkItem(p('pages/blog.html'), 'Blog', active, 'blog')}
                 ${linkItem(p('pages/contact.html'), 'Contact', active, 'contact')}
               </ul>
@@ -163,7 +162,6 @@
             <h4>Quick Links</h4>
             <a href="${p('index.html')}">Home</a>
             <a href="${p('pages/about.html')}">About</a>
-            <a href="${p('pages/pricing.html')}">Pricing</a>
             <a href="${p('pages/blog.html')}">Blog</a>
             <a href="${p('pages/contact.html')}">Contact</a>
             <a href="${p('pages/careers.html')}">Careers</a>

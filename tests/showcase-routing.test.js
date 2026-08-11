@@ -44,11 +44,37 @@ describe("showcase routing", () => {
     assert.equal(status, 200);
   });
 
-  it("GET /showcase/demo-globals.js → 200", async () => {
+  it("GET /showcase/crestwood → 200", async () => {
+    const { status, res } = await probe("/showcase/crestwood");
+    assert.equal(status, 200);
+    const text = await res.text();
+    assert.match(text, /Crestwood Academy/i);
+    assert.match(text, /onairosolutions\.com/i);
+  });
+
+  it("GET /showcase/crestwood/about.html → 200", async () => {
+    const { status, res } = await probe("/showcase/crestwood/about.html");
+    assert.equal(status, 200);
+    const text = await res.text();
+    assert.match(text, /About Crestwood/i);
+  });
+
+  it("GET /showcase/school → 200", async () => {
+    const { status, res } = await probe("/showcase/school");
+    assert.equal(status, 200);
+    const text = await res.text();
+    assert.match(text, /Greenfield|school|demo-globals/i);
+    assert.match(text, /Powered by/i);
+    assert.match(text, /onairosolutions\.com/i);
+  });
+
+  it("GET /showcase/demo-globals.js → 200 with Powered by injector", async () => {
     const { status, res } = await probe("/showcase/demo-globals.js");
     assert.equal(status, 200);
     const text = await res.text();
     assert.match(text, /DemoGlobals/);
+    assert.match(text, /installPoweredByOnairo/);
+    assert.match(text, /onairosolutions\.com/);
   });
 
   it("GET /showcase/missing-demo → 404", async () => {

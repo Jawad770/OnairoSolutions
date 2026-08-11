@@ -17,7 +17,7 @@ ONAIRO.blogPosts = [
     id: 'mobile-first-websites',
     slug: 'mobile-first-website-design-pakistan',
     title: 'Why Mobile-First Website Design Still Wins More Customers in Pakistan',
-    description: 'Learn how mobile-first website design improves conversions for Pakistani businesses with faster CTAs, trust, and WhatsApp lead paths.',
+    description: 'Learn how mobile-first website design improves conversions for businesses with faster CTAs, trust, and WhatsApp lead paths.',
     category: 'website-design',
     date: '2026-07-10',
     minutes: 5,

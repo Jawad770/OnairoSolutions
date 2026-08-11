@@ -47,14 +47,14 @@ describe("Onairo AI lead validation", () => {
     const ok = ai.validateLeadInput({
       name: "Ali Khan",
       businessName: "Smile Dental",
-      whatsapp: "03137863988",
+      whatsapp: "03272340505",
       summary: "Visitor owns a dental clinic.\nNeeds a modern website.",
       intentScore: 80,
       confidenceScore: 70,
       conversationId: "test",
     });
     assert.equal(ok.ok, true);
-    assert.equal(ok.data.whatsapp, "923137863988");
+    assert.equal(ok.data.whatsapp, "923272340505");
     assert.equal(ok.data.intentScore, 80);
   });
 
@@ -69,8 +69,8 @@ describe("Onairo AI lead validation", () => {
   });
 
   it("normalizes Pakistani mobile numbers", () => {
-    assert.equal(ai.normalizeWhatsapp("0313-7863988"), "923137863988");
-    assert.equal(ai.normalizeWhatsapp("+92 313 7863988"), "923137863988");
+    assert.equal(ai.normalizeWhatsapp("0313-7863988"), "923272340505");
+    assert.equal(ai.normalizeWhatsapp("+92 327 2340505"), "923272340505");
   });
 });
 

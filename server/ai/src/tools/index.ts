@@ -10,7 +10,8 @@ import {
 export const TOOL_DEFINITIONS: ToolDefinition[] = [
   {
     name: "search_pricing",
-    description: "Look up published Onairo website package prices and EduTrack plan prices. Never invent prices.",
+    description:
+      "Look up Onairo website packages and EduTrack plans (names, inclusions, who they suit). Never return or invent numeric prices — commercial terms are quote-only.",
     parameters: {
       type: "object",
       properties: {
@@ -50,7 +51,7 @@ export const TOOL_DEFINITIONS: ToolDefinition[] = [
   },
   {
     name: "search_faqs",
-    description: "Search frequently asked questions about Onairo, pricing, EduTrack, timelines.",
+    description: "Search frequently asked questions about Onairo, plans, EduTrack, timelines.",
     parameters: {
       type: "object",
       properties: {

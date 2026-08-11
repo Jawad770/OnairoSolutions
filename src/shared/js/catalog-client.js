@@ -144,7 +144,7 @@
         href: card.href || card.ctaLink || null,
         accent: card.accent || "#2563EB",
         features: card.features || [],
-        pricing: card.plansSummary || (card.comingSoon ? "Coming Soon" : ""),
+        pricing: card.comingSoon ? "Coming Soon" : "Plans available — request a quote",
         ctaText: card.ctaText,
         notifyMeEnabled: card.notifyMeEnabled,
       };
@@ -204,24 +204,18 @@
           .map((pkg) => {
             const plan = (pkg.plans && pkg.plans[0]) || {};
             const featured = pkg.featured || plan.popular || plan.recommended;
-            const price = plan.oneTimePrice != null ? plan.oneTimePrice : plan.monthlyPrice;
-            const amountLabel =
-              price != null
-                ? `From ${this.formatMoney(price, plan.currency || "USD")}<span>${escapeHtml(plan.subtitle || "contact for exact")}</span>`
-                : `Custom<span>${escapeHtml(plan.subtitle || "")}</span>`;
             const features = (plan.features || [])
               .filter((f) => f.included !== false)
               .map((f) => `<li>${escapeHtml(f.title || f.valueText || "")}</li>`)
               .join("");
             const cta = pkg.ctaText || plan.ctaText || `Ask about ${pkg.name}`;
-            const waMsg = `Hi Onairo Solutions, I'm interested in the ${pkg.name} website package. Please share exact pricing.`;
+            const waMsg = `Hi Onairo Solutions, I'm interested in the ${pkg.name} website package. Please share plan details and next steps.`;
             const waHref =
               typeof ONAIRO.waUrl === "function" ? ONAIRO.waUrl(waMsg) : "#";
             return `<article class="price-card${featured ? " featured" : ""} reveal">
               ${plan.badge || featured ? `<span class="badge">${escapeHtml(plan.badge || "Popular")}</span>` : ""}
               <h3>${escapeHtml(pkg.name)}</h3>
               <p class="tagline">${escapeHtml(pkg.tagline || "")}</p>
-              <div class="amount">${amountLabel}</div>
               <p class="note">${escapeHtml(pkg.description || "")}</p>
               <ul>${features}</ul>
               <a class="btn ${featured ? "btn-primary" : "btn-secondary"}" href="${waHref}" target="_blank" rel="noopener">${escapeHtml(cta)}</a>
@@ -266,16 +260,9 @@
           pricingEl.innerHTML = item.plans
             .map((plan) => {
               const featured = plan.recommended || plan.popular;
-              const amt =
-                plan.monthlyPrice != null
-                  ? `${this.formatMoney(plan.monthlyPrice, plan.currency || "PKR")} <span>/ mo</span>`
-                  : "Custom";
               const noteBits = [];
               const studentFeat = (plan.features || []).find((f) => /approx students/i.test(f.title));
               if (studentFeat?.valueText) noteBits.push(`Up to ${studentFeat.valueText} students`);
-              if (plan.subtitle && /priority|unlimited|billed/i.test(plan.subtitle)) {
-                /* keep subtitle as desc */
-              }
               const lis = (plan.features || [])
                 .filter((f) => f.included && !/approx students/i.test(f.title))
                 .slice(0, 8)
@@ -288,7 +275,6 @@
                 ${plan.badge ? `<div class="et-price-badge">${escapeHtml(plan.badge)}</div>` : ""}
                 <h3>${escapeHtml(plan.name)}</h3>
                 <p class="et-price-desc">${escapeHtml(plan.subtitle || "")}</p>
-                <div class="et-price-amt">${amt}</div>
                 <p class="et-price-note">${escapeHtml(noteBits.join(" · ") || plan.subtitle || "")}</p>
                 <ul>${lis}</ul>
                 <a class="btn ${featured ? "btn-primary btn-et" : "btn-secondary"} et-wa" data-wa="${escapeAttr(wa)}" href="${waHref}">${escapeHtml(cta)}</a>

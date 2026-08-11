@@ -395,7 +395,7 @@ function generateService(svc) {
         <a class="btn btn-primary" href="../pages/request-quote.html">Get Free Quote</a>
         <a class="btn btn-secondary lp-wa" data-wa="${esc(wa)}" href="#">WhatsApp Us</a>
         <a class="btn btn-ghost" href="../pages/contact.html">Contact</a>
-        <a class="btn btn-ghost" href="tel:+923137863988">Call Now</a>
+        <a class="btn btn-ghost" href="tel:+923272340505">Call Now</a>
       </div>
       <div style="margin-top:1.75rem">${leadForm(svc.slug.replace(/-/g, " "))}</div>
     </div>
@@ -523,7 +523,7 @@ function generateIndustry(ind) {
       <div class="lp-actions" style="justify-content:center">
         <a class="btn btn-primary" href="../pages/request-quote.html">Get Free Quote</a>
         <a class="btn btn-secondary lp-wa" data-wa="${esc(wa)}" href="#">Book Consultation</a>
-        <a class="btn btn-ghost" href="tel:+923137863988">Call Now</a>
+        <a class="btn btn-ghost" href="tel:+923272340505">Call Now</a>
       </div>
       <div style="margin-top:1.75rem">${leadForm(ind.slug.replace(/-/g, " "))}</div>
     </div>

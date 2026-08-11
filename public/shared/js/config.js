@@ -4,15 +4,15 @@ window.ONAIRO = window.ONAIRO || {};
 ONAIRO.config = {
   brand: 'Onairo Solutions',
   email: 'hello@onairosolutions.com',
-  waNumber: '923137863988',
+  waNumber: '923272340505',
   waDefaultMsg: "Hi Onairo Solutions, I'd like to learn more about your services.",
   year: 2026,
   siteUrl: 'https://onairosolutions.com',
   logoPath: '/favicon.svg',
-  locale: 'en_PK',
-  serviceArea: 'Pakistan · Worldwide remote delivery',
+  locale: 'en',
+  serviceArea: 'Worldwide remote delivery',
   /* Google Search Console verification meta content (replace placeholder) */
-  gscVerification: 'REPLACE_WITH_GOOGLE_SITE_VERIFICATION',
+  gscVerification: '_bUTGwIiexdJC7sB3R5-VxpXfHDtvvNiK21m3E1CMpE',
   /* Optional Google Analytics 4 Measurement ID (leave empty to disable) */
   gaMeasurementId: '',
 };

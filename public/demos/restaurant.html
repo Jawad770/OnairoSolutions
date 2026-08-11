@@ -135,7 +135,7 @@
       background:
         linear-gradient(180deg, rgba(26,10,4,0.88) 0%, rgba(26,10,4,0.72) 50%, rgba(26,10,4,0.92) 100%),
         radial-gradient(ellipse at 30% 20%, rgba(192,57,43,0.35) 0%, transparent 55%),
-        url('../images/restaurant/hero.jpg') center/cover no-repeat;
+        url('/images/restaurant/hero.jpg') center/cover no-repeat;
     }
 
     .hero-pattern {
@@ -445,17 +445,22 @@
       .hero-actions { display: flex; flex-direction: column; align-items: center; }
     }
 
-    @media (max-width: 375px) {
+    @media (max-width: 480px) {
       section { padding: 3.5rem 4%; }
       .menu-grid { grid-template-columns: 1fr; }
       .menu-thumb { width: 80px; min-height: 80px; }
+    }
+      /* Showcase QA: single WA safe-area */
+    .wa-float {
+      bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px)) !important;
+      right: max(1rem, env(safe-area-inset-right, 0px)) !important;
     }
   </style>
 </head>
 <body>
 
 <div class="demo-banner">
-  This is a demo site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com
+  This is a showcase site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com
 </div>
 
 <nav>
@@ -489,7 +494,7 @@
 <section id="about">
   <div class="about-grid">
     <div class="about-visual reveal">
-      <img src="../images/restaurant/about.jpg" alt="Al-Noor Restaurant dining area in Lahore" loading="lazy" decoding="async">
+      <img src="/images/restaurant/about.jpg" alt="Al-Noor Restaurant dining area in Lahore" loading="lazy" decoding="async">
     </div>
     <div class="about-text reveal">
       <div class="section-label">Our Story</div>
@@ -518,28 +523,28 @@
 
   <div class="menu-category active" id="starters">
     <div class="menu-grid">
-      <div class="menu-item reveal"><img class="menu-thumb" src="../images/restaurant/menu-tikka.jpg" alt="Chicken Tikka" loading="lazy" decoding="async"><div class="menu-body"><div><h4>Chicken Tikka</h4><p>Charcoal-grilled, served with mint chutney</p></div><span class="menu-price">Rs. 650</span></div></div>
-      <div class="menu-item reveal"><img class="menu-thumb" src="../images/restaurant/menu-kebab.jpg" alt="Seekh Kebab" loading="lazy" decoding="async"><div class="menu-body"><div><h4>Seekh Kebab (4 pcs)</h4><p>Spiced minced beef, tandoor cooked</p></div><span class="menu-price">Rs. 580</span></div></div>
-      <div class="menu-item reveal"><img class="menu-thumb" src="../images/restaurant/menu-samosa.jpg" alt="Samosay" loading="lazy" decoding="async"><div class="menu-body"><div><h4>Samosay (2 pcs)</h4><p>Crispy pastry with spiced potato filling</p></div><span class="menu-price">Rs. 180</span></div></div>
-      <div class="menu-item reveal"><img class="menu-thumb" src="../images/restaurant/menu-soup.jpg" alt="Chicken Soup" loading="lazy" decoding="async"><div class="menu-body"><div><h4>Chicken Soup</h4><p>Clear broth with fresh herbs & ginger</p></div><span class="menu-price">Rs. 350</span></div></div>
+      <div class="menu-item reveal"><img class="menu-thumb" src="/images/restaurant/menu-tikka.jpg" alt="Chicken Tikka" loading="lazy" decoding="async"><div class="menu-body"><div><h4>Chicken Tikka</h4><p>Charcoal-grilled, served with mint chutney</p></div><span class="menu-price">Rs. 650</span></div></div>
+      <div class="menu-item reveal"><img class="menu-thumb" src="/images/restaurant/menu-kebab.jpg" alt="Seekh Kebab" loading="lazy" decoding="async"><div class="menu-body"><div><h4>Seekh Kebab (4 pcs)</h4><p>Spiced minced beef, tandoor cooked</p></div><span class="menu-price">Rs. 580</span></div></div>
+      <div class="menu-item reveal"><img class="menu-thumb" src="/images/restaurant/menu-samosa.jpg" alt="Samosay" loading="lazy" decoding="async"><div class="menu-body"><div><h4>Samosay (2 pcs)</h4><p>Crispy pastry with spiced potato filling</p></div><span class="menu-price">Rs. 180</span></div></div>
+      <div class="menu-item reveal"><img class="menu-thumb" src="/images/restaurant/menu-soup.jpg" alt="Chicken Soup" loading="lazy" decoding="async"><div class="menu-body"><div><h4>Chicken Soup</h4><p>Clear broth with fresh herbs & ginger</p></div><span class="menu-price">Rs. 350</span></div></div>
     </div>
   </div>
 
   <div class="menu-category" id="mains">
     <div class="menu-grid">
-      <div class="menu-item reveal"><img class="menu-thumb" src="../images/restaurant/menu-biryani.jpg" alt="Chicken Biryani" loading="lazy" decoding="async"><div class="menu-body"><div><h4>Chicken Biryani</h4><p>Aromatic basmati, saffron, raita included</p></div><span class="menu-price">Rs. 450</span></div></div>
-      <div class="menu-item reveal"><img class="menu-thumb" src="../images/restaurant/menu-karahi.jpg" alt="Mutton Karahi" loading="lazy" decoding="async"><div class="menu-body"><div><h4>Mutton Karahi</h4><p>Half kg, tomatoes, green chillies, roti</p></div><span class="menu-price">Rs. 2,200</span></div></div>
-      <div class="menu-item reveal"><img class="menu-thumb" src="../images/restaurant/menu-nihari.jpg" alt="Beef Nihari" loading="lazy" decoding="async"><div class="menu-body"><div><h4>Beef Nihari</h4><p>Slow-cooked overnight, served with naan</p></div><span class="menu-price">Rs. 850</span></div></div>
-      <div class="menu-item reveal"><img class="menu-thumb" src="../images/restaurant/menu-handi.jpg" alt="Chicken Handi" loading="lazy" decoding="async"><div class="menu-body"><div><h4>Chicken Handi</h4><p>Creamy tomato gravy, serves 2–3</p></div><span class="menu-price">Rs. 1,450</span></div></div>
+      <div class="menu-item reveal"><img class="menu-thumb" src="/images/restaurant/menu-biryani.jpg" alt="Chicken Biryani" loading="lazy" decoding="async"><div class="menu-body"><div><h4>Chicken Biryani</h4><p>Aromatic basmati, saffron, raita included</p></div><span class="menu-price">Rs. 450</span></div></div>
+      <div class="menu-item reveal"><img class="menu-thumb" src="/images/restaurant/menu-karahi.jpg" alt="Mutton Karahi" loading="lazy" decoding="async"><div class="menu-body"><div><h4>Mutton Karahi</h4><p>Half kg, tomatoes, green chillies, roti</p></div><span class="menu-price">Rs. 2,200</span></div></div>
+      <div class="menu-item reveal"><img class="menu-thumb" src="/images/restaurant/menu-nihari.jpg" alt="Beef Nihari" loading="lazy" decoding="async"><div class="menu-body"><div><h4>Beef Nihari</h4><p>Slow-cooked overnight, served with naan</p></div><span class="menu-price">Rs. 850</span></div></div>
+      <div class="menu-item reveal"><img class="menu-thumb" src="/images/restaurant/menu-handi.jpg" alt="Chicken Handi" loading="lazy" decoding="async"><div class="menu-body"><div><h4>Chicken Handi</h4><p>Creamy tomato gravy, serves 2–3</p></div><span class="menu-price">Rs. 1,450</span></div></div>
     </div>
   </div>
 
   <div class="menu-category" id="desserts">
     <div class="menu-grid">
-      <div class="menu-item reveal"><img class="menu-thumb" src="../images/restaurant/menu-kheer.jpg" alt="Kheer" loading="lazy" decoding="async"><div class="menu-body"><div><h4>Kheer</h4><p>Traditional rice pudding with cardamom</p></div><span class="menu-price">Rs. 250</span></div></div>
-      <div class="menu-item reveal"><img class="menu-thumb" src="../images/restaurant/menu-gulab.jpg" alt="Gulab Jamun" loading="lazy" decoding="async"><div class="menu-body"><div><h4>Gulab Jamun (3 pcs)</h4><p>Warm, soaked in rose syrup</p></div><span class="menu-price">Rs. 220</span></div></div>
-      <div class="menu-item reveal"><img class="menu-thumb" src="../images/restaurant/menu-firni.jpg" alt="Zafrani Firni" loading="lazy" decoding="async"><div class="menu-body"><div><h4>Zafrani Firni</h4><p>Ground rice, saffron, pistachio topping</p></div><span class="menu-price">Rs. 280</span></div></div>
-      <div class="menu-item reveal"><img class="menu-thumb" src="../images/restaurant/menu-kulfi.jpg" alt="Kulfi Falooda" loading="lazy" decoding="async"><div class="menu-body"><div><h4>Kulfi Falooda</h4><p>Mango kulfi with vermicelli & rose water</p></div><span class="menu-price">Rs. 350</span></div></div>
+      <div class="menu-item reveal"><img class="menu-thumb" src="/images/restaurant/menu-kheer.jpg" alt="Kheer" loading="lazy" decoding="async"><div class="menu-body"><div><h4>Kheer</h4><p>Traditional rice pudding with cardamom</p></div><span class="menu-price">Rs. 250</span></div></div>
+      <div class="menu-item reveal"><img class="menu-thumb" src="/images/restaurant/menu-gulab.jpg" alt="Gulab Jamun" loading="lazy" decoding="async"><div class="menu-body"><div><h4>Gulab Jamun (3 pcs)</h4><p>Warm, soaked in rose syrup</p></div><span class="menu-price">Rs. 220</span></div></div>
+      <div class="menu-item reveal"><img class="menu-thumb" src="/images/restaurant/menu-firni.jpg" alt="Zafrani Firni" loading="lazy" decoding="async"><div class="menu-body"><div><h4>Zafrani Firni</h4><p>Ground rice, saffron, pistachio topping</p></div><span class="menu-price">Rs. 280</span></div></div>
+      <div class="menu-item reveal"><img class="menu-thumb" src="/images/restaurant/menu-kulfi.jpg" alt="Kulfi Falooda" loading="lazy" decoding="async"><div class="menu-body"><div><h4>Kulfi Falooda</h4><p>Mango kulfi with vermicelli & rose water</p></div><span class="menu-price">Rs. 350</span></div></div>
     </div>
   </div>
 </section>
@@ -548,13 +553,13 @@
   <div class="section-label reveal">Gallery</div>
   <h2 class="section-title reveal">A feast for the eyes</h2>
   <div class="gallery-grid reveal">
-    <div class="gallery-item"><img src="../images/restaurant/gal-1.jpg" alt="Chicken biryani platter" loading="lazy" decoding="async"></div>
-    <div class="gallery-item"><img src="../images/restaurant/gal-2.jpg" alt="Seekh kebab on grill" loading="lazy" decoding="async"></div>
-    <div class="gallery-item"><img src="../images/restaurant/gal-3.jpg" alt="Spicy karahi curry" loading="lazy" decoding="async"></div>
-    <div class="gallery-item"><img src="../images/restaurant/gal-4.jpg" alt="Tandoori chicken tikka" loading="lazy" decoding="async"></div>
-    <div class="gallery-item"><img src="../images/restaurant/gal-5.jpg" alt="Restaurant dining atmosphere" loading="lazy" decoding="async"></div>
-    <div class="gallery-item"><img src="../images/restaurant/gal-6.jpg" alt="Fresh grilled dishes" loading="lazy" decoding="async"></div>
-    <div class="gallery-item"><img src="../images/restaurant/gal-7.jpg" alt="Traditional Pakistani dessert" loading="lazy" decoding="async"></div>
+    <div class="gallery-item"><img src="/images/restaurant/gal-1.jpg" alt="Chicken biryani platter" loading="lazy" decoding="async"></div>
+    <div class="gallery-item"><img src="/images/restaurant/gal-2.jpg" alt="Seekh kebab on grill" loading="lazy" decoding="async"></div>
+    <div class="gallery-item"><img src="/images/restaurant/gal-3.jpg" alt="Spicy karahi curry" loading="lazy" decoding="async"></div>
+    <div class="gallery-item"><img src="/images/restaurant/gal-4.jpg" alt="Tandoori chicken tikka" loading="lazy" decoding="async"></div>
+    <div class="gallery-item"><img src="/images/restaurant/gal-5.jpg" alt="Restaurant dining atmosphere" loading="lazy" decoding="async"></div>
+    <div class="gallery-item"><img src="/images/restaurant/gal-6.jpg" alt="Fresh grilled dishes" loading="lazy" decoding="async"></div>
+    <div class="gallery-item"><img src="/images/restaurant/gal-7.jpg" alt="Traditional Pakistani dessert" loading="lazy" decoding="async"></div>
   </div>
 </section>
 
@@ -595,7 +600,7 @@
 <script>
   DemoGlobals.init();
 
-  const WA_NUMBER = "923137863988";
+  const WA_NUMBER = "923272340505";
   const waBase = `https://wa.me/${WA_NUMBER}`;
   const waMsg = encodeURIComponent("Hi, I'd like to reserve a table at Al-Noor Restaurant.");
   const waLink = `${waBase}?text=${waMsg}`;

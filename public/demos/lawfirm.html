@@ -782,11 +782,14 @@
       .process-step::after { display: none; }
       .scroll-indicator, .consult-float { display: none; }
       .t-card { min-width: min(320px, 88vw); }
-      .wa-float, .back-top { right: 1rem; }
-      .back-top { bottom: 5rem; width: 48px; height: 48px; }
-      .wa-float { bottom: 1rem; width: 48px; height: 48px; }
+      .wa-float, .back-top, .consult-float { right: max(0.85rem, env(safe-area-inset-right, 0px)); }
+      .wa-float { bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); width: 48px; height: 48px; }
+      .back-top { bottom: calc(4.85rem + env(safe-area-inset-bottom, 0px)); width: 44px; height: 44px; }
       .practice-grid { grid-template-columns: 1fr 1fr; }
       .attorneys-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .practice-grid, .attorneys-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
       section { padding: 3.5rem 1.15rem; }
@@ -838,7 +841,7 @@
 <div class="cursor-dot" aria-hidden="true"></div>
 <div class="cursor-ring" aria-hidden="true"></div>
 
-<div class="demo-banner">This is a demo site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com</div>
+<div class="demo-banner">This is a showcase site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com</div>
 
 <nav id="mainNav" aria-label="Primary">
   <a href="#hero" class="logo">
@@ -1317,7 +1320,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Hartwell &amp; Partners — All rights reserved — Demo by <a href="../../../index.html" style="color:var(--gold);margin:0">Onairo Solutions</a></span>
+    <span>© 2026 Hartwell &amp; Partners — All rights reserved — Showcase by <a href="../../../index.html" style="color:var(--gold);margin:0">Onairo Solutions</a></span>
     <span><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></span>
   </div>
 </footer>
@@ -1332,7 +1335,7 @@
 <script>
   DemoGlobals.init();
 
-  const WA_NUMBER = '923137863988';
+  const WA_NUMBER = '923272340505';
   const waMsg = encodeURIComponent("Hi, I'd like to schedule a confidential consultation with Hartwell & Partners.");
   const waLink = `https://wa.me/${WA_NUMBER}?text=${waMsg}`;
   const floatWa = document.getElementById('floatWa');

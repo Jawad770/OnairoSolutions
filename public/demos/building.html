@@ -50,7 +50,7 @@
 
     /* HERO */
     #hero { position:relative; overflow:hidden; min-height:88vh; display:flex; align-items:flex-end; }
-    .hero-bg { position:absolute; inset:0; background:linear-gradient(to top,rgba(26,26,26,.9) 0%,rgba(26,26,26,.55) 50%,rgba(26,26,26,.2) 100%), url('../images/building/hero.jpg') center/cover no-repeat; }
+    .hero-bg { position:absolute; inset:0; background:linear-gradient(to top,rgba(26,26,26,.9) 0%,rgba(26,26,26,.55) 50%,rgba(26,26,26,.2) 100%), url('/images/building/hero.jpg') center/cover no-repeat; }
     .hero-content { position:relative; z-index:1; padding:0 5% 4rem; width:100%; }
     .hero-label { display:inline-flex; align-items:center; gap:.6rem; font-size:.72rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--orange); margin-bottom:1.25rem; }
     .hero-label::before { content:''; width:28px; height:2px; background:var(--orange); }
@@ -184,10 +184,15 @@
       .hero-btns { flex-direction:column; }
     }
     @media(max-width:375px) { section { padding:3.5rem 4%; } }
+      /* Showcase QA: single WA safe-area */
+    .wa-float {
+      bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px)) !important;
+      right: max(1rem, env(safe-area-inset-right, 0px)) !important;
+    }
   </style>
 </head>
 <body>
-<div class="demo-banner">This is a demo site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com</div>
+<div class="demo-banner">This is a showcase site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com</div>
 <div class="uc-strip">Project Under Construction — Completion: June 2026 — Now Accepting Bookings</div>
 
 <nav>
@@ -247,7 +252,7 @@
       </div>
     </div>
     <div class="about-img reveal">
-      <img src="../images/building/progress.jpg" alt="Skyline Residences construction in progress" loading="lazy">
+      <img src="/images/building/progress.jpg" alt="Skyline Residences construction in progress" loading="lazy">
     </div>
   </div>
 </section>
@@ -297,9 +302,9 @@
   <h2 class="section-title reveal">World-Class Amenities</h2>
   <div class="amenities-grid">
     <div class="amenities-imgs reveal">
-      <div class="amenity-img"><img src="../images/building/amenity-1.jpg" alt="Swimming pool" loading="lazy"></div>
-      <div class="amenity-img"><img src="../images/building/amenity-2.jpg" alt="Luxury lobby" loading="lazy"></div>
-      <div class="amenity-img"><img src="../images/building/amenity-3.jpg" alt="Gym facility" loading="lazy"></div>
+      <div class="amenity-img"><img src="/images/building/amenity-1.jpg" alt="Swimming pool" loading="lazy"></div>
+      <div class="amenity-img"><img src="/images/building/amenity-2.jpg" alt="Luxury lobby" loading="lazy"></div>
+      <div class="amenity-img"><img src="/images/building/amenity-3.jpg" alt="Gym facility" loading="lazy"></div>
     </div>
     <div class="reveal">
       <p class="section-desc" style="margin-bottom:1.5rem;">Skyline Residences goes beyond a building — it's a fully managed lifestyle destination with amenities designed for modern families.</p>
@@ -348,7 +353,7 @@
     <div class="tl-item active">
       <div class="tl-dot">●</div>
       <div class="tl-date">Now — Apr 2025</div>
-      <h4>Exterior Cladding & Glass Fa'ade</h4>
+      <h4>Exterior Cladding & Glass Facade</h4>
       <p>Aluminium composite cladding 60% done. Double-glazed windows installation in progress.</p>
       <span class="tl-badge badge-active">In Progress</span>
     </div>
@@ -387,10 +392,10 @@
     <div class="reveal">
       <p style="font-weight:600;margin-bottom:.75rem;">Past Delivered Projects</p>
       <div class="delivered-grid">
-        <div class="delivered-img"><img src="../images/building/past-1.jpg" alt="Horizon Tower I" loading="lazy"></div>
-        <div class="delivered-img"><img src="../images/building/past-2.jpg" alt="Horizon Villas Phase II" loading="lazy"></div>
-        <div class="delivered-img"><img src="../images/building/render-1.jpg" alt="Gulshan Heights" loading="lazy"></div>
-        <div class="delivered-img"><img src="../images/building/render-2.jpg" alt="Clifton Terrace" loading="lazy"></div>
+        <div class="delivered-img"><img src="/images/building/past-1.jpg" alt="Horizon Tower I" loading="lazy"></div>
+        <div class="delivered-img"><img src="/images/building/past-2.jpg" alt="Horizon Villas Phase II" loading="lazy"></div>
+        <div class="delivered-img"><img src="/images/building/render-1.jpg" alt="Gulshan Heights" loading="lazy"></div>
+        <div class="delivered-img"><img src="/images/building/render-2.jpg" alt="Clifton Terrace" loading="lazy"></div>
       </div>
     </div>
   </div>
@@ -425,7 +430,7 @@
 <script>
   DemoGlobals.init();
 
-  const WA = "923137863988";
+  const WA = "923272340505";
   const wl = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
   document.getElementById('heroWa').href = wl("Hi, I'd like to register interest for Skyline Residences Phase I.");
   document.getElementById('registerWa').href = wl("Hi, I'd like to register interest and get details about Skyline Residences Phase I.");

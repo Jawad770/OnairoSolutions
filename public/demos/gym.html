@@ -960,19 +960,22 @@
 
     /* Float buttons */
     .wa-float, .back-top {
-      position: fixed; right: 1.25rem; z-index: 180;
+      position: fixed;
+      right: max(1rem, env(safe-area-inset-right, 0px));
+      z-index: 180;
       width: 52px; height: 52px; border-radius: 50%;
       display: grid; place-items: center; text-decoration: none;
       box-shadow: 0 8px 28px rgba(0,0,0,0.4); transition: transform 0.25s, opacity 0.3s;
     }
     .wa-float {
-      bottom: 1.25rem; background: var(--wa);
+      bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); background: var(--wa);
       animation: ctaFloat 3s ease-in-out infinite;
     }
     .wa-float svg { width: 26px; height: 26px; fill: #fff; }
     .wa-float:hover { transform: scale(1.08); }
     .back-top {
-      bottom: 5.5rem; background: var(--surface); border: 1px solid var(--glass-border);
+      bottom: calc(4.85rem + env(safe-area-inset-bottom, 0px));
+      background: var(--surface); border: 1px solid var(--glass-border);
       color: var(--cyan); font-size: 1.2rem; opacity: 0; pointer-events: none;
     }
     .back-top.show { opacity: 1; pointer-events: auto; }
@@ -1023,9 +1026,12 @@
       .form-row { grid-template-columns: 1fr; }
       .scroll-indicator { display: none; }
       .phone-mock { width: 180px; }
-      .wa-float, .back-top { width: 48px; height: 48px; right: 1rem; }
-      .back-top { bottom: 5rem; }
-      .wa-float { bottom: 1rem; }
+      .wa-float, .back-top {
+        width: 48px; height: 48px;
+        right: max(1rem, env(safe-area-inset-right, 0px));
+      }
+      .back-top { bottom: calc(5rem + env(safe-area-inset-bottom, 0px)); }
+      .wa-float { bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); }
       .testimonial-card { min-width: min(320px, 88vw); }
       .schedule-table { min-width: 560px; }
       .tilt:hover, .trainer-card:hover { transform: translateY(-6px) !important; }
@@ -1036,7 +1042,8 @@
       section { padding: 3.5rem 1.15rem; }
       nav { padding: 0.75rem 1rem; }
       .features-grid, .community-grid, .programs-grid, .trainers-grid,
-      .supp-grid, .challenge-grid { grid-template-columns: 1fr; }
+      .supp-grid, .challenge-grid, .price-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
       .masonry { columns: 1; }
       .hero-cards { flex-direction: column; }
       .stats-grid { grid-template-columns: 1fr 1fr; gap: 0.65rem; }
@@ -1093,7 +1100,7 @@
 <div class="cursor-dot" aria-hidden="true"></div>
 <div class="cursor-ring" aria-hidden="true"></div>
 
-<div class="demo-banner">This is a demo site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com</div>
+<div class="demo-banner">This is a showcase site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com</div>
 
 <nav id="mainNav" aria-label="Primary">
   <a href="#hero" class="logo">
@@ -1930,7 +1937,7 @@
   </div>
   <div class="footer-bottom">
     <span>© 2026 APEX Fitness — Gulberg III, Lahore</span>
-    <span>Demo by <a href="../../../index.html" style="color:var(--cyan)">Onairo Solutions</a></span>
+    <span>Showcase by <a href="../../../index.html" style="color:var(--cyan)">Onairo Solutions</a></span>
   </div>
 </footer>
 
@@ -1952,7 +1959,7 @@
     }, { once: true });
   });
 
-  const WA_NUMBER = '923137863988';
+  const WA_NUMBER = '923272340505';
   const waMsg = encodeURIComponent("Hi, I'd like to join APEX Fitness / book a free 3-day trial.");
   const waLink = `https://wa.me/${WA_NUMBER}?text=${waMsg}`;
   const floatWa = document.getElementById('floatWa');

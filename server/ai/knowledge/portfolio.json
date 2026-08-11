@@ -3,18 +3,21 @@
     { "id": "gym", "name": "APEX Fitness", "industry": "Gym & Fitness", "demo": "/showcase/gym", "description": "Premium gym site with memberships, trainers, BMI calculator, class schedule, WhatsApp join." },
     { "id": "lawfirm", "name": "Hartwell & Partners", "industry": "Law Firm", "demo": "/showcase/lawfirm", "description": "Elegant legal firm site with practice areas, attorneys, consultation booking." },
     { "id": "dental", "name": "Lumina Dental", "industry": "Dental Clinic", "demo": "/showcase/dental", "description": "Dental clinic with treatments, smile gallery, booking form, WhatsApp appointments." },
-    { "id": "carrental", "name": "VELOX Rentals", "industry": "Car Rental", "demo": "/showcase/carrental", "description": "Luxury rent-a-car with fleet filters, booking widget, WhatsApp reservations." },
-    { "id": "school", "name": "Greenfield Academy", "industry": "School", "demo": "/showcase/school", "description": "School site with programs, faculty, admissions, WhatsApp enquiries." },
+    { "id": "carrental", "name": "VELOX Rentals", "industry": "Car Rental", "demo": "/showcase/carrental", "description": "Premium mobile-first car rental showcase with editorial fleet, signature vehicle, locations, and WhatsApp reservations." },
+    { "id": "school", "name": "Greenfield Academy", "industry": "School", "demo": "/showcase/school", "description": "Cambridge-style school site with programs, facilities, faculty, admissions, news & events, gallery, WhatsApp enquiries." },
+    { "id": "crestwood", "name": "Crestwood Academy", "industry": "School", "demo": "/showcase/crestwood", "description": "Premium multi-page school website with academics, admissions, faculty, news, events, gallery, and inquiry forms." },
     { "id": "it", "name": "NEXORA Technologies", "industry": "IT & Software", "demo": "/showcase/it", "description": "SaaS-style tech company site with services, case studies, consultation form." },
     { "id": "carshowroom", "name": "DriveZone Motors", "industry": "Car Showroom", "demo": "/showcase/carshowroom", "description": "Car dealership with inventory grid, filters, test drive booking." },
     { "id": "travel", "name": "AURORA Escapes", "industry": "Travel Agency", "demo": "/showcase/travel", "description": "Travel site with destinations, packages, booking form, WhatsApp trip planning." },
-    { "id": "boutique", "name": "Style Studio", "industry": "Clothing Store", "demo": "/showcase/boutique", "description": "Fashion boutique with galleries and WhatsApp order button." },
+    { "id": "boutique", "name": "Atelier Serein", "industry": "Luxury Fashion Boutique", "demo": "/showcase/boutique", "description": "Fashion boutique with galleries and WhatsApp order button." },
     { "id": "restaurant", "name": "Al-Noor Restaurant", "industry": "Restaurant", "demo": "/showcase/restaurant", "description": "Restaurant with menu, WhatsApp booking, location map, gallery." },
     { "id": "building", "name": "Skyline Residences", "industry": "Construction", "demo": "/showcase/building", "description": "Construction project site with progress, timeline, unit availability." },
     { "id": "salon", "name": "Glamour Salon", "industry": "Salon & Beauty", "demo": "/showcase/salon", "description": "Salon with services, before/after gallery, WhatsApp booking." },
     { "id": "realestate", "name": "Al-Hayat Properties", "industry": "Real Estate", "demo": "/showcase/realestate", "description": "Property listings, agents, WhatsApp enquiry." },
     { "id": "clinic", "name": "MedCare Clinic", "industry": "Medical Clinic", "demo": "/showcase/clinic", "description": "Clinic with doctors, services, WhatsApp appointment booking." },
-    { "id": "menssalon", "name": "The Gentlemen's Cut", "industry": "Barber Shop", "demo": "/showcase/menssalon", "description": "Barbershop with pricing, gallery, WhatsApp booking." }
+    { "id": "menssalon", "name": "The Gentlemen's Cut", "industry": "Barber Shop", "demo": "/showcase/menssalon", "description": "Barbershop with pricing, gallery, WhatsApp booking." },
+    { "id": "accounting", "name": "Verity Financial Advisory", "industry": "Accounting & Finance", "demo": "/showcase/accounting", "description": "Accounting and advisory site with services, team, insights, consultation CTAs." },
+    { "id": "hotel", "name": "Maison Aurelia", "industry": "Luxury Hotel & Resort", "demo": "/showcase/hotel", "description": "Luxury resort site with rooms, dining, wellness, events, and gallery." }
   ],
   "note": "Demos are customizable starting points. Visitors can request a similar website for their business."
 }

@@ -266,7 +266,10 @@
       if (visibilityScheduled) return;
       visibilityScheduled = true;
       // Do not wait only on window.load — Unsplash/CSS backgrounds + maps can hang it.
-      const run = () => ensurePageVisible(false);
+      const run = () => {
+        ensurePageVisible(false);
+        try { installPoweredByOnairo(); } catch (_) {}
+      };
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => setTimeout(run, 80), { once: true });
       } else {
@@ -490,8 +493,108 @@
     };
   }
 
+  /**
+   * Shared “Powered by Onairo” footer credit (same pattern as school showcase).
+   * Injects once per page; skips if markup already present.
+   */
+  function installPoweredByOnairo() {
+    if (!document.body) return;
+    if (!document.getElementById('onairo-powered-style')) {
+      const style = document.createElement('style');
+      style.id = 'onairo-powered-style';
+      style.textContent = `
+        .onairo-powered {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.45rem;
+          margin-top: 0.75rem;
+          padding: 0.2rem 0;
+          color: inherit;
+          opacity: 0.82;
+          text-decoration: none;
+          font-size: 0.78rem;
+          font-weight: 500;
+          letter-spacing: 0.02em;
+          line-height: 1.2;
+          max-width: 100%;
+          transition: opacity 0.2s ease;
+        }
+        .onairo-powered:hover,
+        .onairo-powered:focus-visible {
+          opacity: 1;
+          outline: none;
+        }
+        .onairo-powered img {
+          width: 18px;
+          height: 18px;
+          flex-shrink: 0;
+          display: block;
+          object-fit: contain;
+        }
+        .onairo-powered strong {
+          font-weight: 700;
+          letter-spacing: 0.01em;
+        }
+        .onairo-powered-host {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          gap: 0.15rem;
+        }
+        .footer-bottom:has(> .onairo-powered),
+        .bottom:has(> .onairo-powered) {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: center;
+          gap: 0.35rem 1rem;
+        }
+        @media (max-width: 480px) {
+          .onairo-powered { font-size: 0.72rem; margin-top: 0.65rem; }
+          .onairo-powered img { width: 16px; height: 16px; }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    if (document.querySelector('a.onairo-powered')) return;
+
+    const footer = document.querySelector('footer');
+    if (!footer) return;
+
+    const credit = document.createElement('a');
+    credit.className = 'onairo-powered';
+    credit.href = 'https://onairosolutions.com';
+    credit.target = '_blank';
+    credit.rel = 'noopener noreferrer';
+    credit.setAttribute('aria-label', 'Powered by Onairo — visit onairosolutions.com');
+    credit.innerHTML =
+      '<span>Powered by</span>' +
+      '<img src="/favicon.svg" alt="" width="18" height="18" decoding="async" />' +
+      '<strong>Onairo</strong>';
+
+    const bottom =
+      footer.querySelector('.footer-bottom') ||
+      footer.querySelector('.bottom') ||
+      null;
+
+    if (bottom) {
+      bottom.appendChild(credit);
+      return;
+    }
+
+    const host = document.createElement('div');
+    host.className = 'onairo-powered-host';
+    host.appendChild(credit);
+    footer.appendChild(host);
+  }
+
   async function init() {
     if (!document.body) return activeCurrency;
+
+    installPoweredByOnairo();
 
     const override = getCurrencyOverride();
     let currency = override || detectCurrency(null);
@@ -518,6 +621,7 @@
     onLocaleChange,
     detectCurrency,
     init,
+    installPoweredByOnairo,
     ensurePageVisible,
     get locale() {
       return {

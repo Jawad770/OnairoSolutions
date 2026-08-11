@@ -1,7 +1,7 @@
 /**
  * Country catalogue for public lead forms.
  * Each entry: ISO2, name, dial code, flag emoji.
- * Pakistan is listed first as the default for Onairo.
+ * Default country for the phone picker.
  */
 (function (global) {
   var COUNTRIES = [

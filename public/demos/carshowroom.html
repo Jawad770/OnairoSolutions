@@ -46,7 +46,7 @@
 
     /* HERO — full-bleed cinematic */
     #hero { height:100vh; min-height:600px; position:relative; overflow:hidden; display:flex; align-items:flex-end; }
-    .hero-bg { position:absolute; inset:0; background:linear-gradient(to right,rgba(8,10,15,.96) 0%,rgba(8,10,15,.7) 50%,rgba(8,10,15,.2) 100%), url('../images/carshowroom/hero.jpg') center/cover no-repeat; }
+    .hero-bg { position:absolute; inset:0; background:linear-gradient(to right,rgba(8,10,15,.96) 0%,rgba(8,10,15,.7) 50%,rgba(8,10,15,.2) 100%), url('/images/carshowroom/hero.jpg') center/cover no-repeat; }
     .hero-stripe { position:absolute; top:0; right:0; width:3px; height:100%; background:linear-gradient(to bottom,transparent,var(--red),transparent); }
     .hero-content { position:relative; z-index:1; padding:0 5% 5rem; max-width:640px; }
     .hero-badge { display:inline-flex; align-items:center; gap:.5rem; font-size:.72rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--red-lt); margin-bottom:1.25rem; }
@@ -73,7 +73,7 @@
     .filter-bar { display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:2rem; }
     .filter-btn { background:var(--surface); border:1px solid var(--border); color:var(--muted); padding:.45rem 1.1rem; border-radius:100px; font-size:.82rem; font-weight:600; cursor:pointer; transition:all .2s; font-family:'Inter',sans-serif; }
     .filter-btn.active, .filter-btn:hover { background:var(--red); color:#fff; border-color:var(--red); }
-    .cars-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; }
+    .cars-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:1.5rem; }
     .car-card { background:var(--surface); border:1px solid var(--border); border-radius:16px; overflow:hidden; transition:transform .3s,box-shadow .3s; position:relative; }
     .car-card:hover { transform:translateY(-6px); box-shadow:0 24px 60px rgba(0,0,0,.6); border-color:rgba(224,32,32,.3); }
     .car-img { height:210px; overflow:hidden; position:relative; }
@@ -103,7 +103,7 @@
 
     /* SHOWROOM STRIP */
     #showroom { padding:0; position:relative; height:400px; overflow:hidden; }
-    .showroom-bg { position:absolute; inset:0; background:linear-gradient(to bottom,rgba(8,10,15,.3) 0%,rgba(8,10,15,.8) 100%), url('../images/carshowroom/showroom.jpg') center/cover no-repeat; }
+    .showroom-bg { position:absolute; inset:0; background:linear-gradient(to bottom,rgba(8,10,15,.3) 0%,rgba(8,10,15,.8) 100%), url('/images/carshowroom/showroom.jpg') center/cover no-repeat; }
     .showroom-content { position:absolute; bottom:0; left:0; right:0; padding:2.5rem 5%; }
     .showroom-content h2 { font-size:clamp(1.5rem,3vw,2.2rem); color:#fff; margin-bottom:.75rem; }
     .showroom-content p { color:var(--muted); max-width:480px; margin-bottom:1.5rem; }
@@ -138,10 +138,15 @@
       #showroom { height:280px; }
     }
     @media(max-width:375px) { section { padding:3.5rem 4%; } }
+      /* Showcase QA: single WA safe-area */
+    .wa-float {
+      bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px)) !important;
+      right: max(1rem, env(safe-area-inset-right, 0px)) !important;
+    }
   </style>
 </head>
 <body>
-<div class="demo-banner">This is a demo site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com</div>
+<div class="demo-banner">This is a showcase site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com</div>
 
 <nav>
   <a href="#" class="logo"><span class="logo-icon">✨</span><div class="logo-text">DriveZone<span>Motors — Lahore</span></div></a>
@@ -236,17 +241,17 @@
 
 <script src="/showcase/demo-globals.js"></script>
 <script>
-  const WA = "923137863988";
+  const WA = "923272340505";
   const wl = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
 
   const STORAGE_KEY = "drivezone_inventory";
   const DEFAULT_CARS = [
-    { id:1, brand:"Toyota",  model:"Corolla Altis 1.6",   year:2022, price:"42 Lac",  fuel:"Petrol", trans:"Auto", km:"28,000 km", tag:"Just In",  img:"../images/carshowroom/car-1.jpg" },
-    { id:2, brand:"Honda",   model:"Civic Oriel 1.8",     year:2021, price:"55 Lac",  fuel:"Petrol", trans:"Auto", km:"45,000 km", tag:"",         img:"../images/carshowroom/car-2.jpg" },
-    { id:3, brand:"KIA",     model:"Sportage AWD Alpha",  year:2023, price:"72 Lac",  fuel:"Petrol", trans:"Auto", km:"15,000 km", tag:"Hot Deal",  img:"../images/carshowroom/car-3.jpg" },
-    { id:4, brand:"Suzuki",  model:"Cultus AGS VXR",      year:2022, price:"24 Lac",  fuel:"Petrol", trans:"Auto", km:"32,000 km", tag:"",         img:"../images/carshowroom/car-4.jpg" },
-    { id:5, brand:"Hyundai", model:"Tucson AWD FWD",      year:2022, price:"63 Lac",  fuel:"Petrol", trans:"Auto", km:"22,000 km", tag:"Imported", img:"../images/carshowroom/car-5.jpg" },
-    { id:6, brand:"Toyota",  model:"Yaris ATIV 1.3",      year:2023, price:"32 Lac",  fuel:"Petrol", trans:"Auto", km:"8,000 km",  tag:"",         img:"../images/carshowroom/car-6.jpg" },
+    { id:1, brand:"Toyota",  model:"Corolla Altis 1.6",   year:2022, price:"42 Lac",  fuel:"Petrol", trans:"Auto", km:"28,000 km", tag:"Just In",  img:"/images/carshowroom/car-1.jpg" },
+    { id:2, brand:"Honda",   model:"Civic Oriel 1.8",     year:2021, price:"55 Lac",  fuel:"Petrol", trans:"Auto", km:"45,000 km", tag:"",         img:"/images/carshowroom/car-2.jpg" },
+    { id:3, brand:"KIA",     model:"Sportage AWD Alpha",  year:2023, price:"72 Lac",  fuel:"Petrol", trans:"Auto", km:"15,000 km", tag:"Hot Deal",  img:"/images/carshowroom/car-3.jpg" },
+    { id:4, brand:"Suzuki",  model:"Cultus AGS VXR",      year:2022, price:"24 Lac",  fuel:"Petrol", trans:"Auto", km:"32,000 km", tag:"",         img:"/images/carshowroom/car-4.jpg" },
+    { id:5, brand:"Hyundai", model:"Tucson AWD FWD",      year:2022, price:"63 Lac",  fuel:"Petrol", trans:"Auto", km:"22,000 km", tag:"Imported", img:"/images/carshowroom/car-5.jpg" },
+    { id:6, brand:"Toyota",  model:"Yaris ATIV 1.3",      year:2023, price:"32 Lac",  fuel:"Petrol", trans:"Auto", km:"8,000 km",  tag:"",         img:"/images/carshowroom/car-6.jpg" },
   ];
 
   let currentCars = DEFAULT_CARS;
@@ -267,7 +272,7 @@
       return `
       <div class="car-card reveal">
         <div class="car-img">
-          <img src="${car.img}" onerror="this.src='../images/carshowroom/car-1.jpg'" alt="${car.brand} ${car.model}" loading="lazy">
+          <img src="${car.img}" onerror="this.src='/images/carshowroom/car-1.jpg'" alt="${car.brand} ${car.model}" loading="lazy">
           ${car.tag ? `<span class="car-tag">${car.tag}</span>` : ''}
           <span class="car-year">${car.year}</span>
         </div>

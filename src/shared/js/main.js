@@ -26,21 +26,21 @@
   }
 
   const WEBSITE_WA_MESSAGES = {
-    carrental: `Hello Onairo Solutions,\n\nI was exploring your Car Rental website demo and I'm interested in getting a similar website for my rent-a-car business.\n\nCould you please share pricing, included features and estimated delivery time?\n\nThank you.`,
-    it: `Hello Onairo Solutions,\n\nI was exploring your IT Company website demo and I'm interested in getting a similar website for my software / technology business.\n\nCould you please share pricing, included features and estimated delivery time?\n\nThank you.`,
-    dental: `Hello Onairo Solutions,\n\nI was exploring your Dental Clinic website demo and I'm interested in getting a similar website for my dental practice.\n\nCould you please share pricing, included features and estimated delivery time?\n\nThank you.`,
+    carrental: `Hello Onairo Solutions,\n\nI was exploring your Car Rental website demo and I'm interested in getting a similar website for my rent-a-car business.\n\nCould you please share plan details, included features and estimated delivery time?\n\nThank you.`,
+    it: `Hello Onairo Solutions,\n\nI was exploring your IT Company website demo and I'm interested in getting a similar website for my software / technology business.\n\nCould you please share plan details, included features and estimated delivery time?\n\nThank you.`,
+    dental: `Hello Onairo Solutions,\n\nI was exploring your Dental Clinic website demo and I'm interested in getting a similar website for my dental practice.\n\nCould you please share plan details, included features and estimated delivery time?\n\nThank you.`,
     travel: `Hello Onairo Solutions,\n\nI was exploring your Travel Agency website demo and I'd like a similar website for my travel business.\n\nCould you please share the available packages, features and delivery timeline?\n\nThank you.`,
-    lawfirm: `Hello Onairo Solutions,\n\nI was exploring your Law Firm website demo and I'm interested in having a similar professional website built for my law firm.\n\nCould you please share the pricing, included features and estimated delivery time?\n\nThank you.`,
-    gym: `Hello Onairo Solutions,\n\nI was exploring your Gym & Fitness website demo and I'm interested in getting a similar website for my gym.\n\nCould you please share pricing, included features and delivery time?\n\nThank you.`,
-    restaurant: `Hello Onairo Solutions,\n\nI was exploring your Restaurant website demo and I'd like to get a similar website for my restaurant.\n\nCould you please provide pricing, features and delivery time?\n\nThank you.`,
-    clinic: `Hello Onairo Solutions,\n\nI was exploring your Medical Clinic website demo and I'm interested in getting a similar website for my clinic.\n\nCould you please share more details about the package, pricing, included features and estimated delivery time?\n\nThank you.`,
-    boutique: `Hello Onairo Solutions,\n\nI was exploring your Clothing Store website demo and I'm interested in getting a similar website for my boutique.\n\nCould you please share pricing, included features and estimated delivery time?\n\nThank you.`,
-    salon: `Hello Onairo Solutions,\n\nI was exploring your Salon & Beauty website demo and I'm interested in getting a similar website for my business.\n\nCould you please share more details about the package, pricing, included features and estimated delivery time?\n\nThank you.`,
-    realestate: `Hello Onairo Solutions,\n\nI was exploring your Real Estate website demo and I'm interested in getting a similar website for my agency.\n\nCould you please share pricing, included features and estimated delivery time?\n\nThank you.`,
-    carshowroom: `Hello Onairo Solutions,\n\nI was exploring your Car Showroom website demo and I'm interested in getting a similar website for my dealership.\n\nCould you please share pricing, included features and estimated delivery time?\n\nThank you.`,
-    menssalon: `Hello Onairo Solutions,\n\nI was exploring your Barber Shop website demo and I'm interested in getting a similar website for my barbershop.\n\nCould you please share pricing, included features and estimated delivery time?\n\nThank you.`,
-    construction: `Hello Onairo Solutions,\n\nI was exploring your Construction website demo and I'm interested in getting a similar website for my company.\n\nCould you please share more information about pricing, features and estimated delivery time?\n\nThank you.`,
-    school: `Hello Onairo Solutions,\n\nI was exploring your School / Academy website demo and I'm interested in getting a similar website for my institution.\n\nCould you please share pricing, included features and estimated delivery time?\n\nThank you.`,
+    lawfirm: `Hello Onairo Solutions,\n\nI was exploring your Law Firm website demo and I'm interested in having a similar professional website built for my law firm.\n\nCould you please share plan details, included features and estimated delivery time?\n\nThank you.`,
+    gym: `Hello Onairo Solutions,\n\nI was exploring your Gym & Fitness website demo and I'm interested in getting a similar website for my gym.\n\nCould you please share plan details, included features and delivery time?\n\nThank you.`,
+    restaurant: `Hello Onairo Solutions,\n\nI was exploring your Restaurant website demo and I'd like to get a similar website for my restaurant.\n\nCould you please share plan details, features and delivery time?\n\nThank you.`,
+    clinic: `Hello Onairo Solutions,\n\nI was exploring your Medical Clinic website demo and I'm interested in getting a similar website for my clinic.\n\nCould you please share more details about the package, plan details, included features and estimated delivery time?\n\nThank you.`,
+    boutique: `Hello Onairo Solutions,\n\nI was exploring your Clothing Store website demo and I'm interested in getting a similar website for my boutique.\n\nCould you please share plan details, included features and estimated delivery time?\n\nThank you.`,
+    salon: `Hello Onairo Solutions,\n\nI was exploring your Salon & Beauty website demo and I'm interested in getting a similar website for my business.\n\nCould you please share more details about the package, plan details, included features and estimated delivery time?\n\nThank you.`,
+    realestate: `Hello Onairo Solutions,\n\nI was exploring your Real Estate website demo and I'm interested in getting a similar website for my agency.\n\nCould you please share plan details, included features and estimated delivery time?\n\nThank you.`,
+    carshowroom: `Hello Onairo Solutions,\n\nI was exploring your Car Showroom website demo and I'm interested in getting a similar website for my dealership.\n\nCould you please share plan details, included features and estimated delivery time?\n\nThank you.`,
+    menssalon: `Hello Onairo Solutions,\n\nI was exploring your Barber Shop website demo and I'm interested in getting a similar website for my barbershop.\n\nCould you please share plan details, included features and estimated delivery time?\n\nThank you.`,
+    construction: `Hello Onairo Solutions,\n\nI was exploring your Construction website demo and I'm interested in getting a similar website for my company.\n\nCould you please share more information about plan details, features and estimated delivery time?\n\nThank you.`,
+    school: `Hello Onairo Solutions,\n\nI was exploring your School / Academy website demo and I'm interested in getting a similar website for my institution.\n\nCould you please share plan details, included features and estimated delivery time?\n\nThank you.`,
   };
 
   function initDelegatedActions() {
@@ -61,7 +61,7 @@
       const getBtn = e.target.closest('.btn-get-website');
       if (getBtn) {
         const key = getBtn.dataset.website;
-        const message = WEBSITE_WA_MESSAGES[key] || `Hello Onairo Solutions,\n\nI'm interested in getting a website similar to one of your demos.\n\nCould you please share pricing, features and delivery time?\n\nThank you.`;
+        const message = WEBSITE_WA_MESSAGES[key] || `Hello Onairo Solutions,\n\nI'm interested in getting a website similar to one of your demos.\n\nCould you please share plan details, features and delivery time?\n\nThank you.`;
         window.open(ONAIRO.waUrl(message), '_blank');
       }
     });
@@ -103,7 +103,7 @@
       const actions = item.comingSoon || !item.demo
         ? `<button type="button" class="btn btn-secondary btn-sm" disabled>Coming Soon</button>
            <a class="btn btn-ghost btn-sm" href="${ONAIRO.waUrl(`Hi Onairo Solutions, I'd like to be notified when the ${item.industry} demo launches.`)}">Notify Me</a>`
-        : `<a href="${(item.demo && (item.demo.startsWith('/') || item.demo.startsWith('http'))) ? item.demo : ONAIRO.path(item.demo)}" class="btn btn-primary btn-sm demo-link">View Live Demo</a>
+        : `<a href="${(item.demo && (item.demo.startsWith('/') || item.demo.startsWith('http'))) ? item.demo : ONAIRO.path(item.demo)}" class="btn btn-primary btn-sm demo-link">View Live Showcase</a>
            <button type="button" class="btn btn-secondary btn-sm btn-get-website" data-website="${waKey}">Get This Website</button>
            ${seoLink}`;
       return `<article class="port-card reveal" data-category="${item.category}">
@@ -205,11 +205,11 @@
         download.textContent = "Download";
         actions.appendChild(download);
 
-        const pricing = document.createElement("a");
-        pricing.className = "btn btn-ghost btn-sm";
-        pricing.href = `${href || "#"}#pricing`;
-        pricing.textContent = "Pricing";
-        actions.appendChild(pricing);
+        const plans = document.createElement("a");
+        plans.className = "btn btn-ghost btn-sm";
+        plans.href = `${href || "#"}#plans`;
+        plans.textContent = "Plans";
+        actions.appendChild(plans);
       } else {
         const soon = document.createElement("button");
         soon.className = "btn btn-secondary btn-sm";

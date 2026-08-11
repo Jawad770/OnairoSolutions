@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Greenfield Academy — School Website Demo</title>
+  <title>Greenfield Academy — School Website Showcase</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -960,6 +960,43 @@
       width: 100%;
       text-align: center;
       font-size: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .onairo-powered {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      margin-top: 0.35rem;
+      padding: 0.2rem 0;
+      color: rgba(255,255,255,0.72);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+      max-width: 100%;
+      transition: color 0.2s ease, opacity 0.2s ease;
+    }
+    .onairo-powered:hover,
+    .onairo-powered:focus-visible {
+      color: #fff;
+      outline: none;
+    }
+    .onairo-powered img {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      display: block;
+      object-fit: contain;
+    }
+    .onairo-powered strong {
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      color: inherit;
     }
 
     .wa-float {
@@ -1052,12 +1089,32 @@
       .hero-actions { flex-direction: column; width: 100%; }
       .hero-actions a { width: 100%; justify-content: center; }
       .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: 200px; }
+      .hero-stats { gap: 0.65rem; }
+      .onairo-powered { font-size: 0.72rem; }
+      .onairo-powered img { width: 16px; height: 16px; }
+    }
+
+    @media (max-width: 360px) {
+      .hero-stat-num { font-size: 1.35rem; }
+      .logo-text strong { font-size: 0.95rem; }
+      .top-bar { font-size: 0.72rem; padding-inline: 0.65rem; }
+      .programs-grid,
+      .faculty-grid,
+      .testimonials-grid,
+      .news-grid { max-width: 100%; }
+      .apply-box { padding: 2.5rem 1.15rem; border-radius: 0; }
+      .dates-card { padding: 1.25rem; }
+    }
+      /* Showcase QA: single WA safe-area */
+    .wa-float {
+      bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px)) !important;
+      right: max(1rem, env(safe-area-inset-right, 0px)) !important;
     }
   </style>
 </head>
 <body>
 
-<div class="demo-banner">This is a demo site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com</div>
+<div class="demo-banner">This is a showcase site created by <a href="https://onairosolutions.com" target="_blank" rel="noopener noreferrer">Onairo Solutions</a> — onairosolutions.com</div>
 
 <div class="top-bar">
   <div class="top-bar-left">
@@ -1070,7 +1127,7 @@
 </div>
 
 <nav id="mainNav">
-  <a href="#" class="logo">
+  <a href="#hero" class="logo">
     <div class="logo-mark">G</div>
     <div class="logo-text">
       <strong>Greenfield</strong>
@@ -1092,7 +1149,7 @@
 
 <section id="hero">
   <div class="hero-bg">
-    <img src="../images/school/hero.jpg" alt="Greenfield Academy campus" loading="eager" decoding="sync" fetchpriority="high">
+    <img src="/images/school/hero.jpg" alt="Greenfield Academy campus" loading="eager" decoding="sync" fetchpriority="high">
   </div>
   <div class="hero-inner">
     <div class="hero-content reveal">
@@ -1129,7 +1186,7 @@
   <div class="about-grid">
     <div class="about-img-wrap reveal">
       <div class="about-img">
-        <img src="../images/school/about.jpg" alt="Students at Greenfield Academy" loading="lazy">
+        <img src="/images/school/about.jpg" alt="Students at Greenfield Academy" loading="lazy">
       </div>
       <div class="about-accent">
         <div class="about-accent-num">18+</div>
@@ -1164,7 +1221,7 @@
     </div>
     <div class="programs-grid">
       <div class="program-card reveal">
-        <div class="program-img"><img src="../images/school/prog-early.jpg" alt="Early years" loading="lazy"></div>
+        <div class="program-img"><img src="/images/school/prog-early.jpg" alt="Early years" loading="lazy"></div>
         <div class="program-body">
           <div class="program-level">Ages 3–5</div>
           <h3>Early Years</h3>
@@ -1174,7 +1231,7 @@
       </div>
       <div class="program-card featured reveal reveal-delay-1">
         <div class="program-featured-tag">Most Popular</div>
-        <div class="program-img"><img src="../images/school/prog-primary.jpg" alt="Primary school" loading="lazy"></div>
+        <div class="program-img"><img src="/images/school/prog-primary.jpg" alt="Primary school" loading="lazy"></div>
         <div class="program-body">
           <div class="program-level">Grades 1–5</div>
           <h3>Primary School</h3>
@@ -1183,7 +1240,7 @@
         </div>
       </div>
       <div class="program-card reveal reveal-delay-2">
-        <div class="program-img"><img src="../images/school/prog-secondary.jpg" alt="Secondary school" loading="lazy"></div>
+        <div class="program-img"><img src="/images/school/prog-secondary.jpg" alt="Secondary school" loading="lazy"></div>
         <div class="program-body">
           <div class="program-level">Grades 6–10</div>
           <h3>Secondary & O-Levels</h3>
@@ -1204,23 +1261,23 @@
   </div>
   <div class="facilities-bento">
     <div class="facility-item reveal">
-      <img src="../images/school/fac-library.jpg" alt="Library" loading="lazy">
+      <img src="/images/school/fac-library.jpg" alt="Library" loading="lazy">
       <div class="facility-cap"><h3>Central Library</h3><p>12,000 volumes — Digital resources — Study halls</p></div>
     </div>
     <div class="facility-item reveal">
-      <img src="../images/school/fac-lab.jpg" alt="Science lab" loading="lazy">
+      <img src="/images/school/fac-lab.jpg" alt="Science lab" loading="lazy">
       <div class="facility-cap"><h3>Science Laboratories</h3><p>Physics — Chemistry — Biology</p></div>
     </div>
     <div class="facility-item reveal">
-      <img src="../images/school/fac-sports.jpg" alt="Sports" loading="lazy">
+      <img src="/images/school/fac-sports.jpg" alt="Sports" loading="lazy">
       <div class="facility-cap"><h3>Sports Complex</h3><p>Cricket — Football — Gymnasium</p></div>
     </div>
     <div class="facility-item reveal">
-      <img src="../images/school/fac-arts.jpg" alt="Arts" loading="lazy">
+      <img src="/images/school/fac-arts.jpg" alt="Arts" loading="lazy">
       <div class="facility-cap"><h3>Arts & Music</h3><p>Studio — Instruments — Drama hall</p></div>
     </div>
     <div class="facility-item reveal">
-      <img src="../images/school/gallery-3.jpg" alt="Campus" loading="lazy">
+      <img src="/images/school/gallery-3.jpg" alt="Campus" loading="lazy">
       <div class="facility-cap"><h3>Secure Campus</h3><p>CCTV — Gated access — Medical room</p></div>
     </div>
   </div>
@@ -1236,7 +1293,7 @@
     </div>
     <div class="faculty-grid">
       <div class="faculty-card reveal">
-        <div class="faculty-photo"><img src="../images/school/teacher-1.jpg" alt="Ms. Aisha Malik" loading="lazy"></div>
+        <div class="faculty-photo"><img src="/images/school/teacher-1.jpg" alt="Ms. Aisha Malik" loading="lazy"></div>
         <div class="faculty-info">
           <h3>Ms. Aisha Malik</h3>
           <div class="faculty-role">Principal — M.Ed — 20 Years</div>
@@ -1244,7 +1301,7 @@
         </div>
       </div>
       <div class="faculty-card reveal reveal-delay-1">
-        <div class="faculty-photo"><img src="../images/school/teacher-2.jpg" alt="Mr. James Okonkwo" loading="lazy"></div>
+        <div class="faculty-photo"><img src="/images/school/teacher-2.jpg" alt="Mr. James Okonkwo" loading="lazy"></div>
         <div class="faculty-info">
           <h3>Mr. James Okonkwo</h3>
           <div class="faculty-role">Head of Sciences — MSc Physics</div>
@@ -1252,7 +1309,7 @@
         </div>
       </div>
       <div class="faculty-card reveal reveal-delay-2">
-        <div class="faculty-photo"><img src="../images/school/teacher-3.jpg" alt="Ms. Fatima Noor" loading="lazy"></div>
+        <div class="faculty-photo"><img src="/images/school/teacher-3.jpg" alt="Ms. Fatima Noor" loading="lazy"></div>
         <div class="faculty-info">
           <h3>Ms. Fatima Noor</h3>
           <div class="faculty-role">Early Years Lead — B.Ed</div>
@@ -1338,7 +1395,7 @@
     </div>
     <div class="news-grid">
       <article class="news-card reveal">
-        <div class="news-img"><img src="../images/school/event-1.jpg" alt="Science fair" loading="lazy"></div>
+        <div class="news-img"><img src="/images/school/event-1.jpg" alt="Science fair" loading="lazy"></div>
         <div class="news-body">
           <div class="news-date">12 February 2026</div>
           <h3>Annual Science Fair: Grade 8 Takes Top Honours</h3>
@@ -1346,7 +1403,7 @@
         </div>
       </article>
       <article class="news-card reveal reveal-delay-1">
-        <div class="news-img"><img src="../images/school/event-2.jpg" alt="Workshop" loading="lazy"></div>
+        <div class="news-img"><img src="/images/school/event-2.jpg" alt="Workshop" loading="lazy"></div>
         <div class="news-body">
           <div class="news-date">5 February 2026</div>
           <h3>Parent Workshop on Study Habits</h3>
@@ -1354,7 +1411,7 @@
         </div>
       </article>
       <article class="news-card reveal reveal-delay-2">
-        <div class="news-img"><img src="../images/school/event-3.jpg" alt="Sports day" loading="lazy"></div>
+        <div class="news-img"><img src="/images/school/event-3.jpg" alt="Sports day" loading="lazy"></div>
         <div class="news-body">
           <div class="news-date">28 January 2026</div>
           <h3>Inter-House Sports Day 2026</h3>
@@ -1372,12 +1429,12 @@
     <div class="section-rule"></div>
   </div>
   <div class="gallery-grid">
-    <div class="gallery-item span2 reveal"><img src="../images/school/gallery-1.jpg" alt="Classroom" loading="lazy"><div class="gallery-cap"><span>Interactive learning</span></div></div>
-    <div class="gallery-item reveal"><img src="../images/school/gallery-2.jpg" alt="Activity" loading="lazy"><div class="gallery-cap"><span>Group projects</span></div></div>
-    <div class="gallery-item span-row2 reveal"><img src="../images/school/gallery-3.jpg" alt="Campus" loading="lazy"><div class="gallery-cap"><span>Our grounds</span></div></div>
-    <div class="gallery-item reveal"><img src="../images/school/gallery-4.jpg" alt="Session" loading="lazy"><div class="gallery-cap"><span>STEM lab</span></div></div>
-    <div class="gallery-item reveal"><img src="../images/school/gallery-5.jpg" alt="Study" loading="lazy"><div class="gallery-cap"><span>Library time</span></div></div>
-    <div class="gallery-item span2 reveal"><img src="../images/school/gallery-6.jpg" alt="Graduation" loading="lazy"><div class="gallery-cap"><span>Graduation day</span></div></div>
+    <div class="gallery-item span2 reveal"><img src="/images/school/gallery-1.jpg" alt="Classroom" loading="lazy"><div class="gallery-cap"><span>Interactive learning</span></div></div>
+    <div class="gallery-item reveal"><img src="/images/school/gallery-2.jpg" alt="Activity" loading="lazy"><div class="gallery-cap"><span>Group projects</span></div></div>
+    <div class="gallery-item span-row2 reveal"><img src="/images/school/gallery-3.jpg" alt="Campus" loading="lazy"><div class="gallery-cap"><span>Our grounds</span></div></div>
+    <div class="gallery-item reveal"><img src="/images/school/gallery-4.jpg" alt="Session" loading="lazy"><div class="gallery-cap"><span>STEM lab</span></div></div>
+    <div class="gallery-item reveal"><img src="/images/school/gallery-5.jpg" alt="Study" loading="lazy"><div class="gallery-cap"><span>Library time</span></div></div>
+    <div class="gallery-item span2 reveal"><img src="/images/school/gallery-6.jpg" alt="Graduation" loading="lazy"><div class="gallery-cap"><span>Graduation day</span></div></div>
   </div>
 </section>
 
@@ -1418,7 +1475,7 @@
       </div>
     </div>
     <div class="map-placeholder reveal reveal-delay-1">
-      <span>🛏️</span>
+      <span>🗺️</span>
       Google Maps Embed<br>
       <small style="margin-top:0.35rem;display:block;opacity:0.7">Education Boulevard, Islamabad</small>
     </div>
@@ -1453,7 +1510,12 @@
     </div>
   </div>
   <div class="footer-bottom">
-    © 2026 Greenfield Academy — Registered Institution — Cambridge Affiliate — Child Safeguarding Policy
+    <span>© 2026 Greenfield Academy — Registered Institution — Cambridge Affiliate — Child Safeguarding Policy</span>
+    <a class="onairo-powered" href="https://onairosolutions.com" target="_blank" rel="noopener noreferrer" aria-label="Powered by Onairo — visit onairosolutions.com">
+      <span>Powered by</span>
+      <img src="/favicon.svg" alt="" width="18" height="18" decoding="async" />
+      <strong>Onairo</strong>
+    </a>
   </div>
 </footer>
 
@@ -1469,7 +1531,7 @@
 
   DemoGlobals.init();
 
-  const WA_NUMBER = "923137863988";
+  const WA_NUMBER = "923272340505";
   const waMsg = encodeURIComponent("Hi, I'd like to enquire about admissions at Greenfield Academy.");
   const waLink = `https://wa.me/${WA_NUMBER}?text=${waMsg}`;
 
@@ -1495,6 +1557,37 @@
     navToggle.classList.remove('open');
     document.body.style.overflow = '';
   }));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+      navLinks.classList.remove('open');
+      navToggle.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // Lightweight demo toast for mailto / tel CTAs that are showcase-only
+  function showDemoToast(message) {
+    let toast = document.getElementById('schoolDemoToast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'schoolDemoToast';
+      toast.setAttribute('role', 'status');
+      toast.style.cssText = 'position:fixed;left:50%;bottom:calc(5.5rem + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:300;max-width:min(92vw,360px);padding:0.85rem 1.1rem;border-radius:12px;background:rgba(15,36,56,0.96);color:#fff;font-size:0.85rem;line-height:1.45;box-shadow:0 12px 40px rgba(0,0,0,0.28);opacity:0;transition:opacity 0.25s;pointer-events:none;text-align:center';
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.style.opacity = '1';
+    clearTimeout(showDemoToast._t);
+    showDemoToast._t = setTimeout(() => { toast.style.opacity = '0'; }, 3200);
+  }
+
+  document.querySelectorAll('a[href^="mailto:"], a[href^="tel:"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      // Keep native action; also show a polished demo note for showcase context
+      showDemoToast('Demo contact details — use WhatsApp or the live Onairo site for real enquiries.');
+    });
+  });
 
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {

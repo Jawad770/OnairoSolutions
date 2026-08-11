@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Website & Software Pricing | Onairo Solutions</title>
-  <meta name="description" content="Transparent pricing guidance for website packages, custom software, and EduTrack plans from Onairo Solutions."/>
+  <title>Website &amp; Software Plans | Onairo Solutions</title>
+  <meta name="description" content="Explore Onairo website packages and EduTrack plans — features and fit by scope. Request a quote for a personalised proposal."/>
   <link rel="icon" href="../../favicon.svg" type="image/svg+xml"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -199,14 +199,14 @@
     }
   </style>
 </head>
-<body data-root="../.." data-page="pricing">
+<body data-root=".." data-page="pricing">
   <div id="site-nav"></div>
 
   <header class="page-hero">
     <div class="container">
-      <p class="section-tag reveal">Pricing</p>
-      <h1 class="reveal">Clear packages. <em>Flexible quotes.</em></h1>
-      <p class="lead reveal">Website packages start at accessible entry points. Exact pricing depends on scope — contact us for a tailored quote in USD or PKR.</p>
+      <p class="section-tag reveal">Plans</p>
+      <h1 class="reveal">Clear packages. <em>Personalised quotes.</em></h1>
+      <p class="lead reveal">Choose a starting plan by features and fit. We share exact commercial terms privately after understanding your scope — request a quote or message us on WhatsApp.</p>
     </div>
   </header>
 
@@ -215,13 +215,12 @@
       <div class="section-head center">
         <p class="section-tag reveal">Website packages</p>
         <h2 class="section-title reveal">Choose your starting point</h2>
-        <p class="section-sub reveal">Indicative ranges only — final quotes reflect pages, features, and content readiness.</p>
+        <p class="section-sub reveal">Plan names describe scope. Final commercial terms are confirmed after a short discovery chat.</p>
       </div>
       <div class="pricing-grid" id="pricingGrid" data-catalog-pricing>
         <article class="price-card reveal">
           <h3>Starter</h3>
           <p class="tagline">Essential presence for new businesses</p>
-          <div class="amount">From $150<span>≈ PKR 15,000 · contact for exact</span></div>
           <p class="note">Ideal for a polished single-business site with core pages.</p>
           <ul>
             <li>Up to 5 pages</li>
@@ -236,7 +235,6 @@
           <span class="badge">Popular</span>
           <h3>Business</h3>
           <p class="tagline">Conversion-ready multi-page sites</p>
-          <div class="amount">From $350<span>≈ PKR 35,000 · contact for exact</span></div>
           <p class="note">Best for established brands that need depth and lead capture.</p>
           <ul>
             <li>Up to 10 pages</li>
@@ -251,7 +249,6 @@
         <article class="price-card reveal">
           <h3>Premium</h3>
           <p class="tagline">Full brand experience &amp; advanced flows</p>
-          <div class="amount">From $650<span>≈ PKR 65,000 · contact for exact</span></div>
           <p class="note">For businesses that want distinctive design and richer features.</p>
           <ul>
             <li>Custom page count</li>
@@ -272,7 +269,7 @@
       <div class="custom-note reveal">
         <div>
           <h3>Custom software &amp; products</h3>
-          <p>Bespoke software, automation, AI integrations, and commercial products like EduTrack are scoped separately. We’ll map requirements and share a clear estimate — no one-size pricing.</p>
+          <p>Bespoke software, automation, AI integrations, and commercial products like EduTrack are scoped as named plans. We’ll map requirements and share a clear proposal — no public price list.</p>
         </div>
         <div class="actions">
           <a class="btn btn-primary" href="request-quote.html">Request a Quote</a>
@@ -285,9 +282,9 @@
   <section class="section cta-band">
     <div class="container">
       <h2 class="reveal">Not sure which package fits?</h2>
-      <p class="reveal">Message us with your business type and goals — we’ll recommend the right starting point in minutes.</p>
+      <p class="reveal">Message us with your business type and goals — we’ll recommend the right plan in minutes.</p>
       <div class="cta-actions reveal">
-        <a class="btn btn-primary" id="waCta" href="#" target="_blank" rel="noopener">WhatsApp for Pricing</a>
+        <a class="btn btn-primary" id="waCta" href="#" target="_blank" rel="noopener">WhatsApp about Plans</a>
         <a class="btn btn-secondary" href="contact.html">Contact Form</a>
       </div>
     </div>
@@ -310,24 +307,11 @@
         const waStarter = document.getElementById('waStarter');
         const waBusiness = document.getElementById('waBusiness');
         const waPremium = document.getElementById('waPremium');
-        if (waStarter) waStarter.href = ONAIRO.waUrl("Hi Onairo Solutions, I'm interested in the Starter website package. Please share exact pricing.");
-        if (waBusiness) waBusiness.href = ONAIRO.waUrl("Hi Onairo Solutions, I'm interested in the Business website package. Please share exact pricing.");
-        if (waPremium) waPremium.href = ONAIRO.waUrl("Hi Onairo Solutions, I'm interested in the Premium website package. Please share exact pricing.");
+        if (waStarter) waStarter.href = ONAIRO.waUrl("Hi Onairo Solutions, I'm interested in the Starter website package. Please share plan details and next steps.");
+        if (waBusiness) waBusiness.href = ONAIRO.waUrl("Hi Onairo Solutions, I'm interested in the Business website package. Please share plan details and next steps.");
+        if (waPremium) waPremium.href = ONAIRO.waUrl("Hi Onairo Solutions, I'm interested in the Premium website package. Please share plan details and next steps.");
       }
-      let promoHost = document.getElementById('pricingPromoBox');
-      if (!promoHost) {
-        promoHost = document.createElement('div');
-        promoHost.id = 'pricingPromoBox';
-        promoHost.className = 'container';
-        promoHost.style.marginTop = '16px';
-        const grid = document.getElementById('pricingGrid');
-        if (grid && grid.parentNode) grid.parentNode.appendChild(promoHost);
-      }
-      ONAIRO.catalog.mountDiscountBox(promoHost, {
-        productSlug: 'website-business',
-        planName: 'Business',
-      });
-      document.getElementById('waCta').href = ONAIRO.waUrl("Hi Onairo Solutions, I'd like help choosing a website package and getting an exact quote.");
+      document.getElementById('waCta').href = ONAIRO.waUrl("Hi Onairo Solutions, I'd like help choosing a website package plan for my business.");
     })();
   </script>
 </body>

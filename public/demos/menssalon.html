@@ -139,10 +139,15 @@
       .services-table tr { display:block; padding:.75rem 0; border-bottom:1px solid rgba(255,255,255,.06); }
     }
     @media(max-width:375px) { section { padding:3.5rem 4%; } }
+      /* Showcase QA: single WA safe-area */
+    .wa-float {
+      bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px)) !important;
+      right: max(1rem, env(safe-area-inset-right, 0px)) !important;
+    }
   </style>
 </head>
 <body>
-<div class="demo-banner">This is a demo site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com</div>
+<div class="demo-banner">This is a showcase site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com</div>
 
 <nav>
   <a href="#" class="logo">The <em>Gentlemen's</em> Cut<span>Barbershop & Grooming — Islamabad</span></a>
@@ -170,7 +175,7 @@
       <div class="trust-pill"><span>7 Years</span> in F-7</div>
     </div>
   </div>
-  <div class="hero-right"><img src="../images/menssalon/hero.jpg" alt="The Gentlemen's Cut Barbershop Islamabad"></div>
+  <div class="hero-right"><img src="/images/menssalon/hero.jpg" alt="The Gentlemen's Cut Barbershop Islamabad"></div>
 </section>
 
 <section id="services">
@@ -198,13 +203,13 @@
   <div class="section-tag reveal">Our Work</div>
   <h2 class="section-title reveal">Cuts We're Proud Of</h2>
   <div class="gallery-masonry reveal">
-    <div class="gal"><img src="../images/menssalon/cut-1.jpg" alt="Fade haircut" loading="lazy"></div>
-    <div class="gal"><img src="../images/menssalon/cut-2.jpg" alt="Beard sculpt" loading="lazy"></div>
-    <div class="gal"><img src="../images/menssalon/interior.jpg" alt="Barbershop interior" loading="lazy"></div>
-    <div class="gal"><img src="../images/menssalon/cut-3.jpg" alt="Classic cut" loading="lazy"></div>
-    <div class="gal"><img src="../images/menssalon/cut-4.jpg" alt="Hot towel shave" loading="lazy"></div>
-    <div class="gal"><img src="../images/menssalon/barber-1.jpg" alt="Barber at work" loading="lazy"></div>
-    <div class="gal"><img src="../images/menssalon/barber-2.jpg" alt="Precision fade" loading="lazy"></div>
+    <div class="gal"><img src="/images/menssalon/cut-1.jpg" alt="Fade haircut" loading="lazy"></div>
+    <div class="gal"><img src="/images/menssalon/cut-2.jpg" alt="Beard sculpt" loading="lazy"></div>
+    <div class="gal"><img src="/images/menssalon/interior.jpg" alt="Barbershop interior" loading="lazy"></div>
+    <div class="gal"><img src="/images/menssalon/cut-3.jpg" alt="Classic cut" loading="lazy"></div>
+    <div class="gal"><img src="/images/menssalon/cut-4.jpg" alt="Hot towel shave" loading="lazy"></div>
+    <div class="gal"><img src="/images/menssalon/barber-1.jpg" alt="Barber at work" loading="lazy"></div>
+    <div class="gal"><img src="/images/menssalon/barber-2.jpg" alt="Precision fade" loading="lazy"></div>
   </div>
 </section>
 
@@ -213,7 +218,7 @@
   <h2 class="section-title reveal">Meet Your Barbers</h2>
   <div class="barbers-grid reveal">
     <div class="barber-card">
-      <img src="../images/menssalon/barber-1.jpg" alt="Usman Shah" loading="lazy">
+      <img src="/images/menssalon/barber-1.jpg" alt="Usman Shah" loading="lazy">
       <div class="barber-overlay">
         <h3>Usman Shah</h3>
         <div class="role">Master Barber</div>
@@ -222,7 +227,7 @@
       </div>
     </div>
     <div class="barber-card">
-      <img src="../images/menssalon/barber-2.jpg" alt="Zubair Khalid" loading="lazy">
+      <img src="/images/menssalon/barber-2.jpg" alt="Zubair Khalid" loading="lazy">
       <div class="barber-overlay">
         <h3>Zubair Khalid</h3>
         <div class="role">Grooming Specialist</div>
@@ -231,7 +236,7 @@
       </div>
     </div>
     <div class="barber-card">
-      <img src="../images/menssalon/barber-3.jpg" alt="Asim Raza" loading="lazy">
+      <img src="/images/menssalon/barber-3.jpg" alt="Asim Raza" loading="lazy">
       <div class="barber-overlay">
         <h3>Asim Raza</h3>
         <div class="role">Color Technician</div>
@@ -276,7 +281,7 @@
 <script>
   DemoGlobals.init();
 
-  const WA = "923137863988";
+  const WA = "923272340505";
   const wl = t => `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
   document.getElementById('heroWa').href = wl("Hi, I'd like to book an appointment at The Gentlemen's Cut.");
   document.getElementById('bookWa').href = wl("Hi, I'd like to book a haircut appointment at The Gentlemen's Cut.");

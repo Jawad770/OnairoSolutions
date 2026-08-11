@@ -924,22 +924,22 @@
       .top-bar { display: none; }
       .pkg-grid, .dest-grid, .hotel-grid, .exp-grid { grid-template-columns: 1fr 1fr; }
       .t-card { min-width: min(320px, 88vw); }
-      .wa-float, .back-top { right: 1rem; }
-      .back-top { bottom: 5rem; width: 48px; height: 48px; }
-      .wa-float { bottom: 1rem; width: 48px; height: 48px; }
-      #quote-popup { left: 1rem; bottom: 5.5rem; }
+      .wa-float, .back-top { right: max(0.85rem, env(safe-area-inset-right, 0px)); }
+      .back-top { bottom: calc(4.85rem + env(safe-area-inset-bottom, 0px)); width: 48px; height: 48px; }
+      .wa-float { bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); width: 48px; height: 48px; }
+      #quote-popup { left: 1rem; bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px)); max-width: min(300px, calc(100vw - 5rem)); }
       .world-map { aspect-ratio: 1.4 / 1; }
       .map-tooltip { transform: translate(-50%, -120%); }
       .tilt:hover { transform: none !important; }
     }
     @media (max-width: 600px) {
-      section { padding: 3.5rem 1.15rem; }
+      section { padding: 3.25rem 1.15rem; }
       nav { padding: 0.75rem 1rem; }
       .masonry { columns: 1; }
       .ig-grid { grid-template-columns: repeat(2, 1fr); }
       .stats-bar { grid-template-columns: 1fr 1fr; }
       .pkg-grid, .dest-grid, .hotel-grid, .exp-grid, .why-grid, .blog-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         gap: 0.65rem;
       }
       .experts-grid { grid-template-columns: 1fr 1fr; gap: 0.65rem; }
@@ -1017,14 +1017,20 @@
         animation: none !important;
       }
     }
+      /* Showcase QA: travel narrow grids */
+    @media (max-width: 480px) {
+      .pkg-grid, .dest-grid, .hotel-grid, .exp-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
   </style>
 </head>
 <body>
 
-<div id="loader" role="status"><div class="loader-plane">✨</div><div class="loader-text">AURORA Escapes</div></div>
+<div id="loader" role="status"><div class="loader-plane">✈️</div><div class="loader-text">AURORA Escapes</div></div>
 <div id="scroll-progress" aria-hidden="true"></div>
 
-<div class="demo-banner">This is a demo site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com</div>
+<div class="demo-banner">This is a showcase site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com</div>
 
 <div class="top-bar">
   <label>Currency
@@ -1048,7 +1054,7 @@
 
 <nav id="mainNav" aria-label="Primary">
   <a href="#hero" class="logo">
-    <div class="logo-mark">✨</div>
+    <div class="logo-mark" aria-hidden="true">✈️</div>
     <div class="logo-text">AURORA<span>Escapes — Lahore</span></div>
   </a>
   <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
@@ -1492,7 +1498,7 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-brand">
-      <a href="#hero" class="logo"><div class="logo-mark">✨</div><div class="logo-text">AURORA<span>Escapes — Lahore</span></div></a>
+      <a href="#hero" class="logo"><div class="logo-mark" aria-hidden="true">✈️</div><div class="logo-text">AURORA<span>Escapes — Lahore</span></div></a>
       <p>Luxury travel, adventure tours and custom journeys from Pakistan to the world.</p>
       <div class="footer-socials">
         <a href="#" aria-label="Instagram">IG</a>
@@ -1529,7 +1535,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 AURORA Escapes — Demo by <a href="../../../index.html" style="color:var(--sky);margin:0">Onairo Solutions</a></span>
+    <span>© 2026 AURORA Escapes — Showcase by <a href="../../../index.html" style="color:var(--sky);margin:0">Onairo Solutions</a></span>
     <span><a href="#">Privacy Policy</a><a href="#">Terms</a></span>
   </div>
 </footer>
@@ -1559,7 +1565,7 @@
     }, { once: true });
   });
 
-  const WA_NUMBER = '923137863988';
+  const WA_NUMBER = '923272340505';
   const waLink = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hi AURORA Escapes, I'd like to plan a trip / book a consultation.")}`;
   document.getElementById('floatWa').href = waLink;
 

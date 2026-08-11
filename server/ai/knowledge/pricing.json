@@ -1,11 +1,9 @@
 {
-  "disclaimer": "Published prices are starting / indicative. Final pricing depends on scope and requirements. Never invent prices beyond this file.",
+  "disclaimer": "Never disclose numeric prices, fees, or currency amounts. Describe plan names, who they are for, and what is included. Direct visitors to Request Quote or WhatsApp for a personalised commercial proposal.",
   "websitePackages": [
     {
       "id": "starter",
       "name": "Starter",
-      "fromUsd": 150,
-      "approxPkr": 15000,
       "tagline": "Essential presence for new businesses",
       "includes": [
         "Up to 5 pages",
@@ -18,8 +16,6 @@
     {
       "id": "business",
       "name": "Business",
-      "fromUsd": 350,
-      "approxPkr": 35000,
       "recommended": true,
       "tagline": "Conversion-ready multi-page sites",
       "includes": [
@@ -34,8 +30,6 @@
     {
       "id": "premium",
       "name": "Premium",
-      "fromUsd": 650,
-      "approxPkr": 65000,
       "tagline": "Full brand experience & advanced flows",
       "includes": [
         "Custom page count",
@@ -51,14 +45,12 @@
     {
       "id": "starter",
       "name": "Starter",
-      "price": "Rs. 12,000 / month",
       "approxStudents": "~300 students",
       "notes": "Complete school management system; billed annually available"
     },
     {
       "id": "professional",
       "name": "Professional",
-      "price": "Rs. 24,000 / month",
       "approxStudents": "~1,000 students",
       "recommended": true,
       "notes": "Priority onboarding; advanced template customization"
@@ -66,12 +58,11 @@
     {
       "id": "campus",
       "name": "Campus",
-      "price": "Custom",
       "notes": "Quoted after understanding campus size and requirements"
     }
   ],
   "edutrackTrial": "14-day free trial available",
   "customSoftware": {
-    "rule": "Custom software, automation, AI integrations, and bespoke work are scoped separately. Pricing depends on requirements — never invent an estimate. Offer a personalised quotation after understanding needs."
+    "rule": "Custom software, automation, AI integrations, and bespoke work are scoped separately. Never invent or state prices. Describe suitable plans or next steps and offer a personalised quotation via Request Quote or WhatsApp."
   }
 }

@@ -26,6 +26,7 @@
     html { scroll-behavior: smooth; }
 
     body {
+      overflow-x: hidden;
       font-family: 'Inter', sans-serif;
       background: var(--off-white);
       color: var(--navy);
@@ -339,12 +340,23 @@
     @media (max-width: 375px) {
       section { padding: 3.5rem 4%; }
     }
+      /* Showcase QA: single WA safe-area */
+    .wa-float {
+      bottom: calc(1.5rem + env(safe-area-inset-bottom, 0px)) !important;
+      right: max(1rem, env(safe-area-inset-right, 0px)) !important;
+    }
+      /* Showcase QA: clinic grids */
+    @media (max-width: 480px) {
+      .services-grid, .doctors-grid, .treat-grid, .why-grid, .cards-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
   </style>
 </head>
 <body>
 
 <div class="demo-banner">
-  This is a demo site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com
+  This is a showcase site created by <a href="../../../index.html">Onairo Solutions</a> — onairosolutions.com
 </div>
 
 <nav>
@@ -373,7 +385,7 @@
     </div>
   </div>
   <div class="hero-visual reveal">
-    <img src="../images/clinic/hero.jpg" alt="Modern medical clinic reception" loading="lazy">
+    <img src="/images/clinic/hero.jpg" alt="Modern medical clinic reception" loading="lazy">
   </div>
 </section>
 
@@ -383,27 +395,27 @@
   <p class="section-desc reveal">From routine check-ups to specialist consultations — all under one roof.</p>
   <div class="services-grid">
     <div class="service-card reveal">
-      <div class="service-img"><img src="../images/clinic/svc-general.jpg" alt="General medicine consultation" loading="lazy"></div>
+      <div class="service-img"><img src="/images/clinic/svc-general.jpg" alt="General medicine consultation" loading="lazy"></div>
       <div class="service-card-body"><div class="service-icon">🦷</div><h3>General Medicine</h3><p>Diagnosis and treatment for common illnesses, fever, infections, and chronic conditions.</p></div>
     </div>
     <div class="service-card reveal">
-      <div class="service-img"><img src="../images/clinic/svc-pediatrics.jpg" alt="Pediatric care for children" loading="lazy"></div>
+      <div class="service-img"><img src="/images/clinic/svc-pediatrics.jpg" alt="Pediatric care for children" loading="lazy"></div>
       <div class="service-card-body"><div class="service-icon">👶</div><h3>Pediatrics</h3><p>Child health, vaccinations, growth monitoring, and newborn care by specialist pediatricians.</p></div>
     </div>
     <div class="service-card reveal">
-      <div class="service-img"><img src="../images/clinic/svc-lab.jpg" alt="Laboratory testing equipment" loading="lazy"></div>
+      <div class="service-img"><img src="/images/clinic/svc-lab.jpg" alt="Laboratory testing equipment" loading="lazy"></div>
       <div class="service-card-body"><div class="service-icon">🧪</div><h3>Lab Tests</h3><p>On-site pathology lab — CBC, LFT, RFT, HbA1c, thyroid panel, and more. Results in 24 hours.</p></div>
     </div>
     <div class="service-card reveal">
-      <div class="service-img"><img src="../images/clinic/svc-pharmacy.jpg" alt="In-house pharmacy medicines" loading="lazy"></div>
+      <div class="service-img"><img src="/images/clinic/svc-pharmacy.jpg" alt="In-house pharmacy medicines" loading="lazy"></div>
       <div class="service-card-body"><div class="service-icon">🧪</div><h3>Pharmacy</h3><p>In-house pharmacy with genuine medicines. Prescriptions filled while you wait.</p></div>
     </div>
     <div class="service-card reveal">
-      <div class="service-img"><img src="../images/clinic/svc-dental.jpg" alt="Dental care treatment" loading="lazy"></div>
+      <div class="service-img"><img src="/images/clinic/svc-dental.jpg" alt="Dental care treatment" loading="lazy"></div>
       <div class="service-card-body"><div class="service-icon">🦷</div><h3>Dental Care</h3><p>Cleanings, fillings, extractions, and cosmetic dentistry by qualified dental surgeons.</p></div>
     </div>
     <div class="service-card reveal">
-      <div class="service-img"><img src="../images/clinic/svc-cardio.jpg" alt="Cardiology heart health check" loading="lazy"></div>
+      <div class="service-img"><img src="/images/clinic/svc-cardio.jpg" alt="Cardiology heart health check" loading="lazy"></div>
       <div class="service-card-body"><div class="service-icon">❤️</div><h3>Cardiology</h3><p>ECG, blood pressure monitoring, and heart health consultations every Tuesday & Thursday.</p></div>
     </div>
   </div>
@@ -415,7 +427,7 @@
   <p class="section-desc reveal">PMDC-registered specialists with years of experience serving Islamabad families.</p>
   <div class="doctors-grid">
     <div class="doctor-card reveal">
-      <div class="doctor-photo d1"><img src="../images/clinic/doc-1.jpg" alt="Dr. Ahmed Khan" loading="lazy"></div>
+      <div class="doctor-photo d1"><img src="/images/clinic/doc-1.jpg" alt="Dr. Ahmed Khan" loading="lazy"></div>
       <div class="doctor-info">
         <h3>Dr. Ahmed Khan</h3>
         <div class="specialty">General Physician — MBBS, FCPS</div>
@@ -423,7 +435,7 @@
       </div>
     </div>
     <div class="doctor-card reveal">
-      <div class="doctor-photo d2"><img src="../images/clinic/doc-2.jpg" alt="Dr. Fatima Siddiqui" loading="lazy"></div>
+      <div class="doctor-photo d2"><img src="/images/clinic/doc-2.jpg" alt="Dr. Fatima Siddiqui" loading="lazy"></div>
       <div class="doctor-info">
         <h3>Dr. Fatima Siddiqui</h3>
         <div class="specialty">Pediatrician — MBBS, DCH</div>
@@ -431,7 +443,7 @@
       </div>
     </div>
     <div class="doctor-card reveal">
-      <div class="doctor-photo d3"><img src="../images/clinic/doc-3.jpg" alt="Dr. Hassan Raza" loading="lazy"></div>
+      <div class="doctor-photo d3"><img src="/images/clinic/doc-3.jpg" alt="Dr. Hassan Raza" loading="lazy"></div>
       <div class="doctor-info">
         <h3>Dr. Hassan Raza</h3>
         <div class="specialty">Cardiologist — MBBS, MRCP</div>
@@ -501,7 +513,7 @@
 <script>
   DemoGlobals.init();
 
-  const WA_NUMBER = "923137863988";
+  const WA_NUMBER = "923272340505";
   const waLink = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent("Hi, I'd like to book an appointment at MedCare Clinic.")}`;
 
   ['heroWa', 'apptWa', 'floatWa'].forEach(id => {
