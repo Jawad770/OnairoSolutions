@@ -93,15 +93,21 @@ function seedAdminUser() {
     .trim()
     .toLowerCase();
   const password = process.env.INIT_ADMIN_PASSWORD || "ChangeMeNow!123";
+  const forcePassword =
+    process.env.INIT_ADMIN_FORCE_PASSWORD === "1" ||
+    String(process.env.INIT_ADMIN_FORCE_PASSWORD || "").toLowerCase() === "true";
   const hashed = bcrypt.hashSync(password, 12);
   const ts = now();
   const existing = state.users.find((u) => String(u.email || "").toLowerCase() === email);
 
   if (existing) {
-    // db:init must keep the configured admin usable (unlock + sync password from env).
+    // Keep the admin account usable on boot, but do NOT overwrite the password on every
+    // restart (that made portal resets look broken). Opt in with INIT_ADMIN_FORCE_PASSWORD=1.
     let changed = false;
-    if (process.env.INIT_ADMIN_PASSWORD) {
+    if (forcePassword && process.env.INIT_ADMIN_PASSWORD) {
       existing.password_hash = hashed;
+      existing.must_change_password = 1;
+      existing.password_changed_at = ts;
       changed = true;
     }
     if (existing.status !== "active") {

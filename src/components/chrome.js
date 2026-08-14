@@ -240,6 +240,15 @@
     document.body.appendChild(s);
   }
 
+  function ensurePopupClient() {
+    if (document.querySelector('script[data-popup-client]')) return;
+    const s = document.createElement('script');
+    s.src = ONAIRO.path('shared/js/popup-client.js');
+    s.defer = true;
+    s.dataset.popupClient = '1';
+    document.body.appendChild(s);
+  }
+
   function ensureSandboxBanner() {
     if (document.getElementById('onairo-sandbox-banner')) return;
     fetch('/api/catalog/items?channel=website', { headers: { Accept: 'application/json' }, credentials: 'same-origin' })
@@ -411,6 +420,7 @@
     ensureAiWidget();
     ensureFloatingDrag();
     ensureCampaignClient();
+    ensurePopupClient();
     ensureSandboxBanner();
     initMobileDrawer();
     initScrollAwareNav();

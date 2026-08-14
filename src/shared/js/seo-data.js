@@ -7,7 +7,7 @@ window.ONAIRO = window.ONAIRO || {};
 ONAIRO.seoPages = {
   home: {
     title: 'Onairo Solutions | Website Development & Software Company',
-    description: 'Premium website development, custom software, and EduTrack school management software worldwide. Build, showcase, and ship digital products.',
+    description: 'Premium website development, custom software, industry websites, and Shopify store design worldwide. Build, launch, scale, and sell with Onairo Solutions.',
     path: '/',
     pathHtml: 'index.html',
     type: 'website',
@@ -207,7 +207,7 @@ ONAIRO.portfolioSeo = {
   carrental: {
     slug: 'rent-a-car-website-design',
     title: 'Rent A Car Website Design Car Rental Website | Onairo Solutions',
-    description: 'Luxury rent-a-car website design with fleet filters, booking widgets, pricing, and WhatsApp reservations.',
+    description: 'Premium mobile-first car rental website design with editorial fleet layouts, signature vehicle storytelling, and WhatsApp reservations.',
     h1: 'Rent A Car Website Design',
     industryLabel: 'Car Rental Website',
   },

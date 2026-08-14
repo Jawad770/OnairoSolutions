@@ -19,6 +19,8 @@
     "db:push": "prisma db push",
     "db:migrate": "node scripts/db/migrate-from-json.js",
     "db:init": "node scripts/db/init.js",
+    "db:seed:popups": "node scripts/db/seed-marketing-popups.js",
+    "favicons:generate": "node scripts/generate-favicons.js",
     "db:backup": "node scripts/db/backup.js",
     "db:restore": "node scripts/db/restore.js",
     "db:studio": "prisma studio",

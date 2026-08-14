@@ -192,6 +192,44 @@ To ship a new release:
    ```
 4. No code changes or PM2 restart are required — the installer is a static file under `public/`.
 
+## 8c. Promotional popups (Marketing CMS)
+
+CMS-controlled promotional modals on the public site. Content is stored in PostgreSQL; images live under `/uploads/popups/`.
+
+### First-time production enablement (after deploying this feature)
+
+```bash
+cd ~/onairo-solutions
+git pull
+npm install
+npx prisma generate
+npx prisma db push
+npm run db:init
+# Optional: seed Independence Day 2026 popup + artwork
+npm run db:seed:popups
+pm2 restart onairo-solutions
+```
+
+`db:init` syncs new permissions (`marketing.popups.view|create|update|delete`) into roles. Super Admin receives them automatically.
+
+### Admin usage (no Git / PM2 restart needed)
+
+1. Sign in to `/portal`
+2. Open **Marketing → Popups**
+3. Create or edit a popup (title, description, image, button, schedule, target pages, frequency, delay, priority)
+4. Upload an image (stored as `/uploads/popups/<safe-filename>`)
+5. Use **Preview** to review without publishing
+6. **Enable** when ready — the public site reads `GET /api/public/popups/active`
+
+Changing popup copy, dates, images, or enable/disable through the portal **does not** require `git pull` or `pm2 restart`.
+
+### Public behaviour
+
+- Loaded asynchronously after the page is usable (via `popup-client.js`)
+- Frequencies: once per session, once per day, or always
+- Targeting: homepage only, or entire public website
+- API/storage/image failures never block the marketing site
+
 ## 9. Security checklist
 
 - [ ] Strong `SESSION_SECRET` and DB password

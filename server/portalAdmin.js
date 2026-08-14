@@ -53,8 +53,17 @@ function validatePassword(password) {
   return null;
 }
 
+/** Single hashing path for create / reset / invite accept / self-change. */
+function hashPassword(password) {
+  return bcrypt.hashSync(String(password), 12);
+}
+
 function randomPassword() {
   return `On${crypto.randomBytes(6).toString("hex")}!${crypto.randomInt(10, 99)}`;
+}
+
+function syncActiveFlag(status) {
+  return status === "active" ? 1 : 0;
 }
 
 function hashToken(token) {
@@ -190,7 +199,7 @@ module.exports = function registerAdminRoutes({ app, csrf, token, portalShell })
     const invalid = validatePassword(newPassword);
     if (invalid) return fail(invalid);
 
-    user.password_hash = bcrypt.hashSync(String(newPassword), 12);
+    user.password_hash = hashPassword(String(newPassword));
     user.must_change_password = 0;
     user.password_changed_at = now();
     user.updated_at = now();
@@ -313,44 +322,75 @@ module.exports = function registerAdminRoutes({ app, csrf, token, portalShell })
   app.get(`${R}/settings/users/new`, ...guard, authz.requirePermission("users.create"), (req, res) => {
     const actorId = req.session.user.id;
     const assignable = state.roles.filter((r) => authz.canAssignRole(actorId, r));
+    const superRole = assignable.find((r) => r.key === "super_admin");
     const inner = `${flash(req)}
     <div class="panel" style="max-width:720px">
       <div class="panel-head"><strong>Add User</strong><a class="btn sm" href="${R}/settings/users">Back</a></div>
       <p class="muted">Public registration is disabled. Accounts can only be created here.</p>
-      <form method="post" action="${R}/settings/users">
+      <div class="notice" id="createMethodHint">Invite creates a <strong>pending</strong> account that cannot sign in until the invitation link is used. Use a temporary password for immediate login (recommended for Super Admins).</div>
+      <form method="post" action="${R}/settings/users" id="createUserForm">
         <input type="hidden" name="CSRFToken" value="${esc(token(req))}">
         <div class="row2">
           <div class="row"><label>Full name *</label><input name="fullName" required></div>
-          <div class="row"><label>Email *</label><input type="email" name="email" required></div>
+          <div class="row"><label>Email *</label><input type="email" name="email" required autocomplete="off"></div>
         </div>
         <div class="row2">
           <div class="row"><label>Job title</label><input name="jobTitle"></div>
           <div class="row"><label>Phone number</label><input name="phone"></div>
         </div>
         <div class="row2">
-          <div class="row"><label>Role *</label><select name="roleId" required>${assignable
-            .map((r) => `<option value="${r.id}">${esc(r.name)}</option>`)
+          <div class="row"><label>Role *</label><select name="roleId" id="createRoleId" required>${assignable
+            .map((r) => `<option value="${r.id}" data-key="${esc(r.key)}">${esc(r.name)}</option>`)
             .join("")}</select></div>
           <div class="row"><label>Profile image URL</label><input name="avatarUrl" placeholder="Optional"></div>
         </div>
         <div class="row"><label>Account creation method *</label>
-          <select name="method">
-            <option value="invite">Send invitation (user sets their own password)</option>
-            <option value="temporary">Create with temporary password</option>
+          <select name="method" id="createMethod">
+            <option value="temporary" selected>Create with temporary password (can log in immediately)</option>
+            <option value="invite">Send invitation (pending until user sets password)</option>
           </select>
         </div>
-        <div class="row2">
-          <div class="row"><label>Temporary password (leave blank to auto-generate)</label><input name="temporaryPassword" autocomplete="new-password"></div>
+        <div class="row2" id="tempPasswordRow">
+          <div class="row"><label>Temporary password (leave blank to auto-generate)</label><input name="temporaryPassword" id="temporaryPassword" autocomplete="new-password"></div>
           <div class="row"><label>Account status</label><select name="status">${USER_STATUSES.filter((s) => s !== "pending")
             .map((s) => `<option value="${s}" ${s === "active" ? "selected" : ""}>${s}</option>`)
             .join("")}</select></div>
         </div>
         <div class="row" style="display:flex;gap:8px;align-items:center"><input style="width:auto" type="checkbox" id="mcp" name="mustChangePassword" checked><label for="mcp" style="margin:0">Require password change on first login</label></div>
-        <div class="row" style="display:flex;gap:8px;align-items:center"><input style="width:auto" type="checkbox" id="welcome" name="sendWelcomeEmail" checked><label for="welcome" style="margin:0">Send welcome email${smtpReady ? "" : " (SMTP not configured — link shown here instead)"}</label></div>
+        <div class="row" style="display:flex;gap:8px;align-items:center"><input style="width:auto" type="checkbox" id="welcome" name="sendWelcomeEmail" checked><label for="welcome" style="margin:0">Send welcome email${smtpReady ? "" : " (SMTP not configured — link/password shown here instead)"}</label></div>
         <div class="row"><label>Confirm with your current password (required when creating a Super Admin)</label><input type="password" name="currentPassword" autocomplete="current-password"></div>
         <button class="btn primary" type="submit">Create user</button>
       </form>
-    </div>`;
+    </div>
+    <script>
+      (function(){
+        var method=document.getElementById('createMethod');
+        var role=document.getElementById('createRoleId');
+        var tempRow=document.getElementById('tempPasswordRow');
+        var hint=document.getElementById('createMethodHint');
+        var superId=${superRole ? JSON.stringify(String(superRole.id)) : "null"};
+        function sync(){
+          var isInvite=method && method.value==='invite';
+          if(tempRow) tempRow.style.display=isInvite?'none':'';
+          if(hint){
+            hint.innerHTML=isInvite
+              ? 'Invite creates a <strong>pending</strong> account that cannot sign in until the invitation link is used.'
+              : 'Temporary password accounts are <strong>active</strong> and can sign in immediately with the password shown after create.';
+          }
+        }
+        function preferTempForSuper(){
+          if(!role||!method||!superId) return;
+          if(String(role.value)===String(superId) && method.value==='invite'){
+            method.value='temporary';
+          }
+          sync();
+        }
+        if(method) method.addEventListener('change', sync);
+        if(role) role.addEventListener('change', preferTempForSuper);
+        preferTempForSuper();
+        sync();
+      })();
+    </script>`;
     res.send(portalShell("Users & Roles", inner, req));
   });
 
@@ -376,14 +416,23 @@ module.exports = function registerAdminRoutes({ app, csrf, token, portalShell })
       if (problem) return fail(problem);
     }
 
-    const method = b.method === "temporary" ? "temporary" : "invite";
+    const providedTemp = String(b.temporaryPassword || "").trim();
+    // Never ignore a typed temporary password (legacy trap: invite method + filled password field).
+    let method = b.method === "temporary" || providedTemp ? "temporary" : "invite";
+    // Super Admins need an immediate usable credential unless invite was chosen with no password.
+    if (role.key === "super_admin" && method === "invite" && !providedTemp) {
+      // Keep invite allowed, but surface a clear notice path; pending accounts cannot log in.
+    }
+
     let temporaryPassword = null;
     if (method === "temporary") {
-      temporaryPassword = String(b.temporaryPassword || "").trim() || randomPassword();
+      temporaryPassword = providedTemp || randomPassword();
       const invalid = validatePassword(temporaryPassword);
       if (invalid) return fail(invalid);
     }
 
+    const status =
+      method === "invite" ? "pending" : USER_STATUSES.includes(b.status) ? b.status : "active";
     const ts = now();
     const user = {
       id: nextId("users"),
@@ -392,10 +441,10 @@ module.exports = function registerAdminRoutes({ app, csrf, token, portalShell })
       job_title: String(b.jobTitle || "").trim() || null,
       phone: String(b.phone || "").trim() || null,
       avatar_url: String(b.avatarUrl || "").trim() || null,
-      password_hash: bcrypt.hashSync(temporaryPassword || crypto.randomBytes(32).toString("hex"), 12),
+      password_hash: hashPassword(temporaryPassword || crypto.randomBytes(32).toString("hex")),
       role: role.key,
-      status: method === "invite" ? "pending" : USER_STATUSES.includes(b.status) ? b.status : "active",
-      is_active: method === "invite" ? 0 : 1,
+      status,
+      is_active: syncActiveFlag(status),
       must_change_password: method === "temporary" && b.mustChangePassword === "on" ? 1 : 0,
       failed_logins: 0,
       locked_until: null,
@@ -416,7 +465,7 @@ module.exports = function registerAdminRoutes({ app, csrf, token, portalShell })
     });
     persist();
 
-    let notice = `User ${email} created with role ${role.name}.`;
+    let notice = `User ${email} created with role ${role.name} (${status}).`;
     if (method === "invite") {
       const rawToken = crypto.randomBytes(32).toString("hex");
       state.invitations.push({
@@ -443,8 +492,8 @@ module.exports = function registerAdminRoutes({ app, csrf, token, portalShell })
         : false;
       // Without SMTP the one-time link is surfaced in the UI only, never logged.
       notice = mailed
-        ? `${notice} Invitation email sent.`
-        : `${notice} Invitation link (single use, expires in ${config.inviteExpiryHours}h): ${link}`;
+        ? `${notice} Invitation email sent. They cannot sign in until the invite is accepted.`
+        : `${notice} They cannot sign in until the invite is accepted. Invitation link (single use, expires in ${config.inviteExpiryHours}h): ${link}`;
     } else {
       audit(req, "USER_CREATED", { targetType: "user", targetId: user.id, next: { email, role: role.key, status: user.status } });
       if (b.sendWelcomeEmail === "on") {
@@ -670,9 +719,18 @@ module.exports = function registerAdminRoutes({ app, csrf, token, portalShell })
       return authz.forbidden(req, res, "You cannot modify this account.");
     }
     const temporary = randomPassword();
-    user.password_hash = bcrypt.hashSync(temporary, 12);
+    user.password_hash = hashPassword(temporary);
     user.must_change_password = 1;
     user.password_changed_at = now();
+    // Password reset is an admin recovery path — activate pending/invite accounts so they can sign in.
+    if (user.status === "pending" || !authz.isActive(user)) {
+      user.status = "active";
+      user.is_active = 1;
+    } else {
+      user.is_active = syncActiveFlag(user.status);
+    }
+    user.failed_logins = 0;
+    user.locked_until = null;
     user.updated_at = now();
     authz.revokeSessions(user.id);
     persist();
@@ -1015,7 +1073,7 @@ module.exports = function registerAdminRoutes({ app, csrf, token, portalShell })
     const user = authz.userById(invite.user_id);
     if (!user) return fail("This invitation is no longer valid.");
 
-    user.password_hash = bcrypt.hashSync(String(req.body.password), 12);
+    user.password_hash = hashPassword(String(req.body.password));
     user.status = "active";
     user.is_active = 1;
     user.must_change_password = 0;

@@ -111,6 +111,16 @@ const MODULES = [
     ],
   },
   {
+    key: "marketing",
+    label: "Marketing",
+    actions: [
+      ["popups.view", "View promotional popups"],
+      ["popups.create", "Create promotional popups"],
+      ["popups.update", "Update promotional popups"],
+      ["popups.delete", "Delete promotional popups"],
+    ],
+  },
+  {
     key: "products",
     label: "Products (legacy)",
     actions: [
@@ -384,6 +394,7 @@ const NAV_ITEMS = [
   { key: "catalog-features", label: "Features", path: "catalog/features", permission: ["catalog.view"], section: "Catalog Manager" },
   { key: "catalog-promotions", label: "Promotions", path: "catalog/promotions", permission: ["catalog.view"], section: "Catalog Manager" },
   { key: "catalog-marketing", label: "Marketing Campaigns", path: "catalog/marketing", permission: ["catalog.view"], section: "Catalog Manager" },
+  { key: "marketing-popups", label: "Popups", path: "marketing/popups", permission: ["marketing.popups.view"], section: "Marketing" },
   { key: "catalog-notify", label: "Notify Me Leads", path: "catalog/notify", permission: ["catalog.view"], section: "Catalog Manager" },
   { key: "catalog-downloads", label: "Downloads", path: "catalog/downloads", permission: ["catalog.view"], section: "Catalog Manager", disabled: true, badge: "Coming Soon" },
   { key: "catalog-licenses", label: "Licenses", path: "catalog/licenses", permission: ["catalog.view"], section: "Catalog Manager", disabled: true, badge: "Coming Soon" },

@@ -17,15 +17,32 @@
     el.setAttribute('content', content);
   }
 
-  function upsertLink(rel, href) {
+  function upsertLink(rel, href, attrs) {
     if (!href) return;
-    let el = document.head.querySelector(`link[rel="${rel}"]`);
+    let selector = `link[rel="${rel}"]`;
+    if (attrs && attrs.type) selector += `[type="${attrs.type}"]`;
+    if (attrs && attrs.sizes) selector += `[sizes="${attrs.sizes}"]`;
+    let el = document.head.querySelector(selector);
     if (!el) {
       el = document.createElement('link');
       el.setAttribute('rel', rel);
       document.head.appendChild(el);
     }
     el.setAttribute('href', href);
+    if (attrs) {
+      Object.keys(attrs).forEach(function (k) {
+        if (attrs[k]) el.setAttribute(k, attrs[k]);
+      });
+    }
+  }
+
+  function ensureFavicons() {
+    // Absolute root paths so /showcase/*, nested pages, and crawlers all resolve correctly.
+    upsertLink('icon', '/favicon.png', { type: 'image/png', sizes: '48x48' });
+    upsertLink('icon', '/favicon.ico', { sizes: 'any' });
+    upsertLink('apple-touch-icon', '/apple-touch-icon.png', { sizes: '180x180' });
+    // Keep SVG as an additional modern icon when present.
+    upsertLink('icon', '/favicon.svg', { type: 'image/svg+xml' });
   }
 
   function upsertJsonLd(id, data) {
@@ -64,28 +81,27 @@
 
   function organizationSchema() {
     const c = ONAIRO.config;
-    return {
+    const logo = abs((c.logoPath || '/favicon.png').replace(/^\//, ''));
+    const org = {
       '@context': 'https://schema.org',
       '@type': 'Organization',
       name: c.brand,
       url: c.siteUrl,
-      logo: abs(c.logoPath.replace(/^\//, '')),
+      logo: logo,
+      image: logo,
       email: c.email,
-      sameAs: [
-        'https://www.linkedin.com/',
-        'https://www.instagram.com/',
-        'https://www.facebook.com/',
-        'https://x.com/',
-      ],
-      contactPoint: [{
+    };
+    if (c.waNumber) {
+      org.contactPoint = [{
         '@type': 'ContactPoint',
         contactType: 'customer service',
         email: c.email,
-        telephone: '+' + c.waNumber,
-        areaServed: ['PK', 'Worldwide'],
-        availableLanguage: ['English', 'Urdu'],
-      }],
-    };
+        telephone: '+' + String(c.waNumber).replace(/^\+/, ''),
+        areaServed: c.serviceArea || 'Worldwide',
+        availableLanguage: ['English'],
+      }];
+    }
+    return org;
   }
 
   function websiteSchema() {
@@ -94,37 +110,31 @@
       '@type': 'WebSite',
       name: ONAIRO.config.brand,
       url: ONAIRO.config.siteUrl,
-      potentialAction: {
-        '@type': 'SearchAction',
-        target: abs('portfolio/index.html') + '?q={search_term_string}',
-        'query-input': 'required name=search_term_string',
+      publisher: {
+        '@type': 'Organization',
+        name: ONAIRO.config.brand,
+        url: ONAIRO.config.siteUrl,
       },
     };
   }
 
   function localBusinessSchema() {
     const c = ONAIRO.config;
+    const logo = abs((c.logoPath || '/favicon.png').replace(/^\//, ''));
     return {
       '@context': 'https://schema.org',
       '@type': 'ProfessionalService',
       name: c.brand,
-      description: 'Website development, custom software, and school management software for businesses and worldwide.',
+      description: 'Website development, custom software, and school management software for businesses worldwide.',
       url: c.siteUrl,
-      logo: abs(c.logoPath.replace(/^\//, '')),
-      image: abs(c.logoPath.replace(/^\//, '')),
+      logo: logo,
+      image: logo,
       email: c.email,
-      telephone: '+' + c.waNumber,
+      telephone: c.waNumber ? '+' + String(c.waNumber).replace(/^\+/, '') : undefined,
       areaServed: {
         '@type': 'Place',
-        name: c.serviceArea,
+        name: c.serviceArea || 'Worldwide',
       },
-      openingHoursSpecification: [{
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-        opens: '10:00',
-        closes: '19:00',
-      }],
-      priceRange: '$$',
     };
   }
 
@@ -270,7 +280,7 @@
     const url = abs(String(page.path || '/').replace(/^\//, ''));
     const title = page.title;
     const description = page.description;
-    const image = abs('favicon.svg');
+    const image = abs('og-icon.png');
 
     if (title) document.title = title;
     upsertMeta('name', 'description', description);
@@ -282,6 +292,7 @@
       upsertMeta('name', 'google-site-verification', ONAIRO.config.gscVerification);
     }
 
+    ensureFavicons();
     upsertLink('canonical', url);
 
     upsertMeta('property', 'og:type', page.type === 'product' ? 'product' : 'website');
@@ -290,9 +301,10 @@
     upsertMeta('property', 'og:description', description);
     upsertMeta('property', 'og:url', url);
     upsertMeta('property', 'og:image', image);
-    upsertMeta('property', 'og:locale', ONAIRO.config.locale || 'en_PK');
+    upsertMeta('property', 'og:image:alt', ONAIRO.config.brand + ' logo');
+    upsertMeta('property', 'og:locale', ONAIRO.config.locale || 'en');
 
-    upsertMeta('name', 'twitter:card', 'summary_large_image');
+    upsertMeta('name', 'twitter:card', 'summary');
     upsertMeta('name', 'twitter:title', title);
     upsertMeta('name', 'twitter:description', description);
     upsertMeta('name', 'twitter:image', image);

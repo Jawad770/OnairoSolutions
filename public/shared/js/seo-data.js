@@ -7,7 +7,7 @@ window.ONAIRO = window.ONAIRO || {};
 ONAIRO.seoPages = {
   home: {
     title: 'Onairo Solutions | Website Development & Software Company',
-    description: 'Premium website development, custom software, and EduTrack school management software worldwide. Build, showcase, and ship digital products.',
+    description: 'Premium website development, custom software, industry websites, and Shopify store design worldwide. Build, launch, scale, and sell with Onairo Solutions.',
     path: '/',
     pathHtml: 'index.html',
     type: 'website',

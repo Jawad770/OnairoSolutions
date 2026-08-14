@@ -1239,3 +1239,32 @@ model SandboxValidationReport {
   @@map("sandbox_validation_reports")
   @@schema("products")
 }
+
+/// CMS-controlled promotional modal on the public marketing site.
+model MarketingPopup {
+  id               String    @id @default(uuid()) @db.Uuid
+  name             String
+  title            String?
+  description      String?   @db.Text
+  imageUrl         String?   @map("image_url")
+  buttonText       String?   @map("button_text")
+  buttonUrl        String?   @map("button_url")
+  enabled          Boolean   @default(false)
+  startAt          DateTime? @map("start_at")
+  endAt            DateTime? @map("end_at")
+  displayFrequency String    @default("once_per_session") @map("display_frequency")
+  delayMs          Int       @default(800) @map("delay_ms")
+  /// homepage_only | entire_website (extensible string for future targeting)
+  targetPages      String    @default("homepage_only") @map("target_pages")
+  priority         Int       @default(100)
+  createdAt        DateTime  @default(now()) @map("created_at")
+  updatedAt        DateTime  @updatedAt @map("updated_at")
+  deletedAt        DateTime? @map("deleted_at")
+
+  @@index([enabled, deletedAt])
+  @@index([startAt, endAt])
+  @@index([priority])
+  @@index([targetPages])
+  @@map("marketing_popups")
+  @@schema("products")
+}

@@ -8,7 +8,7 @@ ONAIRO.config = {
   waDefaultMsg: "Hi Onairo Solutions, I'd like to learn more about your services.",
   year: 2026,
   siteUrl: 'https://onairosolutions.com',
-  logoPath: '/favicon.svg',
+  logoPath: '/favicon.png',
   locale: 'en',
   serviceArea: 'Worldwide remote delivery',
   /* Google Search Console verification meta content (replace placeholder) */

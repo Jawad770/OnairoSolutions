@@ -177,7 +177,7 @@ function portalShell(title, inner, req, extra = "") {
     user: { ...account, roleName: roles.map((r) => r.name).join(", ") },
     body: `<div class="top">
       <div style="display:flex;align-items:center;gap:10px;min-width:0">
-        <button class="btn sm drawer-btn" id="drawerBtn" type="button" aria-label="Toggle menu">☰</button>
+        <button class="btn sm drawer-btn" id="drawerBtn" type="button" aria-label="Open menu" aria-controls="side" aria-expanded="false">☰</button>
         <div style="min-width:0"><strong>${views.esc(title)}</strong><div class="muted">${views.esc(account?.email || "")}</div></div>
       </div>
       <form method="post" action="${config.portalRoute}/logout">
@@ -251,6 +251,9 @@ app.post(`${config.portalRoute}/login`, loginLimiter, csrfSynchronisedProtection
       detail: `status=${user.status}`,
       actorName: user.email,
     });
+    if (String(user.status || "") === "pending") {
+      return reject("This account is pending invitation acceptance. Open the invite link to set a password, or ask an admin to create/reset with a temporary password.");
+    }
     return reject("This account is not active. Contact a portal administrator.");
   }
 
@@ -738,6 +741,7 @@ require("./portalAdmin")({ app, csrf: csrfSynchronisedProtection, token, portalS
 require("./portalModules")({ app, csrf: csrfSynchronisedProtection, token, portalShell });
 require("./portalPromotions")({ app, csrf: csrfSynchronisedProtection, token, portalShell });
 require("./portalMarketing")({ app, csrf: csrfSynchronisedProtection, token, portalShell });
+require("./portalPopups")({ app, csrf: csrfSynchronisedProtection, token, portalShell });
 require("./portalSandbox")({ app, csrf: csrfSynchronisedProtection, token, portalShell });
 require("./portalCatalog")({ app, csrf: csrfSynchronisedProtection, token, portalShell });
 require("./portalReviews")({
@@ -1129,6 +1133,8 @@ const { registerCatalogPublicApi } = require("./catalogPublic");
 registerCatalogPublicApi(app);
 const { registerMarketingPublicApi } = require("./marketingPublic");
 registerMarketingPublicApi(app);
+const { registerPopupPublicApi } = require("./popupPublic");
+registerPopupPublicApi(app);
 
 app.get(["/_legacy-agency-home.html", "/src/pages/_legacy-agency-home.html", "/pages/_legacy-agency-home.html"], (_req, res) => {
   res.redirect(301, "/pages/pricing.html");
